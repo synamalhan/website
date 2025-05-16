@@ -1,21 +1,26 @@
 {
   "files": {
-    "main.css": "/portfolio-website/static/css/main.d7e548e6.css",
-    "main.js": "/portfolio-website/static/js/main.568b0174.js",
+    "main.css": "/portfolio-website/static/css/main.e4b888c4.css",
+    "main.js": "/portfolio-website/static/js/main.4f23005e.js",
     "static/js/453.7e152d38.chunk.js": "/portfolio-website/static/js/453.7e152d38.chunk.js",
+    "static/media/jellyfish.gif": "/portfolio-website/static/media/jellyfish.0eb00261d947835f99c3.gif",
+    "static/media/ship.webp": "/portfolio-website/static/media/ship.54febe025a3335fe9c0a.webp",
     "static/media/bubbles.gif": "/portfolio-website/static/media/bubbles.85f5973d0990b09d639b.gif",
     "static/media/jspl.png": "/portfolio-website/static/media/jspl.10a2a166f4d7a4d2d9d8.png",
+    "static/media/x.png": "/portfolio-website/static/media/x.c710cce6c54164cd3948.png",
     "static/media/pwc.png": "/portfolio-website/static/media/pwc.09f9068acfa615e99c8a.png",
     "static/media/asu.png": "/portfolio-website/static/media/asu.c2bec8dd8bebf30225cd.png",
+    "static/media/submarine.jpeg": "/portfolio-website/static/media/submarine.f7eb1ddb148142442e1b.jpeg",
     "static/media/headstarter.avif": "/portfolio-website/static/media/headstarter.b25505b29b0761983834.avif",
     "static/media/ripik.svg": "/portfolio-website/static/media/ripik.7137ee7b89646492d6e5ce4e1ed32395.svg",
+    "static/media/linkedin.webp": "/portfolio-website/static/media/linkedin.4c11b4693dd4eebca5be.webp",
     "index.html": "/portfolio-website/index.html",
-    "main.d7e548e6.css.map": "/portfolio-website/static/css/main.d7e548e6.css.map",
-    "main.568b0174.js.map": "/portfolio-website/static/js/main.568b0174.js.map",
+    "main.e4b888c4.css.map": "/portfolio-website/static/css/main.e4b888c4.css.map",
+    "main.4f23005e.js.map": "/portfolio-website/static/js/main.4f23005e.js.map",
     "453.7e152d38.chunk.js.map": "/portfolio-website/static/js/453.7e152d38.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7e548e6.css",
-    "static/js/main.568b0174.js"
+    "static/css/main.e4b888c4.css",
+    "static/js/main.4f23005e.js"
   ]
 }
