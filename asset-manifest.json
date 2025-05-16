@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/synamalhan/portfolio-website.git/static/css/main.d7e548e6.css",
-    "main.js": "/synamalhan/portfolio-website.git/static/js/main.d83c8018.js",
-    "static/js/453.7e152d38.chunk.js": "/synamalhan/portfolio-website.git/static/js/453.7e152d38.chunk.js",
-    "static/media/bubbles.gif": "/synamalhan/portfolio-website.git/static/media/bubbles.85f5973d0990b09d639b.gif",
-    "static/media/jspl.png": "/synamalhan/portfolio-website.git/static/media/jspl.10a2a166f4d7a4d2d9d8.png",
-    "static/media/pwc.png": "/synamalhan/portfolio-website.git/static/media/pwc.09f9068acfa615e99c8a.png",
-    "static/media/asu.png": "/synamalhan/portfolio-website.git/static/media/asu.c2bec8dd8bebf30225cd.png",
-    "static/media/headstarter.avif": "/synamalhan/portfolio-website.git/static/media/headstarter.b25505b29b0761983834.avif",
-    "static/media/ripik.svg": "/synamalhan/portfolio-website.git/static/media/ripik.7137ee7b89646492d6e5ce4e1ed32395.svg",
-    "index.html": "/synamalhan/portfolio-website.git/index.html",
-    "main.d7e548e6.css.map": "/synamalhan/portfolio-website.git/static/css/main.d7e548e6.css.map",
-    "main.d83c8018.js.map": "/synamalhan/portfolio-website.git/static/js/main.d83c8018.js.map",
-    "453.7e152d38.chunk.js.map": "/synamalhan/portfolio-website.git/static/js/453.7e152d38.chunk.js.map"
+    "main.css": "/synamalhan/portfolio-website/static/css/main.d7e548e6.css",
+    "main.js": "/synamalhan/portfolio-website/static/js/main.2c49ba92.js",
+    "static/js/453.7e152d38.chunk.js": "/synamalhan/portfolio-website/static/js/453.7e152d38.chunk.js",
+    "static/media/bubbles.gif": "/synamalhan/portfolio-website/static/media/bubbles.85f5973d0990b09d639b.gif",
+    "static/media/jspl.png": "/synamalhan/portfolio-website/static/media/jspl.10a2a166f4d7a4d2d9d8.png",
+    "static/media/pwc.png": "/synamalhan/portfolio-website/static/media/pwc.09f9068acfa615e99c8a.png",
+    "static/media/asu.png": "/synamalhan/portfolio-website/static/media/asu.c2bec8dd8bebf30225cd.png",
+    "static/media/headstarter.avif": "/synamalhan/portfolio-website/static/media/headstarter.b25505b29b0761983834.avif",
+    "static/media/ripik.svg": "/synamalhan/portfolio-website/static/media/ripik.7137ee7b89646492d6e5ce4e1ed32395.svg",
+    "index.html": "/synamalhan/portfolio-website/index.html",
+    "main.d7e548e6.css.map": "/synamalhan/portfolio-website/static/css/main.d7e548e6.css.map",
+    "main.2c49ba92.js.map": "/synamalhan/portfolio-website/static/js/main.2c49ba92.js.map",
+    "453.7e152d38.chunk.js.map": "/synamalhan/portfolio-website/static/js/453.7e152d38.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d7e548e6.css",
-    "static/js/main.d83c8018.js"
+    "static/js/main.2c49ba92.js"
   ]
 }
