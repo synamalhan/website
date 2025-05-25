@@ -50,11 +50,11 @@ const SkillCard = ({ skill, level }) => {
         style={{
           background,
           borderRadius,
-          padding: isSmallScreen ? '20px 14px' : '30px 20px',
+          padding: isSmallScreen ? '15px 10px' : '30px 20px',
           minHeight: '80px',
           color: '#fff',
           fontFamily: "'Montserrat', sans-serif",
-          fontSize: isSmallScreen ? '1rem' : '1.2rem',
+          fontSize: isSmallScreen ? '0.8rem' : '1.2rem',
           fontWeight: 'bold',
           boxShadow: '0 0 15px rgba(0, 0, 0, 0.3)',
           display: 'flex',
@@ -70,15 +70,15 @@ const SkillCard = ({ skill, level }) => {
           style={{
             display: 'flex',
             marginTop: '10px',
-            gap: isSmallScreen ? '2px' : '4px',
+            gap: isSmallScreen ? '1px' : '4px',
           }}
         >
           {Array.from({ length: level }).map((_, i) => (
             <div
               key={i}
               style={{
-                width: isSmallScreen ? '18px' : '30px',
-                height: isSmallScreen ? '18px' : '30px',
+                width: isSmallScreen ? '15px' : '30px',
+                height: isSmallScreen ? '15px' : '30px',
               }}
             >
               <Lottie animationData={starfishAnimation} loop autoplay />
