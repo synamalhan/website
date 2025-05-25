@@ -21,6 +21,8 @@ const HeroSection = () => {
   );
 };
 
+const isSmallScreen = window.innerWidth < 500;
+
 const styles = {
   container: {
     height: '100vh',
@@ -66,8 +68,8 @@ const styles = {
     zIndex: 1,
   },
   lottie: {
-    width: '100%',
-    height: '100%',
+    width: isSmallScreen? '200%' : '100%',
+    // height: '100%',
     filter: 'hue-rotate(0deg)',     
   },
 };
