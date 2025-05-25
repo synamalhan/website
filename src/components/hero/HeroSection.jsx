@@ -63,13 +63,13 @@ const styles = {
   lottieWrapper: {
     position: 'absolute',
     bottom: 0,
-    width: isSmallScreen? '200%' : '100%',
+    width: isSmallScreen? '250%' : '100%',
     pointerEvents: 'none',
     zIndex: 1,
   },
   lottie: {
-    width: isSmallScreen? '200%' : '100%',
-    // height: '100%',
+    width:'100%',
+    height: '100%',
     filter: 'hue-rotate(0deg)',     
   },
 };
