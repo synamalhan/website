@@ -22,7 +22,6 @@ const HeroSection = () => {
 };
 
 const isSmallScreen = window.innerWidth < 500;
-
 const styles = {
   container: {
     height: '100vh',
@@ -36,6 +35,7 @@ const styles = {
     position: 'relative',
     padding: '0 20px',
     overflow: 'hidden',
+    zIndex: 1, // Text content stays on top
   },
   name: {
     fontFamily: "'Montserrat', sans-serif",
@@ -43,6 +43,8 @@ const styles = {
     fontWeight: '700',
     margin: 0,
     textShadow: '0 0 10px #edbfff',
+    zIndex: 2, // ensure text stays above animation
+    position: 'relative',
   },
   tagline: {
     fontFamily: "'Lora', serif",
@@ -52,6 +54,8 @@ const styles = {
     fontStyle: 'italic',
     color: '#edbfff',
     maxWidth: '600px',
+    zIndex: 2,
+    position: 'relative',
   },
   downArrow: {
     marginTop: '3rem',
@@ -59,18 +63,20 @@ const styles = {
     animation: 'bounce 2s infinite',
     cursor: 'pointer',
     color: '#a0d8ef',
+    zIndex: 2,
+    position: 'relative',
   },
   lottieWrapper: {
     position: 'absolute',
     bottom: 0,
-    width: isSmallScreen? '250%' : '100%',
+    width: isSmallScreen ? '250%' : '100%',
     pointerEvents: 'none',
-    zIndex: 1,
+    zIndex: 0, // 👈 lower this so it’s in the background
   },
   lottie: {
-    width: '100%',
+    width: isSmallScreen ? '150%' : '100%',
     height: '100%',
-    filter: isSmallScreen? 'hue-rotate(20deg)':'hue-rotate(0deg)',     
+    filter: 'hue-rotate(20deg)',
   },
 };
 
