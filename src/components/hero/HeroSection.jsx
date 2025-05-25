@@ -70,7 +70,7 @@ const styles = {
   lottie: {
     width:'100%',
     height: '100%',
-    filter: 'hue-rotate(0deg)',     
+    filter: isSmallScreen? 'hue-rotate(20deg)':'hue-rotate(0deg)',     
   },
 };
 
