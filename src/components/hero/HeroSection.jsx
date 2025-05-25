@@ -68,8 +68,8 @@ const styles = {
     zIndex: 1,
   },
   lottie: {
-    width:'100%',
-    height: '100%',
+    width: isSmallScreen? '200%' : '100%',
+    // height: '100%',
     filter: isSmallScreen? 'hue-rotate(20deg)':'hue-rotate(0deg)',     
   },
 };
