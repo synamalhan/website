@@ -63,7 +63,7 @@ const styles = {
   lottieWrapper: {
     position: 'absolute',
     bottom: 0,
-    width: '100%',
+    width: isSmallScreen? '200%' : '100%',
     pointerEvents: 'none',
     zIndex: 1,
   },
