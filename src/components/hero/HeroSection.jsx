@@ -74,7 +74,7 @@ const styles = {
     zIndex: 0, // 👈 lower this so it’s in the background
   },
   lottie: {
-    width: isSmallScreen ? '150%' : '100%',
+    width: isSmallScreen ? '200%' : '100%',
     height: '100%',
     filter: 'hue-rotate(20deg)',
   },
