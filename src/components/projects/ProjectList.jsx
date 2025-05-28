@@ -17,6 +17,27 @@ import G from "../../assets/projects/G.png";
 
 const projects = [
   {
+    title: 'Solar System Simulation in A-Frame',
+    summary: 'Created an interactive 3D solar system model using A-Frame to understand WebXR concepts and entity-component design.',
+    duration: 'May 2025',
+    techStack: ['HTML', 'A-Frame', 'WebGL', 'Three.js'],
+    details: (
+      <>
+        <p><strong>Situation:</strong> I wanted to explore 3D web development and understand how VR/AR environments are constructed.</p>
+        <p><strong>Problem:</strong> I had no prior experience with A-Frame or spatial rendering techniques.</p>
+        <p><strong>Action:</strong> I created a model of the solar system where each planet rotates and orbits the sun, mapped textures using A-Frame assets, and adjusted scaling/camera controls for realism.</p>
+        <p><strong>Result:</strong> Successfully developed a browser-based simulation that visually represents orbital mechanics and planetary rotation.</p>
+        <p><strong>What I Learned:</strong> Basics of 3D entity hierarchies, texture loading, orbital animation, and component-based architecture in A-Frame.</p>
+        <p><strong>Tech Stack:</strong> HTML, A-Frame, WebGL, Three.js</p>
+      </>
+    ),
+  
+    links: [
+      { label: 'GitHub Repo', url: 'https://github.com/yourusername/aframe-solar-system' },
+    ],
+  },
+
+  {
     title: 'Last Point Distribution Analysis',
     summary: 'Optimized dispatch operations with K-means clustering and real-time cost calculations, improving delivery efficiency.',
     duration: 'May 2024 – July 2024',
