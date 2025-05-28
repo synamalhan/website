@@ -33,7 +33,7 @@ const projects = [
     ),
   
     links: [
-      { label: 'GitHub Repo', url: 'https://github.com/yourusername/aframe-solar-system' },
+      { label: 'GitHub Repo', url: 'https://github.com/yourusername/a-frame-vr' },
     ],
   },
 
