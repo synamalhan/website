@@ -429,6 +429,24 @@ const projects = [
   links: [
     { label: "GitHub Repo", url: "https://github.com/synamalhan/project-formatter.git" },
   ]
+},,
+  {
+  title: "US Census Data Project",
+  summary: "Analyzing and visualizing data from the US Census to provide insights into demographic, economic, and geographic trends across the United States.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> This project is focused on analyzing and visualizing data from the US Census.</p>
+      <p><b>Problem:</b> To provide insights into demographic, economic, and geographic trends across the United States.</p>
+      <p><b>Action:</b> Data collection and preprocessing, exploratory data analysis, interactive visualizations, and customizable reports were built to achieve this goal.</p>
+      <p><b>Result:</b> The project provides valuable insights into demographic, economic, and geographic trends across the United States.</p>
+      <p><b>What I Learned:</b> New skills and tools were acquired through this project.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/yourusername/us-census-stats" },
+  ]
 },
 ];
 
