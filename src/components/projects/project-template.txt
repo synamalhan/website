@@ -1,0 +1,26 @@
+You are a local JavaScript generator.
+
+Using the following README, generate a JavaScript object **wrapped in curly braces `{}`** to be used in a React portfolio component.
+
+The object must match this structure:
+{
+  title: "Project Title",
+  summary: "One-line summary of the project",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> [Background]</p>
+      <p><b>Problem:</b> [What problem did you solve?]</p>
+      <p><b>Action:</b> [What you built and how]</p>
+      <p><b>Result:</b> [Impact or outcomes]</p>
+      <p><b>What I Learned:</b> [New skills or tools]</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/yourrepo" },
+  ]
+}
+
+README:
+{readme_text}

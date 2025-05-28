@@ -7,18 +7,7 @@ import pwc from '../../assets/pwc.png';
 import ripik from '../../assets/ripik.svg';
 import headstarter from '../../assets/headstarter.avif';
 const experiences = [
-  {
-    title: 'Trainee',
-    company: 'PwC',
-    duration: 'June 2025 - July 2025',
-    summary: 'Details to come...',
-    details: (
-      <>
-        <p>Details to come...</p>
-      </>
-    ),
-    logo: pwc,
-  },
+
   {
     title: 'Cloud Front End Developer',
     company: 'Arizona State University AI Cloud Innovation Center',

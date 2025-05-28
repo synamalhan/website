@@ -31,7 +31,7 @@ const projects = [
       ),
     
       links: [
-        { label: 'GitHub Repo', url: 'https://github.com/yourusername/a-frame-vr' },
+        { label: 'GitHub Repo', url: 'https://github.com/yourusername/a-frame-vr.git' },
       ],
     },
   
@@ -411,8 +411,25 @@ const projects = [
         { label: 'GitHub Repo', url: 'https://github.com/synamalhan/gamify-life.git' },
         { label: 'Live demo', url: 'https://youtu.be/yQi9CLcjFig' },
         ],
-    }
-    
-  ];
+    },
+  {
+  title: "Project Creator with Local LLM Integration",
+  summary: "Automates the creation of formatted project entries for a portfolio website, using a local language model to generate summaries in JSX format.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> This is a personal learning project designed to automate the creation of formatted project entries for a portfolio website.</p>
+      <p><b>Problem:</b> The tool uses a free local LLM (via Ollama or similar) for generating project summaries in a consistent JSX format, ensuring minimal manual formatting required.</p>
+      <p><b>Action:</b> Given a project README or description text, the tool takes raw input and exports the generated project entry ready to be added into a React projects array.</p>
+      <p><b>Result:</b> The result is a well-structured project object that can be directly appended to a React/JSX projects list, maintaining personal portfolio project lists with minimal manual formatting.</p>
+      <p><b>What I Learned:</b> New skills or tools learned through this project include integrating local LLMs for generating summaries in JSX format.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/project-formatter.git" },
+  ]
+},
+];
 
   export default projects;
