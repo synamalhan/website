@@ -447,7 +447,8 @@ const projects = [
   links: [
     { label: "GitHub Repo", url: "https://github.com/synamalhan/us-census-stats" },
   ]
-},
+},,
+  {},
 ];
 
   export default projects;
