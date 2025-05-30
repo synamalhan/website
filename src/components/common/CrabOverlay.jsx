@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Lottie from 'lottie-react';
 import crabJson from '../../assets/crab.json';
-import profile from '../../assets/profile.jpg';
+import profile from '../../assets/profile.jpeg';
 const CrabOverlay = () => {
   const [scrollY, setScrollY] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
