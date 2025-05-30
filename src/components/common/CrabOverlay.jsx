@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Lottie from 'lottie-react';
 import crabJson from '../../assets/crab.json';
-
+import profile from '../../assets/profile.jpg';
 const CrabOverlay = () => {
   const [scrollY, setScrollY] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
@@ -74,6 +74,17 @@ const CrabOverlay = () => {
             whiteSpace: 'nowrap',
           }}
         >
+           <img
+            src={profile}
+            alt="Profile"
+            style={{
+              width: isSmallScreen ? '40px' : '60px',
+              height: isSmallScreen ? '40px' : '60px',
+              borderRadius: '50%',
+              marginBottom: '10px',
+              objectFit: 'cover',
+            }}
+          />
           <p>Nice to meet you!</p>
           <p>Be sure to send me a message!</p>
         </div>

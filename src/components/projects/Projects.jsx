@@ -445,7 +445,7 @@ const projects = [
     </>
   ),
   links: [
-    { label: "GitHub Repo", url: "https://github.com/yourusername/us-census-stats" },
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/us-census-stats" },
   ]
 },
 ];
