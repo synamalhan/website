@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/website/static/css/main.e4b888c4.css",
-    "main.js": "/website/static/js/main.5cc7c731.js",
+    "main.js": "/website/static/js/main.a66492c0.js",
     "static/js/453.7e152d38.chunk.js": "/website/static/js/453.7e152d38.chunk.js",
     "static/media/reef.png": "/website/static/media/reef.3c618fbbd8869790d4ec.png",
     "static/media/SS.png": "/website/static/media/SS.17207e3d699b87ad331e.png",
@@ -20,6 +20,7 @@
     "static/media/PF1.jpeg": "/website/static/media/PF1.597d101573d768d3e43b.jpeg",
     "static/media/github.png": "/website/static/media/github.707fbb13a6648ed0a3f4.png",
     "static/media/bubbles.gif": "/website/static/media/bubbles.85f5973d0990b09d639b.gif",
+    "static/media/profile.jpeg": "/website/static/media/profile.dced92946d696ec2f7d0.jpeg",
     "static/media/jspl.png": "/website/static/media/jspl.10a2a166f4d7a4d2d9d8.png",
     "static/media/pwc.png": "/website/static/media/pwc.09f9068acfa615e99c8a.png",
     "static/media/asu.png": "/website/static/media/asu.c2bec8dd8bebf30225cd.png",
@@ -29,11 +30,11 @@
     "static/media/linkedin.webp": "/website/static/media/linkedin.4c11b4693dd4eebca5be.webp",
     "index.html": "/website/index.html",
     "main.e4b888c4.css.map": "/website/static/css/main.e4b888c4.css.map",
-    "main.5cc7c731.js.map": "/website/static/js/main.5cc7c731.js.map",
+    "main.a66492c0.js.map": "/website/static/js/main.a66492c0.js.map",
     "453.7e152d38.chunk.js.map": "/website/static/js/453.7e152d38.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e4b888c4.css",
-    "static/js/main.5cc7c731.js"
+    "static/js/main.a66492c0.js"
   ]
 }
