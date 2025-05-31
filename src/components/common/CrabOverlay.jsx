@@ -62,7 +62,7 @@ const CrabOverlay = () => {
             position: 'fixed',
             top: isSmallScreen ? 'auto' : topPosition - 60,
             bottom: isSmallScreen ? '100px' : 'auto', // show message above crab on small screens
-            right: isSmallScreen ? '20px' : '50px',
+            right: isSmallScreen ? '20px' : '100px',
             background: 'rgba(10, 62, 87, 0.95)',
             padding: '12px 20px',
             borderRadius: '15px',

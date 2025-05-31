@@ -320,6 +320,9 @@ const projects = [
           <p><strong>Tech Stack:</strong> Python, NLP, Speech-to-Text APIs</p>
         </>
       ),
+      links: [
+    { label: "GitHub Repo", url: "https://github.com/PratGit1606/WhatTheBleep-AutomaticCensor.git" }
+  ]
     },
   
     {
@@ -337,6 +340,9 @@ const projects = [
           <p><strong>Tech Stack:</strong> Python, Streamlit, yFinance, Plotly</p>
         </>
       ),
+      links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/portfolio_analyzer" }
+  ]
     },
   
     {
@@ -354,6 +360,9 @@ const projects = [
           <p><strong>Tech Stack:</strong> Python, K-Means, Matplotlib, Seaborn, Plotly</p>
         </>
       ),
+      links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/customer-segmentation" }
+  ]
     },
   
     {
@@ -371,6 +380,9 @@ const projects = [
           <p><strong>Tech Stack:</strong> Python, Streamlit, Pandas, NumPy</p>
         </>
       ),
+      links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/esg-score-optimizer.git" }
+  ]
     },
   
     {
