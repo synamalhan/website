@@ -202,7 +202,7 @@ const styles = {
     position: 'relative',
     backgroundColor: '#001f2f', // dark sea blue for depth
     borderRadius: 30,
-    height: '80%',
+    maxheight: '80%',
     maxWidth: '90%',
     padding: isSmallScreen ? '25px 20px 30px 20px' : '40px 30px 50px 50px',
     boxShadow: '0 0 30px #00d2ff',
