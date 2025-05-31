@@ -441,15 +441,85 @@ const projects = [
       <p><b>Action:</b> Data collection and preprocessing, exploratory data analysis, interactive visualizations, and customizable reports were built to achieve this goal.</p>
       <p><b>Result:</b> The project provides valuable insights into demographic, economic, and geographic trends across the United States.</p>
       <p><b>What I Learned:</b> New skills and tools were acquired through this project.</p>
-      <p><b>Tech Stack:</b> React, Python, Flask</p>
+      <p><b>Tech Stack:</b>Python, Flask</p>
     </>
   ),
   links: [
     { label: "GitHub Repo", url: "https://github.com/synamalhan/us-census-stats" },
   ]
-},,
-  {},,
-  {},
+},
+{
+  title: "The Untold Legacy of Bayard Rustin",
+  summary: "A digital tribute to one of the most influential yet overlooked figures in the American civil rights movement.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> Hackathon focused on exploring and celebrating history.</p>
+      <p><b>Problem:</b> Highlighting lesser-known figures who have made significant contributions to society.</p>
+      <p><b>Action:</b> Created a digital tribute to Bayard Rustin, an unsung hero of the civil rights movement.</p>
+      <p><b>Result:</b> Shed light on the importance of recognizing all voices in history, especially those who have been marginalized.</p>
+      <p><b>What I Learned:</b> New skills and tools gained through using React for a dynamic and interactive user experience, Tailwind CSS for rapid and responsive design, and JavaScript (ES6+) for logic and interactivity.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/hackstory.git" } // Note: GitHub repo URL is not provided in the README
+  ]
+},
+{
+  title: "Finance Helper",
+  summary: "A personal project designed to simplify and automate common financial tasks.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> Many people struggle to keep track of their spending and savings.</p>
+      <p><b>Problem:</b> Manual financial management can be challenging.</p>
+      <p><b>Action:</b> Finance Helper provides an easy-to-use tool to automate expense tracking, budget management, and financial analytics.</p>
+      <p><b>Result:</b> Empowering users to make informed financial decisions and achieve their financial goals.</p>
+      <p><b>What I Learned:</b> New skills or tools (not specified)</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/finance-assist" },
+  ]
+},
+{
+  title: "Career Pilot",
+  summary: "A personal project designed to help users navigate and manage their career growth, job applications, and professional development.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> As a professional looking to advance in my career, I wanted to create a tool that helps me stay organized and focused.</p>
+      <p><b>Problem:</b> Managing job applications, setting career goals, and keeping track of progress can be overwhelming without a centralized system.</p>
+      <p><b>Action:</b> I built Career Pilot, a web application that allows users to track job applications and interviews, set career goals and milestones, organize professional documents and notes, and visualize progress with charts and timelines.</p>
+      <p><b>Result:</b> With Career Pilot, users can gain clarity on their career path, streamline their job search process, and make data-driven decisions for future growth.</p>
+      <p><b>What I Learned:</b> I learned about the importance of user-centered design, the value of project management tools, and the power of data visualization in helping professionals achieve their goals.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/career-pilot" },
+  ]
+},
+{
+  title: "Haunted Escape Room (React)",
+  summary: "A silly little horror escape room game built with React — full of creaky doors, creepy riddles, and a time limit that’ll trap you forever... or at least until you refresh.",
+  techStack: ["React", "CSS", "MP3 sound effects", "Local images"],
+  details: (
+    <>
+      <p><b>Situation:</b> You’re trapped in a haunted house and must solve a series of eerie puzzles before time runs out.</p>
+      <p><b>Problem:</b> If you guess wrong, the ghosts get louder. If you guess right, the door creaks open and you move on.</p>
+      <p><b>Action:</b> Finish all rooms to escape... or join the spirits.</p>
+      <p><b>Result:</b> A final “You Escaped!” screen</p>
+      <p><b>What I Learned:</b> None specified</p>
+      <p><b>Tech Stack:</b> React, CSS, MP3 sound effects, Local images</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/escape-room" }
+  ]
+}
 ];
 
   export default projects;
