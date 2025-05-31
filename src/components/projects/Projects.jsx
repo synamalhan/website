@@ -451,7 +451,7 @@ const projects = [
 {
   title: "The Untold Legacy of Bayard Rustin",
   summary: "A digital tribute to one of the most influential yet overlooked figures in the American civil rights movement.",
-  techStack: ["React", "Python", "Flask"],
+  techStack: ["React", "Javacript", "Vercel", "Tailwind CSS"],
   details: (
     <>
       <p><b>Situation:</b> Hackathon focused on exploring and celebrating history.</p>
@@ -459,7 +459,7 @@ const projects = [
       <p><b>Action:</b> Created a digital tribute to Bayard Rustin, an unsung hero of the civil rights movement.</p>
       <p><b>Result:</b> Shed light on the importance of recognizing all voices in history, especially those who have been marginalized.</p>
       <p><b>What I Learned:</b> New skills and tools gained through using React for a dynamic and interactive user experience, Tailwind CSS for rapid and responsive design, and JavaScript (ES6+) for logic and interactivity.</p>
-      <p><b>Tech Stack:</b> React, Python, Flask</p>
+      <p><b>Tech Stack:</b> React, Javascript</p>
     </>
   ),
   links: [
@@ -469,15 +469,15 @@ const projects = [
 {
   title: "Finance Helper",
   summary: "A personal project designed to simplify and automate common financial tasks.",
-  techStack: ["React", "Python", "Flask"],
+  techStack: ["Streamlit", "Python", "LLM", "FRED API"],
   details: (
     <>
       <p><b>Situation:</b> Many people struggle to keep track of their spending and savings.</p>
       <p><b>Problem:</b> Manual financial management can be challenging.</p>
       <p><b>Action:</b> Finance Helper provides an easy-to-use tool to automate expense tracking, budget management, and financial analytics.</p>
       <p><b>Result:</b> Empowering users to make informed financial decisions and achieve their financial goals.</p>
-      <p><b>What I Learned:</b> New skills or tools (not specified)</p>
-      <p><b>Tech Stack:</b> React, Python, Flask</p>
+      <p><b>What I Learned:</b> Created a project for a new demographic</p>
+      <p><b>Tech Stack:</b> Streamlit, Python, LLM, FRED API</p>
     </>
   ),
   links: [
@@ -512,7 +512,7 @@ const projects = [
       <p><b>Problem:</b> If you guess wrong, the ghosts get louder. If you guess right, the door creaks open and you move on.</p>
       <p><b>Action:</b> Finish all rooms to escape... or join the spirits.</p>
       <p><b>Result:</b> A final “You Escaped!” screen</p>
-      <p><b>What I Learned:</b> None specified</p>
+      <p><b>What I Learned:</b> Just a fun project to pass time.</p>
       <p><b>Tech Stack:</b> React, CSS, MP3 sound effects, Local images</p>
     </>
   ),
