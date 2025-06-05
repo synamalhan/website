@@ -531,6 +531,42 @@ const projects = [
   links: [
     { label: "GitHub Repo", url: "https://github.com/synamalhan/escape-room" }
   ]
+},
+  {
+  title: "The Ten Dollar Founding Father Without a Father",
+  summary: "An agentic Retrieval-Augmented Generation (RAG) system built for fun, using the characters from Hamilton: The Musical as its knowledge base.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> This project is an agentic Retrieval-Augmented Generation (RAG) system built for fun, using the characters from *Hamilton: The Musical* as its knowledge base.</p>
+      <p><b>Problem:</b> None specified</p>
+      <p><b>Action:</b> Built using Neo4j Database, Streamlit, Ollama, and LangGraph.</p>
+      <p><b>Result:</b> Provided an interactive web interface for agentic workflows and RAG pipelines.</p>
+      <p><b>What I Learned:</b> New skills or tools not specified</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/the-ten-dollar-founding-father-without-a-father-got-a-lot-further-by-working-a-lot-harder.git" },
+  ]
+},
+{
+  title: "MindScape — Your Personalized Wellness Companion",
+  summary: "A full-stack AI-powered wellness journal built by students, for students. It uses sentiment analysis and local LLMs (via Ollama) to suggest personalized, mindful actions to help you navigate your emotional landscape.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> Students built a full-stack AI-powered wellness journal.</p>
+      <p><b>Problem:</b> To provide students with a personalized wellness companion that utilizes sentiment analysis and local LLMs to suggest mindful actions.</p>
+      <p><b>Action:</b> Built a full-stack AI-powered wellness journal using React for the frontend, FastAPI for the backend, HuggingFace Transformers for sentiment detection, Ollama + Mistral LLM for agentic suggestions, and Python for overall development.</p>
+      <p><b>Result:</b> A personalized wellness companion that suggests mindful actions based on user entries and sentiments.</p>
+      <p><b>What I Learned:</b> New skills in React, FastAPI, HuggingFace Transformers, Ollama + Mistral LLM, and Python.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/mind-scape" },
+  ]
 }
 ];
 

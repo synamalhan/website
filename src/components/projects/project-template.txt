@@ -2,7 +2,7 @@ You are a local JavaScript generator.
 
 Using the following README, generate a JavaScript object **wrapped in curly braces `{}`** to be used in a React portfolio component.
 
-The object must match this structure, only use curly braces around the final json sturcture and do not inclose it in backslashes:
+The object must match this structure, only use curly braces around the final json sturcture and do not inclose it in backslashes, again no empty `{}`, only use `{}` when enclosing the final json structure:
 {
   title: "Project Title",
   summary: "One-line summary of the project",
