@@ -24,7 +24,7 @@ const ProjectList = () => {
         flexWrap: 'wrap',
         justifyContent: 'center',
         gap: '20px',
-        maxWidth: '100%',
+        maxWidth: '1200px',
         margin: '0 auto',
       }}
     >
