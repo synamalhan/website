@@ -21,7 +21,7 @@ const ProjectSection = () => {
       style={{
         background: 'linear-gradient(180deg, #001a1f 0%, #00171c 100%)',
         height: '200%',
-        padding: '40px 20px',
+        padding: '20px 20px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

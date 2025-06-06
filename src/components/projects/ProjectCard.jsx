@@ -17,7 +17,7 @@ const huesWithFilters = [
   { color: '#00e6f6', filter: 'hue-rotate(60deg)' },
   { color: '#00b6ff', filter: 'hue-rotate(-75deg)' },
   { color: '#00d4ff', filter: 'hue-rotate(105deg)' },
-  { color: '#00a0ff', filter: 'hue-rotate(-90deg)' },
+  { color: '#00a0ff', filter: 'hue-rotate(90deg)' },
   { color: '#00c0ff', filter: 'hue-rotate(120deg)' },
   { color: '#00e4ff', filter: 'hue-rotate(135deg)' },
   { color: '#00b4ff', filter: 'hue-rotate(-105deg)' },
