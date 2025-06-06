@@ -604,6 +604,44 @@ const projects = [
     { label: "GitHub Repo", url: "https://github.com/synamalhan/tap-fast-watch-OS.git" }
   ]
 },
+{
+  title: "Mental Health Bridge",
+  summary: "A Streamlit app to help simulate and improve sensitive conversations about mental health between children and their parents.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> Many parents and children struggle to talk about mental health due to generational gaps, emotional barriers, and different communication styles.</p>
+      <p><b>Problem:</b> This tool helps you practice, prepare, and improve those difficult conversations with empathy and realism.</p>
+      <p><b>Action:</b> Uses Ollama to run the Mistral model locally, providing real-time responses powered by a prompt-based interaction with the model.</p>
+      <p><b>Result:</b> Enhances emotional understanding using AI.</p>
+      <p><b>What I Learned:</b> New skills or tools include fine-tuning the simulated behavior using sensitivity level, common reactions, and preferred tone.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/mental-bridge" }
+  ]
+},
+
+{
+  title: "AI Research Paper Summarizer",
+  summary: "An interactive web app to generate concise summaries of research papers in PDF format using state-of-the-art AI models.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> An interactive web app to generate concise summaries of research papers in PDF format using state-of-the-art AI models.</p>
+      <p><b>Problem:</b> Extracting full text from large documents for reliable summarization.</p>
+      <p><b>Action:</b> Generate abstractive summaries using HuggingFace's BART model and adjustable summary length and chunk size via sidebar controls.</p>
+      <p><b>Result:</b> Preview extracted text and generated summary within the app, and download the summary as a plain text file.</p>
+      <p><b>What I Learned:</b> Built with Streamlit for a responsive and clean UI.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/research-paper-summarizer" },
+  ]
+},
+
 ];
 
   export default projects;
