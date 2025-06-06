@@ -23,8 +23,8 @@ const ProjectList = () => {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        gap: '10px',
-        maxWidth: '100%',
+        gap: '20px',
+        maxWidth: '1200px',
         margin: '0 auto',
       }}
     >
