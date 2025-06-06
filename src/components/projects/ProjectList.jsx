@@ -1,4 +1,4 @@
-import React , {useMemo } from 'react';
+import React, { useMemo } from 'react';
 import ProjectCard from './ProjectCard'; 
 import { useMediaQuery } from 'react-responsive';
 import projects from "./Projects";
@@ -7,12 +7,13 @@ const ProjectList = () => {
   const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
   const staggerMargins = useMemo(() => {
-    return projects.map((_, i) => {
-      if (isSmallScreen) return i % 2 === 0 ? 0 : 100;
-      // On large screen, random margin for odd cards only
-      if (i % 2 === 0) return Math.floor(Math.random() * 100);
-      // Random margin between 150px and 250px for bigger, more varied stagger
-      return Math.floor(Math.random() * 200) +10;
+    return projects.map(() => {
+      if (isSmallScreen) {
+        // For small screens, no stagger or simple alternating 0 or 50px
+        return Math.random() > 0.5 ? 0 : 50;
+      }
+      // Large screen: random margin between 0 and 100 px for all cards
+      return Math.floor(Math.random() * 100);
     });
   }, [isSmallScreen]);
 
@@ -22,7 +23,7 @@ const ProjectList = () => {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        gap: '20px', // spacing between cards
+        gap: '20px',
         maxWidth: '1200px',
         margin: '0 auto',
       }}
@@ -33,7 +34,7 @@ const ProjectList = () => {
           style={{
             flexGrow: 1,
             flexShrink: 1,
-            flexBasis: isSmallScreen ? '45%' : '30%',
+            flexBasis: isSmallScreen ? '45%' : '22%', // ~4 cards per row on large screen
             marginTop: staggerMargins[i],
             boxSizing: 'border-box',
             transition: 'margin-top 0.3s ease',
