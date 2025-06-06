@@ -132,8 +132,8 @@ const isSmallScreen = window.innerWidth < 500;
 const styles = {
   card: {
     position: 'relative',
-    width: isSmallScreen ? 150 : 300,
-    height: isSmallScreen ? 150 : 300,
+    width: isSmallScreen ? 100 : 200,
+    height: isSmallScreen ? 100 : 200,
     margin: isSmallScreen ? 0 : 20,
     cursor: 'pointer',
     borderRadius: isSmallScreen ? 50 : 80,
