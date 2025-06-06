@@ -33,7 +33,7 @@ const WorkExperienceSection = () => {
       <h2
         style={{
           fontSize: fontSizeTitle,
-          marginBottom: '30px',
+          marginBottom: '80px',
           color: '#92daf7',
           fontFamily: "'Montserrat', sans-serif",
           textShadow: '2px 2px 6px rgba(0, 0, 0, 1)',
