@@ -10,7 +10,17 @@ const huesWithFilters = [
   { color: '#00aaff', filter: 'hue-rotate(-15deg)' },
   { color: '#00e0ff', filter: 'hue-rotate(45deg)' },
   { color: '#00ccff', filter: 'hue-rotate(-30deg)' },
+  { color: '#00b3ff', filter: 'hue-rotate(-45deg)' },
+  { color: '#00d6ff', filter: 'hue-rotate(75deg)' },
+  { color: '#00a6ff', filter: 'hue-rotate(-60deg)' },
+  { color: '#00c6ff', filter: 'hue-rotate(90deg)' },
   { color: '#00e6f6', filter: 'hue-rotate(60deg)' },
+  { color: '#00b6ff', filter: 'hue-rotate(-75deg)' },
+  { color: '#00d4ff', filter: 'hue-rotate(105deg)' },
+  { color: '#00a0ff', filter: 'hue-rotate(-90deg)' },
+  { color: '#00c0ff', filter: 'hue-rotate(120deg)' },
+  { color: '#00e4ff', filter: 'hue-rotate(135deg)' },
+  { color: '#00b4ff', filter: 'hue-rotate(-105deg)' },
 ];
 
 const blobPath = `M120,-132.6C159.2,-109.4,190.9,-71.4,191.8,-30.3C192.7,10.7,162.7,53.8,128.3,81.7C93.9,109.6,55,122.3,17.3,111.9C-20.4,101.5,-40.7,68,-67.8,45.4C-94.9,22.8,-128.9,11.4,-144.6,-16.2C-160.3,-43.8,-157.6,-88.4,-131.7,-110.4C-105.8,-132.3,-56.8,-131.6,-21.7,-116.2C13.5,-100.8,26.9,-70.9,120,-132.6Z`;
