@@ -172,7 +172,7 @@ const styles = {
     textShadow: '2px 2px 6px rgba(0,0,0,0.7)',
   },
   titleText: {
-    fontSize: isSmallScreen ? '0.9rem' : '1.3rem',
+    fontSize: isSmallScreen ? '0.6rem' : '1rem',
     fontWeight: '700',
     color: '#FFFFFF',
   },
