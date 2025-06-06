@@ -34,6 +34,7 @@ const WorkExperienceSection = () => {
         style={{
           fontSize: fontSizeTitle,
           marginBottom: '80px',
+          paddingBottom: '20px',
           color: '#92daf7',
           fontFamily: "'Montserrat', sans-serif",
           textShadow: '2px 2px 6px rgba(0, 0, 0, 1)',
