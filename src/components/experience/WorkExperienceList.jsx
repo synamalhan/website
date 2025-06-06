@@ -17,9 +17,11 @@ const experiences = [
   details: (
     <>
       <ul>
-        <li><strong>Task 1:</strong> Explored graph understanding and creation using Neo4j and LangGraph to build an agentic RAG system enhancing information retrieval.</li>
-        <li><strong>Task 2:</strong> Researched and integrated high-resolution, text-accurate image generation models as alternatives to DALL·E 3 for generating precise workflow visuals.</li>
-        <li><strong>Skills:</strong> Gained hands-on experience with graph databases, AI agent development, and advanced image generation techniques.</li>
+        <li><strong>Situation:</strong> Need to build intelligent retrieval agents leveraging graph data and generate precise textual images.</li>
+        <li><strong>Problem:</strong> Existing image generation models (like DALL·E 3) lacked resolution and text accuracy; graph retrieval methods needed optimization.</li>
+        <li><strong>Action:</strong> Explored graph creation and retrieval with Neo4j & LangGraph to develop agentic RAG systems; researched and integrated alternative image models optimized for high resolution and correct text.</li>
+        <li><strong>Result:</strong> Advanced development of retrieval agents and improved image generation quality, enabling more accurate and visually appealing AI workflows.</li>
+        <li><strong>Knowledge:</strong> Gained expertise in graph databases, retrieval-augmented generation, image generation models, and AI agent design.</li>
       </ul>
     </>
   ),
