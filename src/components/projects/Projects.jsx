@@ -567,6 +567,24 @@ const projects = [
   links: [
     { label: "GitHub Repo", url: "https://github.com/synamalhan/mind-scape" },
   ]
+},
+{
+  title: "Wellness Journal",
+  summary: "A simple and colorful iOS app to track your daily mood and thoughts.",
+  techStack: ["SwiftUI", "Xcode"],
+  details: (
+    <>
+      <p><b>Situation:</b> Built with SwiftUI, this app helps you journal your feelings easily and keep past entries organized.</p>
+      <p><b>Problem:</b> None specified</p>
+      <p><b>Action:</b> Allows users to select their mood using emoji buttons, write notes in a clean text editor, save entries locally on the device, view past entries in a colorful list, and more.</p>
+      <p><b>Result:</b> Users can easily track their daily moods and thoughts, with features like responsive UI and customizable colors.</p>
+      <p><b>What I Learned:</b> Not specified</p>
+      <p><b>Tech Stack:</b> SwiftUI, Xcode</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/wellness-journal-ios.git" }
+  ]
 }
 ];
 
