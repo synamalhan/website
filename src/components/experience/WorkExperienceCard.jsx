@@ -84,9 +84,10 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
             </button>
             <img src={logo} alt="Modal Logo" style={styles.modalLogo} />
             <h2 id="modal-title" style={styles.modalTitle}>{title}</h2>
-            <p style={{ fontSize: '1.1rem', fontWeight: '500', marginBottom: '15px', color: '#d0e8ff' }}>
+            <p style={{ fontSize: '1.1rem', fontWeight: '500', marginBottom: '15px', color: '#d0e8ff',  }}>
               {summary}
             </p>
+
             <div style={styles.modalDetails}>{details}</div>
             {/* <button
               onClick={() => setModalOpen(false)}
@@ -181,8 +182,7 @@ const styles = {
     position: 'relative',
     backgroundColor: '#003344',
     borderRadius: 30,
-    height: '80%',
-    maxWidth: '90%',
+    maxWidth: '60%',
     padding: isSmallScreen ? '25px 20px 30px' : '40px 30px 50px',
     boxShadow: '0 0 40px #00aaff',
     color: '#a0d8ef',
@@ -223,6 +223,7 @@ const styles = {
     fontSize: isSmallScreen ? '0.8rem' : '1.2rem',
     lineHeight: 1.6,
     whiteSpace: 'pre-wrap',
+    textAlign: 'left',
   },
   closeButton: {
     position: 'absolute',
