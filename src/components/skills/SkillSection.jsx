@@ -39,6 +39,11 @@ const skills = [
     { skill: 'Cloud Technologies (AWS)', level: 4 },
     { skill: 'Test Automation', level: 3 },
     { skill: 'QA Methodologies', level: 3 },
+    { skill: 'Neo4j', level: 4 },
+    { skill: 'LangChain', level: 3 },
+    { skill: 'RAG', level: 5 },
+    { skill: 'LangGraph', level: 3 },
+
   
     
   ];
