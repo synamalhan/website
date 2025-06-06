@@ -144,7 +144,7 @@ const styles = {
     position: 'relative',
     width: isSmallScreen ? 100 : 200,
     height: isSmallScreen ? 100 : 200,
-    margin: isSmallScreen ? 0 : 20,
+    margin: isSmallScreen ? 0 : 10,
     cursor: 'pointer',
     borderRadius: isSmallScreen ? 50 : 80,
     overflow: 'hidden',
