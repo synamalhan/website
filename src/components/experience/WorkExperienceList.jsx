@@ -6,7 +6,26 @@ import asu from '../../assets/asu.png';
 import pwc from '../../assets/pwc.png';
 import ripik from '../../assets/ripik.svg';
 import headstarter from '../../assets/headstarter.avif';
+import eyLogo from '../../assets/eyLogo.png'; // replace with your Ernst & Young logo import or image reference
+
 const experiences = [
+  {
+  title: 'Gen AI Intern',
+  company: 'Ernst & Young',
+  duration: 'Jun 2025 - Present',
+  summary: 'Working on agentic retrieval-augmented generation (RAG) leveraging graph databases and optimizing image generation models for textual imagery.',
+  details: (
+    <>
+      <ul>
+        <li><strong>Task 1:</strong> Explored graph understanding and creation using Neo4j and LangGraph to build an agentic RAG system enhancing information retrieval.</li>
+        <li><strong>Task 2:</strong> Researched and integrated high-resolution, text-accurate image generation models as alternatives to DALL·E 3 for generating precise workflow visuals.</li>
+        <li><strong>Skills:</strong> Gained hands-on experience with graph databases, AI agent development, and advanced image generation techniques.</li>
+      </ul>
+    </>
+  ),
+  logo: eyLogo, // replace with your Ernst & Young logo import or image reference
+}
+,
 
   {
     title: 'Cloud Front End Developer',
