@@ -585,7 +585,25 @@ const projects = [
   links: [
     { label: "GitHub Repo", url: "https://github.com/synamalhan/wellness-journal-ios.git" }
   ]
-}
+},
+  {
+  title: "TapFast – A Rapid Tapping Game for Apple Watch",
+  summary: "A lightweight, fast-paced tapping game designed for watchOS. The goal is simple: tap the circle as many times as you can in 5 seconds. It's a fun way to test your reaction speed and challenge your friends — right from your wrist!",
+  techStack: ["SwiftUI", "WatchKit", "Xcode 15+"],
+  details: (
+    <>
+      <p><b>Situation:</b> A rapid tapping game designed for watchOS.</p>
+      <p><b>Problem:</b> None mentioned.</p>
+      <p><b>Action:</b> Built with SwiftUI, WatchKit, and Xcode 15+.</p>
+      <p><b>Result:</b> A fun way to test your reaction speed and challenge your friends — right from your wrist!</p>
+      <p><b>What I Learned:</b> Building a watchOS game using SwiftUI and WatchKit.</p>
+      <p><b>Tech Stack:</b> SwiftUI, WatchKit, Xcode 15+</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/tap-fast-watch-OS.git" }
+  ]
+},
 ];
 
   export default projects;
