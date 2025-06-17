@@ -641,6 +641,60 @@ const projects = [
     { label: "GitHub Repo", url: "https://github.com/synamalhan/research-paper-summarizer" },
   ]
 },
+{
+  title: "Streamlit Resume Builder with PDF Export",
+  summary: "A clean, no-fuss interface to build, edit, organize, and export your resume without the hassle of formatting issues or clunky document editors.",
+  techStack: ["Streamlit", "fpdf", "streamlit-pdf-viewer", "Python"],
+  details: (
+    <>
+      <p><b>Situation:</b> A clean, no-fuss interface to build, edit, organize, and export your resume without the hassle of formatting issues or clunky document editors.</p>
+      <p><b>Problem:</b> I always dreaded the process of updating my resume — messing with formatting, spacing, ordering, and layout in Word or LaTeX.</p>
+      <p><b>Action:</b> This app was built as a better way to manage resume content: No worrying about line breaks or alignment. Just enter your details, adjust order, and export a clean, professional PDF. Update JSON once and reuse forever.</p>
+      <p><b>Result:</b> A simple, intuitive interface that makes updating your resume a breeze!</p>
+      <p><b>What I Learned:</b> The importance of streamlining the resume-building process and providing users with a seamless experience.</p>
+      <p><b>Tech Stack:</b> Streamlit, fpdf, streamlit-pdf-viewer, Python</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/resume-formatter" }
+  ]
+},
+{
+  title: "CareSketch",
+  summary: "AI-powered care planning assistant built for social good.",
+  techStack: ["Streamlit", "Ollama", "Plotly", "FPDF/ReportLab", "Custom rule-based logic"],
+  details: (
+    <>
+      <p><b>Situation:</b> An AI-powered care planning assistant built for social good.</p>
+      <p><b>Problem:</b> Helps caregivers create personalized, goal-based daily care plans from natural language descriptions, enriched with emotion-aware context, risk detection, interactive scheduling, and exportable summaries.</p>
+      <p><b>Action:</b> Built during the Hack the Vibe 2025 hackathon, CareSketch focuses on empowering non-technical caregivers to deliver thoughtful, informed, and emotionally supportive care.</p>
+      <p><b>Result:</b> CareSketch generates detailed care plans from simple English descriptions, customizable based on goals (e.g., pain relief, mobility) and emotional state.</p>
+      <p><b>What I Learned:</b> New skills or tools include conversational emotional support, risk detection, interactive timeline, PDF export, and a beautiful UI.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/care-sketch" },
+  ]
+},
+{
+  title: "Ocean Pollution Tracker",
+  summary: "A project aimed at monitoring, visualizing, and raising awareness about pollution in the world's oceans.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> The ocean is facing a significant problem due to human activities.</p>
+      <p><b>Problem:</b> Pollution in the ocean has severe impacts on marine life, ecosystems, and ultimately, our planet.</p>
+      <p><b>Action:</b> This project collects, analyzes, and displays data related to various types of ocean pollutants, helping users understand the impact and distribution of pollution globally.</p>
+      <p><b>Result:</b> The application provides interactive maps, analytics dashboards, and educational resources to raise awareness and promote action against ocean pollution.</p>
+      <p><b>What I Learned:</b> This project taught me about data collection, API integration, and the importance of visualization in understanding complex environmental issues.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/ocean-pollution-tracker" }
+  ]
+},
 
 ];
 
