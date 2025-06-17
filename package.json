@@ -11,6 +11,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "emailjs-com": "^3.2.0",
+    "framer-motion": "^12.18.1",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.511.0",
     "papaparse": "^5.5.2",
@@ -25,9 +26,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
-
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

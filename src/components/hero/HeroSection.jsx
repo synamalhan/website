@@ -1,17 +1,40 @@
 // src/components/HeroSection.jsx
 import React from 'react';
 import Lottie from 'lottie-react';
+import { motion } from 'framer-motion';
 import fishesAnimation from '../../assets/fishes.json'; // Adjust path as needed
 
 const HeroSection = () => {
   return (
     <section id="hero" style={styles.container}>
-      <h1 style={styles.name}>Syna Malhan</h1>
-      <p style={styles.tagline}>Exploring tech depths with code & creativity</p>
-      <div style={styles.downArrow}>&#x2193;</div>
+      <motion.h1
+        style={styles.name}
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
+      >
+        Syna Malhan
+      </motion.h1>
+
+      <motion.p
+        style={styles.tagline}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 0.5 }}
+      >
+        Exploring tech depths with code & creativity
+      </motion.p>
+
+      <motion.div
+        style={styles.downArrow}
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+      >
+        &#x2193;
+      </motion.div>
 
       <div style={styles.lottieWrapper}>
-        <Lottie 
+        <Lottie
           animationData={fishesAnimation}
           loop={true}
           style={styles.lottie}
@@ -22,6 +45,7 @@ const HeroSection = () => {
 };
 
 const isSmallScreen = window.innerWidth < 500;
+
 const styles = {
   container: {
     height: '100vh',
@@ -35,7 +59,7 @@ const styles = {
     position: 'relative',
     padding: '0 20px',
     overflow: 'hidden',
-    zIndex: 1, // Text content stays on top
+    zIndex: 1,
   },
   name: {
     fontFamily: "'Montserrat', sans-serif",
@@ -43,7 +67,7 @@ const styles = {
     fontWeight: '700',
     margin: 0,
     textShadow: '0 0 10px #edbfff',
-    zIndex: 2, // ensure text stays above animation
+    zIndex: 2,
     position: 'relative',
   },
   tagline: {
@@ -60,7 +84,6 @@ const styles = {
   downArrow: {
     marginTop: '3rem',
     fontSize: '3rem',
-    animation: 'bounce 2s infinite',
     cursor: 'pointer',
     color: '#a0d8ef',
     zIndex: 2,
@@ -71,7 +94,7 @@ const styles = {
     bottom: 0,
     width: isSmallScreen ? '250%' : '100%',
     pointerEvents: 'none',
-    zIndex: 0, // 👈 lower this so it’s in the background
+    zIndex: 0,
   },
   lottie: {
     width: isSmallScreen ? '200%' : '100%',
