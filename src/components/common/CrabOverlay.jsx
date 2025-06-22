@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Lottie from 'lottie-react';
 import crabJson from '../../assets/crab.json';
 import profile from '../../assets/profile.jpeg';
+
 const CrabOverlay = () => {
   const [scrollY, setScrollY] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
@@ -21,26 +22,25 @@ const CrabOverlay = () => {
   }, []);
 
   const handleClick = () => {
-    setShowMessage((prev) => !prev);
+    setShowMessage(prev => !prev);
   };
 
   const isSmallScreen = windowWidth < 768;
-
-  // For large screens, floating top position based on scroll
-  const maxTop = window.innerHeight - 160; // crab height ~160px
-  const topPosition = Math.min(100 + scrollY * 0.1, maxTop);
+  const maxTop = window.innerHeight - 160;
+  const topPosition = Math.min(250 + scrollY * 0.1, maxTop);
 
   return (
     <>
+      {/* Crab Button */}
       <div
         onClick={handleClick}
         style={{
           position: 'fixed',
           bottom: isSmallScreen ? '0px' : 'auto',
           top: isSmallScreen ? 'auto' : topPosition,
-          right: isSmallScreen ? '0px' : '0px',
-          width: isSmallScreen ? '100px':'160px',
-          height: isSmallScreen ? '100px':'160px',
+          right: '0px',
+          width: isSmallScreen ? '100px' : '160px',
+          height: isSmallScreen ? '100px' : '160px',
           cursor: 'pointer',
           opacity: 0.7,
           zIndex: 9999,
@@ -56,37 +56,41 @@ const CrabOverlay = () => {
         <Lottie animationData={crabJson} loop={true} />
       </div>
 
+      {/* Popover UI (Empty Shell) */}
       {showMessage && (
         <div
           style={{
             position: 'fixed',
-            top: isSmallScreen ? 'auto' : topPosition - 60,
-            bottom: isSmallScreen ? '100px' : 'auto', // show message above crab on small screens
+            top: isSmallScreen ? 'auto' : topPosition - 230,
+            bottom: isSmallScreen ? '100px' : 'auto',
             right: isSmallScreen ? '20px' : '100px',
+            width: isSmallScreen ? '90%' : '340px',
             background: 'rgba(10, 62, 87, 0.95)',
-            padding: '12px 20px',
-            borderRadius: '15px',
+            padding: '16px',
+            borderRadius: '16px',
             boxShadow: '0 0 25px rgba(146, 218, 247, 0.9)',
-            fontSize: isSmallScreen ? '0.8rem':'1.1rem',
+            fontSize: isSmallScreen ? '0.85rem' : '1rem',
             color: '#92daf7',
             zIndex: 10000,
             userSelect: 'text',
-            whiteSpace: 'nowrap',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
           }}
         >
-           <img
-            src={profile}
-            alt="Profile"
-            style={{
-              width: isSmallScreen ? '40px' : '60px',
-              height: isSmallScreen ? '40px' : '60px',
-              borderRadius: '50%',
-              marginBottom: '10px',
-              objectFit: 'cover',
-            }}
-          />
-          <p>Nice to meet you!</p>
-          <p>Be sure to send me a message!</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <img
+              src={profile}
+              alt="Profile"
+              style={{
+                width: isSmallScreen ? '40px' : '50px',
+                height: isSmallScreen ? '40px' : '50px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+              }}
+            />
+            <p style={{ margin: 0 }}>Hi, I'm Syna, nice to meet you!.</p>
+          </div>
         </div>
       )}
     </>

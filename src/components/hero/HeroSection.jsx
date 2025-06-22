@@ -3,12 +3,22 @@ import React from 'react';
 import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
 import fishesAnimation from '../../assets/fishes.json'; // Adjust path as needed
+import useMouseParallax from '../../hooks/useMouseParallax';
 
 const HeroSection = () => {
+  // Parallax offsets for each element
+  const nameOffset = useMouseParallax(0.08); // more movement
+  const taglineOffset = useMouseParallax(0.04); // less movement
+  const lottieOffset = useMouseParallax(0.02); // subtle movement
+
   return (
+    <>
     <section id="hero" style={styles.container}>
       <motion.h1
-        style={styles.name}
+        style={{
+          ...styles.name,
+          transform: `translate3d(${nameOffset.x}px, ${nameOffset.y}px, 0)`
+        }}
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.2 }}
@@ -17,7 +27,10 @@ const HeroSection = () => {
       </motion.h1>
 
       <motion.p
-        style={styles.tagline}
+        style={{
+          ...styles.tagline,
+          transform: `translate3d(${taglineOffset.x}px, ${taglineOffset.y}px, 0)`
+        }}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.5 }}
@@ -25,15 +38,12 @@ const HeroSection = () => {
         Exploring tech depths with code & creativity
       </motion.p>
 
-      <motion.div
-        style={styles.downArrow}
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
+      <div
+        style={{
+          ...styles.lottieWrapper,
+          transform: `translate3d(${lottieOffset.x}px, ${lottieOffset.y}px, 0)`
+        }}
       >
-        &#x2193;
-      </motion.div>
-
-      <div style={styles.lottieWrapper}>
         <Lottie
           animationData={fishesAnimation}
           loop={true}
@@ -41,6 +51,7 @@ const HeroSection = () => {
         />
       </div>
     </section>
+    </>
   );
 };
 
@@ -69,6 +80,7 @@ const styles = {
     textShadow: '0 0 10px #edbfff',
     zIndex: 2,
     position: 'relative',
+    willChange: 'transform',
   },
   tagline: {
     fontFamily: "'Lora', serif",
@@ -80,6 +92,7 @@ const styles = {
     maxWidth: '600px',
     zIndex: 2,
     position: 'relative',
+    willChange: 'transform',
   },
   downArrow: {
     marginTop: '3rem',
@@ -95,6 +108,7 @@ const styles = {
     width: isSmallScreen ? '250%' : '100%',
     pointerEvents: 'none',
     zIndex: 0,
+    willChange: 'transform',
   },
   lottie: {
     width: isSmallScreen ? '200%' : '100%',
