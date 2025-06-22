@@ -46,6 +46,7 @@ const ProjectList = () => {
             details={proj.details}
             image={proj.images}
             links={proj.links}
+            techStack={proj.techStack}
           />
         </div>
       ))}

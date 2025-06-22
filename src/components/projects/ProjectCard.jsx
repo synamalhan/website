@@ -25,7 +25,7 @@ const huesWithFilters = [
 
 const blobPath = `M120,-132.6C159.2,-109.4,190.9,-71.4,191.8,-30.3C192.7,10.7,162.7,53.8,128.3,81.7C93.9,109.6,55,122.3,17.3,111.9C-20.4,101.5,-40.7,68,-67.8,45.4C-94.9,22.8,-128.9,11.4,-144.6,-16.2C-160.3,-43.8,-157.6,-88.4,-131.7,-110.4C-105.8,-132.3,-56.8,-131.6,-21.7,-116.2C13.5,-100.8,26.9,-70.9,120,-132.6Z`;
 
-const ProjectCard = ({ title, description, details, image, links }) => {
+const ProjectCard = ({ title, description, details, image, links, techStack = [] }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false); // Track hover state
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
@@ -82,7 +82,21 @@ const ProjectCard = ({ title, description, details, image, links }) => {
 
         <div style={styles.textOverlay}>
           <div style={styles.titleText}>{title}</div>
+          <div style={styles.techStackContainer}>
+            {techStack.map((tech, idx) => (
+              <span
+                key={idx}
+                style={{
+                  ...styles.techPill,
+                  backgroundColor: `${blobFillColor}33`, // translucent version of hue color
+                }}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
+
       </div>
 
       {modalOpen && (
@@ -142,8 +156,8 @@ const isSmallScreen = window.innerWidth < 500;
 const styles = {
   card: {
     position: 'relative',
-    width: isSmallScreen ? 150 : 200,
-    height: isSmallScreen ? 150 : 200,
+    width: isSmallScreen ? 150 : 250,
+    height: isSmallScreen ? 150 : 250,
     margin: isSmallScreen ? 0 : 10,
     cursor: 'pointer',
     borderRadius: isSmallScreen ? 50 : 80,
@@ -297,6 +311,24 @@ const styles = {
     textDecoration: 'none',
     fontWeight: '600',
   },
+  techStackContainer: {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '6px',
+  justifyContent: 'center',
+  marginTop: '6px',
+},
+
+techPill: {
+  fontSize: '0.65rem',
+  padding: '4px 10px',
+  borderRadius: '999px',
+  color: '#fff',
+  backdropFilter: 'blur(4px)',
+  fontWeight: '500',
+  whiteSpace: 'nowrap',
+},
+
 };
 
 export default ProjectCard;
