@@ -818,6 +818,24 @@ const projects = [
   ),
   links: [
   ]
+},,
+  {
+  title: "AI-Powered Symptom Checker",
+  summary: "Streamlit web app that uses a machine learning model to predict possible diseases based on user-selected symptoms.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> AI-powered symptom checker for predicting possible diseases.</p>
+      <p><b>Problem:</b> Develop a web app that uses machine learning to predict possible diseases based on user-selected symptoms.</p>
+      <p><b>Action:</b> Built a Streamlit web app that integrates a RandomForestClassifier model to suggest top 3 possible conditions with confidence scores, and displays disease descriptions and precautions.</p>
+      <p><b>Result:</b> A functional web app that provides users with a list of symptoms, predicted diseases, and relevant information.</p>
+      <p><b>What I Learned:</b> Implemented machine learning in Python using scikit-learn, and learned to integrate it with Streamlit for web application development.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/symptom-checker" }
+  ]
 },
 ];
 
