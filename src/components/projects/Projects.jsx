@@ -695,7 +695,130 @@ const projects = [
     { label: "GitHub Repo", url: "https://github.com/synamalhan/ocean-pollution-tracker" }
   ]
 },
-
+  {
+  title: "NeuroTrack",
+  summary: "A SwiftUI-based cognitive training app that helps users improve their memory and focus through a fun memory-matching game, integrating with Apple HealthKit to log mindful sessions and track cognitive activity over time.",
+  techStack: ["Swift", "SwiftUI", "HealthKit", "Xcode"],
+  details: (
+    <>
+      <p><b>Situation:</b> A cognitive training app that helps users improve their memory and focus.</p>
+      <p><b>Problem:</b> Users were struggling to find engaging and effective brain-training tools.</p>
+      <p><b>Action:</b> Built a SwiftUI-based app with interactive memory match games, HealthKit integration for logging mindfulness sessions, and adaptive game logic with score tracking.</p>
+      <p><b>Result:</b> Users can track their cognitive activity over time, improving focus and memory skills.</p>
+      <p><b>What I Learned:</b> Developed expertise in SwiftUI, HealthKit, and Xcode.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/neurotrack" }
+  ]
+},
+  {
+  title: "MediHub Platform",
+  summary: "The Future of Medical Education",
+  techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Zustand", "Supabase"],
+  details: (
+    <>
+      <p><b>Situation:</b> The MediHub platform is a modern, AI-powered web platform designed for medical students and professionals.</p>
+      <p><b>Problem:</b> The platform consolidates patient simulators, adaptive flashcards, research summarization, mnemonics, deadline tracking, and advanced analytics into a single, intelligent system.</p>
+      <p><b>Action:</b> Built with React, TypeScript, Vite, Tailwind CSS, Zustand, and Supabase, MediHub leverages state-of-the-art AI/ML models and a robust subscription/paywall system to deliver a best-in-class learning experience.</p>
+      <p><b>Result:</b> The platform provides a comprehensive and engaging educational experience for medical professionals and students.</p>
+      <p><b>What I Learned:</b> Developed new skills in AI/ML, React, and Supabase.</p>
+      <p><b>Tech Stack:</b> React, TypeScript, Vite, Tailwind CSS, Zustand, Supabase</p>
+    </>
+  ),
+  links: [
+    {
+      label: "GitHub Repo",
+      url: "https://github.com/synamalhan/medi-hub.git"
+    }
+  ]
+},
+{
+  title: "PulseGuardian: Real-Time Stress Monitor",
+  summary: "Heart rate variability-based stress detection app for Apple Watch and iPhone.",
+  techStack: ["Swift", "WatchKit", "HealthKit", "SwiftUI"],
+  details: (
+    <>
+      <p><b>Situation:</b> With rising stress levels and wearable health tech adoption, I aimed to build a real-time stress monitoring solution.</p>
+      <p><b>Problem:</b> Users lacked an accessible, continuous method to detect stress and respond with guided relief strategies.</p>
+      <p><b>Action:</b> Built a watchOS and iOS app that used HealthKit to monitor HRV, detected stress patterns, and sent alerts to trigger guided breathing sessions.</p>
+      <p><b>Result:</b> Enabled seamless Watch-to-iPhone communication with a 92% stress detection accuracy during tests, and real-time biometric feedback for users.</p>
+      <p><b>What I Learned:</b> Deepened experience with HealthKit, WatchConnectivity, and building real-time, cross-device Apple health solutions.</p>
+      <p><b>Tech Stack:</b> Swift, WatchKit, HealthKit, SwiftUI</p>
+    </>
+  ),
+  links: [
+  ]
+},
+{
+  title: "MoodSync: Voice Journal with Emotion Detection",
+  summary: "Voice journaling app with CoreML-powered emotion detection and mood tracking.",
+  techStack: ["Swift", "CoreML", "AVFoundation", "Speech"],
+  details: (
+    <>
+      <p><b>Situation:</b> Emotional wellness journaling apps often lack natural input methods and intelligent mood analysis.</p>
+      <p><b>Problem:</b> Users found traditional journaling tedious and emotion tracking inconsistent or non-personalized.</p>
+      <p><b>Action:</b> Built an iOS app that uses AVFoundation for voice recording, Speech framework for transcription, and CoreML for sentiment classification.</p>
+      <p><b>Result:</b> Delivered a hands-free journaling experience with auto-tagged moods and visual emotional trends over time.</p>
+      <p><b>What I Learned:</b> Gained practical knowledge in CoreML integration, audio preprocessing, and user-friendly visualization of emotion data.</p>
+      <p><b>Tech Stack:</b> Swift, CoreML, AVFoundation, Speech</p>
+    </>
+  ),
+  links: [
+  ]
+},
+{
+  title: "LensOCR: AI-Enhanced Document Scanner",
+  summary: "iOS document scanner with real-time OCR and table extraction using Vision.",
+  techStack: ["Swift", "Vision", "CoreML", "UIKit"],
+  details: (
+    <>
+      <p><b>Situation:</b> Many mobile scanners fail with non-standard documents like tables or require heavy post-processing.</p>
+      <p><b>Problem:</b> Needed a lightweight, on-device solution for scanning, correcting, and extracting structured data from physical documents.</p>
+      <p><b>Action:</b> Built a UIKit-based scanner app using Vision for real-time edge detection and OCR, and CoreML for table structure inference and export formatting.</p>
+      <p><b>Result:</b> Achieved high OCR accuracy across varied lighting and angles, with PDF export and table-friendly outputs.</p>
+      <p><b>What I Learned:</b> Gained expertise in Apple Vision framework, custom CoreML OCR models, and camera pipeline optimization.</p>
+      <p><b>Tech Stack:</b> Swift, Vision, CoreML, UIKit</p>
+    </>
+  ),
+  links: [
+  ]
+},
+{
+  title: "Credit Risk RAG Model",
+  summary: "RAG-based credit risk assessment system using LangGraph and Neo4j.",
+  techStack: ["Python", "Streamlit", "Neo4j", "LangGraph", "Ollama", "Pandas"],
+  details: (
+    <>
+      <p><b>Situation:</b> Financial institutions need contextual credit insights combining structured data and regulatory knowledge.</p>
+      <p><b>Problem:</b> Traditional ML models lack explainability and fail to incorporate dynamic knowledge like economic updates or policy changes.</p>
+      <p><b>Action:</b> Built a Retrieval-Augmented Generation (RAG) system using LangGraph for reasoning, Ollama for LLM inference, Neo4j for a knowledge graph of credit rules and relationships, and Streamlit for an interactive UI.</p>
+      <p><b>Result:</b> Delivered explainable credit decisions with dynamic reasoning paths and interactive inspection of graph-based factors.</p>
+      <p><b>What I Learned:</b> Learned how to design modular RAG workflows using LangGraph, build domain-specific graph schemas in Neo4j, and connect them to LLM pipelines.</p>
+      <p><b>Tech Stack:</b> Python, Streamlit, Neo4j, LangGraph, Ollama, Pandas</p>
+    </>
+  ),
+  links: [
+  ]
+},
+{
+  title: "Text-Optimized Image Generation Model",
+  summary: "Custom-trained diffusion model optimized for rendering clean text in images.",
+  techStack: ["Python", "HuggingFace", "Diffusers", "PyTorch", "LoRA", "Stable Diffusion"],
+  details: (
+    <>
+      <p><b>Situation:</b> Most generative models struggle to render readable text, especially for posters, infographics, or form layouts.</p>
+      <p><b>Problem:</b> Needed a model that could reliably generate images with embedded text (labels, signs, form fields) without visual artifacts.</p>
+      <p><b>Action:</b> Fine-tuned a Stable Diffusion model with LoRA on a curated dataset of labeled visuals, including mock forms and text-heavy UI components. Implemented specialized loss functions to prioritize text clarity.</p>
+      <p><b>Result:</b> Achieved significantly higher OCR accuracy and visual clarity in generated samples compared to baseline SD models, useful for OCR training data and UI prototyping.</p>
+      <p><b>What I Learned:</b> Gained hands-on experience with diffusion model finetuning, LoRA adapters, and domain-specific prompt engineering for visual clarity.</p>
+      <p><b>Tech Stack:</b> Python, HuggingFace, Diffusers, PyTorch, LoRA, Stable Diffusion</p>
+    </>
+  ),
+  links: [
+  ]
+},
 ];
 
   export default projects;

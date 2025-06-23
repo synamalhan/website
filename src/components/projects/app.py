@@ -30,23 +30,32 @@ def strip_code_fences(text: str) -> str:
 
 def extract_jsx_object_block(text: str) -> str:
     """
-    Extract the first balanced {...} block from the input text.
-    This includes nested braces.
-    Returns the block including the outer braces.
+    Extract the first balanced {...} block where the first key is 'title'.
+    Scans multiple blocks if needed.
     """
     stack = []
+    blocks = []
     start_idx = None
+
     for i, c in enumerate(text):
         if c == '{':
-            if start_idx is None:
+            if not stack:
                 start_idx = i
             stack.append(c)
         elif c == '}':
             if stack:
                 stack.pop()
-                if not stack:
-                    return text[start_idx:i+1]
-    return ""
+                if not stack and start_idx is not None:
+                    block = text[start_idx:i+1]
+
+                    # Check if block starts with "title"
+                    inside = block.lstrip("{").lstrip()
+                    if re.match(r'^["\']?title["\']?\s*:', inside):
+                        return block  # ✅ Valid block
+                    # Otherwise continue looking
+
+    return ""  # ❌ No valid block found
+
 
 def append_to_projects(new_entry: str):
     try:
