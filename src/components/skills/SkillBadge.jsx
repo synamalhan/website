@@ -51,7 +51,7 @@ const SkillCard = ({ skill, level }) => {
           background,
           borderRadius,
           padding: isSmallScreen ? '15px 10px' : '30px 20px',
-          minHeight: '80px',
+          minHeight: '40px',
           color: '#fff',
           fontFamily: "'Montserrat', sans-serif",
           fontSize: isSmallScreen ? '0.8rem' : '1.2rem',
