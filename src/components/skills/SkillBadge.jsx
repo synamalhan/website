@@ -77,8 +77,8 @@ const SkillCard = ({ skill, level }) => {
             <div
               key={i}
               style={{
-                width: isSmallScreen ? '15px' : '30px',
-                height: isSmallScreen ? '15px' : '30px',
+                width: isSmallScreen ? '10px' : '20px',
+                height: isSmallScreen ? '10px' : '20px',
               }}
             >
               <Lottie animationData={starfishAnimation} loop autoplay />
