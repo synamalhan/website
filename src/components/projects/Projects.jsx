@@ -1,4 +1,4 @@
-export const projects = [
+const projects = [
   {
     title: "Text-Optimized Image Generation Model",
     summary: "Custom-trained diffusion model optimized for rendering clean text in images.",
@@ -841,3 +841,5 @@ export const projects = [
 ]
   }
 ];
+
+export default projects;
