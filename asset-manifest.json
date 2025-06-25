@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/website/static/css/main.e4b888c4.css",
-    "main.js": "/website/static/js/main.17e74749.js",
+    "main.js": "/website/static/js/main.c8329657.js",
     "static/js/453.7e152d38.chunk.js": "/website/static/js/453.7e152d38.chunk.js",
     "static/media/reef.png": "/website/static/media/reef.3c618fbbd8869790d4ec.png",
     "static/media/jellyfish.gif": "/website/static/media/jellyfish.0eb00261d947835f99c3.gif",
     "static/media/ship.webp": "/website/static/media/ship.54febe025a3335fe9c0a.webp",
     "static/media/github.png": "/website/static/media/github.707fbb13a6648ed0a3f4.png",
     "static/media/bubbles.gif": "/website/static/media/bubbles.85f5973d0990b09d639b.gif",
+    "static/media/iuLogo.png": "/website/static/media/iuLogo.e1e36f164482b4f98a1f.png",
     "static/media/profile.jpeg": "/website/static/media/profile.dced92946d696ec2f7d0.jpeg",
     "static/media/jspl.png": "/website/static/media/jspl.10a2a166f4d7a4d2d9d8.png",
-    "static/media/pwc.png": "/website/static/media/pwc.09f9068acfa615e99c8a.png",
     "static/media/asu.png": "/website/static/media/asu.c2bec8dd8bebf30225cd.png",
     "static/media/headstarter.avif": "/website/static/media/headstarter.b25505b29b0761983834.avif",
     "static/media/kelp1.png": "/website/static/media/kelp1.64649c67a51939e6e5fd.png",
@@ -18,11 +18,11 @@
     "static/media/linkedin.webp": "/website/static/media/linkedin.4c11b4693dd4eebca5be.webp",
     "index.html": "/website/index.html",
     "main.e4b888c4.css.map": "/website/static/css/main.e4b888c4.css.map",
-    "main.17e74749.js.map": "/website/static/js/main.17e74749.js.map",
+    "main.c8329657.js.map": "/website/static/js/main.c8329657.js.map",
     "453.7e152d38.chunk.js.map": "/website/static/js/453.7e152d38.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e4b888c4.css",
-    "static/js/main.17e74749.js"
+    "static/js/main.c8329657.js"
   ]
 }
