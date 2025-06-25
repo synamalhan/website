@@ -1,11 +1,12 @@
 {
   "files": {
     "main.css": "/website/static/css/main.e4b888c4.css",
-    "main.js": "/website/static/js/main.74e6385b.js",
+    "main.js": "/website/static/js/main.5175cbd0.js",
     "static/js/453.7e152d38.chunk.js": "/website/static/js/453.7e152d38.chunk.js",
     "static/media/reef.png": "/website/static/media/reef.3c618fbbd8869790d4ec.png",
     "static/media/jellyfish.gif": "/website/static/media/jellyfish.0eb00261d947835f99c3.gif",
     "static/media/ship.webp": "/website/static/media/ship.54febe025a3335fe9c0a.webp",
+    "static/media/ocean.png": "/website/static/media/ocean.b0b5b7d2c339dd62db9e.png",
     "static/media/github.png": "/website/static/media/github.707fbb13a6648ed0a3f4.png",
     "static/media/bubbles.gif": "/website/static/media/bubbles.85f5973d0990b09d639b.gif",
     "static/media/iuLogo.png": "/website/static/media/iuLogo.e1e36f164482b4f98a1f.png",
@@ -18,11 +19,11 @@
     "static/media/linkedin.webp": "/website/static/media/linkedin.4c11b4693dd4eebca5be.webp",
     "index.html": "/website/index.html",
     "main.e4b888c4.css.map": "/website/static/css/main.e4b888c4.css.map",
-    "main.74e6385b.js.map": "/website/static/js/main.74e6385b.js.map",
+    "main.5175cbd0.js.map": "/website/static/js/main.5175cbd0.js.map",
     "453.7e152d38.chunk.js.map": "/website/static/js/453.7e152d38.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e4b888c4.css",
-    "static/js/main.74e6385b.js"
+    "static/js/main.5175cbd0.js"
   ]
 }
