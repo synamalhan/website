@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import WorkExperienceList from './WorkExperienceList';
 
 const WorkExperienceSection = () => {
@@ -12,8 +13,22 @@ const WorkExperienceSection = () => {
 
   const isMobile = windowWidth < 480;
   const isSmall = windowWidth < 768;
-
   const fontSizeTitle = isMobile ? '2rem' : isSmall ? '2.5rem' : '3rem';
+
+  // Animation variants
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
   return (
     <section
@@ -30,7 +45,11 @@ const WorkExperienceSection = () => {
         textAlign: 'center',
       }}
     >
-      <h2
+      <motion.h2
+        variants={titleVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.5 }}
         style={{
           fontSize: fontSizeTitle,
           marginBottom: '80px',
@@ -42,8 +61,24 @@ const WorkExperienceSection = () => {
         }}
       >
         Work Experience
-      </h2>
-      <WorkExperienceList />
+      </motion.h2>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: '20px',
+          width: '100%',
+          maxWidth: '1200px',
+        }}
+      >
+        <WorkExperienceList />
+      </motion.div>
     </section>
   );
 };

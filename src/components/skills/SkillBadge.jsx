@@ -3,9 +3,9 @@ import Lottie from 'lottie-react';
 import starfishAnimation from '../../assets/starfish.json';
 
 const generateRandomBlob = () => {
-  const borderRadius = `${Math.floor(Math.random() * 50) + 2}% ${Math.floor(Math.random() * 50) + 2}% ${
-    Math.floor(Math.random() * 50) + 2
-  }% ${Math.floor(Math.random() * 50) + 2}%`;
+  const borderRadius = `${Math.floor(Math.random() * 50) + 25}% ${Math.floor(Math.random() * 50) + 25}% ${
+    Math.floor(Math.random() * 50) + 25
+  }% ${Math.floor(Math.random() * 50) + 25}%`;
   const colors = ['#6e64ff', '#7f7bff', '#7158e2', '#5f7eff', '#7d60f6', '#7aa2ff', '#8b7dff'];
   const background = colors[Math.floor(Math.random() * colors.length)];
   return { borderRadius, background };

@@ -1,65 +1,67 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import Lottie from 'lottie-react';
 import bubbleAnimation from '../../assets/bubblesnew.json';
 import bubblesGif from '../../assets/bubbles.gif';
 import { X } from 'lucide-react';
 
 const huesWithFilters = [
-  { color: 'hsl(210, 70%, 60%)', filter: 'hue-rotate(0deg) ' },
-  { color: 'hsl(230, 70%, 60%)', filter: 'hue-rotate(20deg) ' },
-  { color: 'hsl(250, 70%, 60%)', filter: 'hue-rotate(40deg) ' },
+  { color: 'hsl(210, 70%, 60%)', filter: 'hue-rotate(0deg)' },
+  { color: 'hsl(230, 70%, 60%)', filter: 'hue-rotate(20deg)' },
+  { color: 'hsl(250, 70%, 60%)', filter: 'hue-rotate(40deg)' },
   { color: 'hsl(270, 80%, 65%)', filter: 'hue-rotate(60deg)' },
-  { color: 'hsl(280, 80%, 55%)', filter: 'hue-rotate(80deg) ' },
+  { color: 'hsl(280, 80%, 55%)', filter: 'hue-rotate(80deg)' },
 ];
 
 const WorkExperienceCard = ({ title, company, duration, summary, details, logo }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [hovered, setHovered] = useState(false);  // <-- new state
+  const [hovered, setHovered] = useState(false);
 
   const { color: blobFillColor, filter: lottieFilter } = useMemo(() => {
     const idx = Math.floor(Math.random() * huesWithFilters.length);
     return huesWithFilters[idx];
   }, []);
 
-  const blobSvg = (
-    <svg
-      viewBox="0 0 600 600"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ width: '100%', height: '100%' }}
-    >
-      <g transform="translate(300,300)">
-        <path
-          d="M120,-132.6C159.2,-109.4,190.9,-71.4,191.8,-30.3C192.7,10.7,162.7,53.8,128.3,81.7C93.9,109.6,55,122.3,17.3,111.9C-20.4,101.5,-40.7,68,-67.8,45.4C-94.9,22.8,-128.9,11.4,-144.6,-16.2C-160.3,-43.8,-157.6,-88.4,-131.7,-110.4C-105.8,-132.3,-56.8,-131.6,-21.7,-116.2C13.5,-100.8,26.9,-70.9,120,-132.6Z"
-          fill={blobFillColor}
-          opacity="0.6"
-        />
-      </g>
-    </svg>
-  );
+  const ref = useRef(null);
+  const inView = useInView(ref, { threshold: 0.3, triggerOnce: false });
 
   return (
     <>
-     <div
-        style={{ ...styles.card, boxShadow: 'none' }}
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 40 }}
+        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        style={{ ...styles.card }}
         onClick={() => setModalOpen(true)}
         role="button"
         tabIndex={0}
-        onKeyPress={(e) => { if (e.key === 'Enter') setModalOpen(true); }}
-        onMouseEnter={() => setHovered(true)}  // <-- hover handlers
+        onKeyPress={(e) => e.key === 'Enter' && setModalOpen(true)}
+        onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        >
-        <img
+      >
+        {/* GIF background (fades out) */}
+        <motion.img
           src={bubblesGif}
           alt="Animated background"
-          style={{ ...styles.lottie, filter: lottieFilter, opacity: hovered ? 0.6 : 0.03,  // <-- opacity change on hover
-            transition: 'opacity 0.3s ease', }}
+          style={{
+            ...styles.lottie,
+            filter: lottieFilter,
+          }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: inView ? (hovered ? 0.06 : 0.03) : 1 }}
+          transition={{ duration: 0.7 }}
         />
-        <Lottie
-          animationData={bubbleAnimation}
-          loop
-          style={{ ...styles.lottie, filter: lottieFilter, opacity: hovered ? 0.5 : 1,  // <-- opacity change on hover
-            transition: 'opacity 0.3s ease', }}
-        />
+
+        {/* Lottie (fades in) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: inView ? (hovered ? 0.5 : 1) : 0 }}
+          transition={{ duration: 0.7 }}
+          style={{ ...styles.lottie, filter: lottieFilter }}
+        >
+          <Lottie animationData={bubbleAnimation} loop />
+        </motion.div>
 
         <div style={styles.textOverlay}>
           <img src={logo} alt="Logo" style={styles.logo} />
@@ -67,41 +69,37 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
           <div style={styles.companyText}>{company}</div>
           <div style={styles.durationText}>{duration}</div>
         </div>
-      </div>
+      </motion.div>
 
+      {/* Modal */}
       {modalOpen && (
         <div style={styles.modalOverlay} onClick={() => setModalOpen(false)}>
-          <div
-            style={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="modal-title"
-          >
-            <div style={styles.blobBackground}>{blobSvg}</div>
+          <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <div style={styles.blobBackground}>
+              <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+                <g transform="translate(300,300)">
+                  <path
+                    d="M120,-132.6C159.2,-109.4,190.9,-71.4,191.8,-30.3C192.7,10.7,162.7,53.8,128.3,81.7C93.9,109.6,55,122.3,17.3,111.9C-20.4,101.5,-40.7,68,-67.8,45.4C-94.9,22.8,-128.9,11.4,-144.6,-16.2C-160.3,-43.8,-157.6,-88.4,-131.7,-110.4C-105.8,-132.3,-56.8,-131.6,-21.7,-116.2C13.5,-100.8,26.9,-70.9,120,-132.6Z"
+                    fill={blobFillColor}
+                    opacity="0.6"
+                  />
+                </g>
+              </svg>
+            </div>
             <button onClick={() => setModalOpen(false)} style={styles.closeButton} aria-label="Close modal">
               <X size={24} />
             </button>
             <img src={logo} alt="Modal Logo" style={styles.modalLogo} />
-            <h2 id="modal-title" style={styles.modalTitle}>{title}</h2>
-            <p style={{ fontSize: '1.1rem', fontWeight: '500', marginBottom: '15px', color: '#d0e8ff',  }}>
-              {summary}
-            </p>
-
+            <h2 style={styles.modalTitle}>{title}</h2>
+            <p style={styles.modalSummary}>{summary}</p>
             <div style={styles.modalDetails}>{details}</div>
-            {/* <button
-              onClick={() => setModalOpen(false)}
-              style={styles.closeButton}
-              aria-label="Close modal"
-            >
-              Close
-            </button> */}
           </div>
         </div>
       )}
     </>
   );
 };
+
 const isSmallScreen = window.innerWidth < 500;
 
 const styles = {
@@ -122,11 +120,10 @@ const styles = {
     width: '100%',
     height: '100%',
     pointerEvents: 'none',
-    objectFit: isSmallScreen ? 'contain' : 'cover',
+    objectFit: 'cover',
     top: 0,
     left: 0,
   },
-  
   textOverlay: {
     position: 'relative',
     zIndex: 1,
@@ -137,37 +134,29 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     gap: 4,
-    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
+    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)',
   },
-  
   titleText: {
-    fontSize: isSmallScreen ? '1rem':'1.3rem',
+    fontSize: isSmallScreen ? '1rem' : '1.3rem',
     fontWeight: '700',
     color: '#FFFFFF',
-    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
   },
-  
   companyText: {
     fontSize: isSmallScreen ? '0.8rem' : '1.1rem',
     fontWeight: '800',
     color: '#95dffc',
-    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
   },
-  
   durationText: {
-    fontSize: isSmallScreen ? '0.5rem':'0.9rem',
+    fontSize: isSmallScreen ? '0.5rem' : '0.9rem',
     fontWeight: '700',
     color: '#81c9e6',
-    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
   },
-  
   logo: {
-    // width: 60, // or 70
     height: isSmallScreen ? 20 : 40,
     marginTop: 8,
     borderRadius: 12,
     objectFit: 'contain',
-  },  
+  },
   modalOverlay: {
     position: 'fixed',
     inset: 0,
@@ -204,22 +193,22 @@ const styles = {
     borderRadius: 8,
     objectFit: 'contain',
     display: 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    zIndex: 1,
-    position: 'relative',
+    margin: '0 auto',
   },
   modalTitle: {
-    position: 'relative',
-    zIndex: 1,
     fontSize: isSmallScreen ? '1.3rem' : '2.5rem',
     marginBottom: '20px',
     color: '#fff',
     textAlign: 'center',
   },
+  modalSummary: {
+    fontSize: '1.1rem',
+    fontWeight: '500',
+    marginBottom: '15px',
+    color: '#d0e8ff',
+    textAlign: 'center',
+  },
   modalDetails: {
-    position: 'relative',
-    zIndex: 1,
     fontSize: isSmallScreen ? '0.8rem' : '1.2rem',
     lineHeight: 1.6,
     whiteSpace: 'pre-wrap',

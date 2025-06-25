@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import WorkExperienceCard from './WorkExperienceCard';
 import jspl from '../../assets/jspl.png';
 import asu from '../../assets/asu.png';
-import pwc from '../../assets/pwc.png';
+import iu from '../../assets/iuLogo.png';
 import ripik from '../../assets/ripik.svg';
 import headstarter from '../../assets/headstarter.avif';
 import eyLogo from '../../assets/eyLogo.png'; // replace with your Ernst & Young logo import or image reference
@@ -26,8 +26,7 @@ const experiences = [
     </>
   ),
   logo: eyLogo, // replace with your Ernst & Young logo import or image reference
-}
-,
+},
 
   {
     title: 'Cloud Front End Developer',

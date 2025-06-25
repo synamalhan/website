@@ -1,21 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FloatingFishResume from './FloatingFishResume';
 import FloatingFishResume2 from './FloatingFishResume2';
 import FloatingFishResume3 from './FloatingFishResume3';
 import FloatingFishResume4 from './FloatingFishResume4';
 import FloatingFishResume5 from './FloatingFishResume5';
 
+const AnimatedOnScroll = ({ children, delay = 0, direction = 'up' }) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
+
+  const getTransform = () => {
+    if (visible) return 'translate(0, 0)';
+    switch (direction) {
+      case 'right':
+        return 'translateX(60px)';
+      case 'left':
+        return 'translateX(-60px)';
+      case 'down':
+        return 'translateY(-40px)';
+      case 'up':
+      default:
+        return 'translateY(40px)';
+    }
+  };
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: getTransform(),
+        transition: `opacity 0.6s ease-out ${delay}s, transform 0.6s ease-out ${delay}s`,
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
 const AboutMe = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const isMobile = windowWidth < 480; // really small
-  const isSmall = windowWidth < 768; // tablet/small screen
+  const isMobile = windowWidth < 480;
+  const isSmall = windowWidth < 768;
 
   const fontSizeTitle = isMobile ? '2rem' : '3rem';
   const fontSizeText = isMobile ? '1rem' : '1.25rem';
@@ -28,77 +77,91 @@ const AboutMe = () => {
         ...styles.container,
         flexDirection: isMobile ? 'column' : 'row',
         padding: isMobile ? '20px 0' : '40px',
-        height: '200%',
         position: 'relative',
       }}
     >
-      {/* Left fish only on large screens */}
+      {/* Left Fish Group */}
       {!isSmall && (
         <div style={styles.leftFishContainer}>
-          <div style={styles.centerFish}>
-            <FloatingFishResume2 />
-          </div>
-          <div style={styles.sideFishLeft}>
-            <FloatingFishResume3 />
-          </div>
-          <div style={styles.sideFishRight}>
-            <FloatingFishResume4 />
-          </div>
+          <AnimatedOnScroll delay={0.1} direction="right">
+            <div style={styles.centerFish}>
+              <FloatingFishResume2 />
+            </div>
+          </AnimatedOnScroll>
+          <AnimatedOnScroll delay={0.2} direction="right">
+            <div style={styles.sideFishLeft}>
+              <FloatingFishResume3 />
+            </div>
+          </AnimatedOnScroll>
+          <AnimatedOnScroll delay={0.3} direction="right">
+            <div style={styles.sideFishRight}>
+              <FloatingFishResume4 />
+            </div>
+          </AnimatedOnScroll>
         </div>
       )}
 
-      {/* About Me text */}
-      <div
-        style={{
-          ...styles.textContainer,
-          justifyContent: 'center',
-          textAlign: 'center',
-          maxWidth: isMobile ? '100%' : '500px',
-        }}
-      >
-        <h2 style={{ ...styles.title, fontSize: fontSizeTitle }}>
-          About Me
-        </h2>
-        <p
+      {/* About Me Text */}
+      <AnimatedOnScroll delay={0.15} direction="up">
+        <div
           style={{
-            ...styles.text,
-            fontSize: fontSizeText,
-            lineHeight: lineHeightText,
+            ...styles.textContainer,
+            justifyContent: 'center',
+            textAlign: 'center',
+            maxWidth: isMobile ? '100%' : '500px',
           }}
         >
-          Hi! I’m <strong>Syna Malhan</strong>, a curious computer science student with a love for merging logic with imagination. Whether it's through writing expressive code, exploring the elegance of algorithms, or crafting immersive front-end interfaces, I’m always looking for new ways to make digital experiences more intuitive and delightful.
-          <br />
-          <br />
-          Outside the world of tech, I’m endlessly inspired by marine life — the colors, movement, and mysteries of the ocean often find their way into my creative process. This portfolio is a reflection of both my technical journey and my love for nature’s quiet intelligence.
-          <br />
-          <br />
-          <span style={styles.resumeHint}>
-            🐠 P.S. If you're looking for my resume... you'll have to ask the fishes swimming around this section!
-          </span>
-        </p>
+          <h2 style={{ ...styles.title, fontSize: fontSizeTitle }}>About Me</h2>
+          <p
+            style={{
+              ...styles.text,
+              fontSize: fontSizeText,
+              lineHeight: lineHeightText,
+            }}
+          >
+            Hi! I’m <strong>Syna Malhan</strong>, a curious computer science student with a love for merging logic with imagination. Whether it's through writing expressive code, exploring the elegance of algorithms, or crafting immersive front-end interfaces, I’m always looking for new ways to make digital experiences more intuitive and delightful.
+            <br />
+            <br />
+            Outside the world of tech, I’m endlessly inspired by marine life — the colors, movement, and mysteries of the ocean often find their way into my creative process. This portfolio is a reflection of both my technical journey and my love for nature’s quiet intelligence.
+            <br />
+            <br />
+            <span style={styles.resumeHint}>
+              🐠 P.S. If you're looking for my resume... you'll have to ask the fishes swimming around this section!
+            </span>
+          </p>
 
-        {/* On mobile, show an additional floating fish near where button would be */}
-        {isMobile && (
-  <div style={{ 
-    marginTop: 0, 
-    display: 'flex', 
-    justifyContent: 'center', 
-    // gap: '10px',  // spacing between fishes
-    alignItems: 'center',
-  }}>
-    <FloatingFishResume size={40} />
-    <FloatingFishResume4 size={40} />
-    <FloatingFishResume3 size={40} />
-  </div>
-)}
+          {isMobile && (
+            <div
+              style={{
+                marginTop: 20,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <AnimatedOnScroll delay={0.1} direction="right">
+                <FloatingFishResume size={40} />
+              </AnimatedOnScroll>
+              <AnimatedOnScroll delay={0.2} direction="right">
+                <FloatingFishResume4 size={40} />
+              </AnimatedOnScroll>
+              <AnimatedOnScroll delay={0.3} direction="right">
+                <FloatingFishResume3 size={40} />
+              </AnimatedOnScroll>
+            </div>
+          )}
+        </div>
+      </AnimatedOnScroll>
 
-      </div>
-
-      {/* Right fish column - only on larger screens */}
+      {/* Right Fish Group */}
       {!isMobile && (
         <div style={styles.rightFishContainer}>
-          <FloatingFishResume size={200} />
-          <FloatingFishResume5 size={100} />
+          <AnimatedOnScroll delay={0.1} direction="right">
+            <FloatingFishResume size={200} />
+          </AnimatedOnScroll>
+          <AnimatedOnScroll delay={0.2} direction="right">
+            <FloatingFishResume5 size={100} />
+          </AnimatedOnScroll>
         </div>
       )}
     </section>
@@ -113,7 +176,6 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100vw',
-    minWidth: '100%',
     boxSizing: 'border-box',
   },
   textContainer: {

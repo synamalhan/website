@@ -1,35 +1,60 @@
-// src/components/HeroSection.jsx
-import React from 'react';
+import React, { useRef } from 'react';
 import Lottie from 'lottie-react';
-import { motion } from 'framer-motion';
-import fishesAnimation from '../../assets/fishes.json'; // Adjust path as needed
+import { motion, useInView } from 'framer-motion';
+import fishesAnimation from '../../assets/fishes.json';
 import useMouseParallax from '../../hooks/useMouseParallax';
 
+const floatDownVariant = {
+  hidden: { opacity: 0, y: -30 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.05 + i * 0.07,
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  }),
+};
+
 const HeroSection = () => {
-  // Parallax offsets for each element
-  const nameOffset = useMouseParallax(0.08); // more movement
-  const taglineOffset = useMouseParallax(0.04); // less movement
-  const lottieOffset = useMouseParallax(0.02); // subtle movement
+  const nameOffset = useMouseParallax(0.08);
+  const taglineOffset = useMouseParallax(0.04);
+  const lottieOffset = useMouseParallax(0.02);
+  const name = "Syna Malhan";
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    threshold: 0.3,
+    triggerOnce: false, // important: animate on every scroll in
+  });
 
   return (
-    <>
-    <section id="hero" style={styles.container}>
-      <motion.h1
+    <section id="hero" style={styles.container} ref={ref}>
+      <h1
         style={{
           ...styles.name,
-          transform: `translate3d(${nameOffset.x}px, ${nameOffset.y}px, 0)`
+          transform: `translate3d(${nameOffset.x}px, ${nameOffset.y}px, 0)`,
         }}
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.2 }}
       >
-        Syna Malhan
-      </motion.h1>
+        {name.split('').map((char, i) => (
+          <motion.span
+            key={i}
+            custom={i}
+            variants={floatDownVariant}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            style={{ display: 'inline-block' }}
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </h1>
 
       <motion.p
         style={{
           ...styles.tagline,
-          transform: `translate3d(${taglineOffset.x}px, ${taglineOffset.y}px, 0)`
+          transform: `translate3d(${taglineOffset.x}px, ${taglineOffset.y}px, 0)`,
         }}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -41,17 +66,12 @@ const HeroSection = () => {
       <div
         style={{
           ...styles.lottieWrapper,
-          transform: `translate3d(${lottieOffset.x}px, ${lottieOffset.y}px, 0)`
+          transform: `translate3d(${lottieOffset.x}px, ${lottieOffset.y}px, 0)`,
         }}
       >
-        <Lottie
-          animationData={fishesAnimation}
-          loop={true}
-          style={styles.lottie}
-        />
+        <Lottie animationData={fishesAnimation} loop={true} style={styles.lottie} />
       </div>
     </section>
-    </>
   );
 };
 
@@ -93,14 +113,6 @@ const styles = {
     zIndex: 2,
     position: 'relative',
     willChange: 'transform',
-  },
-  downArrow: {
-    marginTop: '3rem',
-    fontSize: '3rem',
-    cursor: 'pointer',
-    color: '#a0d8ef',
-    zIndex: 2,
-    position: 'relative',
   },
   lottieWrapper: {
     position: 'absolute',

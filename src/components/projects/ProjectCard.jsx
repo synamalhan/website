@@ -1,4 +1,4 @@
-import React, { useState, useMemo , useEffect} from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Lottie from 'lottie-react';
 import jellyfishGif from '../../assets/jellyfish.gif';
 import { X } from 'lucide-react';
@@ -22,6 +22,19 @@ const huesWithFilters = [
   { color: '#00e4ff', filter: 'hue-rotate(135deg)' },
   { color: '#00b4ff', filter: 'hue-rotate(-105deg)' },
 ];
+const fadeInUp = {
+  opacity: 1,
+  transform: 'translateY(0px)',
+  transition: 'all 0.6s ease-out',
+};
+
+const hiddenStyle = {
+  opacity: 0,
+  transform: 'translateY(40px)',
+  transition: 'all 0.6s ease-out',
+};
+
+
 
 const blobPath = `M120,-132.6C159.2,-109.4,190.9,-71.4,191.8,-30.3C192.7,10.7,162.7,53.8,128.3,81.7C93.9,109.6,55,122.3,17.3,111.9C-20.4,101.5,-40.7,68,-67.8,45.4C-94.9,22.8,-128.9,11.4,-144.6,-16.2C-160.3,-43.8,-157.6,-88.4,-131.7,-110.4C-105.8,-132.3,-56.8,-131.6,-21.7,-116.2C13.5,-100.8,26.9,-70.9,120,-132.6Z`;
 
@@ -29,6 +42,59 @@ const ProjectCard = ({ title, description, details, image, links, techStack = []
   const [modalOpen, setModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false); // Track hover state
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
+const [rotation, setRotation] = useState({ x: 0, y: 0 });
+
+  const cardRef = useRef(null);
+const [isVisible, setIsVisible] = useState(false);
+const [randomTransform, setRandomTransform] = useState('');
+
+useEffect(() => {
+  const random = Math.random();
+  if (random < 0.4) {
+    const x = Math.floor(Math.random() * 20) - 5; // -5 to 5 degrees
+    const y = Math.floor(Math.random() * 20) - 5;
+    setRandomTransform(`rotateX(${x}deg) rotateY(${y}deg)`);
+  } else if (random < 0.7) {
+    setRandomTransform(`rotateY(180deg)`);
+  } else {
+    setRandomTransform(''); // no transform
+  }
+}, []);
+
+const handleMouseMove = (e) => {
+  const card = cardRef.current;
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+
+  const rotateX = -(y - centerY) / 20;
+  const rotateY = (x - centerX) / 20;
+
+  setRotation({ x: rotateX, y: rotateY });
+};
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setIsVisible(true), 50);
+        } else {
+          setIsVisible(false);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  const currentRef = cardRef.current;
+  if (currentRef) observer.observe(currentRef);
+  return () => {
+    if (currentRef) observer.unobserve(currentRef);
+  };
+}, []);
+
 
   useEffect(() => {
   const handleResize = () => setIsSmallScreen(window.innerWidth < 600);
@@ -59,21 +125,30 @@ const ProjectCard = ({ title, description, details, image, links, techStack = []
   return (
     <>
       <div
-        style={{
-          ...styles.card,
-          boxShadow: 'none',
-          transform: isHovered ? 'scale(1.3)' : 'scale(1)',
-          transition: 'transform 0.3s ease-in-out',
-        }}
-        onClick={openModal}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        role="button"
-        tabIndex={0}
-        onKeyPress={(e) => {
-          if (e.key === 'Enter') setModalOpen(true);
-        }}
-        >
+  ref={cardRef}
+  style={{
+    ...styles.card,
+    ...(isVisible ? fadeInUp : hiddenStyle),
+    transform: `
+      ${isVisible ? 'translateY(0)' : 'translateY(40px)'}
+      ${randomTransform}
+      ${isHovered ? 'scale(1.1)' : 'scale(1)'}
+    `,
+    transition: 'transform 0.3s ease-out, opacity 0.6s ease-out',
+    transformStyle: 'preserve-3d',
+    willChange: 'transform',
+  }}
+  onMouseEnter={() => setIsHovered(true)}
+  onMouseLeave={() => setIsHovered(false)}
+  onClick={openModal}
+  role="button"
+  tabIndex={0}
+  onKeyPress={(e) => {
+    if (e.key === 'Enter') setModalOpen(true);
+  }}
+>
+
+
         <img
           src={jellyfishGif}
           alt="Animated background"
@@ -328,6 +403,7 @@ techPill: {
   fontWeight: '500',
   whiteSpace: 'nowrap',
 },
+
 
 };
 
