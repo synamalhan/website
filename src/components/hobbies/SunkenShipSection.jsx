@@ -6,7 +6,8 @@ const hobbies = [
   'Building Metal Earth Models',
   'Swimming',
   'Marine Life',
-  'Coding'
+  'Coding',
+  'Reading'
 ];
 
 const FinalSection = () => {

@@ -89,7 +89,9 @@ const CrabOverlay = () => {
                 objectFit: 'cover',
               }}
             />
-            <p style={{ margin: 0 }}>Hi, I'm Syna, nice to meet you!.</p>
+            <p style={{ margin: 0 }}>Hi, I'm Syna, nice to meet you!</p>
+            <p style={{ margin: 0 }}>Click the sunken ship for my hobbies!</p>
+
           </div>
         </div>
       )}
