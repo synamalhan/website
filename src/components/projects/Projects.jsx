@@ -285,6 +285,24 @@ const projects = [
 ]
   },
   {
+  title: "AI-Powered Symptom Checker",
+  summary: "An interactive, AI-enhanced health tool that allows users to input symptoms and receive potential condition predictions, care advice, and real-time guidance through an integrated chatbot powered by Ollama.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> An interactive, AI-enhanced health tool that allows users to input symptoms and receive potential condition predictions, care advice, and real-time guidance through an integrated chatbot powered by Ollama.</p>
+      <p><b>Problem:</b> Users can't easily get accurate symptom-based condition predictions without consulting a doctor.</p>
+      <p><b>Action:</b> Built an interactive, AI-enhanced health tool that allows users to input symptoms and receive potential condition predictions, care advice, and real-time guidance through an integrated chatbot powered by Ollama.</p>
+      <p><b>Result:</b> Users can get accurate symptom-based condition predictions without consulting a doctor.</p>
+      <p><b>What I Learned:</b> New skills or tools used.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/symptom-checker" },
+  ]
+},
+  {
     title: "Front-end Portal",
     summary: "Built a React portal with reusable components, dynamic filters, and video previews, integrated with REST APIs and deployed on AWS Amplify.",
     duration: "Add duration here",
@@ -839,7 +857,8 @@ const projects = [
     "url": "https://github.com/yourusername/a-frame-vr.git"
   }
 ]
-  }
+  },
+  
 ];
 
 export default projects;
