@@ -54,24 +54,6 @@ const FinalSection = () => {
           marginRight: '30px',
         }}
       >
-        {/* Ocean overlay on top of ship */}
-        <img
-          src={oceanOverlay}
-          alt="Ocean Overlay"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100vw',     // 🔹 Ensure it spans full width of viewport
-            height: '100%',     // 🔹 Covers the entire ship container height
-            objectFit: 'cover',
-            opacity: 0.2,      // 🔹 Very subtle opacity
-            pointerEvents: 'none',
-            zIndex: 2,
-          filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
-    mixBlendMode: 'screen', // optional: blend better with background
-  }}
-/>
 
         <img
           src={ship}
