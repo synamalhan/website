@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ship from '../../assets/ship.webp';
+import oceanOverlay from '../../assets/ocean.png'; // 🔹 Import your overlay image
 
 const hobbies = [
   'Building Metal Earth Models',
@@ -26,7 +27,6 @@ const FinalSection = () => {
       id="final-section"
       style={{
         background: 'linear-gradient(180deg, #000608 0%, #000000 100%)',
-        padding: 0,
         margin: 0,
         display: 'flex',
         justifyContent: 'space-between',
@@ -35,8 +35,8 @@ const FinalSection = () => {
         fontFamily: "'Montserrat', sans-serif",
         color: '#92daf7',
         userSelect: 'none',
-        paddingBottom: 0,
         position: 'relative',
+        overflow: 'hidden',
       }}
     >
       {/* Centered Ship with hobby bubble */}
@@ -47,8 +47,6 @@ const FinalSection = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          opacity: 0.5,
-          userSelect: 'none',
           flexGrow: 1,
           maxWidth: '700px',
           justifyContent: 'flex-end',
@@ -56,27 +54,49 @@ const FinalSection = () => {
           marginRight: '30px',
         }}
       >
+        {/* Ocean overlay on top of ship */}
+        <img
+          src={oceanOverlay}
+          alt="Ocean Overlay"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100vw',     // 🔹 Ensure it spans full width of viewport
+            height: '100%',     // 🔹 Covers the entire ship container height
+            objectFit: 'cover',
+            opacity: 0.2,      // 🔹 Very subtle opacity
+            pointerEvents: 'none',
+            zIndex: 2,
+          filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
+    mixBlendMode: 'screen', // optional: blend better with background
+  }}
+/>
+
         <img
           src={ship}
           alt="Ship"
           style={{
-            height: isSmall ? '300px' : '700px', // smaller on small screen
-            objectFit: 'contain',
+            height: isSmall ? '300px' : '700px',
+            top:150,
             filter: 'hue-rotate(190deg)',
+            zIndex: 1,
+            opacity: 0.3,
+            position: 'relative',
           }}
           onClick={() => {
             setShowHobbies(!showHobbies);
           }}
         />
 
-        {/* Hobby bubble position changes on small screens */}
+        {/* Hobby bubble */}
         {showHobbies && (
           <div
             style={{
               position: 'absolute',
               bottom: isSmall ? '300px' : '100px',
               left: isSmall ? '0%' : '100%',
-              transform: isSmall ? 'translateX(-100%) translateY(100)' : 'none',
+              transform: isSmall ? 'translateX(-100%)' : 'none',
               background: 'rgba(10, 62, 87, 0.95)',
               borderRadius: '15px',
               padding: '25px 35px',
@@ -131,9 +151,10 @@ const FinalSection = () => {
         )}
       </div>
 
-      {/* Empty space on right to balance left (reduced on small screens) */}
+      {/* Empty space to balance layout */}
       <div style={{ width: isSmall ? '40px' : '160px', marginRight: isSmall ? '10px' : '30px' }} />
 
+      {/* Animation */}
       <style>
         {`
           @keyframes fadeInRight {

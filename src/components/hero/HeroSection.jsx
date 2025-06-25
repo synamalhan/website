@@ -63,14 +63,14 @@ const HeroSection = () => {
         Exploring tech depths with code & creativity
       </motion.p>
 
-      <div
+      {/* <div
         style={{
           ...styles.lottieWrapper,
           transform: `translate3d(${lottieOffset.x}px, ${lottieOffset.y}px, 0)`,
         }}
       >
         <Lottie animationData={fishesAnimation} loop={true} style={styles.lottie} />
-      </div>
+      </div> */}
     </section>
   );
 };

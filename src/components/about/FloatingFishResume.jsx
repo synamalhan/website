@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import Lottie from 'lottie-react';
 import fishAnimation from '../../assets/fish.json';
+import { useRef } from 'react';
+
 
 const FloatingFishResume = () => {
   const [open, setOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [rotation, setRotation] = useState(0);
+  const fishRef = useRef(null);
+
 
   const resumeEmbedUrl = "https://drive.google.com/file/d/1dWooWYa7-TuPjlG9GcKVrJMTFEIs21nS/preview";
   const resumeDownloadUrl = "https://drive.google.com/uc?export=download&id=1dWooWYa7-TuPjlG9GcKVrJMTFEIs21nS";
@@ -23,28 +28,57 @@ const FloatingFishResume = () => {
     setShowModal(true);
   };
 
+  const handleMouseMove = (e) => {
+    const fish = fishRef.current;
+    if (fish) {
+      const rect = fish.getBoundingClientRect();
+      const fishCenterY = rect.top + rect.height / 2;
+      const deltaY = e.clientY - fishCenterY;
+
+      // Normalize to a range of -1 to 1 (assume 100px is max movement above/below)
+      let normalized = deltaY / 100;
+      normalized = Math.max(-1, Math.min(1, normalized)); // clamp
+
+      const maxRotation = 20; // degrees
+      const angle = -normalized * maxRotation;
+
+      setRotation(angle);
+    }
+  };
+
+
+
   return (
     <>
       <div
+        ref={fishRef}
         style={styles.container}
         onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
+        onMouseLeave={() => {
+          setOpen(false);
+          setRotation(0);
+        }}
+        onMouseMove={handleMouseMove}
         onClick={handleClick}
         aria-label="Floating fish with downloadable resume"
         role="button"
         tabIndex={0}
         onKeyPress={(e) => { if (e.key === 'Enter') handleClick(); }}
       >
+
+
+
         <div style={styles.lottieWrapper}>
           <Lottie
             animationData={fishAnimation}
             loop
             style={{
               ...styles.lottie,
-              transform: open ? 'rotate(0deg)' : 'rotate(-15deg)',
-              transition: 'transform 0.3s ease',
+              transform: `rotate(${rotation}deg)`,
+              transition: 'transform 0.1s ease-out',
             }}
           />
+
           {open && (
             <div style={styles.resumeLink}>Download Resume</div>
           )}
@@ -88,11 +122,11 @@ const styles = {
     height: '100%',
   },
   lottie: {
-    width: '100%',
-    height: '100%',
-    transform: 'rotate(-15deg)',
-    pointerEvents: 'none',
-  },
+  width: '100%',
+  height: '100%',
+  transformOrigin: '50% 50%', // Right center
+  pointerEvents: 'none',
+},
   resumeLink: {
     position: 'absolute',
     top: '50%',
