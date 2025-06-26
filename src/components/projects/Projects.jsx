@@ -177,6 +177,27 @@ title: "CropGenius",
 ]
   },
   {
+  badge: "",
+  title: "NutriSnap Food Nutrition Database",
+  summary: "A simple and structured database mapping common food items to their average macronutrient values per 100 grams, designed to work with object detection outputs from a custom-trained YOLOv8 model that recognizes 43 different food classes.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> This repository contains `food_db.csv`, a simple and structured database mapping common food items to their average macronutrient values per 100 grams.</p>
+      <p><b>Problem:</b> It is designed to work with object detection outputs from a custom-trained YOLOv8 model that recognizes 43 different food classes.</p>
+      <p><b>Action:</b> The database contains the following columns: `name`, `calories`, `protein`, `carbs`, and `fat`.</p>
+      <p><b>Result:</b> This allows for enrichment of YOLO detection results with nutritional values in the NutriSnap app.</p>
+      <p><b>What I Learned:</b> New skills or tools learned during this project include training a custom YOLOv8 model using Ultralytics and evaluating precision, recall, and mAP.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/nutri-snap" },
+        { label: "Colab Notebook", url: "https://colab.research.google.com/drive/1Y5GDv7qWGL0madaaDbmPs7X2Bj17yo0x?usp=sharing" },
+
+  ]
+},
+  {
     badge: "💼 Internship Project 💼",
 title: "Slab Sizing",
     summary: "Optimized computer vision algorithms using YOLO, increasing measurement accuracy by 80%.",

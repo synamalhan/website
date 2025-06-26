@@ -62,33 +62,32 @@ def append_to_projects(new_entry: str):
         with open(PROJECTS_FILE, "r", encoding="utf-8") as f:
             content = f.read()
 
-        insert_pos = content.rfind("];")
-        if insert_pos == -1:
-            st.error("Could not find closing bracket for projects array in Projects.jsx")
+        # Find the start of the array after the equal sign and opening bracket
+        match = re.search(r"=\s*\[\s*", content)
+        if not match:
+            st.error("Could not find the start of the projects array in Projects.jsx")
             return False
 
-        before = content[:insert_pos].rstrip()
+        insert_pos = match.end()
+        before = content[:insert_pos]
         after = content[insert_pos:]
 
-        # Add a comma at the end of new entry if not present
+        # Clean up the new entry
         trimmed_entry = new_entry.strip()
         if not trimmed_entry.endswith(","):
             trimmed_entry += ","
 
-        # Handle comma before new entry if array not empty
-        if before.endswith("["):
-            new_content = before + "\n  " + trimmed_entry + "\n" + after
-        else:
-            new_content = before + ",\n  " + trimmed_entry + "\n" + after
+        # Prepend the new entry with appropriate spacing
+        new_content = before + "\n  " + trimmed_entry + after
 
         with open(PROJECTS_FILE, "w", encoding="utf-8") as f:
             f.write(new_content)
 
         return True
+
     except Exception as e:
         st.error(f"Error updating Projects.jsx: {e}")
         return False
-
 
 if generate and readme_text.strip():
     with open(TEMPLATE_PATH) as f:
