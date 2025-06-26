@@ -1,7 +1,7 @@
 const updates = [
   {
     title: 'Launched Portfolio Updates!',
-    date: '2024-06-10',
+    date: '2025-06-10',
     content: 'Added a new updates section to share what\'s happening now. Stay tuned for more frequent, bite-sized progress and thoughts!'
   },
   {
