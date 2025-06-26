@@ -42,6 +42,7 @@ const ProjectList = () => {
         >
           <ProjectCard
             title={proj.title}
+            badge={proj.badge}
             description={proj.summary}
             details={proj.details}
             image={proj.images}

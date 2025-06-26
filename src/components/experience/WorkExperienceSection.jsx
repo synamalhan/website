@@ -52,8 +52,8 @@ const WorkExperienceSection = () => {
         viewport={{ once: false, amount: 0.5 }}
         style={{
           fontSize: fontSizeTitle,
-          marginBottom: '80px',
-          paddingBottom: '20px',
+          marginBottom: '10px',
+          paddingBottom: '0',
           color: '#92daf7',
           fontFamily: "'Montserrat', sans-serif",
           textShadow: '2px 2px 6px rgba(0, 0, 0, 1)',
@@ -62,6 +62,15 @@ const WorkExperienceSection = () => {
       >
         Work Experience
       </motion.h2>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: false, amount: 0.5 }}
+        style={{ fontSize: isMobile ? '1rem' : '1.2rem', color: '#a0d8ef', marginBottom: '60px', fontWeight: 500, textAlign: 'center' }}
+      >
+        A journey through impactful roles, real-world challenges, and hands-on learning.
+      </motion.div>
 
       <motion.div
         variants={containerVariants}

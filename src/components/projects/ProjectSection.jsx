@@ -49,7 +49,7 @@ const ProjectSection = () => {
         style={{
           fontSize: fontSizeTitle,
           marginTop: '100px',
-          marginBottom: '30px',
+          marginBottom: '10px',
           color: '#92daf7',
           fontFamily: "'Montserrat', sans-serif",
           textShadow: '2px 2px 6px rgba(128, 128, 128, 0.8)',
@@ -58,6 +58,15 @@ const ProjectSection = () => {
       >
         Projects
       </motion.h2>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: false, amount: 0.3 }}
+        style={{ fontSize: isMobile ? '1rem' : '1.2rem', color: '#a0d8ef', marginBottom: '30px', fontWeight: 500, textAlign: 'center' }}
+      >
+        From hackathons to production—exploring, building, and sharing what excites me.
+      </motion.div>
       <ProjectList />
     </section>
   );

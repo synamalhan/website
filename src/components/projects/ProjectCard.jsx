@@ -22,7 +22,7 @@ const huesWithFilters = [
   { color: '#00b4ff', filter: 'hue-rotate(-105deg)' },
 ];
 
-const ProjectCard = ({ title, description, details, image, links, techStack = [] }) => {
+const ProjectCard = ({ title, description, details, image, links, techStack = [], badge }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
@@ -91,6 +91,11 @@ const ProjectCard = ({ title, description, details, image, links, techStack = []
         />
 
         <div style={styles.textOverlay}>
+          {badge && (
+            <div style={styles.badge}>
+              {badge}
+            </div>
+          )}
           <div style={styles.titleText(isSmallScreen)}>{title}</div>
           <div style={styles.techStackContainer}>
             {techStack.map((tech, idx) => (
@@ -283,6 +288,18 @@ const styles = {
     textDecoration: 'none',
     fontWeight: '600',
   },
+  badge: {
+  backgroundColor: '#ffffffaa',
+  color: '#001f2f',
+  fontWeight: '600',
+  fontSize: '0.65rem',
+  padding: '4px 10px',
+  borderRadius: '999px',
+  textTransform: 'uppercase',
+  letterSpacing: '0.5px',
+  boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+},
+
 };
 
 export default ProjectCard;

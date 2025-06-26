@@ -1,6 +1,28 @@
 const projects = [
+    {
+    badge: "🏆 Hackathon Winner 🏆",
+title: "CareSketch",
+    summary: "AI-powered care planning assistant built for social good.",
+    duration: undefined,
+    techStack: ["Streamlit","Ollama","Plotly","FPDF/ReportLab","Custom rule-based logic"],
+    details: (<>
+  <p><strong>Situation:</strong>  An AI-powered care planning assistant built for social good.</p>
+  <p><strong>Problem:</strong>  Helps caregivers create personalized, goal-based daily care plans from natural language descriptions, enriched with emotion-aware context, risk detection, interactive scheduling, and exportable summaries.</p>
+  <p><strong>Action:</strong>  Built during the Hack the Vibe 2025 hackathon, CareSketch focuses on empowering non-technical caregivers to deliver thoughtful, informed, and emotionally supportive care.</p>
+  <p><strong>Result:</strong>  CareSketch generates detailed care plans from simple English descriptions, customizable based on goals (e.g., pain relief, mobility) and emotional state.</p>
+  <p><strong>What I Learned:</strong>  New skills or tools include conversational emotional support, risk detection, interactive timeline, PDF export, and a beautiful UI.</p>
+  <p><strong>Tech Stack:</strong>  React, Python, Flask</p>
+</>),
+    links: [
   {
-    title: "Text-Optimized Image Generation Model",
+    "label": "GitHub Repo",
+    "url": "https://github.com/synamalhan/care-sketch"
+  }
+]
+  },
+  {
+    badge: "💼 Internship Project 💼",
+title: "Text-Optimized Image Generation Model",
     summary: "Custom-trained diffusion model optimized for rendering clean text in images.",
     duration: undefined,
     techStack: ["Python","HuggingFace","Diffusers","PyTorch","LoRA","Stable Diffusion"],
@@ -15,7 +37,8 @@ const projects = [
     links: []
   },
   {
-    title: "Credit Risk RAG Model",
+    badge: "💼 Internship Project 💼",
+title: "Credit Risk RAG Model",
     summary: "RAG-based credit risk assessment system using LangGraph and Neo4j.",
     duration: undefined,
     techStack: ["Python","Streamlit","Neo4j","LangGraph","Ollama","Pandas"],
@@ -30,7 +53,8 @@ const projects = [
     links: []
   },
   {
-    title: "AI Research Paper Summarizer",
+    badge: "",
+title: "AI Research Paper Summarizer",
     summary: "An interactive web app to generate concise summaries of research papers in PDF format using state-of-the-art AI models.",
     duration: undefined,
     techStack: ["React","Python","Flask"],
@@ -50,7 +74,8 @@ const projects = [
 ]
   },
   {
-    title: "MediHub Platform",
+    badge: "",
+title: "MediHub Platform",
     summary: "The Future of Medical Education",
     duration: undefined,
     techStack: ["React","TypeScript","Vite","Tailwind CSS","Zustand","Supabase"],
@@ -70,7 +95,8 @@ const projects = [
 ]
   },
   {
-    title: "Last Point Distribution Analysis",
+    badge: "💼 Internship Project 💼",
+title: "Last Point Distribution Analysis",
     summary: "Optimized dispatch operations with K-means clustering and real-time cost calculations, improving delivery efficiency.",
     duration: "May 2024 – July 2024",
     techStack: ["Python","Streamlit","K-means Clustering","Folium"],
@@ -90,7 +116,8 @@ const projects = [
 ]
   },
   {
-    title: "Blast Furnace Lab Automation",
+    badge: "💼 Internship Project 💼",
+title: "Blast Furnace Lab Automation",
     summary: "Developed a full-stack web portal to automate and streamline lab processes, improving data management and operational efficiency.",
     duration: "Add project duration here",
     techStack: ["AngularJS","Spring Boot","SQL","Apache Tomcat"],
@@ -104,7 +131,8 @@ const projects = [
     links: undefined
   },
   {
-    title: "Plate Mill FG Forecasting",
+    badge: "💼 Internship Project 💼",
+title: "Plate Mill FG Forecasting",
     summary: "Deployed predictive models to forecast finished goods, improving dispatch planning.",
     duration: "May 2024 – July 2024",
     techStack: ["Python","XGBoost","ARIMA","Prophet","Random Forest"],
@@ -124,7 +152,8 @@ const projects = [
 ]
   },
   {
-    title: "CropGenius",
+    badge: "🏆 Hackathon Winner 🏆",
+title: "CropGenius",
     summary: "Developed CropGenius to provide 100% accurate crop recommendations using XGBoost and Random Forest.",
     duration: "July 2024",
     techStack: ["XGBoost","Random Forest","Streamlit","Weather API"],
@@ -148,7 +177,8 @@ const projects = [
 ]
   },
   {
-    title: "Slab Sizing",
+    badge: "💼 Internship Project 💼",
+title: "Slab Sizing",
     summary: "Optimized computer vision algorithms using YOLO, increasing measurement accuracy by 80%.",
     duration: "June 2024 – Aug 2024",
     techStack: ["Ultralytics","YOLO","Python","FastSAM"],
@@ -163,7 +193,8 @@ const projects = [
     links: undefined
   },
   {
-    title: "Options Pricing and Risk Assessment Tool",
+    badge: "",
+title: "Options Pricing and Risk Assessment Tool",
     summary: "Developed financial tool to calculate option pricing using Monte Carlo simulations and Black-Scholes.",
     duration: "Dec 2024",
     techStack: ["Python","Streamlit","Monte Carlo","Black-Scholes"],
@@ -187,7 +218,8 @@ const projects = [
 ]
   },
   {
-    title: "Wildlife Monitoring and Conservation",
+    badge: "",
+title: "Wildlife Monitoring and Conservation",
     summary: "Automated detection and monitoring of wildlife using YOLO/Faster R-CNN and SAM/FastSAM for segmentation.",
     duration: "Dec 2024",
     techStack: ["YOLO","Faster R-CNN","SAM","FastSAM","Python"],
@@ -202,7 +234,8 @@ const projects = [
     links: undefined
   },
   {
-    title: "Medical Image Analysis for Early Brain Tumor Detection",
+    badge: "",
+title: "Medical Image Analysis for Early Brain Tumor Detection",
     summary: "Developed CNN model to detect anomalies in medical images (Brain Tumor) using U-Net for segmentation.",
     duration: "Jan 2025",
     techStack: ["TensorFlow","Keras","U-Net","ResNet","VGG"],
@@ -222,7 +255,8 @@ const projects = [
 ]
   },
   {
-    title: "Portfolio Analyzer and Stock Prediction Dashboard",
+    badge: "",
+title: "Portfolio Analyzer and Stock Prediction Dashboard",
     summary: "Streamlit app for portfolio management with real-time tracking and ML-driven stock price predictions.",
     duration: "Dec 2024",
     techStack: ["Python","Streamlit","Random Forest","LSTM","Plotly"],
@@ -246,7 +280,8 @@ const projects = [
 ]
   },
   {
-    title: "OCR Training",
+    badge: "💼 Internship Project 💼",
+title: "OCR Training",
     summary: "Trained custom OCR models, improving recognition accuracy with Donut model fine-tuning.",
     duration: "July 2024 – Aug 2024",
     techStack: ["Python","Donut Model","AWS OCR","Azure OCR"],
@@ -261,7 +296,8 @@ const projects = [
     links: undefined
   },
   {
-    title: "Emotion Detection from Images",
+    badge: "",
+title: "Emotion Detection from Images",
     summary: "Built emotion detection app using Hugging Face RoBERTa model with real-time Streamlit visualization.",
     duration: "Dec 2024",
     techStack: ["Hugging Face","RoBERTa","Streamlit","Python"],
@@ -285,7 +321,8 @@ const projects = [
 ]
   },
   {
-  title: "AI-Powered Symptom Checker",
+  badge: "",
+title: "AI-Powered Symptom Checker",
   summary: "An interactive, AI-enhanced health tool that allows users to input symptoms and receive potential condition predictions, care advice, and real-time guidance through an integrated chatbot powered by Ollama.",
   techStack: ["React", "Python", "Flask"],
   details: (
@@ -303,7 +340,8 @@ const projects = [
   ]
 },
   {
-    title: "Front-end Portal",
+    badge: "",
+title: "Front-end Portal",
     summary: "Built a React portal with reusable components, dynamic filters, and video previews, integrated with REST APIs and deployed on AWS Amplify.",
     duration: "Add duration here",
     techStack: ["React","AWS Amplify","REST API","JavaScript","CSS"],
@@ -318,7 +356,8 @@ const projects = [
     links: undefined
   },
   {
-    title: "Specialized Chatbot",
+    badge: "",
+title: "Specialized Chatbot",
     summary: "Created a React-based chatbot integrated with AWS Amplify and Cognito, with admin flow for DB management and analytics.",
     duration: "Add duration here",
     techStack: ["React","AWS Amplify","AWS Cognito","AWS Chatbot"],
@@ -333,7 +372,8 @@ const projects = [
     links: undefined
   },
   {
-    title: "Chatbot Referral Agent",
+    badge: "",
+title: "Chatbot Referral Agent",
     summary: "Developed a referral chatbot in React with AWS Amplify and Cognito, including an admin portal for referral and data management.",
     duration: "Add duration here",
     techStack: ["React","AWS Amplify","AWS Cognito","AWS Chatbot"],
@@ -348,7 +388,8 @@ const projects = [
     links: undefined
   },
   {
-    title: "Content Censoring Solution",
+    badge: "",
+title: "Content Censoring Solution",
     summary: "Implemented NLP-based content filtering for text, audio, and video using speech-to-text and Python backend for automated moderation.",
     duration: "Add duration here",
     techStack: ["Python","NLP","Speech-to-Text APIs","Flask/Django"],
@@ -368,7 +409,8 @@ const projects = [
 ]
   },
   {
-    title: "Portfolio Performance Analyzer",
+    badge: "",
+title: "Portfolio Performance Analyzer",
     summary: "Built a Streamlit app to input, validate, and visualize stock portfolios with risk-return plots and sector allocation.",
     duration: "Add duration here",
     techStack: ["Python","Streamlit","yFinance API","Plotly"],
@@ -388,7 +430,8 @@ const projects = [
 ]
   },
   {
-    title: "Customer Segmentation via K-Means",
+    badge: "",
+title: "Customer Segmentation via K-Means",
     summary: "Applied K-Means clustering on mall customer data to identify marketing segments, visualized clusters with Matplotlib and Plotly.",
     duration: "Add duration here",
     techStack: ["Python","K-Means Clustering","Matplotlib","Seaborn","Plotly"],
@@ -408,7 +451,8 @@ const projects = [
 ]
   },
   {
-    title: "Portfolio Optimizer with ESG Integration",
+    badge: "",
+title: "Portfolio Optimizer with ESG Integration",
     summary: "Created a Streamlit app for portfolio optimization under ESG score constraints with interactive visualizations and modern portfolio theory.",
     duration: "Add duration here",
     techStack: ["Python","Streamlit","Pandas","NumPy","ESG Data"],
@@ -428,7 +472,8 @@ const projects = [
 ]
   },
   {
-    title: "Personal Portfolio Website",
+    badge: "",
+title: "Personal Portfolio Website",
     summary: "Designed and developed a responsive portfolio website to showcase my projects, skills, and creative identity.",
     duration: "March 2025 – April 2025",
     techStack: ["React","Lottie","JavaScript","GitHub Pages","CSS Modules"],
@@ -451,7 +496,8 @@ const projects = [
 ]
   },
   {
-    title: "Gamify Life – Productivity To-Do App",
+    badge: "",
+title: "Gamify Life – Productivity To-Do App",
     summary: "Built a personal productivity tracker with a reward system to gamify daily tasks and monitor indulgences.",
     duration: "February 2025 – March 2025",
     techStack: ["Python","Streamlit","Supabase","PostgreSQL"],
@@ -474,7 +520,8 @@ const projects = [
 ]
   },
   {
-    title: "Project Creator with Local LLM Integration",
+    badge: "",
+title: "Project Creator with Local LLM Integration",
     summary: "Automates the creation of formatted project entries for a portfolio website, using a local language model to generate summaries in JSX format.",
     duration: undefined,
     techStack: ["React","Python","Flask"],
@@ -494,7 +541,8 @@ const projects = [
 ]
   },
   {
-    title: "US Census Data Project",
+    badge: "",
+title: "US Census Data Project",
     summary: "Analyzing and visualizing data from the US Census to provide insights into demographic, economic, and geographic trends across the United States.",
     duration: undefined,
     techStack: ["React","Python","Flask"],
@@ -514,7 +562,8 @@ const projects = [
 ]
   },
   {
-    title: "The Untold Legacy of Bayard Rustin",
+    badge: "",
+title: "The Untold Legacy of Bayard Rustin",
     summary: "A digital tribute to one of the most influential yet overlooked figures in the American civil rights movement.",
     duration: undefined,
     techStack: ["React","Javacript","Vercel","Tailwind CSS"],
@@ -534,7 +583,8 @@ const projects = [
 ]
   },
   {
-    title: "Finance Helper",
+    badge: "",
+title: "Finance Helper",
     summary: "A personal project designed to simplify and automate common financial tasks.",
     duration: undefined,
     techStack: ["Streamlit","Python","LLM","FRED API"],
@@ -554,7 +604,8 @@ const projects = [
 ]
   },
   {
-    title: "Career Pilot",
+    badge: "",
+title: "Career Pilot",
     summary: "A personal project designed to help users navigate and manage their career growth, job applications, and professional development.",
     duration: undefined,
     techStack: ["React","Python","Flask"],
@@ -574,7 +625,8 @@ const projects = [
 ]
   },
   {
-    title: "Haunted Escape Room (React)",
+    badge: "",
+title: "Haunted Escape Room (React)",
     summary: "A silly little horror escape room game built with React — full of creaky doors, creepy riddles, and a time limit that’ll trap you forever... or at least until you refresh.",
     duration: undefined,
     techStack: ["React","CSS","MP3 sound effects","Local images"],
@@ -594,7 +646,8 @@ const projects = [
 ]
   },
   {
-    title: "The Ten Dollar Founding Father Without a Father",
+    badge: "",
+title: "The Ten Dollar Founding Father Without a Father",
     summary: "An agentic Retrieval-Augmented Generation (RAG) system built for fun, using the characters from Hamilton: The Musical as its knowledge base.",
     duration: undefined,
     techStack: ["React","Python","Flask"],
@@ -614,7 +667,8 @@ const projects = [
 ]
   },
   {
-    title: "MindScape — Your Personalized Wellness Companion",
+    badge: "",
+title: "MindScape — Your Personalized Wellness Companion",
     summary: "A full-stack AI-powered wellness journal built by students, for students. It uses sentiment analysis and local LLMs (via Ollama) to suggest personalized, mindful actions to help you navigate your emotional landscape.",
     duration: undefined,
     techStack: ["React","Python","Flask"],
@@ -634,7 +688,8 @@ const projects = [
 ]
   },
   {
-    title: "Wellness Journal",
+    badge: "",
+title: "Wellness Journal",
     summary: "A simple and colorful iOS app to track your daily mood and thoughts.",
     duration: undefined,
     techStack: ["SwiftUI","Xcode"],
@@ -654,7 +709,8 @@ const projects = [
 ]
   },
   {
-    title: "TapFast – A Rapid Tapping Game for Apple Watch",
+    badge: "",
+title: "TapFast – A Rapid Tapping Game for Apple Watch",
     summary: "A lightweight, fast-paced tapping game designed for watchOS. The goal is simple: tap the circle as many times as you can in 5 seconds. It's a fun way to test your reaction speed and challenge your friends — right from your wrist!",
     duration: undefined,
     techStack: ["SwiftUI","WatchKit","Xcode 15+"],
@@ -674,7 +730,8 @@ const projects = [
 ]
   },
   {
-    title: "Mental Health Bridge",
+    badge: "",
+title: "Mental Health Bridge",
     summary: "A Streamlit app to help simulate and improve sensitive conversations about mental health between children and their parents.",
     duration: undefined,
     techStack: ["React","Python","Flask"],
@@ -694,7 +751,8 @@ const projects = [
 ]
   },
   {
-    title: "Streamlit Resume Builder with PDF Export",
+    badge: "",
+title: "Streamlit Resume Builder with PDF Export",
     summary: "A clean, no-fuss interface to build, edit, organize, and export your resume without the hassle of formatting issues or clunky document editors.",
     duration: undefined,
     techStack: ["Streamlit","fpdf","streamlit-pdf-viewer","Python"],
@@ -714,27 +772,8 @@ const projects = [
 ]
   },
   {
-    title: "CareSketch",
-    summary: "AI-powered care planning assistant built for social good.",
-    duration: undefined,
-    techStack: ["Streamlit","Ollama","Plotly","FPDF/ReportLab","Custom rule-based logic"],
-    details: (<>
-  <p><strong>Situation:</strong>  An AI-powered care planning assistant built for social good.</p>
-  <p><strong>Problem:</strong>  Helps caregivers create personalized, goal-based daily care plans from natural language descriptions, enriched with emotion-aware context, risk detection, interactive scheduling, and exportable summaries.</p>
-  <p><strong>Action:</strong>  Built during the Hack the Vibe 2025 hackathon, CareSketch focuses on empowering non-technical caregivers to deliver thoughtful, informed, and emotionally supportive care.</p>
-  <p><strong>Result:</strong>  CareSketch generates detailed care plans from simple English descriptions, customizable based on goals (e.g., pain relief, mobility) and emotional state.</p>
-  <p><strong>What I Learned:</strong>  New skills or tools include conversational emotional support, risk detection, interactive timeline, PDF export, and a beautiful UI.</p>
-  <p><strong>Tech Stack:</strong>  React, Python, Flask</p>
-</>),
-    links: [
-  {
-    "label": "GitHub Repo",
-    "url": "https://github.com/synamalhan/care-sketch"
-  }
-]
-  },
-  {
-    title: "Ocean Pollution Tracker",
+    badge: "",
+title: "Ocean Pollution Tracker",
     summary: "A project aimed at monitoring, visualizing, and raising awareness about pollution in the world's oceans.",
     duration: undefined,
     techStack: ["React","Python","Flask"],
@@ -754,7 +793,8 @@ const projects = [
 ]
   },
   {
-    title: "NeuroTrack",
+    badge: "",
+title: "NeuroTrack",
     summary: "A SwiftUI-based cognitive training app that helps users improve their memory and focus through a fun memory-matching game, integrating with Apple HealthKit to log mindful sessions and track cognitive activity over time.",
     duration: undefined,
     techStack: ["Swift","SwiftUI","HealthKit","Xcode"],
@@ -774,7 +814,8 @@ const projects = [
 ]
   },
   {
-    title: "PulseGuardian: Real-Time Stress Monitor",
+    badge: "",
+title: "PulseGuardian: Real-Time Stress Monitor",
     summary: "Heart rate variability-based stress detection app for Apple Watch and iPhone.",
     duration: undefined,
     techStack: ["Swift","WatchKit","HealthKit","SwiftUI"],
@@ -789,7 +830,8 @@ const projects = [
     links: []
   },
   {
-    title: "MoodSync: Voice Journal with Emotion Detection",
+    badge: "",
+title: "MoodSync: Voice Journal with Emotion Detection",
     summary: "Voice journaling app with CoreML-powered emotion detection and mood tracking.",
     duration: undefined,
     techStack: ["Swift","CoreML","AVFoundation","Speech"],
@@ -804,7 +846,8 @@ const projects = [
     links: []
   },
   {
-    title: "LensOCR: AI-Enhanced Document Scanner",
+    badge: "",
+title: "LensOCR: AI-Enhanced Document Scanner",
     summary: "iOS document scanner with real-time OCR and table extraction using Vision.",
     duration: undefined,
     techStack: ["Swift","Vision","CoreML","UIKit"],
@@ -819,7 +862,8 @@ const projects = [
     links: []
   },
   {
-    title: "AI-Powered Symptom Checker",
+    badge: "",
+title: "AI-Powered Symptom Checker",
     summary: "Streamlit web app that uses a machine learning model to predict possible diseases based on user-selected symptoms.",
     duration: undefined,
     techStack: ["React","Python","Flask"],
@@ -839,7 +883,8 @@ const projects = [
 ]
   },
   {
-    title: "Solar System Simulation in A-Frame",
+    badge: "",
+title: "Solar System Simulation in A-Frame",
     summary: "Created an interactive 3D solar system model using A-Frame to understand WebXR concepts and entity-component design.",
     duration: "May 2025",
     techStack: ["HTML","A-Frame","WebGL","Three.js"],

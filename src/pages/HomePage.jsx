@@ -9,6 +9,7 @@ import ProjectSection from '../components/projects/ProjectSection';
 import SkillSection from '../components/skills/SkillSection';
 import ContactSection from '../components/contacts/ContactSection';
 import SunkenShipSection from '../components/hobbies/SunkenShipSection';
+import UpdatesSection from '../components/updates/UpdatesSection';
 
 import BubbleOverlay from '../components/common/BubbleOverlay';
 import ReefOverlay from '../components/common/ReefOverlay';
@@ -41,6 +42,7 @@ useEffect(() => {
       <WorkExperienceSection />
       <ProjectSection />
       <SkillSection />
+      <UpdatesSection />
       <ContactSection />
       <SunkenShipSection />
       <CrabOverlay />

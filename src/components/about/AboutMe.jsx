@@ -119,10 +119,10 @@ const AboutMe = () => {
               lineHeight: lineHeightText,
             }}
           >
-            Hi! I’m <strong>Syna Malhan</strong>, a curious computer science student with a love for merging logic with imagination. Whether it's through writing expressive code, exploring the elegance of algorithms, or crafting immersive front-end interfaces, I’m always looking for new ways to make digital experiences more intuitive and delightful.
+            Hi! I'm <strong>Syna Malhan</strong>, a computer science student who loves blending logic with creativity. I thrive on building digital experiences that are not just functional, but also intuitive and delightful—whether that means writing expressive code, designing elegant algorithms, or crafting immersive front-end interfaces.
             <br />
             <br />
-            Outside the world of tech, I’m endlessly inspired by marine life — the colors, movement, and mysteries of the ocean often find their way into my creative process. This portfolio is a reflection of both my technical journey and my love for nature’s quiet intelligence.
+            My inspiration often comes from the ocean: its colors, movement, and quiet intelligence shape how I approach both technology and life. I believe the best solutions are those that feel as natural and seamless as the sea itself.
             <br />
             <br />
             <span style={styles.resumeHint}>
