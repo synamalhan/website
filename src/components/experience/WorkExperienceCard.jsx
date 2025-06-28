@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Lottie from 'lottie-react';
 import { X } from 'lucide-react';
@@ -18,13 +18,20 @@ const hues = [
 const WorkExperienceCard = ({ title, company, duration, summary, details, logo }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
   const hueFilter = useMemo(() => hues[Math.floor(Math.random() * hues.length)], []);
   const ref = useRef(null);
   const inView = useInView(ref, { threshold: 0.3, triggerOnce: false });
 
+  useEffect(() => {
+    const handleResize = () => setIsSmallScreen(window.innerWidth < 600);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
-      {/* Ripple Animation */}
+      {/* Ripple and Float Animations */}
       <style>{`
         @keyframes floatUp {
           0% { transform: translateY(-50px) scale(1); opacity: 0.2; }
@@ -50,6 +57,7 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
         }
       `}</style>
 
+      {/* Card */}
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 40 }}
@@ -67,7 +75,6 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {/* Layered Animations */}
         <motion.img
           src={bubbles3D}
           alt="3D bubbles"
@@ -108,7 +115,6 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
           <Lottie animationData={bubbleAnimation} loop autoplay />
         </motion.div>
 
-        {/* Centered Content */}
         <div
           style={{
             position: 'relative',
@@ -125,9 +131,9 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
           }}
         >
           <img src={logo} alt="Logo" style={{ height: 40, marginBottom: 8 }} />
-          <div style={{ fontSize: '1.3rem', fontWeight: '700' }}>{title}</div>
-          <div style={{ fontSize: '1rem', fontWeight: '600', color: '#b4eaff' }}>{company}</div>
-          <div style={{ fontSize: '0.85rem', fontWeight: '500', color: '#9cd3e7' }}>{duration}</div>
+          <div style={{ fontSize: isSmallScreen ? '1rem' : '1.3rem', fontWeight: '700' }}>{title}</div>
+          <div style={{ fontSize: isSmallScreen ? '0.85rem' : '1rem', fontWeight: '600', color: '#b4eaff' }}>{company}</div>
+          <div style={{ fontSize: isSmallScreen ? '0.7rem' : '0.85rem', fontWeight: '500', color: '#9cd3e7' }}>{duration}</div>
         </div>
       </motion.div>
 
@@ -156,7 +162,7 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
               position: 'relative',
               background: 'rgba(0, 40, 50, 0.7)',
               borderRadius: 30,
-              padding: '40px 30px',
+              padding: isSmallScreen ? '25px 20px' : '40px 30px',
               width: '90%',
               maxWidth: 700,
               boxShadow: '0 0 60px rgba(0,200,255,0.3)',
@@ -166,7 +172,6 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Floating Bubbles Inside Modal */}
             {Array.from({ length: 12 }).map((_, i) => {
               const size = Math.random() * 30 + 20;
               const left = Math.random() * 100;
@@ -192,7 +197,6 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
               );
             })}
 
-            {/* Close Button */}
             <button
               onClick={() => setModalOpen(false)}
               style={{
@@ -220,10 +224,17 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
                   margin: '0 auto 20px',
                 }}
               />
-              <h2 style={{ fontSize: '2.3rem', textAlign: 'center', color: '#ffffff', marginBottom: '12px' }}>{title}</h2>
+              <h2 style={{
+                fontSize: isSmallScreen ? '1.6rem' : '2.3rem',
+                textAlign: 'center',
+                color: '#ffffff',
+                marginBottom: '12px'
+              }}>
+                {title}
+              </h2>
               <p
                 style={{
-                  fontSize: '1.2rem',
+                  fontSize: isSmallScreen ? '1rem' : '1.2rem',
                   fontWeight: '400',
                   marginBottom: 20,
                   color: '#c8efff',
@@ -234,7 +245,7 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
               </p>
               <div
                 style={{
-                  fontSize: '1rem',
+                  fontSize: isSmallScreen ? '0.9rem' : '1rem',
                   lineHeight: 1.7,
                   whiteSpace: 'pre-wrap',
                   color: '#e3f9ff',
