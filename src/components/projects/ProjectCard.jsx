@@ -6,14 +6,14 @@ import { X } from 'lucide-react';
 
 const huesWithFilters = [
   { color: '#00d2ff', filter: 'hue-rotate(0deg)' },
-  { color: '#ff6ec4', filter: 'hue-rotate(150deg)' },
-  { color: '#c471ed', filter: 'hue-rotate(180deg)' },
-  { color: '#f7797d', filter: 'hue-rotate(210deg)' },
+  { color: '#ff6ec4', filter: 'hue-rotate(15deg)' },
+  { color: '#c471ed', filter: 'hue-rotate(1200deg)' },
+  { color: '#f7797d', filter: 'hue-rotate(250deg)' },
   { color: '#12c2e9', filter: 'hue-rotate(90deg)' },
   { color: '#fcb045', filter: 'hue-rotate(60deg)' },
-  { color: '#ff9a9e', filter: 'hue-rotate(120deg)' },
+  { color: '#ff9a9e', filter: 'hue-rotate(20deg)' },
   { color: '#42e695', filter: 'hue-rotate(30deg)' },
-  { color: '#fad0c4', filter: 'hue-rotate(240deg)' },
+  { color: '#fad0c4', filter: 'hue-rotate(300deg)' },
   { color: '#a1c4fd', filter: 'hue-rotate(270deg)' },
 ];
 
