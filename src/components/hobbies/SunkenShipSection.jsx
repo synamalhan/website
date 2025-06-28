@@ -60,8 +60,8 @@ const FinalSection = () => {
           src={ship}
           alt="Ship"
           style={{
-            height: isSmall ? '300px' : '700px',
-            top:150,
+            height: isSmall ? '500px' : '1000px',
+            top:250,
             filter: 'hue-rotate(190deg)',
             zIndex: 1,
             opacity: 0.3,
