@@ -42,7 +42,6 @@ useEffect(() => {
       <WorkExperienceSection />
       <ProjectSection />
       <SkillSection />
-      <UpdatesSection />
       <ContactSection />
       <SunkenShipSection />
       <CrabOverlay />
