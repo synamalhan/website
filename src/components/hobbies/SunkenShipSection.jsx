@@ -27,7 +27,7 @@ const FinalSection = () => {
     <section
       id="final-section"
       style={{
-        background: 'linear-gradient(180deg, #000608 0%, #000000 100%)',
+        background: 'linear-gradient(180deg, #000a0e 0%, #000608 100%)',
         margin: 0,
         display: 'flex',
         justifyContent: 'space-between',
