@@ -12,18 +12,12 @@ const AnimatedOnScroll = ({ children, delay = 0, direction = 'up' }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        } else {
-          setVisible(false);
-        }
+        setVisible(entry.isIntersecting);
       },
       { threshold: 0.2 }
     );
     if (ref.current) observer.observe(ref.current);
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
+    return () => ref.current && observer.unobserve(ref.current);
   }, []);
 
   const getTransform = () => {
@@ -35,7 +29,6 @@ const AnimatedOnScroll = ({ children, delay = 0, direction = 'up' }) => {
         return 'translateX(-60px)';
       case 'down':
         return 'translateY(-40px)';
-      case 'up':
       default:
         return 'translateY(40px)';
     }
@@ -57,6 +50,7 @@ const AnimatedOnScroll = ({ children, delay = 0, direction = 'up' }) => {
 
 const AboutMe = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
@@ -66,18 +60,14 @@ const AboutMe = () => {
   const isMobile = windowWidth < 480;
   const isSmall = windowWidth < 768;
 
-  const fontSizeTitle = isMobile ? '2rem' : '3rem';
-  const fontSizeText = isMobile ? '1rem' : '1.25rem';
-  const lineHeightText = isMobile ? '1.4' : '1.6';
-
   return (
     <section
       id="about"
       style={{
         ...styles.container,
-        flexDirection: isMobile ? 'column' : 'row',
-        padding: isMobile ? '20px 0' : '40px',
-        position: 'relative',
+        flexDirection: isSmall ? 'column' : 'row',
+        padding: isSmall ? '50px 0px' : '60px 80px',
+        flexWrap: 'wrap',
       }}
     >
       {/* Left Fish Group */}
@@ -106,47 +96,33 @@ const AboutMe = () => {
         <div
           style={{
             ...styles.textContainer,
-            justifyContent: 'center',
+            maxWidth: isSmall ? '100%' : '600px',
+            width: '100%',
+            padding: '0 1rem',
             textAlign: 'center',
-            maxWidth: isMobile ? '100%' : '500px',
           }}
         >
-          <h2 style={{ ...styles.title, fontSize: fontSizeTitle }}>About Me</h2>
+          <h2 style={{...styles.title, paddingLeft: isSmall? '0px':'60px'}}>About Me</h2>
           <p
-            style={{
-              ...styles.text,
-              fontSize: fontSizeText,
-              lineHeight: lineHeightText,
-            }}
-          >
+  style={{
+    ...styles.text,
+    paddingRight: isSmall ? '30px' : '0px',
+    paddingLeft: isSmall ? '0px' : '60px',
+  }}
+>
             Hi! I'm <strong>Syna Malhan</strong>, a computer science student who loves blending logic with creativity. I thrive on building digital experiences that are not just functional, but also intuitive and delightful—whether that means writing expressive code, designing elegant algorithms, or crafting immersive front-end interfaces.
-            <br />
-            <br />
+            <br /><br />
             My inspiration often comes from the ocean: its colors, movement, and quiet intelligence shape how I approach both technology and life. I believe the best solutions are those that feel as natural and seamless as the sea itself.
-            <br />
-            <br />
+            <br /><br />
             <span style={styles.resumeHint}>
               🐠 P.S. If you're looking for my resume... you'll have to ask the fishes swimming around this section!
             </span>
           </p>
 
           {isMobile && (
-            <div
-              style={{
-                marginTop: 20,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
+            <div style={styles.mobileFishGroup}>
               <AnimatedOnScroll delay={0.1} direction="right">
                 <FloatingFishResume size={40} />
-              </AnimatedOnScroll>
-              <AnimatedOnScroll delay={0.2} direction="right">
-                <FloatingFishResume4 size={40} />
-              </AnimatedOnScroll>
-              <AnimatedOnScroll delay={0.3} direction="right">
-                <FloatingFishResume3 size={40} />
               </AnimatedOnScroll>
             </div>
           )}
@@ -180,14 +156,20 @@ const styles = {
   },
   textContainer: {
     fontFamily: "'Lora', serif",
+    maxWidth: '60%',  
+    width: '60%',
   },
   title: {
     fontFamily: "'Montserrat', sans-serif",
     marginBottom: '20px',
     color: '#00e5ff',
     textShadow: '2px 2px 6px rgba(0,0,0,1)',
+    fontSize: 'clamp(2rem, 5vw, 3rem)',
   },
-  text: {},
+  text: {
+    fontSize: 'clamp(1rem, 1.5vw, 1.25rem)',
+    lineHeight: '1.6',
+  },
   resumeHint: {
     fontStyle: 'italic',
     opacity: 0.8,
@@ -200,6 +182,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: '40px',
+    flexShrink: 0,
   },
   centerFish: {
     position: 'absolute',
@@ -228,6 +211,17 @@ const styles = {
     alignItems: 'center',
     gap: '20px',
     marginLeft: '40px',
+    flexShrink: 0,
+  },
+  mobileFishGroup: {
+    marginTop: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '15px',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+
   },
 };
 

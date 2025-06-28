@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef , useEffect} from 'react';
 import Lottie from 'lottie-react';
 import { motion, useInView } from 'framer-motion';
 import fishesAnimation from '../../assets/fishes.json';
@@ -22,6 +22,13 @@ const HeroSection = () => {
   const taglineOffset = useMouseParallax(0.04);
   const lottieOffset = useMouseParallax(0.02);
   const name = "Syna Malhan";
+  const [isSmallScreen, setIsSmallScreen] = React.useState(window.innerWidth < 500);
+
+  useEffect(() => {
+    const handleResize = () => setIsSmallScreen(window.innerWidth < 500);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -37,18 +44,37 @@ const HeroSection = () => {
           transform: `translate3d(${nameOffset.x}px, ${nameOffset.y}px, 0)`,
         }}
       >
-        {name.split('').map((char, i) => (
-          <motion.span
-            key={i}
-            custom={i}
-            variants={floatDownVariant}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            style={{ display: 'inline-block' }}
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
+        {(isSmallScreen ? name.split(' ') : [name]).map((part, partIdx, arr) => (
+  <React.Fragment key={partIdx}>
+    {part.split('').map((char, i) => (
+      <motion.span
+        key={`${partIdx}-${i}`}
+        custom={i + partIdx * 10}
+        variants={floatDownVariant}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        style={{ display: 'inline-block' }}
+      >
+        {char}
+      </motion.span>
+    ))}
+    {isSmallScreen && partIdx < arr.length - 1 && <br />}
+    {!isSmallScreen && partIdx < arr.length - 1 && (
+      <motion.span
+        key={`space-${partIdx}`}
+        custom={part.length + partIdx * 10}
+        variants={floatDownVariant}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        style={{ display: 'inline-block' }}
+      >
+        {'\u00A0'}
+      </motion.span>
+    )}
+  </React.Fragment>
+))}
+
+
       </h1>
 
       <motion.p
