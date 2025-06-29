@@ -61,7 +61,7 @@ const SkillCard = ({ skill, level, category }) => {
           borderRadius,
           padding: isSmallScreen ? '12px 8px' : '20px 16px',
           minHeight: '60px',
-          color: '#00171c',
+          color: '#00171cc',
           fontSize: isSmallScreen ? '0.75rem' : '0.9rem',
           fontWeight: '600',
           boxShadow: isHovered 

@@ -4,7 +4,45 @@ const projects = [
   
   
   
+  
+  
   {
+  badge: "",
+  title: "FrozenLake Q-Learning Agent",
+  summary: "A simple yet effective reinforcement learning agent that learns to navigate the FrozenLake environment using Q-Learning.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> A simple yet effective reinforcement learning agent was trained to navigate a frozen 4x4 grid and reach the goal while avoiding holes.</p>
+      <p><b>Problem:</b> The agent had to learn to balance exploration vs exploitation to successfully solve the FrozenLake environment using the Q-Learning algorithm.</p>
+      <p><b>Action:</b> The agent used a Q-table based learning loop to train an optimal policy for navigating the grid and reaching the goal.</p>
+      <p><b>Result:</b> The agent successfully learned to reach the goal with near-perfect consistency after training on 20,000 episodes.</p>
+      <p><b>What I Learned:</b> How Q-learning works under the hood, the importance of balancing exploration vs exploitation, how to tune hyperparameters for convergence, and visualizing RL performance using reward curves.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/frozenlake-q-learning.git" }
+  ]
+},{
+  badge: "🎨",
+  title: "K-Means Image Compressor",
+  summary: "A Streamlit app that compresses images using K-Means clustering by reducing the number of unique colors. Perfect for visualizing how unsupervised learning works!",
+  techStack: ["Streamlit", "scikit-learn", "PIL", "NumPy"],
+  details: (
+    <>
+      <p><b>Situation:</b> A Streamlit app that compresses images using K-Means clustering by reducing the number of unique colors.</p>
+      <p><b>Problem:</b> Each pixel is treated as a point in 3D RGB space. K-Means groups pixels into k clusters based on color similarity.</p>
+      <p><b>Action:</b> Each pixel is replaced by the centroid color of its cluster. The image is reconstructed with fewer unique colors, reducing file size.</p>
+      <p><b>Result:</b> Perfect for visualizing how unsupervised learning works!</p>
+      <p><b>What I Learned:</b> Built with ❤️ using Streamlit, scikit-learn, PIL, and NumPy.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/k-means-image-compressor.git" },
+  ]
+},{
   badge: "",
   title: "GitHub LinkedIn Post Generator",
   summary: "Transform your GitHub activity into engaging LinkedIn posts using AI! This Streamlit application fetches your recent GitHub repositories and commits, then uses Ollama (local LLM) to generate professional LinkedIn posts.",
