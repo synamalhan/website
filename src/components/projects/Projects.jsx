@@ -1,5 +1,100 @@
 const projects = [
-    {
+    
+  
+  
+  
+  
+  {
+  badge: "",
+  title: "GitHub LinkedIn Post Generator",
+  summary: "Transform your GitHub activity into engaging LinkedIn posts using AI! This Streamlit application fetches your recent GitHub repositories and commits, then uses Ollama (local LLM) to generate professional LinkedIn posts.",
+  techStack: ["Python", "Ollama"],
+  details: (
+    <>
+      <p><b>Situation:</b> Fetches repositories, commits, and README content</p>
+      <p><b>Problem:</b> Analyze activity within any date range</p>
+      <p><b>Action:</b> Select spotlight vs supporting projects</p>
+      <p><b>Result:</b> Uses Ollama for human-sounding LinkedIn posts</p>
+      <p><b>What I Learned:</b> Includes emojis, highlights, links, and hashtags</p>
+      <p><b>Tech Stack:</b> Python 3.8+, Ollama</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repository", url: "https://github.com/synamalhan/git-post" },
+  ]
+},{
+  badge: "",
+  title: "FaceTrack - Advanced Facial Recognition Attendance System",
+  summary: "A cutting-edge facial recognition attendance management system combining modern web technologies with AI-powered biometric identification.",
+  techStack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+  details: (
+    <>
+      <p><b>Situation:</b> A need for a reliable and efficient attendance tracking solution.</p>
+      <p><b>Problem:</b> Traditional methods of attendance tracking were time-consuming, error-prone, and lacked real-time analytics.</p>
+      <p><b>Action:</b> Developed an AI-powered facial recognition attendance management system with a stunning dark purple interface designed for professional environments.</p>
+      <p><b>Result:</b> Achieved accurate, real-time attendance tracking, comprehensive reporting, and enhanced employee experience.</p>
+      <p><b>What I Learned:</b> New skills in AI-powered biometric identification, TypeScript development, and responsive design.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/facial-attendance" },
+  ]
+},{
+  badge: "",
+  title: "Drag & Drop JSON Editor",
+  summary: "A simple React application for visually editing JSON data using drag-and-drop. Easily rearrange, add, or remove fields in your JSON structure.",
+  techStack: ["React", "Node.js"],
+  details: (
+    <>
+      <p><b>Situation:</b> A simple React application for visually editing JSON data.</p>
+      <p><b>Problem:</b> To provide an intuitive way to create, edit, and manage JSON data.</p>
+      <p><b>Action:</b> Built a React app that allows users to drag and drop fields, add or remove fields dynamically, and preview the JSON in real-time.</p>
+      <p><b>Result:</b> A user-friendly application for editing JSON data, making it easier for developers to manage their project's configuration files.</p>
+      <p><b>What I Learned:</b> React, Node.js, npm</p>
+      <p><b>Tech Stack:</b> React, Node.js, npm</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/drag-drop-json" },
+  ]
+},{
+  badge: "",
+  title: "EduFlex+ Educational Learning Platform",
+  summary: "A modern, AI-powered educational platform that adapts to your emotional state and learning style. Built with React, TypeScript, and integrated with Ollama for local AI processing.",
+  techStack: ["React", "TypeScript"],
+  details: (
+    <>
+      <p><b>Situation:</b> A modern, AI-powered educational platform.</p>
+      <p><b>Problem:</b> None mentioned.</p>
+      <p><b>Action:</b> Built with React, TypeScript, and integrated with Ollama for local AI processing.</p>
+      <p><b>Result:</b> Adapts to your emotional state and learning style.</p>
+      <p><b>What I Learned:</b> New skills or tools not mentioned.</p>
+      <p><b>Tech Stack:</b> React, TypeScript, Tailwind CSS, Framer Motion, React Router, Lucide React</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/eduflex-plus" },
+  ]
+},{
+  badge: "",
+  title: "CuraMind - AI-Powered Mental Health Support",
+  summary: "Empathetic, multilingual mental health chatbot that works offline",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> Empathetic, multilingual mental health chatbot designed to provide accessible, empathetic mental health assistance to users worldwide.</p>
+      <p><b>Problem:</b> Mental health support is expensive and not available 24/7, language barriers exist, offline limitations hinder access, immediate help is needed for crisis situations, and users need to track their emotional wellbeing over time.</p>
+      <p><b>Action:</b> Built an innovative mental health support chatbot that works offline, supports multiple languages, and provides empathetic responses tailored to user's emotional state.</p>
+      <p><b>Result:</b> Provides accessible, inclusive, and personalized mental health assistance to users worldwide.</p>
+      <p><b>What I Learned:</b> New skills in AI/ML, natural language processing, and human-computer interaction.</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/curamind" },
+  ]
+},{
     badge: "🏆 Hackathon Winner 🏆",
 title: "CareSketch",
     summary: "AI-powered care planning assistant built for social good.",
@@ -408,6 +503,25 @@ title: "Chatbot Referral Agent",
 </>),
     links: undefined
   },
+  {
+  badge: "",
+  title: "GitHub LinkedIn Post Generator",
+  summary: "Transform your GitHub activity into engaging LinkedIn posts using AI! This Streamlit application fetches your recent GitHub repositories and commits, then uses Ollama (local LLM) to generate professional LinkedIn posts.",
+  techStack: ["React", "Python", "Flask"],
+  details: (
+    <>
+      <p><b>Situation:</b> Fetches repositories, commits, and README content</p>
+      <p><b>Problem:</b> Analyze activity within any date range</p>
+      <p><b>Action:</b> Select spotlight vs supporting projects</p>
+      <p><b>Result:</b> Uses Ollama for human-sounding LinkedIn posts</p>
+      <p><b>What I Learned:</b> Includes emojis, highlights, links, and hashtags</p>
+      <p><b>Tech Stack:</b> React, Python, Flask</p>
+    </>
+  ),
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/synamalhan/git-post" },
+  ]
+},
   {
     badge: "",
 title: "Content Censoring Solution",

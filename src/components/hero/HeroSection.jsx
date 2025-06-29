@@ -89,6 +89,8 @@ const HeroSection = () => {
         Exploring tech depths with code & creativity
       </motion.p>
 
+      
+
       {/* <div
         style={{
           ...styles.lottieWrapper,

@@ -50,7 +50,7 @@ def extract_jsx_object_block(text: str) -> str:
 
                     # Check if block starts with "title"
                     inside = block.lstrip("{").lstrip()
-                    if re.match(r'^["\']?title["\']?\s*:', inside):
+                    if re.match(r'^["\']?badge["\']?\s*:', inside):
                         return block  # ✅ Valid block
                     # Otherwise continue looking
 
