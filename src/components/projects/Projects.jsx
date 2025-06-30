@@ -1,11 +1,4 @@
 const projects = [
-    
-  
-  
-  
-  
-  
-  
   {
   badge: "",
   title: "FrozenLake Q-Learning Agent",
@@ -97,7 +90,7 @@ const projects = [
     { label: "GitHub Repo", url: "https://github.com/synamalhan/drag-drop-json" },
   ]
 },{
-  badge: "",
+  badge: "🏆 Hackathon Winner 🏆",
   title: "EduFlex+ Educational Learning Platform",
   summary: "A modern, AI-powered educational platform that adapts to your emotional state and learning style. Built with React, TypeScript, and integrated with Ollama for local AI processing.",
   techStack: ["React", "TypeScript"],
