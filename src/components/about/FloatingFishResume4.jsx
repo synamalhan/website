@@ -10,24 +10,20 @@ const FloatingFishResume = () => {
   const [rotation, setRotation] = useState(0);
   const fishRef = useRef(null);
 
-
-  const resumeEmbedUrl = "https://drive.google.com/file/d/1dWooWYa7-TuPjlG9GcKVrJMTFEIs21nS/preview";
-  const resumeDownloadUrl = "https://drive.google.com/uc?export=download&id=1dWooWYa7-TuPjlG9GcKVrJMTFEIs21nS";
+const resumeUrl = "/resume.pdf"; // Resume stored in public folder
 
   const handleClick = () => {
-
     // Start download
     const link = document.createElement('a');
-    link.href = resumeDownloadUrl;
+    link.href = resumeUrl;
     link.download = 'Syna_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
-    // Show modal
+    // Show modal preview
     setShowModal(true);
   };
-
   const handleMouseMove = (e) => {
     const fish = fishRef.current;
     if (fish) {
@@ -90,7 +86,7 @@ const FloatingFishResume = () => {
         <div style={styles.modalOverlay} onClick={() => setShowModal(false)}>
           <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <iframe
-              src={resumeEmbedUrl}
+              src={resumeUrl}
               title="Resume Preview"
               width="100%"
               height="100%"
