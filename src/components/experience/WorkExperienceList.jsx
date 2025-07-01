@@ -9,6 +9,23 @@ import headstarter from '../../assets/headstarter.avif';
 import eyLogo from '../../assets/eyLogo.png'; // replace with your Ernst & Young logo import or image reference
 
 const experiences = [
+{
+  title: 'Data Science Intern',
+  company: 'Infinite Uptime',
+  duration: 'Jul 2025 - Present',
+  summary: 'Analyzing real-world process and sensor data to generate actionable insights for predictive maintenance and manufacturing optimization.',
+  details: (
+    <>
+      <ul>
+        <li>Explored time-series sensor data to detect anomalies and inefficiencies in industrial equipment using Python and Pandas.</li>
+        <li>Applied statistical methods and machine learning (scikit-learn) to model performance trends and identify early warning signs of failure.</li>
+        <li>Built interactive visualizations and KPI dashboards using Matplotlib and Power BI to support operational decision-making.</li>
+      </ul>
+    </>
+  ),
+  logo: iu, // replace with your Infinite Uptime logo import or image reference
+},
+
   {
   title: 'Gen AI Intern',
   company: 'Ernst & Young',
