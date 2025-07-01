@@ -3,7 +3,7 @@ import Lottie from 'lottie-react';
 import { motion, useInView } from 'framer-motion';
 import fishesAnimation from '../../assets/fishes.json';
 import useMouseParallax from '../../hooks/useMouseParallax';
-
+import Orb from '../common/Orb';
 const floatDownVariant = {
   hidden: { opacity: 0, y: -30 },
   visible: (i) => ({
@@ -38,12 +38,16 @@ const HeroSection = () => {
 
   return (
     <section id="hero" style={styles.container} ref={ref}>
-      <h1
-        style={{
-          ...styles.name,
-          transform: `translate3d(${nameOffset.x}px, ${nameOffset.y}px, 0)`,
-        }}
-      >
+  <div style={styles.orbWrapper}>
+    <Orb hue={200} hoverIntensity={0.4} rotateOnHover={true} />
+  </div>
+
+  <h1
+    style={{
+      ...styles.name,
+      transform: `translate3d(${nameOffset.x}px, ${nameOffset.y}px, 0)`,
+    }}
+  >
         {(isSmallScreen ? name.split(' ') : [name]).map((part, partIdx, arr) => (
   <React.Fragment key={partIdx}>
     {part.split('').map((char, i) => (
@@ -77,29 +81,18 @@ const HeroSection = () => {
 
       </h1>
 
-      <motion.p
-        style={{
-          ...styles.tagline,
-          transform: `translate3d(${taglineOffset.x}px, ${taglineOffset.y}px, 0)`,
-        }}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, delay: 0.5 }}
-      >
-        Exploring tech depths with code & creativity
-      </motion.p>
-
-      
-
-      {/* <div
-        style={{
-          ...styles.lottieWrapper,
-          transform: `translate3d(${lottieOffset.x}px, ${lottieOffset.y}px, 0)`,
-        }}
-      >
-        <Lottie animationData={fishesAnimation} loop={true} style={styles.lottie} />
-      </div> */}
-    </section>
+  <motion.p
+    style={{
+      ...styles.tagline,
+      transform: `translate3d(${taglineOffset.x}px, ${taglineOffset.y}px, 0)`,
+    }}
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1.2, delay: 0.5 }}
+  >
+    Exploring tech depths with code & creativity
+  </motion.p>
+</section>
   );
 };
 
@@ -155,6 +148,17 @@ const styles = {
     height: '100%',
     filter: 'hue-rotate(20deg)',
   },
+  orbWrapper: {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  zIndex: 0,
+  overflow: 'hidden',
+  pointerEvents: 'none',
+},
+
 };
 
 export default HeroSection;

@@ -16,6 +16,7 @@ import ReefOverlay from '../components/common/ReefOverlay';
 import CrabOverlay from '../components/common/CrabOverlay';
 import FishBottomOverlay from '../components/common/FishBottomOverlay';
 
+
 const HomePage = () => {
   const [opacity, setOpacity] = useState(1);
 
@@ -46,6 +47,7 @@ useEffect(() => {
       <SunkenShipSection />
       <CrabOverlay />
       <FishBottomOverlay />
+     
     </div>
   );
 };

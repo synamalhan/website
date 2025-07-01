@@ -216,7 +216,7 @@ const ProjectCard = ({ title, description, details, image, links, techStack = []
         onClick={openModal}
         role="button"
         tabIndex={0}
-      >
+       >
         <img src={jellyfishGif} alt="Animated jellyfish" style={styles.lottie} />
         <div style={styles.textOverlay}>
           {badge && <div style={styles.badge}>{badge}</div>}
