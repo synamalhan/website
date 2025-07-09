@@ -9,7 +9,7 @@ import MacbookWrapper from './components/MacbookWrapper';
 import AboutSection from './components/AboutSection'; 
 import ContactSection from './components/ContactSection';
 import ClickSpark from './components/reactbits/ClickSpark'; // adjust path as needed
-import Ribbons from './components/reactbits/Ribbons';
+import InteractiveBits from './components/InteractiveBits';
 function App() {
   return (
 
@@ -31,6 +31,9 @@ function App() {
         </MacbookWrapper>
         <MacbookWrapper>
           <ProjectsSection />
+        </MacbookWrapper>
+         <MacbookWrapper>
+          <InteractiveBits />
         </MacbookWrapper>
         <ContactSection />
         <Footer />
