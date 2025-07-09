@@ -37,12 +37,12 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0">
         <Particles
           particleColors={['#a78bfa', '#c084fc', '#d8b4fe']} // lavender to soft violet tones
-          particleCount={1000}
+          particleCount={5000}
           particleSpread={10}
           speed={0.1}
           particleBaseSize={100}
           moveParticlesOnHover={true}
-          alphaParticles={false}
+          alphaParticles={true}
           disableRotation={false}
         />
       </div>
@@ -59,24 +59,39 @@ const HeroSection = () => {
           I build AI, data science, and full-stack apps - blending tech with life✨
         </p>
         {/* Tilted Summary Cards */}
-<div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 px-4">
+{/* Cards Grid - hidden on small screens */}
+<div className="hidden sm:grid mt-12 grid-cols-1 sm:grid-cols-2 gap-8 px-4">
+  {cards.map((card, idx) => (
+    <a key={idx} href={card.link} className="block">
+      <TiltedCard
+        containerHeight="240px"
+        containerWidth="100%"
+        overlayHeader={card.title}
+        overlayText={card.text}
+        overlayLink={card.link}
+        overlayLinkText="Explore →"
+        gradientColors={card.gradient}
+        scaleOnHover={1.15}
+        rotateAmplitude={30}
+      />
+    </a>
+  ))}
+</div>
 
-        {cards.map((card, idx) => (
-          <a key={idx} href={card.link} className="block">
-            <TiltedCard
-              containerHeight="240px"
-              containerWidth="100%"
-              overlayHeader={card.title}
-              overlayText={card.text}
-              overlayLink={card.link}
-              overlayLinkText="Explore →"
-              gradientColors={card.gradient}
-              scaleOnHover={1.15}
-              rotateAmplitude={30}
-            />
-          </a>
-        ))}
-        </div>
+{/* Mobile-only fallback text */}
+<div className="sm:hidden mt-10 text-center px-6">
+  <p className="text-md text-gray-600">
+    Explore my story, projects, and experience — optimized for desktop 💻
+  </p>
+  <a
+    href="#about"
+    className="inline-block mt-4 px-6 py-2 text-white bg-purple-600 rounded-xl hover:bg-purple-700 transition"
+  >
+    Jump to About
+  </a>
+</div>
+
+
       </motion.div>
     </section>
   );
