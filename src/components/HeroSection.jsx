@@ -56,7 +56,7 @@ const HeroSection = () => {
       >
         <h1 className="text-4xl md:text-6xl font-bold text-gray-900">Hi, I'm Syna</h1>
         <p className="mt-4 text-lg text-gray-700 max-w-xl mx-auto">
-          I build AI, data science, and full-stack apps ✨
+          I build AI, data science, and full-stack apps - blending tech with life✨
         </p>
         {/* Tilted Summary Cards */}
 <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 px-4">
