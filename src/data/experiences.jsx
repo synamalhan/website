@@ -2,7 +2,7 @@ import jspl from '../assets/jspl.png';
 import asu from '../assets/asu.png';
 import iu from '../assets/iuLogo.png';
 import ripik from '../assets/ripik.svg';
-import headstarter from '../assets/headstarter.avif';
+import headstarter from '../assets/headstarter.png';
 import eyLogo from '../assets/eyLogo.png'; // replace with your Ernst & Young logo import or image reference
 
 const experiences = [

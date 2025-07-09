@@ -32,27 +32,28 @@ export default function ExperienceSection() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
                 <SpotlightCard spotlightColor={randomColor}>
-                  <div className="flex items-start gap-4">
-                    {exp.logo && (
-                      <img
-                        src={exp.logo}
-                        alt={exp.company}
-                        className="h-10 w-10 object-contain mt-1"
-                      />
-                    )}
-                    <div>
-                      <h3 className="text-lg font-semibold leading-tight">
-                        {exp.title}{' '}
-                        <span className="text-sm text-gray-500">– {exp.company}</span>
-                      </h3>
-                      <p className="text-xs text-gray-400 mb-2">{exp.duration}</p>
-                      <p className="text-sm text-gray-700">{exp.summary}</p>
-                      <div className="mt-2 text-sm text-gray-700 leading-snug space-y-1">
-                        {exp.details}
-                      </div>
-                    </div>
-                  </div>
-                </SpotlightCard>
+  <div className="flex flex-col items-start gap-4">
+    {exp.logo && (
+      <img
+        src={exp.logo}
+        alt={exp.company}
+        className="w-20 object-contain"
+      />
+    )}
+    <div>
+      <h3 className="text-lg font-semibold leading-tight">
+        {exp.title}{' '}
+        <span className="text-sm text-gray-500">– {exp.company}</span>
+      </h3>
+      <p className="text-xs text-gray-400 mb-2">{exp.duration}</p>
+      <p className="text-sm text-gray-700">{exp.summary}</p>
+      <div className="mt-2 text-sm text-gray-700 leading-snug space-y-1">
+        {exp.details}
+      </div>
+    </div>
+  </div>
+</SpotlightCard>
+
               </motion.div>
             );
           })}
