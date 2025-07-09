@@ -14,7 +14,6 @@ echo "📤 Pushing to GitHub..."
 git push origin main
 
 echo "🏗️  Building the project..."
-npm install
 npm run build
 
 echo "🚀 Deploying to GitHub Pages..."
