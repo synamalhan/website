@@ -8,24 +8,34 @@ import Footer from './components/Footer';
 import MacbookWrapper from './components/MacbookWrapper';
 import AboutSection from './components/AboutSection'; 
 import ContactSection from './components/ContactSection';
-
+import ClickSpark from './components/reactbits/ClickSpark'; // adjust path as needed
+import Ribbons from './components/reactbits/Ribbons';
 function App() {
   return (
-    <div className="bg-[#f7f8f9] text-gray-800 font-sans">
-      <Navbar />
-      <HeroSection />
-      <MacbookWrapper>
-        <AboutSection />
-      </MacbookWrapper>
-      <MacbookWrapper>
-        <ExperienceSection />
-      </MacbookWrapper>
-      <MacbookWrapper>
-        <ProjectsSection />
-      </MacbookWrapper>
-      <ContactSection />
-      <Footer />
-    </div>
+
+    <ClickSpark
+      sparkColor="#a78bfa" // soft purple
+      sparkSize={10}
+      sparkRadius={15}
+      sparkCount={8}
+      duration={400}
+    >
+      <div className="bg-[#f7f8f9] text-gray-800 font-sans">
+        <Navbar />
+        <HeroSection />
+        <MacbookWrapper>
+          <AboutSection />
+        </MacbookWrapper>
+        <MacbookWrapper>
+          <ExperienceSection />
+        </MacbookWrapper>
+        <MacbookWrapper>
+          <ProjectsSection />
+        </MacbookWrapper>
+        <ContactSection />
+        <Footer />
+      </div>
+    </ClickSpark>
   );
 }
 

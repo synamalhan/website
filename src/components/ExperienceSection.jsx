@@ -2,7 +2,7 @@
 import React from 'react';
 import experiences from '../data/experiences';
 import { motion } from 'framer-motion';
-import SpotlightCard from './SpotlightCard';
+import SpotlightCard from './reactbits/SpotlightCard';
 
 // Define a palette of soft spotlight colors
 const spotlightColors = [

@@ -1,10 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Particles from './Particles'; // Adjust the path if needed
+import Particles from './reactbits/Particles'; // Adjust the path if needed
+import TiltedCard from './reactbits/TiltedCard';
+
+const cards = [
+    {
+      title: "About Me",
+      text: "Curious technologist, passionate about building meaningful tools with ML and design. Learn about my story, philosophy, and values.",
+      link: "#about",
+      gradient: ["#8B5CF6", "#4F46E5", "#312E81"],
+    },
+    {
+      title: "Projects",
+      text: "Dive into projects built with React, Python, Swift, and AI/ML — including OCR tools, RAG chatbots, emotion-aware UIs, and full-stack dashboards.",
+      link: "#projects",
+      gradient: ["#06B6D4", "#0E7490", "#164E63"],
+    },
+    {
+      title: "Experience",
+      text: "Internships and fellowships in GenAI, CV, forecasting, and frontend at Infinite Uptime, EY, ASU, JSPL, Ripik.AI, and Headstarter.",
+      link: "#experience",
+      gradient: ["#F59E0B", "#B45309", "#78350F"],
+    },
+    {
+      title: "Contact Me",
+      text: "I'm always open to meaningful conversations, freelance work, or collaborating on impactful AI projects. Feel free to drop a message!",
+      link: "#contact",
+      gradient: ["#EC4899", "#DB2777", "#831843"],
+    },
+  ];
 
 const HeroSection = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center bg-[#f7f8f9] text-gray-800 overflow-hidden" id="home">
+    <section className="relative h-screen flex items-center justify-center bg-[#f7f8f9] text-gray-800 " id="home">
       {/* Purple Particle Background */}
       <div className="absolute inset-0 z-0">
         <Particles
@@ -30,12 +58,25 @@ const HeroSection = () => {
         <p className="mt-4 text-lg text-gray-700 max-w-xl mx-auto">
           I build AI, data science, and full-stack apps — blending beauty with brains ✨
         </p>
-        <a
-          href="#projects"
-          className="inline-block mt-8 px-6 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition"
-        >
-          View My Work
-        </a>
+        {/* Tilted Summary Cards */}
+<div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 px-4">
+
+        {cards.map((card, idx) => (
+          <a key={idx} href={card.link} className="block">
+            <TiltedCard
+              containerHeight="240px"
+              containerWidth="100%"
+              overlayHeader={card.title}
+              overlayText={card.text}
+              overlayLink={card.link}
+              overlayLinkText="Explore →"
+              gradientColors={card.gradient}
+              scaleOnHover={1.15}
+              rotateAmplitude={30}
+            />
+          </a>
+        ))}
+        </div>
       </motion.div>
     </section>
   );
