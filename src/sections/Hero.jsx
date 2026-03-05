@@ -2,6 +2,7 @@ import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useParallax } from "../hooks/useParallax";
 import React from "react";
+import SplineBlob from "../components/SplineBlob";
 
 export default function Hero() {
     const { theme: t } = useTheme();
@@ -22,6 +23,7 @@ export default function Hero() {
                 overflow: "hidden",
             }}
         >
+            <SplineBlob />
             {/* Subtitle */}
             <p
                 style={{
@@ -33,6 +35,8 @@ export default function Hero() {
                     marginBottom: 20,
                     opacity: 0.6,
                     transform: `translateY(${-offset * 0.2}px)`,
+                    position: "relative",
+                    zIndex: 2,
                 }}
             >
                 engineer · iOS developer · builder · explorer
@@ -52,6 +56,8 @@ export default function Hero() {
                     marginBottom: 0,
                     letterSpacing: ".08em",
                     transform: `translateY(${-offset * 0.1}px)`,
+                    position: "relative",
+                    zIndex: 2,
                 }}
             >
                 SYNA
@@ -78,6 +84,8 @@ export default function Hero() {
                     marginBottom: 48,
                     letterSpacing: ".03em",
                     transform: `translateY(${offset * 0.05}px)`,
+                    position: "relative",
+                    zIndex: 2,
                 }}
             >
                 Crafting intelligent systems at the intersection of{" "}
@@ -87,7 +95,7 @@ export default function Hero() {
             </p>
 
             {/* CTA Buttons */}
-            <div style={{ display: "flex", gap: 40, alignItems: "center", marginBottom: 48 }}>
+            <div style={{ display: "flex", gap: 40, alignItems: "center", marginBottom: 48, position: "relative", zIndex: 2 }}>
                 <a
                     href="#projects"
                     style={{

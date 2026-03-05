@@ -12,9 +12,17 @@ export default function NeuralCanvas({ t }) {
         resize(); window.addEventListener("resize", resize);
 
 
-        const edges = [[0, 3], [0, 6], [1, 4], [1, 6], [2, 5], [2, 8], [3, 4], [3, 6], [4, 5], [4, 7], [5, 8], [6, 7], [6, 9], [7, 8], [7, 10], [8, 11], [9, 10], [10, 11], [0, 1], [1, 2]];
+        const edges = [];
+        const threshold = 0.18;
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+                if (dist < threshold) edges.push([i, j]);
+            }
+        }
         let sigs = [];
         const si = setInterval(() => {
+            if (edges.length === 0) return;
             const e = edges[Math.floor(Math.random() * edges.length)];
             sigs.push({ a: e[0], b: e[1], tt: 0, spd: Math.random() * .012 + .005 });
         }, 380);

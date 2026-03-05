@@ -12,10 +12,15 @@ export default function Blog() {
     const [selectedPost, setSelectedPost] = useState(null);
 
     // Stable randomized positions
-    const posRef = useRef(BLOG.map((_, i) => ({
-        left: `${(i * 20 + Math.random() * 15) % 75 + 5}%`,
-        top: `${(i * 15 + Math.random() * 20) % 65 + 10}%`
-    })));
+    const posRef = useRef(BLOG.map((_, i) => {
+        const cols = 3;
+        const row = Math.floor(i / cols);
+        const col = i % cols;
+        return {
+            left: `${(col * 30) + 5 + Math.random() * 8}%`,
+            top: `${(row * 40) + 5 + Math.random() * 10}%`
+        };
+    }));
 
     useEffect(() => {
         let raf;
@@ -39,7 +44,7 @@ export default function Blog() {
     return (
         <section id="notes" style={{ padding: "80px 24px 100px", position: "relative", zIndex: selectedPost ? 1001 : 1, overflow: "visible", maxWidth: 1200, margin: "0 auto" }}>
             <div style={{ marginBottom: 52, textAlign: "center" }}><Label center>// Notes</Label><H2 style={{ textAlign: "center" }}>SIGNAL DRIFT</H2></div>
-            <div style={{ position: "relative", height: 550 }}>
+            <div style={{ position: "relative", height: 650 }}>
                 {BLOG.map((post, i) => {
                     const pos = posRef.current[i];
                     const fl = bfloat[i] || { x: 0, y: 0, r: 0 };
@@ -56,10 +61,12 @@ export default function Blog() {
                             onMouseEnter={e => {
                                 e.currentTarget.style.borderColor = t.cyan;
                                 e.currentTarget.style.transform += " scale(1.02)";
+                                e.currentTarget.style.zIndex = 20;
                             }}
                             onMouseLeave={e => {
                                 e.currentTarget.style.borderColor = t.border;
                                 e.currentTarget.style.transform = `translate(${fl.x}px,${fl.y}px) rotate(${fl.r}deg)`;
+                                e.currentTarget.style.zIndex = 1;
                             }}>
                             <div style={{ ...FONTS.mono, fontSize: ".54rem", letterSpacing: ".28em", color: t.cyan, marginBottom: 7 }}>{post.date}</div>
                             <div style={{ ...FONTS.orb, fontWeight: 700, fontSize: ".82rem", color: t.textHi, lineHeight: 1.4, marginBottom: 9 }}>{post.title}</div>
