@@ -31,6 +31,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
                 transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)"
             }}>
                 {/* FRONT */}
+                {/* FRONT — overflow:visible so preserve-3d + translateZ work */}
                 <div style={{
                     position: "absolute",
                     width: "100%",
@@ -43,11 +44,11 @@ function FlippableProjectCard({ project, index, theme: t }) {
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "flex-start",
-                    overflow: "hidden",
+                    overflow: "visible",
                     transformStyle: "preserve-3d",
                     boxShadow: `0 10px 30px rgba(0,0,0,0.3)`
                 }}>
-                    {/* Index Number like Career cards */}
+                    {/* Index Number — floats at Z=20 */}
                     <div style={{
                         position: "absolute",
                         top: 20,
@@ -62,6 +63,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
                         {String(index + 1).padStart(2, '0')}
                     </div>
 
+                    {/* Content — floats at Z=40 */}
                     <div style={{ transform: "translateZ(40px)", height: "100%", display: "flex", flexDirection: "column" }}>
                         <div style={{
                             ...FONTS.orb,
@@ -96,7 +98,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
                     </div>
                 </div>
 
-                {/* BACK */}
+                {/* BACK — scrollable with simulated depth via shadows */}
                 <div style={{
                     position: "absolute",
                     width: "100%",
@@ -106,18 +108,24 @@ function FlippableProjectCard({ project, index, theme: t }) {
                     border: `1.5px solid ${t.accent}`,
                     borderRadius: 16,
                     transform: "rotateY(180deg)",
-                    transformStyle: "preserve-3d",
                     boxShadow: `0 0 30px ${t.accent}22`
                 }}>
-                    {/* Scrollable inner wrapper — keeps overflow separate from preserve-3d */}
+                    {/* Scrollable wrapper */}
                     <div style={{
                         width: "100%",
                         height: "100%",
                         overflowY: "auto",
-                        padding: "32px",
+                        padding: "24px",
                         boxSizing: "border-box"
                     }}>
-                        <div style={{ transform: "translateZ(50px)" }}>
+                        {/* Elevated floating panel — depth via shadow + border */}
+                        <div style={{
+                            background: `${t.surface}`,
+                            border: `1px solid ${t.accent}33`,
+                            borderRadius: 12,
+                            padding: "28px",
+                            boxShadow: `0 8px 32px rgba(0,0,0,0.4), 0 2px 8px ${t.accent}15, inset 0 1px 0 ${t.accent}18`
+                        }}>
                             <div style={{ ...FONTS.mono, fontSize: "0.6rem", color: t.accent, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Implementation</div>
                             <div style={{
                                 ...FONTS.inter,
