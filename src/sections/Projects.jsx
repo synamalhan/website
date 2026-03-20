@@ -62,7 +62,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
                         {String(index + 1).padStart(2, '0')}
                     </div>
 
-                    <div style={{ transform: "translateZ(40px)", height: "100%", display: "flex", flexDirection: "column" }}>
+                    <div style={{ transform: "translateZ(40px)", height: "100%", display: "flex", flexDirection: "column", overflowY: "auto" }}>
                         <div style={{
                             ...FONTS.orb,
                             fontSize: "1.3rem",
@@ -109,7 +109,8 @@ function FlippableProjectCard({ project, index, theme: t }) {
                     transform: "rotateY(180deg)",
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "center",
+                    justifyContent: "flex-start",
+                    overflowY: "auto",
                     transformStyle: "preserve-3d",
                     boxShadow: `0 0 30px ${t.accent}22`
                 }}>
