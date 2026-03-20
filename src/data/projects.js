@@ -254,6 +254,29 @@ export const categorizedProjects = [
         colors: ["#f97316", "#e040fb"],
         tags: ["SwiftUI", "CoreML", "HealthKit", "WatchKit"],
         projects: [
+
+            {
+                "title": "Health Metrics Dashboard",
+                "motivation": "Centralized dashboard to monitor health metrics seamlessly across iPhone and Apple Watch.",
+                "techStack": ["SwiftUI", "HealthKit", "MVVM", "Swift Concurrency", "Secure Enclave", "Keychain", "XCTest"],
+                "details": "Situation: Users want a single interface to view health metrics. Problem: Data scattered between devices. Action: Built SwiftUI app with MVVM architecture, HealthKit integration, and async data fetching. Result: Real-time, secure, and privacy-focused dashboard that scales with new metrics.",
+                "link": "https://github.com/synamalhan/health-metrics-dashboard.git"
+            },
+            {
+                "title": "Continuous Activity Tracking System",
+                "motivation": "Intelligently track user activity and adapt daily recommendations using on-device ML.",
+                "techStack": ["iOS", "watchOS", "CoreMotion", "CoreBluetooth", "Combine", "BGTaskScheduler", "Core Data", "Core ML", "Swift Concurrency"],
+                "details": "Situation: Users want personalized activity insights and recommendations. Problem: Activity data is continuous, noisy, and battery-sensitive. Action: Captured motion data via CoreMotion, integrated wearables via CoreBluetooth, and used Core ML for adaptive activity suggestions. Result: Real-time, battery-efficient activity tracking with dynamic ML-driven recommendations.",
+                "link": "https://github.com/synamalhan/continuous-activity-tracking.git"
+            },
+            {
+                "title": "Sleep Pattern Analysis App",
+                "motivation": "Analyze sleep patterns while preserving privacy and providing meaningful trends.",
+                "techStack": ["iOS", "watchOS", "CoreMotion", "SwiftUI", "Combine", "MVVM", "Core Data"],
+                "details": "Situation: Users want to track sleep quality without compromising privacy. Problem: Sleep data is sensitive and requires accurate detection. Action: Implemented sliding-window motion detection, local aggregation, and SwiftUI visualizations. Result: Users receive interactive nightly, weekly, and monthly sleep insights fully processed on-device.",
+                "link": "https://github.com/synamalhan/sleep-pattern-analysis.git"
+            },
+
             {
                 title: "Wellness Journal",
                 motivation: "Simple and colorful iOS app to track daily mood and thoughts.",
