@@ -62,7 +62,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
                         {String(index + 1).padStart(2, '0')}
                     </div>
 
-                    <div style={{ transform: "translateZ(40px)", height: "100%", display: "flex", flexDirection: "column", overflowY: "auto" }}>
+                    <div style={{ transform: "translateZ(40px)", height: "100%", display: "flex", flexDirection: "column" }}>
                         <div style={{
                             ...FONTS.orb,
                             fontSize: "1.3rem",
@@ -105,51 +105,55 @@ function FlippableProjectCard({ project, index, theme: t }) {
                     background: t.bg,
                     border: `1.5px solid ${t.accent}`,
                     borderRadius: 16,
-                    padding: "32px",
                     transform: "rotateY(180deg)",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-start",
-                    overflowY: "auto",
                     transformStyle: "preserve-3d",
                     boxShadow: `0 0 30px ${t.accent}22`
                 }}>
-                    <div style={{ transform: "translateZ(50px)" }}>
-                        <div style={{ ...FONTS.mono, fontSize: "0.6rem", color: t.accent, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Implementation</div>
-                        <div style={{
-                            ...FONTS.inter,
-                            fontSize: "0.9rem",
-                            color: t.textMute,
-                            lineHeight: 1.6,
-                            marginBottom: 24
-                        }}>{project.details}</div>
+                    {/* Scrollable inner wrapper — keeps overflow separate from preserve-3d */}
+                    <div style={{
+                        width: "100%",
+                        height: "100%",
+                        overflowY: "auto",
+                        padding: "32px",
+                        boxSizing: "border-box"
+                    }}>
+                        <div style={{ transform: "translateZ(50px)" }}>
+                            <div style={{ ...FONTS.mono, fontSize: "0.6rem", color: t.accent, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Implementation</div>
+                            <div style={{
+                                ...FONTS.inter,
+                                fontSize: "0.9rem",
+                                color: t.textMute,
+                                lineHeight: 1.6,
+                                marginBottom: 24
+                            }}>{project.details}</div>
 
-                        {project.link && (
-                            <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noreferrer"
-                                onClick={e => e.stopPropagation()}
-                                style={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: 8,
-                                    ...FONTS.mono,
-                                    color: t.textHi,
-                                    textDecoration: "none",
-                                    fontSize: "0.7rem",
-                                    padding: "8px 16px",
-                                    border: `1px solid ${t.border}`,
-                                    borderRadius: 6,
-                                    background: t.surface,
-                                    transition: "all 0.2s"
-                                }}
-                                onMouseEnter={e => e.currentTarget.style.borderColor = t.accent}
-                                onMouseLeave={e => e.currentTarget.style.borderColor = t.border}
-                            >
-                                VIEW REPOSITORY ↗
-                            </a>
-                        )}
+                            {project.link && (
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    onClick={e => e.stopPropagation()}
+                                    style={{
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        gap: 8,
+                                        ...FONTS.mono,
+                                        color: t.textHi,
+                                        textDecoration: "none",
+                                        fontSize: "0.7rem",
+                                        padding: "8px 16px",
+                                        border: `1px solid ${t.border}`,
+                                        borderRadius: 6,
+                                        background: t.surface,
+                                        transition: "all 0.2s"
+                                    }}
+                                    onMouseEnter={e => e.currentTarget.style.borderColor = t.accent}
+                                    onMouseLeave={e => e.currentTarget.style.borderColor = t.border}
+                                >
+                                    VIEW REPOSITORY ↗
+                                </a>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

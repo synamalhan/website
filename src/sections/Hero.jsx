@@ -23,7 +23,7 @@ export default function Hero() {
                 overflow: "hidden",
             }}
         >
-            <SplineBlob />
+            {/* <SplineBlob /> */}
             {/* Subtitle */}
             <p
                 style={{
