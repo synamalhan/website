@@ -43,7 +43,7 @@ export default function Blog() {
 
     return (
         <section id="notes" style={{ padding: "80px 24px 100px", position: "relative", zIndex: selectedPost ? 1001 : 1, overflow: "visible", maxWidth: 1200, margin: "0 auto" }}>
-            <div style={{ marginBottom: 52, textAlign: "center" }}><Label center>// Notes</Label><H2 style={{ textAlign: "center" }}>SIGNAL DRIFT</H2></div>
+            <div style={{ marginBottom: 52, textAlign: "center" }}><Label center>// Blogs</Label><H2 style={{ textAlign: "center" }}>NOTES</H2></div>
             <div style={{ position: "relative", height: 650 }}>
                 {BLOG.map((post, i) => {
                     const pos = posRef.current[i];

@@ -1,50 +1,50 @@
 export const THEMES = {
     dark: {
-        bg: "#06040f",
-        surface: "#0e0b1e",
-        border: "rgba(123,47,255,0.18)",
-        borderHi: "rgba(123,47,255,0.55)",
-        text: "#c8d0e0",
-        textMute: "rgba(180,190,210,0.45)",
+        bg: "#1c1c1f",
+        surface: "#2b2b30",
+        border: "rgba(255,180,100,0.3)",
+        borderHi: "rgba(255,180,100,0.8)",
+        text: "#f0f0f0",
+        textMute: "#d0d0d0", // brighter and opaque
         textHi: "#ffffff",
-        accent: "#a855f7",
-        accentGlow: "rgba(168,85,247,0.35)",
-        cyan: "#10b981",
-        cyanGlow: "rgba(16,185,129,0.3)",
-        magenta: "#ef4444",
-        gold: "#f59e0b",
-        particle1: "168,85,247",
-        particle2: "16,185,129",
-        particle3: "239,68,68",
-        navBg: "rgba(6,4,15,0.92)",
-        cardBg: "rgba(14,11,30,0.85)",
-        metalHi: "#c8d8ec",
-        metalMid: "#6a7a90",
-        metalLo: "#1a2238",
+        accent: "#d946ef", // pink/purple
+        accentGlow: "rgba(217,70,239,0.25)",
+        cyan: "#3b82f6", // blue
+        cyanGlow: "rgba(59,130,246,0.2)",
+        magenta: "#ec4899", // pink
+        gold: "#eab308", // yellow
+        particle1: "139,92,246", // purple
+        particle2: "59,130,246", // blue
+        particle3: "234,179,8",  // yellow
+        navBg: "rgba(28,28,31,0.92)",
+        cardBg: "rgba(43,43,48,0.85)",
+        metalHi: "#e3e3e0",
+        metalMid: "#828285",
+        metalLo: "#3a3a40",
         name: "dark",
     },
     light: {
-        bg: "#f4f2fa",
+        bg: "#f8f5ee",
         surface: "#ffffff",
-        border: "rgba(139,92,246,0.2)",
-        borderHi: "rgba(139,92,246,0.6)",
-        text: "#3a3550",
-        textMute: "rgba(80,70,120,0.5)",
-        textHi: "#1a1530",
-        accent: "#7e22ce",
-        accentGlow: "rgba(126,34,206,0.2)",
-        cyan: "#059669",
-        cyanGlow: "rgba(5,150,105,0.2)",
-        magenta: "#b91c1c",
-        gold: "#d97706",
-        particle1: "126,34,206",
-        particle2: "5,150,105",
-        particle3: "185,28,28",
-        navBg: "rgba(244,242,250,0.94)",
+        border: "rgba(0,0,0,0.15)",
+        borderHi: "rgba(0,0,0,0.4)",
+        text: "#222222",
+        textMute: "#444444", // brighter and opaque
+        textHi: "#000000",
+        accent: "#d946ef", // pink/purple
+        accentGlow: "rgba(217,70,239,0.15)",
+        cyan: "#3b82f6", // blue
+        cyanGlow: "rgba(59,130,246,0.15)",
+        magenta: "#ec4899", // pink
+        gold: "#eab308", // yellow
+        particle1: "139,92,246", // purple
+        particle2: "59,130,246", // blue
+        particle3: "234,179,8",  // yellow
+        navBg: "rgba(248,245,238,0.94)",
         cardBg: "rgba(255,255,255,0.92)",
-        metalHi: "#8090a8",
-        metalMid: "#4a5878",
-        metalLo: "#c8d0e0",
+        metalHi: "#666666",
+        metalMid: "#aaaaaa",
+        metalLo: "#e5e3dc",
         name: "light",
     },
 };

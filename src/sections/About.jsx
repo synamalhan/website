@@ -3,7 +3,7 @@ import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
-import OrbitalRings3D from "../components/OrbitalRings3D";
+import CircularGallery from "../components/CircularGallery";
 import resume from "../assets/SYNA_MALHAN.pdf";
 
 const About = forwardRef(function About({ counts }, ref) {
@@ -30,7 +30,7 @@ const About = forwardRef(function About({ counts }, ref) {
                 {/* Left Side: Bio & Stats */}
                 <div style={{ transform: "translateZ(20px)" }}>
                     <Label>// About Me</Label>
-                    <H2>CRAFTSMAN &<br />CODE-MAKER</H2>
+                    <H2>ABOUT<br />ME</H2>
 
                     <p style={{
                         fontSize: "1.05rem",
@@ -133,9 +133,11 @@ const About = forwardRef(function About({ counts }, ref) {
                         position: "relative",
                         background: `radial-gradient(circle at center, ${t.accent}0a, transparent)`,
                         borderRadius: "24px",
-                        border: `1px solid ${t.border}`
+                        border: `1px solid ${t.border}`,
+                        boxShadow: `0 20px 40px ${t.accent}11`,
+                        overflow: "hidden"
                     }}>
-                        <OrbitalRings3D />
+                        <CircularGallery />
                     </div>
 
                     {/* Spotify Player */}

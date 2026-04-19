@@ -17,7 +17,7 @@ export default function WorkExperience() {
         <section id="experience" style={{ padding: "120px 24px", position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: 72 }}>
                 <Label center>// Experience</Label>
-                <H2 style={{ textAlign: "center" }}>CAREER<br />TRAJECTORY</H2>
+                <H2 style={{ textAlign: "center" }}>WORK<br />EXPERIENCE</H2>
                 <p style={{ ...FONTS.mono, fontSize: "0.7rem", color: t.textMute, marginTop: 12 }}>CLICK CARDS TO EXPLORE DEPTH</p>
             </div>
 

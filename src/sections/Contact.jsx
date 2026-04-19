@@ -155,7 +155,7 @@ const Contact = () => {
                             textAlign: "center"
                         }}
                     >
-                        TRANSMIT MESSAGE
+                        SEND MESSAGE
                     </button>
 
                     {status === "success" && (

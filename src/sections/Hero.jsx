@@ -1,12 +1,43 @@
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useParallax } from "../hooks/useParallax";
-import React from "react";
-import SplineBlob from "../components/SplineBlob";
+import React, { useState } from "react";
 
 export default function Hero() {
     const { theme: t } = useTheme();
     const offset = useParallax(0.15);
+    const [hoveredDoodle, setHoveredDoodle] = useState(null);
+
+    const doodles = [
+        {
+            id: 'star',
+            link: '#skills',
+            color: t.accent,
+            top: '25%', left: '15%', rot: -15, scale: 0.8,
+            svg: <path d="M50 5 L60 40 L95 40 L65 60 L75 95 L50 75 L25 95 L35 60 L5 40 L40 40 Z" fill="none" stroke="currentColor" strokeWidth="4" strokeLinejoin="round"/>
+        },
+        {
+            id: 'spiral',
+            link: '#projects',
+            color: t.cyan,
+            top: '30%', right: '18%', rot: 25, scale: 0.9,
+            svg: <path d="M50 50 C 50 15, 85 15, 85 50 C 85 85, 15 85, 15 50 C 15 5, 95 5, 95 50" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
+        },
+        {
+            id: 'heart',
+            link: '#about',
+            color: t.magenta,
+            top: '65%', left: '20%', rot: -20, scale: 0.7,
+            svg: <path d="M50 30 C 50 10, 20 10, 20 30 C 20 50, 50 75, 50 90 C 50 75, 80 50, 80 30 C 80 10, 50 10, 50 30 Z" fill="none" stroke="currentColor" strokeWidth="4" strokeLinejoin="round"/>
+        },
+        {
+            id: 'arrow',
+            link: '#notes',
+            color: t.gold,
+            top: '70%', right: '22%', rot: 15, scale: 0.8,
+            svg: <path d="M20 80 L80 20 M80 20 L40 20 M80 20 L80 60" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+        }
+    ];
 
     return (
         <section
@@ -23,23 +54,50 @@ export default function Hero() {
                 overflow: "hidden",
             }}
         >
-            {/* <SplineBlob /> */}
+            {/* Interactive Background Doodles */}
+            {doodles.map((d) => (
+                <a
+                    key={d.id}
+                    href={d.link}
+                    onMouseEnter={() => setHoveredDoodle(d.id)}
+                    onMouseLeave={() => setHoveredDoodle(null)}
+                    style={{
+                        position: 'absolute',
+                        top: d.top,
+                        left: d.left,
+                        right: d.right,
+                        color: hoveredDoodle === d.id ? d.color : t.textMute,
+                        cursor: 'pointer',
+                        transform: `translateY(${offset * 0.15}px) rotate(${d.rot}deg) scale(${hoveredDoodle === d.id ? d.scale * 1.2 : d.scale})`,
+                        transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                        zIndex: 3,
+                        opacity: hoveredDoodle === d.id ? 1 : 0.6,
+                        display: 'block',
+                        width: 100, height: 100
+                    }}
+                >
+                    <svg viewBox="0 0 100 100" style={{ width: '100%', height: '100%', filter: `drop-shadow(2px 4px 0px ${hoveredDoodle === d.id ? d.color + '44' : 'transparent'})` }}>
+                        {d.svg}
+                    </svg>
+                </a>
+            ))}
+
             {/* Subtitle */}
             <p
                 style={{
                     ...FONTS.mono,
-                    fontSize: ".58rem",
+                    fontSize: ".65rem",
                     letterSpacing: ".6em",
                     color: t.textMute,
                     textTransform: "uppercase",
                     marginBottom: 20,
-                    opacity: 0.6,
+                    opacity: 0.8,
                     transform: `translateY(${-offset * 0.2}px)`,
                     position: "relative",
                     zIndex: 2,
                 }}
             >
-                engineer · iOS developer · builder · explorer
+                engineer · creator · builder · explorer
             </p>
 
             {/* Main title */}
@@ -52,7 +110,7 @@ export default function Hero() {
                     fontSize: "clamp(5rem, 14vw, 10rem)",
                     lineHeight: 0.85,
                     color: t.textHi,
-                    textShadow: `0 0 60px ${t.accentGlow}, 0 0 120px ${t.accentGlow}44`,
+                    textShadow: `0 0 60px ${t.accentGlow}, 4px 4px 0px ${t.accent}`,
                     marginBottom: 0,
                     letterSpacing: ".08em",
                     transform: `translateY(${-offset * 0.1}px)`,
@@ -67,9 +125,10 @@ export default function Hero() {
             <div
                 style={{
                     width: 60,
-                    height: 1,
+                    height: 2,
                     margin: "28px auto",
-                    background: `linear-gradient(90deg, transparent, ${t.accent}, transparent)`,
+                    background: t.accent,
+                    borderRadius: 2
                 }}
             />
 
@@ -77,8 +136,8 @@ export default function Hero() {
             <p
                 style={{
                     maxWidth: 480,
-                    fontSize: ".88rem",
-                    fontWeight: 300,
+                    fontSize: ".95rem",
+                    fontWeight: 400,
                     lineHeight: 1.95,
                     color: t.textMute,
                     marginBottom: 48,
@@ -89,50 +148,50 @@ export default function Hero() {
                 }}
             >
                 Crafting intelligent systems at the intersection of{" "}
-                <span style={{ color: t.cyan, fontWeight: 400 }}>machine learning</span>,{" "}
-                <span style={{ color: t.accent, fontWeight: 400 }}>iOS development</span>, and{" "}
-                <span style={{ color: t.magenta, fontWeight: 400 }}>full-stack engineering</span>.
+                <span style={{ color: t.cyan, fontWeight: 700 }}>machine learning</span>,{" "}
+                <span style={{ color: t.accent, fontWeight: 700 }}>iOS development</span>, and{" "}
+                <span style={{ color: t.gold, fontWeight: 700 }}>creative design</span>.
             </p>
 
             {/* CTA Buttons */}
-            <div style={{ display: "flex", gap: 40, alignItems: "center", marginBottom: 48, position: "relative", zIndex: 2 }}>
-                <a
-                    href="#projects"
-                    style={{
-                        ...FONTS.mono,
-                        fontSize: ".6rem",
-                        letterSpacing: ".25em",
-                        color: t.textMute,
-                        textDecoration: "none",
-                        textTransform: "uppercase",
-                        position: "relative",
-                        paddingBottom: 4,
-                        transition: "color .2s",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = t.cyan)}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = t.textMute)}
-                >
-                    View Work
-                </a>
-                <span style={{ width: 1, height: 14, background: t.border }} />
-                <a
-                    href="#contact"
-                    style={{
-                        ...FONTS.mono,
-                        fontSize: ".6rem",
-                        letterSpacing: ".25em",
-                        color: t.textMute,
-                        textDecoration: "none",
-                        textTransform: "uppercase",
-                        position: "relative",
-                        paddingBottom: 4,
-                        transition: "color .2s",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = t.accent)}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = t.textMute)}
-                >
-                    Connect
-                </a>
+            <div style={{ display: "flex", gap: 32, alignItems: "center", marginBottom: 48, position: "relative", zIndex: 2, flexWrap: "wrap", justifyContent: "center" }}>
+                {[
+                    { label: "View Work", link: "#projects", color: t.cyan },
+                    { label: "Experience", link: "#experience", color: t.magenta },
+                    { label: "Read Blog", link: "#notes", color: t.gold },
+                    { label: "Connect", link: "#contact", color: t.accent }
+                ].map((btn, i) => (
+                    <a
+                        key={i}
+                        href={btn.link}
+                        style={{
+                            ...FONTS.mono,
+                            fontSize: ".65rem",
+                            letterSpacing: ".25em",
+                            color: t.textHi,
+                            backgroundColor: t.surface,
+                            padding: "10px 20px",
+                            border: `2px solid ${t.borderHi}`,
+                            borderRadius: "20px 10px 20px 10px / 10px 20px 10px 20px",
+                            boxShadow: `3px 3px 0px ${btn.color}`,
+                            textDecoration: "none",
+                            textTransform: "uppercase",
+                            transition: "all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = "translate(-2px, -2px)";
+                            e.currentTarget.style.boxShadow = `5px 5px 0px ${btn.color}`;
+                            e.currentTarget.style.borderColor = btn.color;
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "translate(0, 0)";
+                            e.currentTarget.style.boxShadow = `3px 3px 0px ${btn.color}`;
+                            e.currentTarget.style.borderColor = t.borderHi;
+                        }}
+                    >
+                        {btn.label}
+                    </a>
+                ))}
             </div>
 
             {/* Scroll indicator */}
@@ -146,14 +205,15 @@ export default function Hero() {
                     flexDirection: "column",
                     alignItems: "center",
                     gap: 8,
-                    opacity: 0.35,
+                    opacity: 0.6,
                 }}
             >
                 <div
                     style={{
-                        width: 1,
+                        width: 2,
                         height: 32,
-                        background: `linear-gradient(to bottom, ${t.textMute}, transparent)`,
+                        background: t.textMute,
+                        borderRadius: 2,
                         animation: "pulse 2.5s ease-in-out infinite",
                     }}
                 />

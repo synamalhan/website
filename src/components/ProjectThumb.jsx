@@ -2,172 +2,180 @@ import { useEffect, useRef } from "react";
 
 export default function ProjectThumb({ type, colors, t }) {
     const ref = useRef();
+    
     useEffect(() => {
         const cv = ref.current; if (!cv) return;
         const ctx = cv.getContext("2d"); let raf, tt = 0;
         const setup = () => { cv.width = cv.offsetWidth || 300; cv.height = 150; };
         setup(); window.addEventListener("resize", setup);
         const [c1, c2] = colors;
+
+        const drawSketchLine = (x1, y1, x2, y2) => {
+            ctx.beginPath();
+            ctx.moveTo(x1 + (Math.random()-0.5)*3, y1 + (Math.random()-0.5)*3);
+            ctx.lineTo(x2 + (Math.random()-0.5)*3, y2 + (Math.random()-0.5)*3);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x1 + (Math.random()-0.5)*3, y1 + (Math.random()-0.5)*3);
+            ctx.lineTo(x2 + (Math.random()-0.5)*3, y2 + (Math.random()-0.5)*3);
+            ctx.stroke();
+        };
+
+        const drawSketchRect = (x, y, w, h) => {
+            drawSketchLine(x, y, x+w, y);
+            drawSketchLine(x+w, y, x+w, y+h);
+            drawSketchLine(x+w, y+h, x, y+h);
+            drawSketchLine(x, y+h, x, y);
+        };
+
+        const drawSketchCircle = (cx, cy, r) => {
+            ctx.beginPath();
+            for(let a=0; a<Math.PI*2; a+=0.3) {
+                const nx = cx + Math.cos(a) * (r + (Math.random()-0.5)*2);
+                const ny = cy + Math.sin(a) * (r + (Math.random()-0.5)*2);
+                a===0 ? ctx.moveTo(nx, ny) : ctx.lineTo(nx, ny);
+            }
+            ctx.closePath();
+            ctx.stroke();
+            
+            ctx.beginPath();
+            for(let a=0; a<Math.PI*2; a+=0.3) {
+                const nx = cx + Math.cos(a) * (r + (Math.random()-0.5)*2);
+                const ny = cy + Math.sin(a) * (r + (Math.random()-0.5)*2);
+                a===0 ? ctx.moveTo(nx, ny) : ctx.lineTo(nx, ny);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        };
+
         const loop = () => {
             const W = cv.width, H = cv.height;
-            ctx.clearRect(0, 0, W, H);
-            const bg = ctx.createLinearGradient(0, 0, W, H);
-            bg.addColorStop(0, c1 + "15"); bg.addColorStop(1, c2 + "15");
-            ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-            ctx.strokeStyle = c1 + "18"; ctx.lineWidth = .5;
-            for (let x = 0; x < W; x += 20) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-            for (let y = 0; y < H; y += 20) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+            // Darker background
+            ctx.fillStyle = t.name === 'dark' ? '#111115' : '#e8e5dc';
+            ctx.fillRect(0, 0, W, H);
+            
+            // Soft glowing blob in the center
+            const bg = ctx.createRadialGradient(W/2, H/2, 10, W/2, H/2, W/1.2);
+            bg.addColorStop(0, c1 + "33");
+            bg.addColorStop(1, "transparent");
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, W, H);
+
+            // Subtle chaotic sketch noise in the background
+            ctx.strokeStyle = t.name === 'dark' ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)";
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i < 15; i++) {
+                drawSketchLine(Math.random()*W, Math.random()*H, Math.random()*W, Math.random()*H);
+            }
+
+            ctx.lineWidth = 1.5;
+            
             if (type === "ios") {
                 const px = W / 2, py = H / 2;
-                ctx.beginPath(); ctx.roundRect(px - 24, py - 44, 48, 88, 7);
-                ctx.fillStyle = "rgba(80,90,110,.4)"; ctx.fill(); ctx.strokeStyle = c1 + "bb"; ctx.lineWidth = 1.2; ctx.stroke();
-                ctx.beginPath(); ctx.roundRect(px - 19, py - 37, 38, 66, 4);
-                const sg = ctx.createLinearGradient(px, py - 37, px, py + 29); sg.addColorStop(0, c1 + "35"); sg.addColorStop(1, c2 + "18");
-                ctx.fillStyle = sg; ctx.fill();
-                for (let i = 0; i < 3; i++) { ctx.beginPath(); for (let x = px - 17; x <= px + 17; x += 2) { const y = py - 8 + i * 13 + Math.sin((x + tt * 38) * .2) * 5; x === px - 17 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); } ctx.strokeStyle = i % 2 ? c1 + "99" : c2 + "99"; ctx.lineWidth = 1.2; ctx.stroke(); }
-                ctx.beginPath(); ctx.roundRect(px - 10, py + 35, 20, 3, 2); ctx.fillStyle = "#ffffff44"; ctx.fill();
+                ctx.strokeStyle = c1;
+                drawSketchRect(px - 24, py - 44, 48, 88);
+                ctx.strokeStyle = c2 + "aa";
+                drawSketchRect(px - 19, py - 37, 38, 66);
+                drawSketchCircle(px, py + 35, 3);
             } else if (type === "ml") {
-                for (let i = 0; i < 20; i++) { const x = (i * 53 + tt * 16) % W, y = (i * 37 + tt * 11) % H; ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2); ctx.fillStyle = i % 2 ? c1 : c2; ctx.globalAlpha = .35 + .4 * Math.sin(tt + i); ctx.fill(); ctx.globalAlpha = 1; }
-                for (let i = 0; i < 4; i++) { const y = H * (i + 1) / 5; ctx.beginPath(); for (let x = 0; x < W; x += 3) { const yv = y + Math.sin((x + tt * 50 + i * 40) * .08) * 14; x === 0 ? ctx.moveTo(x, yv) : ctx.lineTo(x, yv); } ctx.strokeStyle = i % 2 ? c1 + "66" : c2 + "66"; ctx.lineWidth = 1.2; ctx.stroke(); }
+                for (let i = 0; i < 12; i++) { 
+                    const x = (i * 53 + tt * 16) % W, y = (i * 37 + tt * 11) % H; 
+                    ctx.strokeStyle = i % 2 ? c1 + "cc" : c2 + "cc";
+                    drawSketchCircle(x, y, 6 + Math.sin(tt+i)*3);
+                }
+                for (let i = 0; i < 3; i++) {
+                    const y = H * (i + 1) / 4;
+                    ctx.beginPath();
+                    for (let x = 0; x < W; x += 10) {
+                        const yv = y + Math.sin((x + tt * 50 + i * 40) * .08) * 14 + (Math.random()-0.5)*3;
+                        x === 0 ? ctx.moveTo(x, yv) : ctx.lineTo(x, yv);
+                    }
+                    ctx.strokeStyle = i % 2 ? c1 + "66" : c2 + "66";
+                    ctx.stroke();
+                }
             } else if (type === "fullstack") {
                 const lx = W / 2, ly = H / 2 - 10;
-
-                // laptop screen
-                ctx.beginPath();
-                ctx.roundRect(lx - 40, ly - 25, 80, 50, 5);
-                ctx.fillStyle = "rgba(80,90,110,.35)";
-                ctx.fill();
-                ctx.strokeStyle = c1 + "bb";
-                ctx.lineWidth = 1.2;
-                ctx.stroke();
-
-                // keyboard base
-                ctx.beginPath();
-                ctx.roundRect(lx - 55, ly + 25, 110, 8, 3);
-                ctx.fillStyle = "rgba(120,130,150,.25)";
-                ctx.fill();
-
-                // moving "code" lines
-                for (let i = 0; i < 5; i++) {
-                    const y = ly - 18 + i * 8;
-                    ctx.beginPath();
-                    for (let x = lx - 34; x < lx + 34; x += 2) {
-                        const yy = y + Math.sin((x * .15) + tt * 3 + i) * 1.5;
-                        x === lx - 34 ? ctx.moveTo(x, yy) : ctx.lineTo(x, yy);
-                    }
-                    ctx.strokeStyle = i % 2 ? c1 + "aa" : c2 + "aa";
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
+                ctx.strokeStyle = c1 + "dd";
+                drawSketchRect(lx - 40, ly - 25, 80, 50);
+                ctx.strokeStyle = c2 + "aa";
+                drawSketchRect(lx - 55, ly + 25, 110, 8);
+                // "Code" lines drawn sketch-style
+                for (let i = 0; i < 4; i++) {
+                    const y = ly - 15 + i * 10;
+                    ctx.strokeStyle = i % 2 ? c1 + "88" : c2 + "88";
+                    drawSketchLine(lx - 30, y, lx + 30, y);
                 }
             } else if (type === "vision") {
                 const cx = W / 2, cy = H / 2;
-
                 const blink = (Math.sin(tt * 1.6) + 1) / 2;
-
-                // bigger eye
+                ctx.strokeStyle = c1;
+                // Eye outline
                 ctx.beginPath();
-                ctx.ellipse(cx, cy, 50, 24 * blink + 3, 0, 0, Math.PI * 2);
-                ctx.strokeStyle = c1 + "cc";
-                ctx.lineWidth = 2;
+                ctx.ellipse(cx, cy, 45, 20 * blink + 5, 0, 0, Math.PI * 2);
                 ctx.stroke();
-
-                // iris
+                // Hand drawn second stroke to make it messy
                 ctx.beginPath();
-                ctx.arc(cx, cy, 12, 0, Math.PI * 2);
-                ctx.fillStyle = c2 + "cc";
-                ctx.fill();
-
-                // pupil
-                ctx.beginPath();
-                ctx.arc(cx, cy, 5, 0, Math.PI * 2);
-                ctx.fillStyle = "#ffffffaa";
-                ctx.fill();
+                ctx.ellipse(cx + 1, cy + 1, 46, 21 * blink + 6, 0.05, 0, Math.PI * 2);
+                ctx.stroke();
+                
+                ctx.strokeStyle = c2;
+                drawSketchCircle(cx, cy, 14);
             } else if (type === "hackathon") {
                 const cx = W / 2, cy = H / 2;
-
-                const rotY = Math.cos(tt); // fake Y axis rotation
-
-                ctx.save();
-                ctx.translate(cx, cy);
-                ctx.scale(rotY, 1); // compress horizontally to simulate 3D flip
-
-                // bigger medal
-                ctx.beginPath();
-                ctx.arc(0, 0, 28, 0, Math.PI * 2);
-                ctx.fillStyle = c1 + "66";
-                ctx.fill();
                 ctx.strokeStyle = c1;
-                ctx.lineWidth = 1.6;
-                ctx.stroke();
-
-                // bigger star
+                drawSketchCircle(cx, cy, 28);
+                ctx.strokeStyle = c2;
                 ctx.beginPath();
                 for (let i = 0; i < 5; i++) {
                     const a = i * (Math.PI * 2) / 5;
-                    const x = Math.cos(a) * 13;
-                    const y = Math.sin(a) * 13;
+                    const x = cx + Math.cos(a) * 14 + (Math.random()-0.5)*2;
+                    const y = cy + Math.sin(a) * 14 + (Math.random()-0.5)*2;
                     i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
                 }
                 ctx.closePath();
-                ctx.strokeStyle = c2;
-                ctx.lineWidth = 1.3;
                 ctx.stroke();
-
-                ctx.restore();
             } else if (type === "creative") {
-                for (let i = 0; i < 6; i++) {
+                for (let i = 0; i < 5; i++) {
                     ctx.beginPath();
-                    for (let x = 0; x <= W; x += 3) {
-                        const y =
-                            H / 2 +
-                            Math.sin(x * .02 + tt * 2 + i) * 25 +
-                            Math.cos(x * .01 + i * 2) * 10;
-
+                    for (let x = 0; x <= W; x += 8) {
+                        const y = H / 2 + Math.sin(x * .02 + tt * 2 + i) * 20 + (Math.random()-0.5)*6;
                         x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
                     }
-
-                    ctx.strokeStyle = i % 2 ? c1 + "88" : c2 + "88";
-                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = i % 2 ? c1 + "99" : c2 + "99";
+                    ctx.stroke();
+                    // duplicate stroke
+                    ctx.beginPath();
+                    for (let x = 0; x <= W; x += 8) {
+                        const y = H / 2 + Math.sin(x * .02 + tt * 2 + i) * 20 + (Math.random()-0.5)*6;
+                        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+                    }
                     ctx.stroke();
                 }
             } else if (type === "tools") {
-
-                const drawGear = (x, y, r, teeth, rot, col) => {
-                    ctx.save();
-                    ctx.translate(x, y);
-                    ctx.rotate(rot);
-
+                const drawGear = (x, y, r, teeth, col) => {
+                    ctx.strokeStyle = col;
+                    drawSketchCircle(x, y, r);
                     for (let i = 0; i < teeth; i++) {
                         const a = i * (Math.PI * 2) / teeth;
-
-                        ctx.beginPath();
-                        ctx.moveTo(Math.cos(a) * r, Math.sin(a) * r);
-                        ctx.lineTo(Math.cos(a) * (r + 7), Math.sin(a) * (r + 7));
-                        ctx.strokeStyle = col;
-                        ctx.lineWidth = 1.6;
-                        ctx.stroke();
+                        drawSketchLine(
+                            x + Math.cos(a)*r, y + Math.sin(a)*r,
+                            x + Math.cos(a)*(r+8), y + Math.sin(a)*(r+8)
+                        );
                     }
-
-                    ctx.beginPath();
-                    ctx.arc(0, 0, r, 0, Math.PI * 2);
-                    ctx.strokeStyle = col;
-                    ctx.lineWidth = 1.4;
-                    ctx.stroke();
-
-                    ctx.restore();
                 };
-
-                // bigger gears
-                drawGear(W / 2 - 28, H / 2, 18, 10, tt, c1);
-                drawGear(W / 2 + 28, H / 2, 15, 10, -tt * 1.2, c2);
-            }
-            else {
-                for (let i = 0; i < 7; i++) { const sx = Math.floor((i * 67 + tt * .3) % W / 20) * 20, sy = Math.floor((i * 43) % H / 20) * 20; ctx.beginPath(); ctx.arc(sx, sy, 3.5, 0, Math.PI * 2); ctx.fillStyle = c1; ctx.shadowBlur = 7; ctx.shadowColor = c1; ctx.fill(); ctx.shadowBlur = 0; if (i > 0) { const tx = Math.floor((i * 41 + tt * .2) % W / 20) * 20, ty = Math.floor((i * 31) % H / 20) * 20; ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(tx, ty); ctx.strokeStyle = c1 + "44"; ctx.lineWidth = .9; ctx.stroke(); } }
+                drawGear(W / 2 - 25, H / 2, 16, 8, c1);
+                drawGear(W / 2 + 25, H / 2, 14, 8, c2);
+            } else {
+                for(let i=0; i<8; i++) {
+                    ctx.strokeStyle = c1 + "cc";
+                    drawSketchCircle(W/2 + (Math.random()-0.5)*50, H/2 + (Math.random()-0.5)*30, Math.random()*20 + 5);
+                }
             }
             tt += .04; raf = requestAnimationFrame(loop);
         };
         loop();
         return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", setup); };
     }, [t]);
-    return <canvas ref={ref} style={{ width: "100%", height: 150, display: "block" }} />;
+    
+    return <canvas ref={ref} style={{ width: "100%", height: 150, display: "block", borderRadius: "12px 12px 0 0" }} />;
 }

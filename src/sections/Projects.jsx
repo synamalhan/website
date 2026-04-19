@@ -182,7 +182,7 @@ export default function Projects() {
         <section id="projects" style={{ padding: "120px 24px", position: "relative", zIndex: selectedCategory ? 1001 : 1, maxWidth: 1200, margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: 72 }}>
                 <Label center>// Portfolio</Label>
-                <H2 style={{ textAlign: "center" }}>DATA<br />MANIFOLD</H2>
+                <H2 style={{ textAlign: "center" }}>MY<br />PROJECTS</H2>
             </div>
 
             <div style={{
