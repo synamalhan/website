@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useTheme } from "../theme/ThemeContext";
 
-// Import images directly
 import img1 from "../assets/profile/1.jpg";
 import img2 from "../assets/profile/2.jpg";
 import img3 from "../assets/profile/3.jpg";
@@ -12,39 +11,34 @@ import img7 from "../assets/profile/7.jpg";
 
 export default function CircularGallery({
     radius = 240,
-    itemWidth = 140,
-    itemHeight = 180,
+    itemWidth = 200,
+    itemHeight = 200,
 }) {
     const { theme: t } = useTheme();
 
-    // 🎯 physics refs (NO rerender lag)
-    const targetRef = useRef(0);
-    const currentRef = useRef(0);
+    const rotationRef = useRef(0);
     const lastRef = useRef(0);
     const velocityRef = useRef(0);
 
     const [renderValue, setRenderValue] = useState(0);
 
-    const [isDragging, setIsDragging] = useState(false);
-    const [startX, setStartX] = useState(0);
-
     const images = [img1, img2, img3, img4, img5, img6, img7];
-
     const length = images.length;
 
-    // 🌊 animation loop (inertia + velocity like OGL)
+    // 🌪️ animation loop (AUTO ROTATION)
     useEffect(() => {
         let raf;
 
         const animate = () => {
-            // smooth follow (critical for "flow")
-            currentRef.current += (targetRef.current - currentRef.current) * 0.08;
+            // 🔁 continuous auto-spin
+            rotationRef.current += 0.003;
 
-            // velocity (used for distortion feel)
-            velocityRef.current = currentRef.current - lastRef.current;
-            lastRef.current = currentRef.current;
+            velocityRef.current =
+                rotationRef.current - lastRef.current;
 
-            setRenderValue(currentRef.current);
+            lastRef.current = rotationRef.current;
+
+            setRenderValue(rotationRef.current);
 
             raf = requestAnimationFrame(animate);
         };
@@ -53,26 +47,6 @@ export default function CircularGallery({
         return () => cancelAnimationFrame(raf);
     }, []);
 
-    // 🖱️ drag interaction (pushes target, not rotation directly)
-    const handlePointerDown = (e) => {
-        setIsDragging(true);
-        setStartX(e.clientX);
-    };
-
-    const handlePointerMove = (e) => {
-        if (!isDragging) return;
-
-        const x = e.clientX;
-        const diff = x - startX;
-
-        targetRef.current += diff * 0.8; // momentum injection
-        setStartX(x);
-    };
-
-    const handlePointerUp = () => {
-        setIsDragging(false);
-    };
-
     return (
         <div
             style={{
@@ -80,39 +54,33 @@ export default function CircularGallery({
                 height: "100%",
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "center",
+                alignItems: "flex-end", // 👈 IMPORTANT: pushes center down
                 overflow: "hidden",
-                cursor: isDragging ? "grabbing" : "grab",
                 userSelect: "none",
             }}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onPointerLeave={handlePointerUp}
         >
+            {/* 🧭 LOWERED CENTER CONTAINER */}
             <div
                 style={{
                     position: "relative",
                     width: itemWidth,
                     height: itemHeight,
+                    transform: "translateY(120px)", // 👈 THIS LOWERS CIRCLE CENTER
                 }}
             >
                 {images.map((src, i) => {
-                    const angle = (360 / length) * i;
+                    const angle = (360 / length) * i + renderValue * 50;
 
-                    // 🌊 FLOW EFFECT CORE
+                    // 🌊 flow motion
                     const speed = velocityRef.current;
 
-                    // wave distortion (OGL-like motion field)
                     const wave =
-                        Math.sin(renderValue * 0.01 + i * 0.6) * 12;
+                        Math.sin(renderValue * 2 + i * 0.6) * 10;
 
-                    // directional smear (drag feel)
-                    const flowOffset = speed * 25;
+                    const flowOffset = speed * 20;
 
-                    // subtle depth scaling
                     const scale =
-                        1 - Math.min(Math.abs(speed) * 0.01, 0.12);
+                        1 - Math.min(Math.abs(speed) * 0.01, 0.1);
 
                     return (
                         <div
@@ -141,9 +109,7 @@ export default function CircularGallery({
                                     inset 0 0 10px ${t.accent}33
                                 `,
 
-                                transition: isDragging
-                                    ? "none"
-                                    : "transform 0.08s linear",
+                                transition: "transform 0.08s linear",
                             }}
                         >
                             <img
@@ -155,11 +121,10 @@ export default function CircularGallery({
                                     height: "100%",
                                     objectFit: "cover",
                                     borderRadius: "12px",
-
                                     filter:
                                         t.name === "dark"
                                             ? "grayscale(30%) contrast(1.1)"
-                                            : "sepia(15%) grayscale(10%)",
+                                            : "sepia(10%) grayscale(10%)",
                                 }}
                             />
                         </div>

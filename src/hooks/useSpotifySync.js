@@ -7,7 +7,8 @@ export function useSpotifySync() {
         artist: null,
         albumImageUrl: null,
         syncedLyrics: null,
-        parsedLyrics: []
+        parsedLyrics: [],
+        currentUri: null
     });
     const [currentProgress, setCurrentProgress] = useState(0);
 
@@ -16,46 +17,68 @@ export function useSpotifySync() {
     const isPlayingRef = useRef(false);
     const reqFrameRef = useRef(null);
 
-    // Poll the backend every 4 seconds
+    // Listen to IFrame Controller Events
     useEffect(() => {
         let isMounted = true;
-        const fetchSpotify = async () => {
+
+        const handlePlaybackUpdate = async (e) => {
+            if (!isMounted) return;
+            const data = e.detail;
+
+            // data contains: position, duration, isPaused, isBuffering 
+            // In some versions it contains a playingURI. However if it's a playlist we want track URI
+            // wait, if Spotify isn't returning data.position we have to be careful
+            if (!data || data.position === undefined) return;
+
+            isPlayingRef.current = !data.isPaused;
+            baseProgressRef.current = data.position || 0;
+            syncTimeRef.current = Date.now();
+
+            // If URI changed, we need new lyrics
+            // Sometimes it's e.data.track.uri, sometimes e.data.uri depending on the Embed theme
+            const actualUri = data?.track?.uri || data?.item?.uri || data?.uri || null;
+            
+            // If we STILL don't have a URI, just update the position! But if we have one and it changed, fetch!
+            setPlaybackData(prev => {
+                if (actualUri && actualUri !== prev.currentUri && actualUri.includes("track")) {
+                    // Start fetching new song
+                    fetchTrackData(actualUri);
+                    return { ...prev, isPlaying: !data.isPaused, currentUri: actualUri };
+                }
+                return { ...prev, isPlaying: !data.isPaused };
+            });
+        };
+
+        const fetchTrackData = async (uri) => {
             try {
-                // Uses environment variable for production, falls back to localhost for dev
                 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-                const res = await fetch(`${API_BASE}/api/now-playing`);
+                const res = await fetch(`${API_BASE}/api/track?uri=${encodeURIComponent(uri)}`);
                 if (!res.ok) throw new Error('API failed');
-                const data = await res.json();
+                const trackData = await res.json();
                 
                 if (isMounted) {
-                    isPlayingRef.current = data.isPlaying;
-                    baseProgressRef.current = data.progress_ms || 0;
-                    syncTimeRef.current = Date.now();
-                    
                     let parsed = [];
-                    if (data.syncedLyrics) {
-                        parsed = parseLrc(data.syncedLyrics);
+                    if (trackData.syncedLyrics) {
+                        parsed = parseLrc(trackData.syncedLyrics);
                     }
-
-                    setPlaybackData({
-                        isPlaying: data.isPlaying,
-                        title: data.title,
-                        artist: data.artist,
-                        albumImageUrl: data.albumImageUrl,
-                        syncedLyrics: data.syncedLyrics,
+                    setPlaybackData(prev => ({
+                        ...prev,
+                        title: trackData.title,
+                        artist: trackData.artist,
+                        albumImageUrl: trackData.albumImageUrl,
+                        syncedLyrics: trackData.syncedLyrics,
                         parsedLyrics: parsed
-                    });
+                    }));
                 }
             } catch (err) {
-                // Silently fail if spotify backend is offline
+                console.error("Spotify IFrame Fetch Error:", err);
             }
         };
 
-        fetchSpotify();
-        const interval = setInterval(fetchSpotify, 4000);
+        window.addEventListener('spotifyPlaybackUpdate', handlePlaybackUpdate);
         return () => {
             isMounted = false;
-            clearInterval(interval);
+            window.removeEventListener('spotifyPlaybackUpdate', handlePlaybackUpdate);
         };
     }, []);
 

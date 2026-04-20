@@ -52,25 +52,23 @@ async function refreshSpotifyToken() {
 // Memory cache to avoid spamming lrclib for the same song
 const lyricsCache = {};
 
-app.get('/api/now-playing', async (req, res) => {
+app.get('/api/track', async (req, res) => {
     try {
+        const uri = req.query.uri;
+        if (!uri) return res.status(400).json({ error: "Missing uri parameter" });
+
+        const trackId = uri.split(':').pop();
         const token = await refreshSpotifyToken();
 
-        // 1. Fetch currently playing from Spotify
-        const spotifyRes = await axios.get('https://api.spotify.com/v1/me/player/currently-playing', {
+        // 1. Fetch exact track data from Spotify
+        const spotifyRes = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        if (spotifyRes.status === 204 || spotifyRes.status > 400 || !spotifyRes.data.item) {
-            return res.json({ isPlaying: false });
-        }
-
         const song = spotifyRes.data;
-        const isPlaying = song.is_playing;
-        const title = song.item.name;
-        const artist = song.item.artists[0].name;
-        const progress_ms = song.progress_ms;
-        const albumImageUrl = song.item.album.images[0]?.url;
+        const title = song.name;
+        const artist = song.artists[0].name;
+        const albumImageUrl = song.album.images[0]?.url;
         
         let syncedLyrics = null;
         const cacheKey = `${artist}-${title}`.toLowerCase();
@@ -80,33 +78,34 @@ app.get('/api/now-playing', async (req, res) => {
             syncedLyrics = lyricsCache[cacheKey];
         } else {
             try {
-                // Fetch from open Lrclib API
-                const lrcRes = await axios.get(`https://lrclib.net/api/get`, {
-                    params: { track_name: title, artist_name: artist }
+                // Use Search API for fuzzy matching (avoids failures on "- Remastered" etc)
+                const lrcRes = await axios.get(`https://lrclib.net/api/search`, {
+                    params: { q: `${artist} ${title}` }
                 });
-                if (lrcRes.data && lrcRes.data.syncedLyrics) {
-                    syncedLyrics = lrcRes.data.syncedLyrics;
+                
+                const match = lrcRes.data.find(track => track.syncedLyrics);
+                
+                if (match) {
+                    syncedLyrics = match.syncedLyrics;
                     lyricsCache[cacheKey] = syncedLyrics; // Cache it
                 } else {
                     lyricsCache[cacheKey] = "NO_LYRICS";
                 }
             } catch (lrcErr) {
                 console.error("Lyrics fetch failed:", lrcErr.message);
-                // Fail gracefully
                 lyricsCache[cacheKey] = "NO_LYRICS";
             }
         }
 
         res.json({
-            isPlaying,
             title,
             artist,
-            progress_ms,
             albumImageUrl,
             syncedLyrics: syncedLyrics === "NO_LYRICS" ? null : syncedLyrics
         });
 
     } catch (error) {
+        console.error(error.message);
         res.status(500).json({ error: error.message });
     }
 });

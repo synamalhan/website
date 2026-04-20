@@ -24,123 +24,143 @@ export default function LiveLyrics() {
         return null;
     }
 
-    if (parsedLyrics.length === 0) {
-        return (
-            <div style={{ padding: '100px 40px', textAlign: 'center', background: t.cardBg, borderTop: `1px solid ${t.border}`, borderBottom: `1px solid ${t.border}` }}>
-                <p style={{ ...FONTS.mono, color: t.accent, letterSpacing: 2 }}>{title} // {artist}</p>
-                <p style={{ ...FONTS.mono, opacity: 0.5, fontSize: '0.8rem', marginTop: 10, color: t.textMute }}>[ Instrumental or No Lyrics Found ]</p>
-            </div>
-        );
-    }
-
-    const LINE_HEIGHT = 80;
+    const LINE_HEIGHT = 45;
     const translateYOffset = activeIndex >= 0 ? -(activeIndex * LINE_HEIGHT) : 0;
 
     return (
         <div style={{
-            position: 'relative',
-            width: '100%',
-            height: '80vh',
-            minHeight: 600,
-            background: t.name === 'dark' ? '#111' : '#f4f4f4',
+            position: 'fixed',
+            bottom: 30,
+            right: 30,
+            width: 320,
+            height: 480,
+            zIndex: 9999,
+            background: t.cardBg,
+            border: `2px solid ${t.borderHi}`,
+            borderRadius: '15px 8px 20px 12px', // Sketchy messy box
+            boxShadow: `10px 10px 0 ${t.bg}, 12px 12px 0 ${t.borderHi}`,
+            overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            overflow: 'hidden',
-            borderTop: `2px solid ${t.borderHi}`,
-            borderBottom: `2px solid ${t.borderHi}`,
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)'
+            transition: 'all 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
         }}>
-            {/* Background Blur derived from Album Cover if available */}
-            {albumImageUrl && (
-                <div style={{
-                    position: 'absolute',
-                    inset: -50,
-                    backgroundImage: `url(${albumImageUrl})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    filter: 'blur(80px) saturate(2)',
-                    opacity: 0.15,
-                    zIndex: 0
-                }} />
-            )}
-
-            <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: 0,
-                right: 0,
-                transform: `translateY(${translateYOffset}px)`,
-                transition: 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 20,
-                zIndex: 1
-            }}>
-                {parsedLyrics.map((line, i) => {
-                    const isActive = i === activeIndex;
-                    const isUpcoming = i > activeIndex;
-                    const distance = Math.abs(i - activeIndex);
-
-                    let opacity = 0;
-                    if (isActive) opacity = 1;
-                    else if (distance === 1) opacity = 0.5;
-                    else if (distance === 2) opacity = 0.2;
-                    else if (distance === 3) opacity = 0.05;
-
-                    return (
-                        <div 
-                            key={i} 
-                            style={{
-                                height: 60,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                textAlign: 'center',
-                                padding: '0 40px',
-                                ...FONTS.orb, // using the sketch aesthetic bold font
-                                fontSize: isActive ? 'clamp(2rem, 5vw, 4rem)' : 'clamp(1.5rem, 4vw, 3rem)',
-                                fontWeight: isActive ? 900 : 400,
-                                color: isActive ? t.textHi : t.textMute,
-                                textShadow: isActive ? `0 0 20px ${t.accent}88` : 'none',
-                                opacity,
-                                transform: isActive ? 'scale(1.05)' : 'scale(0.95)',
-                                transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
-                                filter: isUpcoming ? 'blur(2px)' : (isActive ? 'none' : 'blur(4px)'),
-                                willChange: 'transform, opacity, filter'
-                            }}
-                        >
-                            {line.text === '' ? '♪' : line.text}
-                        </div>
-                    );
-                })}
-            </div>
-            
             {/* Header info */}
             <div style={{
-                position: 'absolute',
-                top: 40,
-                left: 40,
+                position: 'relative',
                 zIndex: 2,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 16
+                gap: 12,
+                padding: '20px',
+                background: t.bg,
+                borderBottom: `2px dashed ${t.borderHi}`,
+                borderRadius: '15px 8px 0 0'
             }}>
                 {albumImageUrl && (
-                    <img src={albumImageUrl} alt="Album Art" style={{ width: 48, height: 48, borderRadius: 8, boxShadow: `0 4px 12px rgba(0,0,0,0.3)` }} />
+                    <img 
+                        src={albumImageUrl} 
+                        alt="Album Art" 
+                        style={{ 
+                            width: 44, 
+                            height: 44, 
+                            borderRadius: '30% 70% 60% 40% / 40% 50% 60% 50%', 
+                            border: `1px solid ${t.border}`
+                        }} 
+                    />
                 )}
-                <div>
-                    <div style={{ ...FONTS.mono, fontSize: '0.65rem', color: t.accent, textTransform: 'uppercase', letterSpacing: '3px', marginBottom: 4 }}>
-                        LIVE // SPOTIFY
+                <div style={{ overflow: 'hidden' }}>
+                    <div style={{ ...FONTS.mono, fontSize: '0.55rem', color: t.accent, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: 2 }}>
+                        LISTENING // LIVE
                     </div>
-                    <div style={{ ...FONTS.orb, fontWeight: 700, fontSize: '1.1rem', color: t.textHi }}>
+                    <div style={{ ...FONTS.orb, fontWeight: 700, fontSize: '0.9rem', color: t.textHi, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {title}
                     </div>
-                    <div style={{ ...FONTS.mono, fontSize: '0.75rem', color: t.textMute }}>
+                    <div style={{ ...FONTS.mono, fontSize: '0.65rem', color: t.textMute, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {artist}
                     </div>
                 </div>
+            </div>
+
+            {/* Lyrics Area */}
+            <div style={{
+                position: 'relative',
+                flex: 1,
+                overflow: 'hidden',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 5%, black 25%, black 75%, transparent 95%)',
+                maskImage: 'linear-gradient(to bottom, transparent 5%, black 25%, black 75%, transparent 95%)',
+                background: t.name === 'dark' ? '#11111199' : '#f8f8f899',
+            }}>
+                {/* Background Blur derived from Album Cover */}
+                {albumImageUrl && (
+                    <div style={{
+                        position: 'absolute',
+                        inset: -20,
+                        backgroundImage: `url(${albumImageUrl})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        filter: 'blur(30px) opacity(0.2)',
+                        zIndex: 0
+                    }} />
+                )}
+
+                {parsedLyrics.length === 0 ? (
+                    <div style={{ 
+                        position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                        textAlign: 'center', padding: 20, ...FONTS.mono, fontSize: '0.75rem', color: t.textMute, zIndex: 1 
+                    }}>
+                        [ Instrumental / Synced Lyrics N/A ]
+                    </div>
+                ) : (
+                    <div style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: 0,
+                        right: 0,
+                        transform: `translateY(${translateYOffset}px)`,
+                        transition: 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 12,
+                        zIndex: 1
+                    }}>
+                        {parsedLyrics.map((line, i) => {
+                            const isActive = i === activeIndex;
+                            const isUpcoming = i > activeIndex;
+                            const distance = Math.abs(i - activeIndex);
+
+                            let opacity = 0;
+                            if (isActive) opacity = 1;
+                            else if (distance === 1) opacity = 0.6;
+                            else if (distance === 2) opacity = 0.3;
+                            else if (distance === 3) opacity = 0.1;
+
+                            return (
+                                <div 
+                                    key={i} 
+                                    style={{
+                                        height: LINE_HEIGHT - 12, // actual height space + gap
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        textAlign: 'center',
+                                        padding: '0 20px',
+                                        ...FONTS.orb,
+                                        fontSize: isActive ? '1.25rem' : '1.05rem',
+                                        fontWeight: isActive ? 800 : 400,
+                                        color: isActive ? t.textHi : t.textMute,
+                                        opacity,
+                                        transform: isActive ? 'scale(1.05)' : 'scale(0.95)',
+                                        transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
+                                        filter: isUpcoming ? 'blur(1px)' : (isActive ? 'none' : 'blur(2px)'),
+                                        willChange: 'transform, opacity'
+                                    }}
+                                >
+                                    {line.text === '' ? '♪' : line.text}
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import Label from "../components/ui/Label";
@@ -8,6 +8,35 @@ import resume from "../assets/SYNA_MALHAN.pdf";
 
 const About = forwardRef(function About({ counts }, ref) {
     const { theme: t } = useTheme();
+    const spotifyEmbedRef = useRef(null);
+
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://open.spotify.com/embed/iframe-api/v1";
+        script.async = true;
+        document.body.appendChild(script);
+
+        window.onSpotifyIframeApiReady = (IFrameAPI) => {
+            if (!spotifyEmbedRef.current) return;
+            const options = {
+                uri: 'spotify:playlist:0Uggezps9kTbnOpFB7ovff',
+                width: '100%',
+                height: '352',
+                theme: t.name === 'dark' ? '0' : '1'
+            };
+            const callback = (EmbedController) => {
+                EmbedController.addListener('playback_update', e => {
+                    window.dispatchEvent(new CustomEvent("spotifyPlaybackUpdate", { detail: e.data }));
+                });
+            };
+            IFrameAPI.createController(spotifyEmbedRef.current, options, callback);
+        };
+
+        return () => {
+            if (document.body.contains(script)) document.body.removeChild(script);
+            delete window.onSpotifyIframeApiReady;
+        }
+    }, [t.name]);
 
     return (
         <section
@@ -147,16 +176,7 @@ const About = forwardRef(function About({ counts }, ref) {
                         border: `1px solid ${t.border}`,
                         boxShadow: "0 20px 40px rgba(0,0,0,0.3)"
                     }}>
-                        <iframe
-                            title="Spotify"
-                            src="https://open.spotify.com/embed/playlist/0Uggezps9kTbnOpFB7ovff?utm_source=generator&theme=0"
-                            width="100%"
-                            height="352"
-                            frameBorder="0"
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                            loading="lazy"
-                            style={{ borderRadius: "12px", border: "none" }}
-                        ></iframe>
+                        <div ref={spotifyEmbedRef}></div>
                     </div>
                 </div>
             </div>
