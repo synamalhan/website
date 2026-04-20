@@ -1,17 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
+import { useIsMobile } from "../hooks/useMediaQuery";
 import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 import { BLOG } from "../data/blog";
 
 export default function Blog() {
     const { theme: t } = useTheme();
+    const isMobile = useIsMobile();
     const blogPh = useRef(BLOG.map(() => Math.random() * Math.PI * 2));
     const [bfloat, setBfloat] = useState(BLOG.map(() => ({ x: 0, y: 0, r: 0 })));
     const [selectedPost, setSelectedPost] = useState(null);
 
-    // Stable randomized positions
+    // Stable randomized positions (only used for desktop)
     const posRef = useRef(BLOG.map((_, i) => {
         const cols = 3;
         const row = Math.floor(i / cols);
@@ -23,6 +25,7 @@ export default function Blog() {
     }));
 
     useEffect(() => {
+        if (isMobile) return;
         let raf;
         const loop = () => {
             const tt = Date.now() * .0008;
@@ -34,7 +37,7 @@ export default function Blog() {
             raf = requestAnimationFrame(loop);
         };
         loop(); return () => cancelAnimationFrame(raf);
-    }, []);
+    }, [isMobile]);
 
     useEffect(() => {
         if (selectedPost) document.body.style.overflow = "hidden";
@@ -42,28 +45,66 @@ export default function Blog() {
     }, [selectedPost]);
 
     return (
-        <section id="notes" style={{ padding: "80px 24px 100px", position: "relative", zIndex: selectedPost ? 1001 : 1, overflow: "visible", maxWidth: 1200, margin: "0 auto" }}>
-            <div style={{ marginBottom: 52, textAlign: "center" }}><Label center>// Blogs</Label><H2 style={{ textAlign: "center" }}>NOTES</H2></div>
-            <div style={{ position: "relative", height: 650 }}>
+        <section id="notes" style={{ 
+            padding: isMobile ? "60px 20px 80px" : "80px 24px 100px", 
+            position: "relative", 
+            zIndex: selectedPost ? 1001 : 1, 
+            overflow: "visible", 
+            maxWidth: 1200, 
+            margin: "0 auto" 
+        }}>
+            <div style={{ marginBottom: isMobile ? 32 : 52, textAlign: "center" }}>
+                <Label center>// Blogs</Label>
+                <H2 style={{ textAlign: "center" }}>NOTES</H2>
+            </div>
+
+            <div style={{ 
+                position: "relative", 
+                height: isMobile ? "auto" : 650,
+                display: isMobile ? "flex" : "block",
+                flexDirection: isMobile ? "column" : "initial",
+                gap: isMobile ? 24 : 0
+            }}>
                 {BLOG.map((post, i) => {
                     const pos = posRef.current[i];
                     const fl = bfloat[i] || { x: 0, y: 0, r: 0 };
+                    
+                    const desktopStyle = {
+                        position: "absolute",
+                        ...pos,
+                        width: 280,
+                        transform: `translate(${fl.x}px,${fl.y}px) rotate(${fl.r}deg)`,
+                    };
+
+                    const mobileStyle = {
+                        position: "relative",
+                        width: "100%",
+                        margin: "0 auto",
+                        maxWidth: 400,
+                    };
+
                     return (
                         <div key={i}
                             onClick={() => setSelectedPost(post)}
                             style={{
-                                position: "absolute", ...pos, width: 280,
-                                transform: `translate(${fl.x}px,${fl.y}px) rotate(${fl.r}deg)`,
-                                background: t.cardBg, border: `1px solid ${t.border}`, padding: "22px", cursor: "pointer",
-                                backdropFilter: "blur(10px)", transition: "all .25s", borderRadius: 2,
+                                ...(isMobile ? mobileStyle : desktopStyle),
+                                background: t.cardBg, 
+                                border: `1px solid ${t.border}`, 
+                                padding: "22px", 
+                                cursor: "pointer",
+                                backdropFilter: "blur(10px)", 
+                                transition: "all .25s", 
+                                borderRadius: 2,
                                 clipPath: "polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%)"
                             }}
                             onMouseEnter={e => {
+                                if (isMobile) return;
                                 e.currentTarget.style.borderColor = t.cyan;
                                 e.currentTarget.style.transform += " scale(1.02)";
                                 e.currentTarget.style.zIndex = 20;
                             }}
                             onMouseLeave={e => {
+                                if (isMobile) return;
                                 e.currentTarget.style.borderColor = t.border;
                                 e.currentTarget.style.transform = `translate(${fl.x}px,${fl.y}px) rotate(${fl.r}deg)`;
                                 e.currentTarget.style.zIndex = 1;
@@ -89,19 +130,19 @@ export default function Blog() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        padding: "40px 24px"
+                        padding: isMobile ? "20px 16px" : "40px 24px"
                     }}
                 >
                     <div
                         onClick={e => e.stopPropagation()}
                         style={{
-                            width: "90%",
+                            width: "100%",
                             maxWidth: 800,
-                            maxHeight: "85vh",
+                            maxHeight: isMobile ? "90vh" : "85vh",
                             background: t.bg,
                             border: `1px solid ${t.border}`,
-                            borderRadius: 24,
-                            padding: "48px 32px",
+                            borderRadius: isMobile ? 12 : 24,
+                            padding: isMobile ? "32px 20px" : "48px 32px",
                             position: "relative",
                             display: "flex",
                             flexDirection: "column",
@@ -114,30 +155,30 @@ export default function Blog() {
                             onClick={() => setSelectedPost(null)}
                             style={{
                                 position: "absolute",
-                                top: 24,
-                                right: 24,
+                                top: isMobile ? 16 : 24,
+                                right: isMobile ? 16 : 24,
                                 background: t.surface,
                                 border: `1px solid ${t.border}`,
                                 color: t.textHi,
                                 ...FONTS.mono,
                                 cursor: "pointer",
-                                fontSize: "0.6rem",
-                                padding: "8px 12px",
-                                borderRadius: 8,
+                                fontSize: "0.5rem",
+                                padding: "6px 10px",
+                                borderRadius: 6,
                                 zIndex: 10
                             }}
                         >
-                            CLOSE ESC
+                            CLOSE
                         </button>
 
                         <div style={{ overflowY: "auto", paddingRight: 10 }}>
-                            <div style={{ ...FONTS.mono, fontSize: "0.7rem", color: t.cyan, letterSpacing: 2, marginBottom: 12 }}>{selectedPost.date}</div>
-                            <H2 style={{ fontSize: "2rem", marginBottom: 24, color: t.accent }}>{selectedPost.title}</H2>
+                            <div style={{ ...FONTS.mono, fontSize: "0.6rem", color: t.cyan, letterSpacing: 2, marginBottom: 8 }}>{selectedPost.date}</div>
+                            <H2 style={{ fontSize: isMobile ? "1.4rem" : "2rem", marginBottom: 20, color: t.accent, lineHeight: 1.2 }}>{selectedPost.title}</H2>
                             <div
                                 style={{
                                     ...FONTS.inter,
-                                    fontSize: "1rem",
-                                    lineHeight: 1.8,
+                                    fontSize: isMobile ? "0.9rem" : "1rem",
+                                    lineHeight: 1.7,
                                     color: t.textMute,
                                     whiteSpace: "pre-wrap"
                                 }}
@@ -147,7 +188,7 @@ export default function Blog() {
                         </div>
 
                         {/* Decoration lines */}
-                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: `linear-gradient(90deg, ${t.cyan}, ${t.accent}, ${t.magenta})`, borderBottomLeftRadius: 24, borderBottomRightRadius: 24 }} />
+                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: `linear-gradient(90deg, ${t.cyan}, ${t.accent}, ${t.magenta})`, borderBottomLeftRadius: isMobile ? 12 : 24, borderBottomRightRadius: isMobile ? 12 : 24 }} />
                     </div>
                 </div>
             )}

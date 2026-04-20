@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
+import { useIsMobile } from "../hooks/useMediaQuery";
 import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 import ProjectThumb from "../components/ProjectThumb";
 import { categorizedProjects } from "../data/projects";
 
 function FlippableProjectCard({ project, index, theme: t }) {
+    const isMobile = useIsMobile();
     const [flipped, setFlipped] = useState(false);
 
     return (
@@ -16,7 +18,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
                 setFlipped(!flipped);
             }}
             style={{
-                height: 380,
+                height: isMobile ? 320 : 380,
                 perspective: "1200px",
                 cursor: "pointer",
                 width: "100%"
@@ -31,7 +33,6 @@ function FlippableProjectCard({ project, index, theme: t }) {
                 transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)"
             }}>
                 {/* FRONT */}
-                {/* FRONT — overflow:visible so preserve-3d + translateZ work */}
                 <div style={{
                     position: "absolute",
                     width: "100%",
@@ -40,7 +41,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
                     background: t.surface,
                     border: `1px solid ${t.border}`,
                     borderRadius: 16,
-                    padding: "32px",
+                    padding: isMobile ? "24px" : "32px",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "flex-start",
@@ -48,13 +49,13 @@ function FlippableProjectCard({ project, index, theme: t }) {
                     transformStyle: "preserve-3d",
                     boxShadow: `0 10px 30px rgba(0,0,0,0.3)`
                 }}>
-                    {/* Index Number — floats at Z=20 */}
+                    {/* Index Number */}
                     <div style={{
                         position: "absolute",
-                        top: 20,
-                        right: 24,
+                        top: isMobile ? 12 : 20,
+                        right: isMobile ? 16 : 24,
                         ...FONTS.mono,
-                        fontSize: "2.5rem",
+                        fontSize: isMobile ? "2rem" : "2.5rem",
                         fontWeight: 900,
                         color: t.textHi,
                         opacity: 0.05,
@@ -63,28 +64,28 @@ function FlippableProjectCard({ project, index, theme: t }) {
                         {String(index + 1).padStart(2, '0')}
                     </div>
 
-                    {/* Content — floats at Z=40 */}
-                    <div style={{ transform: "translateZ(40px)", height: "100%", display: "flex", flexDirection: "column" }}>
+                    {/* Content */}
+                    <div style={{ transform: isMobile ? "translateZ(30px)" : "translateZ(40px)", height: "100%", display: "flex", flexDirection: "column" }}>
                         <div style={{
                             ...FONTS.orb,
-                            fontSize: "1.3rem",
+                            fontSize: isMobile ? "1.1rem" : "1.3rem",
                             color: t.accent,
                             fontWeight: 800,
                             lineHeight: 1.2,
-                            marginBottom: 16
+                            marginBottom: isMobile ? 12 : 16
                         }}>{project.title}</div>
 
-                        <div style={{ marginBottom: 20 }}>
-                            <div style={{ ...FONTS.mono, fontSize: "0.6rem", color: t.textMute, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Motivation</div>
-                            <div style={{ ...FONTS.inter, fontSize: "0.85rem", color: t.textHi, lineHeight: 1.5 }}>{project.motivation}</div>
+                        <div style={{ marginBottom: isMobile ? 12 : 20 }}>
+                            <div style={{ ...FONTS.mono, fontSize: "0.55rem", color: t.textMute, letterSpacing: 1, marginBottom: 6, textTransform: "uppercase" }}>Motivation</div>
+                            <div style={{ ...FONTS.inter, fontSize: isMobile ? "0.8rem" : "0.85rem", color: t.textHi, lineHeight: 1.5 }}>{project.motivation}</div>
                         </div>
 
                         <div style={{ marginTop: "auto" }}>
-                            <div style={{ ...FONTS.mono, fontSize: "0.6rem", color: t.textMute, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Tech Stack</div>
+                            <div style={{ ...FONTS.mono, fontSize: "0.55rem", color: t.textMute, letterSpacing: 1, marginBottom: 6, textTransform: "uppercase" }}>Tech Stack</div>
                             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                                {project.techStack.map(s => (
+                                {project.techStack.slice(0, isMobile ? 4 : project.techStack.length).map(s => (
                                     <span key={s} style={{
-                                        fontSize: "0.65rem",
+                                        fontSize: "0.6rem",
                                         ...FONTS.mono,
                                         color: t.cyan,
                                         background: `${t.cyan}10`,
@@ -93,12 +94,15 @@ function FlippableProjectCard({ project, index, theme: t }) {
                                         border: `1px solid ${t.cyan}30`
                                     }}>{s}</span>
                                 ))}
+                                {isMobile && project.techStack.length > 4 && (
+                                    <span style={{ fontSize: "0.6rem", ...FONTS.mono, color: t.textMute }}>+{project.techStack.length - 4} more</span>
+                                )}
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* BACK — scrollable with simulated depth via shadows */}
+                {/* BACK */}
                 <div style={{
                     position: "absolute",
                     width: "100%",
@@ -110,29 +114,27 @@ function FlippableProjectCard({ project, index, theme: t }) {
                     transform: "rotateY(180deg)",
                     boxShadow: `0 0 30px ${t.accent}22`
                 }}>
-                    {/* Scrollable wrapper */}
                     <div style={{
                         width: "100%",
                         height: "100%",
                         overflowY: "auto",
-                        padding: "24px",
+                        padding: isMobile ? "16px" : "24px",
                         boxSizing: "border-box"
                     }}>
-                        {/* Elevated floating panel — depth via shadow + border */}
                         <div style={{
                             background: `${t.surface}`,
                             border: `1px solid ${t.accent}33`,
                             borderRadius: 12,
-                            padding: "28px",
+                            padding: isMobile ? "20px" : "28px",
                             boxShadow: `0 8px 32px rgba(0,0,0,0.4), 0 2px 8px ${t.accent}15, inset 0 1px 0 ${t.accent}18`
                         }}>
-                            <div style={{ ...FONTS.mono, fontSize: "0.6rem", color: t.accent, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Implementation</div>
+                            <div style={{ ...FONTS.mono, fontSize: "0.55rem", color: t.accent, letterSpacing: 2, marginBottom: 10, textTransform: "uppercase" }}>Details</div>
                             <div style={{
                                 ...FONTS.inter,
-                                fontSize: "0.9rem",
+                                fontSize: isMobile ? "0.8rem" : "0.9rem",
                                 color: t.textMute,
                                 lineHeight: 1.6,
-                                marginBottom: 24
+                                marginBottom: 20
                             }}>{project.details}</div>
 
                             {project.link && (
@@ -148,8 +150,8 @@ function FlippableProjectCard({ project, index, theme: t }) {
                                         ...FONTS.mono,
                                         color: t.textHi,
                                         textDecoration: "none",
-                                        fontSize: "0.7rem",
-                                        padding: "8px 16px",
+                                        fontSize: "0.65rem",
+                                        padding: "6px 12px",
                                         border: `1px solid ${t.border}`,
                                         borderRadius: 6,
                                         background: t.surface,
@@ -158,7 +160,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
                                     onMouseEnter={e => e.currentTarget.style.borderColor = t.accent}
                                     onMouseLeave={e => e.currentTarget.style.borderColor = t.border}
                                 >
-                                    VIEW REPOSITORY ↗
+                                    VIEW REPO ↗
                                 </a>
                             )}
                         </div>
@@ -171,6 +173,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
 
 export default function Projects() {
     const { theme: t } = useTheme();
+    const isMobile = useIsMobile();
     const [selectedCategory, setSelectedCategory] = useState(null);
 
     useEffect(() => {
@@ -179,15 +182,15 @@ export default function Projects() {
     }, [selectedCategory]);
 
     return (
-        <section id="projects" style={{ padding: "120px 24px", position: "relative", zIndex: selectedCategory ? 1001 : 1, maxWidth: 1200, margin: "0 auto" }}>
-            <div style={{ textAlign: "center", marginBottom: 72 }}>
+        <section id="projects" style={{ padding: isMobile ? "80px 24px" : "120px 24px", position: "relative", zIndex: selectedCategory ? 1001 : 1, maxWidth: 1200, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: isMobile ? 48 : 72 }}>
                 <Label center>// Portfolio</Label>
                 <H2 style={{ textAlign: "center" }}>MY<br />PROJECTS</H2>
             </div>
 
             <div style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))",
                 gap: "24px"
             }}>
                 {categorizedProjects.map((cat, i) => (
@@ -204,18 +207,20 @@ export default function Projects() {
                             overflow: "hidden",
                             display: "flex",
                             flexDirection: "column",
-                            height: 300
+                            height: isMobile ? 260 : 300
                         }}
                         onMouseEnter={e => {
+                            if (isMobile) return;
                             e.currentTarget.style.borderColor = cat.colors[0];
                             e.currentTarget.style.transform = "translateY(-5px)";
                         }}
                         onMouseLeave={e => {
+                            if (isMobile) return;
                             e.currentTarget.style.borderColor = t.border;
                             e.currentTarget.style.transform = "translateY(0)";
                         }}
                     >
-                        <div style={{ height: 140, position: "relative", overflow: "hidden" }}>
+                        <div style={{ height: isMobile ? 120 : 140, position: "relative", overflow: "hidden" }}>
                             <ProjectThumb type={cat.type} colors={cat.colors} t={t} />
                             <div style={{
                                 position: "absolute",
@@ -227,30 +232,30 @@ export default function Projects() {
                             }} />
                         </div>
 
-                        <div style={{ padding: "24px", flex: 1, display: "flex", flexDirection: "column" }}>
-                            <div style={{ ...FONTS.orb, fontSize: "1.2rem", color: t.textHi, fontWeight: 800, marginBottom: 8 }}>
+                        <div style={{ padding: isMobile ? "20px" : "24px", flex: 1, display: "flex", flexDirection: "column" }}>
+                            <div style={{ ...FONTS.orb, fontSize: isMobile ? "1.1rem" : "1.2rem", color: t.textHi, fontWeight: 800, marginBottom: 8 }}>
                                 {cat.title}
                             </div>
                             <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: "auto" }}>
-                                {cat.tags.map(tag => (
+                                {cat.tags.slice(0, isMobile ? 3 : cat.tags.length).map(tag => (
                                     <span key={tag} style={{ ...FONTS.mono, fontSize: "0.55rem", color: t.textMute }}>{tag}</span>
                                 ))}
                             </div>
                             <div style={{
                                 marginTop: 16,
                                 ...FONTS.mono,
-                                fontSize: "0.65rem",
+                                fontSize: "0.6rem",
                                 color: cat.colors[0],
                                 letterSpacing: 1
                             }}>
-                                [ EXPLORE {cat.projects.length} PIECES ]
+                                [ {isMobile ? "VIEW" : `EXPLORE ${cat.projects.length} PIECES`} ]
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
 
-            {/* Centered Modal */}
+            {/* Modal */}
             {selectedCategory && (
                 <div
                     onClick={() => setSelectedCategory(null)}
@@ -263,19 +268,19 @@ export default function Projects() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        padding: "40px 24px"
+                        padding: isMobile ? "20px 16px" : "40px 24px"
                     }}
                 >
                     <div
                         onClick={e => e.stopPropagation()}
                         style={{
-                            width: "90%",
+                            width: "100%",
                             maxWidth: 1000,
-                            maxHeight: "85vh",
+                            maxHeight: isMobile ? "92vh" : "85vh",
                             background: t.bg,
                             border: `1px solid ${t.border}`,
-                            borderRadius: 24,
-                            padding: "48px 32px",
+                            borderRadius: isMobile ? 16 : 24,
+                            padding: isMobile ? "24px 16px" : "48px 32px",
                             position: "relative",
                             display: "flex",
                             flexDirection: "column",
@@ -283,11 +288,11 @@ export default function Projects() {
                         }}
                     >
                         {/* Modal Header */}
-                        <div style={{ marginBottom: 40, borderBottom: `1px solid ${t.border}`, paddingBottom: 24 }}>
+                        <div style={{ marginBottom: isMobile ? 24 : 40, borderBottom: `1px solid ${t.border}`, paddingBottom: isMobile ? 16 : 24 }}>
                             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                                 <div>
-                                    <div style={{ ...FONTS.mono, color: t.cyan, fontSize: "0.8rem", marginBottom: 8 }}>CATEGORY</div>
-                                    <H2 style={{ fontSize: "1.8rem", margin: 0 }}>{selectedCategory.title}</H2>
+                                    <div style={{ ...FONTS.mono, color: t.cyan, fontSize: "0.7rem", marginBottom: 6 }}>CATEGORY</div>
+                                    <H2 style={{ fontSize: isMobile ? "1.4rem" : "1.8rem", margin: 0 }}>{selectedCategory.title}</H2>
                                 </div>
                                 <button
                                     onClick={() => setSelectedCategory(null)}
@@ -297,12 +302,12 @@ export default function Projects() {
                                         color: t.textHi,
                                         ...FONTS.mono,
                                         cursor: "pointer",
-                                        fontSize: "0.7rem",
-                                        padding: "8px 16px",
+                                        fontSize: "0.6rem",
+                                        padding: "6px 12px",
                                         borderRadius: 8
                                     }}
                                 >
-                                    CLOSE ESC
+                                    CLOSE
                                 </button>
                             </div>
                         </div>
@@ -310,10 +315,10 @@ export default function Projects() {
                         {/* Scrolling Content */}
                         <div style={{
                             overflowY: "auto",
-                            paddingRight: 10,
+                            paddingRight: 6,
                             display: "grid",
-                            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                            gap: "24px"
+                            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(280px, 1fr))",
+                            gap: isMobile ? "20px" : "24px"
                         }}>
                             {selectedCategory.projects.map((proj, idx) => (
                                 <FlippableProjectCard key={idx} index={idx} project={proj} theme={t} />

@@ -3,6 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, Environment, Float } from "@react-three/drei";
 import * as THREE from "three";
 import { EARTH_FACTS } from "../data/earthFacts";
+import { useIsMobile } from "../hooks/useMediaQuery";
 
 /* ── Metallic material presets ── */
 function useMetal(color = "#8a9bb0", roughness = 0.25, metalness = 0.92) {
@@ -14,6 +15,7 @@ function useMetal(color = "#8a9bb0", roughness = 0.25, metalness = 0.92) {
 /* ── Single Data Node ── */
 function Node({ id, position, index, total, progress, onHover, onClick, isHovered }) {
     const ref = useRef();
+    const isMobile = useIsMobile();
     const visible = progress > 0.5 + (index / total) * 0.2;
 
     const hue = (index / total) * 360;
@@ -30,8 +32,8 @@ function Node({ id, position, index, total, progress, onHover, onClick, isHovere
         <group position={position} ref={ref}>
             <mesh
                 material={mat}
-                onPointerOver={(e) => { e.stopPropagation(); onHover(index); }}
-                onPointerOut={(e) => { e.stopPropagation(); onHover(null); }}
+                onPointerOver={(e) => { if (!isMobile) { e.stopPropagation(); onHover(index); } }}
+                onPointerOut={(e) => { if (!isMobile) { e.stopPropagation(); onHover(null); } }}
                 onClick={(e) => { e.stopPropagation(); onClick(index); }}
             >
                 <boxGeometry args={[0.2, 0.2, 0.2]} />
@@ -44,8 +46,8 @@ function Node({ id, position, index, total, progress, onHover, onClick, isHovere
             </mesh>
 
             {/* Icon label */}
-            <Html position={[0, 0, 0.2]} center distanceFactor={6} style={{ pointerEvents: "none" }} zIndexRange={[100, 0]}>
-                <div style={{ fontSize: "14px", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.5))", userSelect: "none" }}>
+            <Html position={[0, 0, 0.2]} center distanceFactor={isMobile ? 8 : 6} style={{ pointerEvents: "none" }} zIndexRange={[100, 0]}>
+                <div style={{ fontSize: isMobile ? "12px" : "14px", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.5))", userSelect: "none" }}>
                     {EARTH_FACTS[index]?.icon}
                 </div>
             </Html>
@@ -66,6 +68,7 @@ function EarthScene({ progress, onNodeHover, onNodeClick, hoveredNode }) {
     const groupRef = useRef();
     const earthRef = useRef();
     const rotationRef = useRef(0);
+    const isMobile = useIsMobile();
 
     const R = 3.0; // Globe radius
 
@@ -132,7 +135,7 @@ function EarthScene({ progress, onNodeHover, onNodeClick, hoveredNode }) {
             <pointLight position={[0, 0, 4]} intensity={1.5} color="#22d3ee" distance={12} />
             <pointLight position={[0, -4, 2]} intensity={1.2} color="#8b5cf6" distance={10} />
 
-            <group scale={0.75} position={[0, -0.6, 0]}>
+            <group scale={isMobile ? 0.65 : 0.75} position={[0, isMobile ? -0.2 : -0.6, 0]}>
                 {/* BASE STAND */}
                 {p0.visible && (
                     <group position={[0, -R - 1.5 - p0.offset, 0]}>
@@ -274,13 +277,14 @@ function EarthScene({ progress, onNodeHover, onNodeClick, hoveredNode }) {
 }
 
 export default function MetallicEarth3D({ progress, t, onNodeHover, onNodeClick, hoveredNode }) {
+    const isMobile = useIsMobile();
     return (
         <div style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}>
             <Canvas
-                camera={{ position: [0, 0, 11], fov: 50 }}
+                camera={{ position: [0, 0, isMobile ? 12 : 11], fov: isMobile ? 60 : 50 }}
                 gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
                 style={{ background: "transparent" }}
-                dpr={1}
+                dpr={isMobile ? 1.5 : 2}
             >
                 <EarthScene
                     progress={progress}

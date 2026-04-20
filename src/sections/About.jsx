@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useRef } from "react";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
+import { useIsMobile } from "../hooks/useMediaQuery";
 import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 import CircularGallery from "../components/CircularGallery";
@@ -8,6 +9,7 @@ import resume from "../assets/SYNA_MALHAN.pdf";
 
 const About = forwardRef(function About({ counts }, ref) {
     const { theme: t } = useTheme();
+    const isMobile = useIsMobile();
     const spotifyEmbedRef = useRef(null);
 
     useEffect(() => {
@@ -17,7 +19,6 @@ const About = forwardRef(function About({ counts }, ref) {
         document.body.appendChild(script);
 
         window.onSpotifyIframeApiReady = (IFrameAPI) => {
-            console.log("Spotify IFrame API Ready");
             if (!spotifyEmbedRef.current) return;
             const options = {
                 uri: 'spotify:playlist:0Uggezps9kTbnOpFB7ovff',
@@ -26,12 +27,9 @@ const About = forwardRef(function About({ counts }, ref) {
                 theme: t.name === 'dark' ? '0' : '1'
             };
             const callback = (EmbedController) => {
-                console.log("Spotify Embed Controller Created");
-                
                 const handleUpdate = (e) => {
                     // console.log("Spotify Event:", e.data);
                 };
-
                 EmbedController.addListener('playback_update', handleUpdate);
                 EmbedController.addListener('playback_started', handleUpdate);
             };
@@ -49,7 +47,7 @@ const About = forwardRef(function About({ counts }, ref) {
             id="about"
             ref={ref}
             style={{
-                padding: "clamp(60px, 10vw, 120px) 24px",
+                padding: isMobile ? "60px 24px" : "clamp(60px, 10vw, 120px) 24px",
                 position: "relative",
                 zIndex: 10,
                 maxWidth: 1200,
@@ -58,8 +56,8 @@ const About = forwardRef(function About({ counts }, ref) {
         >
             <div style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-                gap: "60px",
+                gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))",
+                gap: isMobile ? "40px" : "60px",
                 alignItems: "start"
             }}>
                 {/* Left Side: Bio & Stats */}
@@ -68,7 +66,7 @@ const About = forwardRef(function About({ counts }, ref) {
                     <H2>ABOUT<br />ME</H2>
 
                     <p style={{
-                        fontSize: "1.05rem",
+                        fontSize: isMobile ? "1rem" : "1.05rem",
                         lineHeight: 1.8,
                         color: t.textHi,
                         fontWeight: 400,
@@ -78,7 +76,7 @@ const About = forwardRef(function About({ counts }, ref) {
                     </p>
 
                     <p style={{
-                        fontSize: "0.95rem",
+                        fontSize: isMobile ? "0.9rem" : "0.95rem",
                         lineHeight: 1.7,
                         color: t.textMute,
                         fontWeight: 300,
@@ -87,15 +85,17 @@ const About = forwardRef(function About({ counts }, ref) {
                         With a strong background in <span style={{ color: t.cyan, fontWeight: 500 }}>AI, Data Science, and iOS Development</span>, I love building intelligent systems that are both functional and visually stunning. Whether it's architecting Swift solutions or training neural nets, I focus on building tools that are accessible, empathetic, and human.
                     </p>
 
-                    <p style={{
-                        fontSize: "0.95rem",
-                        lineHeight: 1.7,
-                        color: t.textMute,
-                        fontWeight: 300,
-                        marginBottom: 32
-                    }}>
-                        Outside of code, I explore ways to bring ideas to life — through research, hackathons, or intricate physical puzzles. I thrive at the boundary of machine intelligence and physical craft.
-                    </p>
+                    {!isMobile && (
+                        <p style={{
+                            fontSize: "0.95rem",
+                            lineHeight: 1.7,
+                            color: t.textMute,
+                            fontWeight: 300,
+                            marginBottom: 32
+                        }}>
+                            Outside of code, I explore ways to bring ideas to life — through research, hackathons, or intricate physical puzzles. I thrive at the boundary of machine intelligence and physical craft.
+                        </p>
+                    )}
 
                     {/* Fun Fact Box */}
                     <div style={{
@@ -115,7 +115,7 @@ const About = forwardRef(function About({ counts }, ref) {
                     </div>
 
                     {/* Dynamic Stats Grid */}
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "16px" }}>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: isMobile ? "12px" : "16px" }}>
                         {[
                             { n: counts.p, l: "Projects", color: t.cyan },
                             { n: counts.a, l: "iOS Apps", color: t.accent },
@@ -125,13 +125,13 @@ const About = forwardRef(function About({ counts }, ref) {
                             <div key={i} style={{
                                 background: t.surface,
                                 border: `1px solid ${t.border}`,
-                                padding: "24px",
+                                padding: isMobile ? "16px" : "24px",
                                 borderRadius: "12px",
                                 transition: "all 0.3s ease",
                                 borderLeft: `4px solid ${s.color}`
                             }}>
-                                <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.2rem", color: t.textHi }}>{s.n}</div>
-                                <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>{s.l}</div>
+                                <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: isMobile ? "1.8rem" : "2.2rem", color: t.textHi }}>{s.n}</div>
+                                <div style={{ ...FONTS.mono, fontSize: isMobile ? "0.55rem" : "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>{s.l}</div>
                             </div>
                         ))}
                     </div>
@@ -141,14 +141,14 @@ const About = forwardRef(function About({ counts }, ref) {
                         download
                         style={{
                             display: "inline-block",
-                            marginTop: "40px",
-                            padding: "16px 32px",
+                            marginTop: isMobile ? "32px" : "40px",
+                            padding: isMobile ? "14px 28px" : "16px 32px",
                             background: t.accent,
                             color: "#fff",
                             borderRadius: "12px",
                             textDecoration: "none",
                             ...FONTS.mono,
-                            fontSize: "0.8rem",
+                            fontSize: isMobile ? "0.75rem" : "0.8rem",
                             letterSpacing: "2px",
                             boxShadow: `0 10px 20px ${t.accent}33`,
                             transition: "transform 0.2s"
@@ -161,10 +161,10 @@ const About = forwardRef(function About({ counts }, ref) {
                 </div>
 
                 {/* Right Side: Orbital Rings & Spotify */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? "30px" : "40px" }}>
                     {/* Visual Anchor */}
                     <div style={{
-                        height: 400,
+                        height: isMobile ? 320 : 400,
                         position: "relative",
                         background: `radial-gradient(circle at center, ${t.accent}0a, transparent)`,
                         borderRadius: "24px",
