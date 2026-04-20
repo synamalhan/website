@@ -17,25 +17,31 @@ export default function CircularGallery({
     const { theme: t } = useTheme();
 
     const rotationRef = useRef(0);
+    const targetRotationRef = useRef(0);
     const lastRef = useRef(0);
     const velocityRef = useRef(0);
+    const isDraggingRef = useRef(false);
+    const startXRef = useRef(0);
 
     const [renderValue, setRenderValue] = useState(0);
 
     const images = [img1, img2, img3, img4, img5, img6, img7];
     const length = images.length;
 
-    // 🌪️ animation loop (AUTO ROTATION)
+    // 🌪️ animation loop (MOMENTUM + AUTO-ROTATION)
     useEffect(() => {
         let raf;
 
         const animate = () => {
-            // 🔁 continuous auto-spin
-            rotationRef.current += 0.003;
+            // 🔄 Auto-rotation (very slow)
+            if (!isDraggingRef.current) {
+                targetRotationRef.current += 0.0015;
+            }
 
-            velocityRef.current =
-                rotationRef.current - lastRef.current;
+            // 🌊 Damping / Inertia (Smooth follow)
+            rotationRef.current += (targetRotationRef.current - rotationRef.current) * 0.05;
 
+            velocityRef.current = rotationRef.current - lastRef.current;
             lastRef.current = rotationRef.current;
 
             setRenderValue(rotationRef.current);
@@ -47,16 +53,37 @@ export default function CircularGallery({
         return () => cancelAnimationFrame(raf);
     }, []);
 
+    const handlePointerDown = (e) => {
+        isDraggingRef.current = true;
+        startXRef.current = e.clientX;
+    };
+
+    const handlePointerMove = (e) => {
+        if (!isDraggingRef.current) return;
+        const dx = e.clientX - startXRef.current;
+        targetRotationRef.current += dx * 0.003; // Drag sensitivity
+        startXRef.current = e.clientX;
+    };
+
+    const handlePointerUp = () => {
+        isDraggingRef.current = false;
+    };
+
     return (
         <div
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerLeave={handlePointerUp}
             style={{
                 width: "100%",
                 height: "100%",
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "flex-end", // 👈 IMPORTANT: pushes center down
+                alignItems: "flex-end", 
                 overflow: "hidden",
                 userSelect: "none",
+                cursor: isDraggingRef.current ? "grabbing" : "grab"
             }}
         >
             {/* 🧭 LOWERED CENTER CONTAINER */}
@@ -65,22 +92,17 @@ export default function CircularGallery({
                     position: "relative",
                     width: itemWidth,
                     height: itemHeight,
-                    transform: "translateY(120px)", // 👈 THIS LOWERS CIRCLE CENTER
+                    transform: "translateY(120px)",
                 }}
             >
                 {images.map((src, i) => {
                     const angle = (360 / length) * i + renderValue * 50;
 
-                    // 🌊 flow motion
                     const speed = velocityRef.current;
 
-                    const wave =
-                        Math.sin(renderValue * 2 + i * 0.6) * 10;
-
-                    const flowOffset = speed * 20;
-
-                    const scale =
-                        1 - Math.min(Math.abs(speed) * 0.01, 0.1);
+                    const wave = Math.sin(renderValue * 2 + i * 0.6) * 10;
+                    const flowOffset = speed * 25;
+                    const scale = 1 - Math.min(Math.abs(speed) * 0.015, 0.12);
 
                     return (
                         <div
@@ -91,24 +113,20 @@ export default function CircularGallery({
                                 height: itemHeight,
                                 left: 0,
                                 top: 0,
-
                                 transform: `
                                     rotateZ(${angle}deg)
-                                    translateY(${-radius - 20}px)
+                                    translateY(${-radius}px)
                                     translateX(${wave + flowOffset}px)
                                     scale(${scale})
                                 `,
-
                                 background: t.cardBg,
                                 border: `2px solid ${t.accent}66`,
                                 padding: "8px",
                                 borderRadius: "16px",
-
                                 boxShadow: `
                                     0 15px 35px rgba(0,0,0,0.12),
                                     inset 0 0 10px ${t.accent}33
                                 `,
-
                                 transition: "transform 0.08s linear",
                             }}
                         >

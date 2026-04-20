@@ -17,6 +17,7 @@ const About = forwardRef(function About({ counts }, ref) {
         document.body.appendChild(script);
 
         window.onSpotifyIframeApiReady = (IFrameAPI) => {
+            console.log("Spotify IFrame API Ready");
             if (!spotifyEmbedRef.current) return;
             const options = {
                 uri: 'spotify:playlist:0Uggezps9kTbnOpFB7ovff',
@@ -25,9 +26,15 @@ const About = forwardRef(function About({ counts }, ref) {
                 theme: t.name === 'dark' ? '0' : '1'
             };
             const callback = (EmbedController) => {
-                EmbedController.addListener('playback_update', e => {
+                console.log("Spotify Embed Controller Created");
+                
+                const handleUpdate = (e) => {
+                    console.log("Spotify Embed Event:", e);
                     window.dispatchEvent(new CustomEvent("spotifyPlaybackUpdate", { detail: e.data }));
-                });
+                };
+
+                EmbedController.addListener('playback_update', handleUpdate);
+                EmbedController.addListener('playback_started', handleUpdate);
             };
             IFrameAPI.createController(spotifyEmbedRef.current, options, callback);
         };

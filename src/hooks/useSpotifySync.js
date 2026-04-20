@@ -24,35 +24,34 @@ export function useSpotifySync() {
         const handlePlaybackUpdate = async (e) => {
             if (!isMounted) return;
             const data = e.detail;
+            console.log("Sync Hook Received Data:", data);
 
-            // data contains: position, duration, isPaused, isBuffering 
-            // In some versions it contains a playingURI. However if it's a playlist we want track URI
-            // wait, if Spotify isn't returning data.position we have to be careful
-            if (!data || data.position === undefined) return;
+            if (!data) return;
 
             isPlayingRef.current = !data.isPaused;
             baseProgressRef.current = data.position || 0;
             syncTimeRef.current = Date.now();
 
-            // If URI changed, we need new lyrics
-            // Sometimes it's e.data.track.uri, sometimes e.data.uri depending on the Embed theme
-            const actualUri = data?.track?.uri || data?.item?.uri || data?.uri || null;
+            // 🔍 FIELD FIX: Spotify IFrame uses 'playingURI' for the specific track
+            const actualUri = data?.playingURI || data?.track?.uri || data?.uri || null;
+            console.log("📍 Detected Track URI:", actualUri);
             
-            // If we STILL don't have a URI, just update the position! But if we have one and it changed, fetch!
             setPlaybackData(prev => {
-                if (actualUri && actualUri !== prev.currentUri && actualUri.includes("track")) {
-                    // Start fetching new song
-                    fetchTrackData(actualUri);
+                // If URI changed, fetch new track metadata/lyrics
+                if (actualUri && actualUri !== prev.currentUri) {
+                    console.log(`URI Change detected: ${actualUri} (Duration: ${data.duration})`);
+                    fetchTrackData(actualUri, data.duration);
                     return { ...prev, isPlaying: !data.isPaused, currentUri: actualUri };
                 }
+                // Even if URI doesn't change, update playing state
                 return { ...prev, isPlaying: !data.isPaused };
             });
         };
 
-        const fetchTrackData = async (uri) => {
+        const fetchTrackData = async (uri, duration) => {
             try {
                 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-                const res = await fetch(`${API_BASE}/api/track?uri=${encodeURIComponent(uri)}`);
+                const res = await fetch(`${API_BASE}/api/track?uri=${encodeURIComponent(uri)}&duration=${duration || 0}`);
                 if (!res.ok) throw new Error('API failed');
                 const trackData = await res.json();
                 

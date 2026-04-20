@@ -55,57 +55,93 @@ const lyricsCache = {};
 app.get('/api/track', async (req, res) => {
     try {
         const uri = req.query.uri;
+        const duration = parseInt(req.query.duration);
         if (!uri) return res.status(400).json({ error: "Missing uri parameter" });
 
-        const trackId = uri.split(':').pop();
         const token = await refreshSpotifyToken();
+        let trackId = null;
 
-        // 1. Fetch exact track data from Spotify
+        // 🟢 Case 1: The player gave us a specific track URI
+        if (uri.includes(':track:')) {
+            trackId = uri.split(':').pop();
+        } 
+        // 🟡 Case 2: The player gave us a playlist URI (Workaround for IFrame limitation)
+        else if (uri.includes(':playlist:')) {
+            const playlistId = uri.split(':').pop();
+            console.log(`Resolving track in playlist [${playlistId}] via duration matching (${duration}ms)...`);
+            
+            const playlistRes = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            // Find track with matching duration (allowing 1.5s margin for safety)
+            const match = playlistRes.data.items.find(item => {
+                if (!item.track) return false;
+                const diff = Math.abs(item.track.duration_ms - duration);
+                return diff < 1500; 
+            });
+
+            if (match) {
+                trackId = match.track.id;
+                console.log(`Matched track: ${match.track.name} [${trackId}]`);
+            } else {
+                console.log("Could not find a duration match in playlist.");
+            }
+        }
+
+        if (!trackId) {
+            return res.status(404).json({ error: "Track not found or unresolvable from context" });
+        }
+
+        // 2. Fetch metadata from Spotify
         const spotifyRes = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
         const song = spotifyRes.data;
-        const title = song.name;
+        const rawTitle = song.name;
         const artist = song.artists[0].name;
         const albumImageUrl = song.album.images[0]?.url;
+
+        // 🧼 Clean Title
+        const cleanTitle = rawTitle.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim();
+        
+        console.log(`Backend resolving: [${artist}] - ${cleanTitle}`);
         
         let syncedLyrics = null;
-        const cacheKey = `${artist}-${title}`.toLowerCase();
+        const cacheKey = `${artist}-${cleanTitle}`.toLowerCase();
 
-        // 2. Fetch lyrics from Lrclib (or use cache)
         if (lyricsCache[cacheKey]) {
             syncedLyrics = lyricsCache[cacheKey];
         } else {
             try {
-                // Use Search API for fuzzy matching (avoids failures on "- Remastered" etc)
                 const lrcRes = await axios.get(`https://lrclib.net/api/search`, {
-                    params: { q: `${artist} ${title}` }
+                    params: { q: `${artist} ${cleanTitle}` }
                 });
                 
-                const match = lrcRes.data.find(track => track.syncedLyrics);
+                const match = lrcRes.data.find(track => track.syncedLyrics) || lrcRes.data[0];
                 
-                if (match) {
+                if (match && match.syncedLyrics) {
                     syncedLyrics = match.syncedLyrics;
-                    lyricsCache[cacheKey] = syncedLyrics; // Cache it
+                    lyricsCache[cacheKey] = syncedLyrics;
                 } else {
                     lyricsCache[cacheKey] = "NO_LYRICS";
                 }
             } catch (lrcErr) {
-                console.error("Lyrics fetch failed:", lrcErr.message);
+                console.error("Lrclib search error:", lrcErr.message);
                 lyricsCache[cacheKey] = "NO_LYRICS";
             }
         }
 
         res.json({
-            title,
+            title: cleanTitle,
             artist,
             albumImageUrl,
             syncedLyrics: syncedLyrics === "NO_LYRICS" ? null : syncedLyrics
         });
 
     } catch (error) {
-        console.error(error.message);
+        console.error("Spotify API error:", error.message);
         res.status(500).json({ error: error.message });
     }
 });
