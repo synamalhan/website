@@ -50,7 +50,10 @@ export function useSpotifySync() {
 
         const fetchTrackData = async (uri, duration) => {
             try {
-                const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+                // 📡 API Switcher: Always use localhost if we are developing locally
+                const isLocal = window.location.hostname === 'localhost';
+                const API_BASE = isLocal ? 'http://localhost:3001' : (import.meta.env.VITE_API_URL || 'http://localhost:3001');
+                
                 const res = await fetch(`${API_BASE}/api/track?uri=${encodeURIComponent(uri)}&duration=${duration || 0}`);
                 if (!res.ok) throw new Error('API failed');
                 const trackData = await res.json();

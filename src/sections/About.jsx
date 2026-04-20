@@ -29,8 +29,7 @@ const About = forwardRef(function About({ counts }, ref) {
                 console.log("Spotify Embed Controller Created");
                 
                 const handleUpdate = (e) => {
-                    console.log("Spotify Embed Event:", e);
-                    window.dispatchEvent(new CustomEvent("spotifyPlaybackUpdate", { detail: e.data }));
+                    // console.log("Spotify Event:", e.data);
                 };
 
                 EmbedController.addListener('playback_update', handleUpdate);

@@ -18,7 +18,7 @@ const SPOTIFY_REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN;
 let accessToken = null;
 let tokenExpiresAt = null;
 
-// Utility to refresh the Spotify Access Token
+// Utility to refresh the Spotify Access Token (User Token)
 async function refreshSpotifyToken() {
     if (accessToken && Date.now() < tokenExpiresAt) return accessToken;
 
@@ -49,8 +49,49 @@ async function refreshSpotifyToken() {
     }
 }
 
+// Utility to get a Client Credentials Token (App Token)
+// Use this for public playlist/track lookups to bypass scope restrictions
+let clientToken = null;
+let clientTokenExpiresAt = null;
+
+async function getClientCredentialsToken() {
+    if (clientToken && Date.now() < clientTokenExpiresAt) return clientToken;
+
+    const basicAuth = Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString('base64');
+    
+    try {
+        const response = await axios.post('https://accounts.spotify.com/api/token', 
+            querystring.stringify({ grant_type: 'client_credentials' }), {
+            headers: {
+                'Authorization': `Basic ${basicAuth}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+
+        clientToken = response.data.access_token;
+        clientTokenExpiresAt = Date.now() + (response.data.expires_in - 100) * 1000;
+        return clientToken;
+    } catch (err) {
+        console.error("Error getting Client Credentials token:", err.response?.data || err.message);
+        throw err;
+    }
+}
+
 // Memory cache to avoid spamming lrclib for the same song
 const lyricsCache = {};
+
+// Load Playlist Cache if it exists
+let playlistCache = {};
+const CACHE_PATH = './playlist_cache.json';
+import fs from 'fs';
+if (fs.existsSync(CACHE_PATH)) {
+    try {
+        playlistCache = JSON.parse(fs.readFileSync(CACHE_PATH, 'utf8'));
+        console.log(`📦 Loaded ${Object.keys(playlistCache).length} tracks from local cache.`);
+    } catch (e) {
+        console.error("Failed to load metadata cache:", e.message);
+    }
+}
 
 app.get('/api/track', async (req, res) => {
     try {
@@ -60,52 +101,68 @@ app.get('/api/track', async (req, res) => {
 
         const token = await refreshSpotifyToken();
         let trackId = null;
+        let cachedData = null;
 
-        // 🟢 Case 1: The player gave us a specific track URI
-        if (uri.includes(':track:')) {
-            trackId = uri.split(':').pop();
-        } 
-        // 🟡 Case 2: The player gave us a playlist URI (Workaround for IFrame limitation)
-        else if (uri.includes(':playlist:')) {
-            const playlistId = uri.split(':').pop();
-            console.log(`Resolving track in playlist [${playlistId}] via duration matching (${duration}ms)...`);
-            
-            const playlistRes = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
+        // 🟢 PRE-CHECK: Look in our local Metadata Cache first
+        // We match by duration (allowing 2s margin)
+        const cacheMatchKey = Object.keys(playlistCache).find(d => Math.abs(parseInt(d) - duration) < 2000);
+        
+        if (cacheMatchKey) {
+            cachedData = playlistCache[cacheMatchKey];
+            trackId = cachedData.id;
+            console.log(`✅ Cache Match: ${cachedData.name} (${cacheMatchKey}ms)`);
+        }
 
-            // Find track with matching duration (allowing 1.5s margin for safety)
-            const match = playlistRes.data.items.find(item => {
-                if (!item.track) return false;
-                const diff = Math.abs(item.track.duration_ms - duration);
-                return diff < 1500; 
-            });
+        // 🔵 FALLBACK: If not in cache, try Spotify API
+        if (!trackId) {
+            if (uri.includes(':track:')) {
+                trackId = uri.split(':').pop();
+            } else if (uri.includes(':playlist:')) {
+                const playlistId = uri.split(':').pop();
+                console.log(`Resolving track in playlist [${playlistId}] via duration matching (${duration}ms)...`);
+                
+                try {
+                    const cToken = await getClientCredentialsToken();
+                    const playlistRes = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+                        headers: { 'Authorization': `Bearer ${cToken}` }
+                    });
 
-            if (match) {
-                trackId = match.track.id;
-                console.log(`Matched track: ${match.track.name} [${trackId}]`);
-            } else {
-                console.log("Could not find a duration match in playlist.");
+                    const tracks = playlistRes.data.tracks.items;
+                    const match = tracks.find(item => item.track && Math.abs(item.track.duration_ms - duration) < 4000);
+
+                    if (match) {
+                        trackId = match.track.id;
+                        console.log(`✅ API Match: ${match.track.name}`);
+                    }
+                } catch (err) {
+                    console.error(`🛑 API Resolve Failed [${err.response?.status}]`);
+                }
             }
         }
 
         if (!trackId) {
-            return res.status(404).json({ error: "Track not found or unresolvable from context" });
+            return res.status(404).json({ error: "Track not found or unresolvable" });
         }
 
-        // 2. Fetch metadata from Spotify
-        const spotifyRes = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-
-        const song = spotifyRes.data;
-        const rawTitle = song.name;
-        const artist = song.artists[0].name;
-        const albumImageUrl = song.album.images[0]?.url;
+        // 3. Resolve Metadata (Prefer cache, then Spotify)
+        let rawTitle, artist, albumImageUrl;
+        
+        if (cachedData) {
+            rawTitle = cachedData.name;
+            artist = cachedData.artist;
+            albumImageUrl = cachedData.albumImageUrl;
+        } else {
+            const spotifyRes = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const song = spotifyRes.data;
+            rawTitle = song.name;
+            artist = song.artists[0].name;
+            albumImageUrl = song.album.images[0]?.url;
+        }
 
         // 🧼 Clean Title
         const cleanTitle = rawTitle.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim();
-        
         console.log(`Backend resolving: [${artist}] - ${cleanTitle}`);
         
         let syncedLyrics = null;
@@ -118,9 +175,7 @@ app.get('/api/track', async (req, res) => {
                 const lrcRes = await axios.get(`https://lrclib.net/api/search`, {
                     params: { q: `${artist} ${cleanTitle}` }
                 });
-                
                 const match = lrcRes.data.find(track => track.syncedLyrics) || lrcRes.data[0];
-                
                 if (match && match.syncedLyrics) {
                     syncedLyrics = match.syncedLyrics;
                     lyricsCache[cacheKey] = syncedLyrics;
@@ -141,7 +196,7 @@ app.get('/api/track', async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Spotify API error:", error.message);
+        console.error("Server API error:", error.message);
         res.status(500).json({ error: error.message });
     }
 });
