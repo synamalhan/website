@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { addAlpha } from "./styles";
 
 export default function ProjectThumb({ type, colors, t }) {
     const ref = useRef();
@@ -56,7 +57,7 @@ export default function ProjectThumb({ type, colors, t }) {
             
             // Soft glowing blob in the center
             const bg = ctx.createRadialGradient(W/2, H/2, 10, W/2, H/2, W/1.2);
-            bg.addColorStop(0, c1 + "33");
+            bg.addColorStop(0, addAlpha(c1, "33"));
             bg.addColorStop(1, "transparent");
             ctx.fillStyle = bg;
             ctx.fillRect(0, 0, W, H);
@@ -74,13 +75,13 @@ export default function ProjectThumb({ type, colors, t }) {
                 const px = W / 2, py = H / 2;
                 ctx.strokeStyle = c1;
                 drawSketchRect(px - 24, py - 44, 48, 88);
-                ctx.strokeStyle = c2 + "aa";
+                ctx.strokeStyle = addAlpha(c2, "aa");
                 drawSketchRect(px - 19, py - 37, 38, 66);
                 drawSketchCircle(px, py + 35, 3);
             } else if (type === "ml") {
                 for (let i = 0; i < 12; i++) { 
                     const x = (i * 53 + tt * 16) % W, y = (i * 37 + tt * 11) % H; 
-                    ctx.strokeStyle = i % 2 ? c1 + "cc" : c2 + "cc";
+                    ctx.strokeStyle = i % 2 ? addAlpha(c1, "cc") : addAlpha(c2, "cc");
                     drawSketchCircle(x, y, 6 + Math.sin(tt+i)*3);
                 }
                 for (let i = 0; i < 3; i++) {
@@ -90,19 +91,19 @@ export default function ProjectThumb({ type, colors, t }) {
                         const yv = y + Math.sin((x + tt * 50 + i * 40) * .08) * 14 + (Math.random()-0.5)*3;
                         x === 0 ? ctx.moveTo(x, yv) : ctx.lineTo(x, yv);
                     }
-                    ctx.strokeStyle = i % 2 ? c1 + "66" : c2 + "66";
+                    ctx.strokeStyle = i % 2 ? addAlpha(c1, "66") : addAlpha(c2, "66");
                     ctx.stroke();
                 }
             } else if (type === "fullstack") {
                 const lx = W / 2, ly = H / 2 - 10;
-                ctx.strokeStyle = c1 + "dd";
+                ctx.strokeStyle = addAlpha(c1, "dd");
                 drawSketchRect(lx - 40, ly - 25, 80, 50);
-                ctx.strokeStyle = c2 + "aa";
+                ctx.strokeStyle = addAlpha(c2, "aa");
                 drawSketchRect(lx - 55, ly + 25, 110, 8);
                 // "Code" lines drawn sketch-style
                 for (let i = 0; i < 4; i++) {
                     const y = ly - 15 + i * 10;
-                    ctx.strokeStyle = i % 2 ? c1 + "88" : c2 + "88";
+                    ctx.strokeStyle = i % 2 ? addAlpha(c1, "88") : addAlpha(c2, "88");
                     drawSketchLine(lx - 30, y, lx + 30, y);
                 }
             } else if (type === "vision") {
@@ -141,7 +142,7 @@ export default function ProjectThumb({ type, colors, t }) {
                         const y = H / 2 + Math.sin(x * .02 + tt * 2 + i) * 20 + (Math.random()-0.5)*6;
                         x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
                     }
-                    ctx.strokeStyle = i % 2 ? c1 + "99" : c2 + "99";
+                    ctx.strokeStyle = i % 2 ? addAlpha(c1, "99") : addAlpha(c2, "99");
                     ctx.stroke();
                     // duplicate stroke
                     ctx.beginPath();
@@ -167,7 +168,7 @@ export default function ProjectThumb({ type, colors, t }) {
                 drawGear(W / 2 + 25, H / 2, 14, 8, c2);
             } else {
                 for(let i=0; i<8; i++) {
-                    ctx.strokeStyle = c1 + "cc";
+                    ctx.strokeStyle = addAlpha(c1, "cc");
                     drawSketchCircle(W/2 + (Math.random()-0.5)*50, H/2 + (Math.random()-0.5)*30, Math.random()*20 + 5);
                 }
             }
@@ -175,7 +176,7 @@ export default function ProjectThumb({ type, colors, t }) {
         };
         loop();
         return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", setup); };
-    }, [t]);
+    }, [t, type, colors]);
     
     return <canvas ref={ref} style={{ width: "100%", height: 150, display: "block", borderRadius: "12px 12px 0 0" }} />;
 }

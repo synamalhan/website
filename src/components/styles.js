@@ -18,3 +18,15 @@ export const btnBase = {
     border: "2px solid",
     boxShadow: "4px 4px 0px",
 };
+
+/**
+ * Safely adds/replaces alpha to a hex color string.
+ * Supports #RGB, #RGBA, #RRGGBB, #RRGGBBAA.
+ */
+export const addAlpha = (hex, alpha) => {
+    if (!hex || typeof hex !== 'string' || !hex.startsWith('#')) return hex;
+    let base = hex;
+    if (hex.length === 9) base = hex.slice(0, 7); // #RRGGBBAA -> #RRGGBB
+    else if (hex.length === 5) base = hex.slice(0, 4); // #RGBA -> #RGB
+    return base + alpha;
+};

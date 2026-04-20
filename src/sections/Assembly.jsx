@@ -1,6 +1,6 @@
 import { forwardRef, useState, useCallback } from "react";
 import { useTheme } from "../theme/ThemeContext";
-import { FONTS } from "../components/styles";
+import { FONTS, addAlpha } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
 import MetallicEarth3D from "../components/MetallicEarth3D";
 import Label from "../components/ui/Label";
@@ -116,7 +116,7 @@ const Assembly = forwardRef(function Assembly({ prog, inAssembly }, ref) {
                                 return (
                                     <div key={lbl} style={{
                                         display: "flex", alignItems: "center", gap: 8, ...FONTS.mono, fontSize: ".54rem",
-                                        letterSpacing: ".14em", color: done ? t.accent : active ? t.cyan : t.textMute + "66", transition: "color .4s"
+                                        letterSpacing: ".14em", color: done ? t.accent : active ? t.cyan : addAlpha(t.textMute, "66"), transition: "color .4s"
                                     }}>
                                         <div style={{
                                             width: 5, height: 5, borderRadius: "50%", background: "currentColor", flexShrink: 0,

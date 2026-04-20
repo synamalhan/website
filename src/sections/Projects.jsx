@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "../theme/ThemeContext";
-import { FONTS } from "../components/styles";
+import { FONTS, addAlpha } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
 import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 import ProjectThumb from "../components/ProjectThumb";
 import { categorizedProjects } from "../data/projects";
 
-function FlippableProjectCard({ project, index, theme: t }) {
+function FlippableProjectCard({ project, index, theme: t, primaryColor }) {
     const isMobile = useIsMobile();
     const [flipped, setFlipped] = useState(false);
+    const accentColor = primaryColor || t.accent;
 
     return (
         <div
@@ -69,7 +70,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
                         <div style={{
                             ...FONTS.orb,
                             fontSize: isMobile ? "1.1rem" : "1.3rem",
-                            color: t.accent,
+                            color: accentColor,
                             fontWeight: 800,
                             lineHeight: 1.2,
                             marginBottom: isMobile ? 12 : 16
@@ -87,11 +88,11 @@ function FlippableProjectCard({ project, index, theme: t }) {
                                     <span key={s} style={{
                                         fontSize: "0.6rem",
                                         ...FONTS.mono,
-                                        color: t.cyan,
-                                        background: `${t.cyan}10`,
+                                        color: accentColor,
+                                        background: addAlpha(accentColor, "10"),
                                         padding: "2px 6px",
                                         borderRadius: 4,
-                                        border: `1px solid ${t.cyan}30`
+                                        border: `1px solid ${addAlpha(accentColor, "30")}`
                                     }}>{s}</span>
                                 ))}
                                 {isMobile && project.techStack.length > 4 && (
@@ -109,10 +110,10 @@ function FlippableProjectCard({ project, index, theme: t }) {
                     height: "100%",
                     backfaceVisibility: "hidden",
                     background: t.bg,
-                    border: `1.5px solid ${t.accent}`,
+                    border: `1.5px solid ${accentColor}`,
                     borderRadius: 16,
                     transform: "rotateY(180deg)",
-                    boxShadow: `0 0 30px ${t.accent}22`
+                    boxShadow: `0 0 30px ${addAlpha(accentColor, "22")}`
                 }}>
                     <div style={{
                         width: "100%",
@@ -123,12 +124,12 @@ function FlippableProjectCard({ project, index, theme: t }) {
                     }}>
                         <div style={{
                             background: `${t.surface}`,
-                            border: `1px solid ${t.accent}33`,
+                            border: `1px solid ${addAlpha(accentColor, "33")}`,
                             borderRadius: 12,
                             padding: isMobile ? "20px" : "28px",
-                            boxShadow: `0 8px 32px rgba(0,0,0,0.4), 0 2px 8px ${t.accent}15, inset 0 1px 0 ${t.accent}18`
+                            boxShadow: `0 8px 32px rgba(0,0,0,0.4), 0 2px 8px ${addAlpha(accentColor, "15")}, inset 0 1px 0 ${addAlpha(accentColor, "18")}`
                         }}>
-                            <div style={{ ...FONTS.mono, fontSize: "0.55rem", color: t.accent, letterSpacing: 2, marginBottom: 10, textTransform: "uppercase" }}>Details</div>
+                            <div style={{ ...FONTS.mono, fontSize: "0.55rem", color: accentColor, letterSpacing: 2, marginBottom: 10, textTransform: "uppercase" }}>Details</div>
                             <div style={{
                                 ...FONTS.inter,
                                 fontSize: isMobile ? "0.8rem" : "0.9rem",
@@ -157,7 +158,7 @@ function FlippableProjectCard({ project, index, theme: t }) {
                                         background: t.surface,
                                         transition: "all 0.2s"
                                     }}
-                                    onMouseEnter={e => e.currentTarget.style.borderColor = t.accent}
+                                    onMouseEnter={e => e.currentTarget.style.borderColor = accentColor}
                                     onMouseLeave={e => e.currentTarget.style.borderColor = t.border}
                                 >
                                     VIEW REPO ↗
@@ -262,7 +263,7 @@ export default function Projects() {
                     style={{
                         position: "fixed",
                         inset: 0,
-                        background: `${t.bg}cc`,
+                        background: addAlpha(t.bg, "cc"),
                         backdropFilter: "blur(12px)",
                         zIndex: 1000,
                         display: "flex",
@@ -278,27 +279,27 @@ export default function Projects() {
                             maxWidth: 1000,
                             maxHeight: isMobile ? "92vh" : "85vh",
                             background: t.bg,
-                            border: `1px solid ${t.border}`,
+                            border: `1px solid ${addAlpha(selectedCategory.colors[0], "55")}`,
                             borderRadius: isMobile ? 16 : 24,
                             padding: isMobile ? "24px 16px" : "48px 32px",
                             position: "relative",
                             display: "flex",
                             flexDirection: "column",
-                            boxShadow: `0 40px 100px rgba(0,0,0,0.6)`
+                            boxShadow: `0 40px 100px rgba(0,0,0,0.6), 0 0 40px ${addAlpha(selectedCategory.colors[0], "11")}`
                         }}
                     >
                         {/* Modal Header */}
                         <div style={{ marginBottom: isMobile ? 24 : 40, borderBottom: `1px solid ${t.border}`, paddingBottom: isMobile ? 16 : 24 }}>
                             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                                 <div>
-                                    <div style={{ ...FONTS.mono, color: t.cyan, fontSize: "0.7rem", marginBottom: 6 }}>CATEGORY</div>
+                                    <div style={{ ...FONTS.mono, color: selectedCategory.colors[0], fontSize: "0.7rem", marginBottom: 6 }}>CATEGORY</div>
                                     <H2 style={{ fontSize: isMobile ? "1.4rem" : "1.8rem", margin: 0 }}>{selectedCategory.title}</H2>
                                 </div>
                                 <button
                                     onClick={() => setSelectedCategory(null)}
                                     style={{
                                         background: t.surface,
-                                        border: `1px solid ${t.border}`,
+                                        border: `1px solid ${addAlpha(selectedCategory.colors[0], "44")}`,
                                         color: t.textHi,
                                         ...FONTS.mono,
                                         cursor: "pointer",
@@ -306,6 +307,8 @@ export default function Projects() {
                                         padding: "6px 12px",
                                         borderRadius: 8
                                     }}
+                                    onMouseEnter={e => e.currentTarget.style.borderColor = selectedCategory.colors[0]}
+                                    onMouseLeave={e => e.currentTarget.style.borderColor = addAlpha(selectedCategory.colors[0], "44")}
                                 >
                                     CLOSE
                                 </button>
@@ -321,7 +324,7 @@ export default function Projects() {
                             gap: isMobile ? "20px" : "24px"
                         }}>
                             {selectedCategory.projects.map((proj, idx) => (
-                                <FlippableProjectCard key={idx} index={idx} project={proj} theme={t} />
+                                <FlippableProjectCard key={idx} index={idx} project={proj} theme={t} primaryColor={selectedCategory.colors[0]} />
                             ))}
                         </div>
                     </div>

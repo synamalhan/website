@@ -346,7 +346,7 @@ export const categorizedProjects = [
     {
         title: "Creative / Fun / Games",
         type: "creative",
-        colors: ["#facc15", "#22d3ee"],
+        colors: ["#15fa20ff", "#22d3ee"],
         tags: ["React", "Three.js", "A-Frame", "Storytelling"],
         projects: [
             {
