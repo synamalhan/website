@@ -1,193 +1,247 @@
 import { forwardRef, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
 import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
-import CircularGallery from "../components/CircularGallery";
+import SimpleCarousel from "../components/SimpleCarousel";
 import resume from "../assets/SYNA_MALHAN.pdf";
 
-const About = forwardRef(function About({ counts }, ref) {
+import img1 from "../assets/profile/1.jpg";
+import img2 from "../assets/profile/2.jpg";
+import img3 from "../assets/profile/3.jpg";
+import img4 from "../assets/profile/4.jpg";
+import img5 from "../assets/profile/5.jpg";
+import img6 from "../assets/profile/6.jpg";
+import img7 from "../assets/profile/7.jpg";
+
+import { useSpotifySync } from "../hooks/useSpotifySync";
+
+const galleryItems = [
+    { image: img1, title: "ENGINEER", description: "Crafting robust and scalable systems." },
+    { image: img2, title: "BUILDER", description: "Turning complex ideas into interactive reality." },
+    { image: img3, title: "EXPLORER", description: "Constantly pushing the boundaries of technology." },
+    { image: img4, title: "AI / ML", description: "Designing intelligent systems for the future." },
+    { image: img5, title: "MOBILE", description: "Creating fluid experiences on every device." },
+    { image: img6, title: "CREATIVE", description: "Where sophisticated code meets artistic vision." },
+    { image: img7, title: "DESIGN", description: "Finding elegance in every pixel and interaction." }
+];
+
+const idleMessages = [
+    "Taking a sonic breather.",
+    "Silence is golden, but code is louder.",
+    "Refueling my neural playlist.",
+    "Currently enjoying the sound of silence.",
+    "Tuning out to tune in.",
+    "My ears are in deep-focus mode."
+];
+
+const About = forwardRef(function About({ counts = {} }, ref) {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
-    const spotifyEmbedRef = useRef(null);
+    const { isPlaying, title, artist, parsedLyrics, currentProgress } = useSpotifySync();
 
-    useEffect(() => {
-        const script = document.createElement("script");
-        script.src = "https://open.spotify.com/embed/iframe-api/v1";
-        script.async = true;
-        document.body.appendChild(script);
+    const currentLyricLine = isPlaying 
+        ? ([...parsedLyrics].reverse().find(l => currentProgress >= l.time)?.text || title || "♪")
+        : idleMessages[Math.floor(Date.now() / 30000) % idleMessages.length];
 
-        window.onSpotifyIframeApiReady = (IFrameAPI) => {
-            if (!spotifyEmbedRef.current) return;
-            const options = {
-                uri: 'spotify:playlist:0Uggezps9kTbnOpFB7ovff',
-                width: '100%',
-                height: '352',
-                theme: t.name === 'dark' ? '0' : '1'
-            };
-            const callback = (EmbedController) => {
-                const handleUpdate = (e) => {
-                    // console.log("Spotify Event:", e.data);
-                };
-                EmbedController.addListener('playback_update', handleUpdate);
-                EmbedController.addListener('playback_started', handleUpdate);
-            };
-            IFrameAPI.createController(spotifyEmbedRef.current, options, callback);
-        };
-
-        return () => {
-            if (document.body.contains(script)) document.body.removeChild(script);
-            delete window.onSpotifyIframeApiReady;
+    const bentoStyles = {
+        box: {
+            background: `${t.surface}80`,
+            border: `1px solid ${t.border}`,
+            borderRadius: "24px",
+            padding: "24px",
+            height: "100%",
+            position: "relative",
+            overflow: "hidden",
+            backdropFilter: "blur(12px)",
+            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+            display: "flex",
+            flexDirection: "column"
+        },
+        grid: {
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(4, 1fr)",
+            gridAutoRows: "minmax(180px, auto)",
+            gap: "16px",
+            maxWidth: 1200,
+            margin: "0 auto"
         }
-    }, [t.name]);
+    };
+
+    const BentoBox = ({ children, style = {}, colSpan = 1, rowSpan = 1, hover = true }) => (
+        <motion.div
+            whileHover={hover ? { y: -5, boxShadow: `0 10px 30px ${t.accent}15`, borderColor: `${t.accent}40` } : {}}
+            style={{
+                ...bentoStyles.box,
+                gridColumn: isMobile ? "span 1" : `span ${colSpan}`,
+                gridRow: isMobile ? "auto" : `span ${rowSpan}`,
+                ...style
+            }}
+        >
+            {children}
+        </motion.div>
+    );
 
     return (
         <section
             id="about"
             ref={ref}
             style={{
-                padding: isMobile ? "60px 24px" : "clamp(60px, 10vw, 120px) 24px",
+                padding: isMobile ? "60px 20px" : "clamp(100px, 12vw, 160px) 24px",
                 position: "relative",
-                zIndex: 10,
-                maxWidth: 1200,
-                margin: "0 auto"
+                zIndex: 10
             }}
         >
-            <div style={{
-                display: "grid",
-                gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))",
-                gap: isMobile ? "40px" : "60px",
-                alignItems: "start"
-            }}>
-                {/* Left Side: Bio & Stats */}
-                <div style={{ transform: "translateZ(20px)" }}>
+            <div style={bentoStyles.grid}>
+                {/* 1. BIO BOX (2x2) */}
+                <BentoBox colSpan={2} rowSpan={2} style={{ justifyContent: 'center' }}>
                     <Label>// About Me</Label>
-                    <H2>ABOUT<br />ME</H2>
-
+                    <H2 style={{ fontSize: isMobile ? '2.5rem' : '3.5rem', marginBottom: '20px' }}>ABOUT<br />ME</H2>
                     <p style={{
-                        fontSize: isMobile ? "1rem" : "1.05rem",
-                        lineHeight: 1.8,
+                        fontSize: "1rem",
+                        lineHeight: 1.7,
                         color: t.textHi,
                         fontWeight: 400,
-                        marginBottom: 20
+                        marginBottom: 16
                     }}>
-                        I'm <span style={{ color: t.accent, fontWeight: 700 }}>Syna Malhan</span>, a passionate developer and problem-solver driven by curiosity and creativity.
+                        I'm <span style={{ color: t.accent, fontWeight: 700 }}>Syna Malhan</span>, a developer crafting at the intersection of machine intelligence and human intuition.
                     </p>
-
                     <p style={{
-                        fontSize: isMobile ? "0.9rem" : "0.95rem",
-                        lineHeight: 1.7,
+                        fontSize: "0.9rem",
+                        lineHeight: 1.6,
                         color: t.textMute,
                         fontWeight: 300,
-                        marginBottom: 20
+                        marginBottom: 24
                     }}>
-                        With a strong background in <span style={{ color: t.cyan, fontWeight: 500 }}>AI, Data Science, and iOS Development</span>, I love building intelligent systems that are both functional and visually stunning. Whether it's architecting Swift solutions or training neural nets, I focus on building tools that are accessible, empathetic, and human.
+                        I build tools that are functional yet visually stunning, focusing on <span style={{ color: t.cyan }}>AI/ML and iOS development</span>. My goal is to create code that feels personal and empathetic.
                     </p>
-
-                    {!isMobile && (
-                        <p style={{
-                            fontSize: "0.95rem",
-                            lineHeight: 1.7,
-                            color: t.textMute,
-                            fontWeight: 300,
-                            marginBottom: 32
-                        }}>
-                            Outside of code, I explore ways to bring ideas to life — through research, hackathons, or intricate physical puzzles. I thrive at the boundary of machine intelligence and physical craft.
-                        </p>
-                    )}
-
-                    {/* Fun Fact Box */}
-                    <div style={{
-                        background: `${t.accent}10`,
-                        border: `1px solid ${t.accent}30`,
-                        padding: "20px",
-                        borderRadius: "16px",
-                        marginBottom: 40,
-                        display: "flex",
-                        gap: "16px",
-                        alignItems: "center"
-                    }}>
-                        <div style={{ fontSize: "1.5rem" }}>🔧</div>
-                        <div style={{ fontSize: "0.85rem", color: t.text, lineHeight: 1.5 }}>
-                            <strong style={{ color: t.accent }}>Fun Fact:</strong> I like to build Metal Earth models — tiny, intricate 3D puzzles made from laser-cut metal sheets.
-                        </div>
-                    </div>
-
-                    {/* Dynamic Stats Grid */}
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: isMobile ? "12px" : "16px" }}>
-                        {[
-                            { n: counts.p, l: "Projects", color: t.cyan },
-                            { n: counts.a, l: "iOS Apps", color: t.accent },
-                            { n: counts.m, l: "ML Models", color: t.magenta },
-                            { n: counts.y, l: "Years Exp", color: t.gold }
-                        ].map((s, i) => (
-                            <div key={i} style={{
-                                background: t.surface,
-                                border: `1px solid ${t.border}`,
-                                padding: isMobile ? "16px" : "24px",
-                                borderRadius: "12px",
-                                transition: "all 0.3s ease",
-                                borderLeft: `4px solid ${s.color}`
-                            }}>
-                                <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: isMobile ? "1.8rem" : "2.2rem", color: t.textHi }}>{s.n}</div>
-                                <div style={{ ...FONTS.mono, fontSize: isMobile ? "0.55rem" : "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>{s.l}</div>
-                            </div>
-                        ))}
-                    </div>
-
                     <a
                         href={resume}
                         download
                         style={{
-                            display: "inline-block",
-                            marginTop: isMobile ? "32px" : "40px",
-                            padding: isMobile ? "14px 28px" : "16px 32px",
+                            alignSelf: 'flex-start',
+                            padding: "12px 24px",
                             background: t.accent,
                             color: "#fff",
                             borderRadius: "12px",
                             textDecoration: "none",
                             ...FONTS.mono,
-                            fontSize: isMobile ? "0.75rem" : "0.8rem",
+                            fontSize: "0.75rem",
                             letterSpacing: "2px",
-                            boxShadow: `0 10px 20px ${t.accent}33`,
+                            boxShadow: `0 8px 16px ${t.accent}33`,
                             transition: "transform 0.2s"
                         }}
                         onMouseEnter={e => e.currentTarget.style.transform = "translateY(-2px)"}
                         onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}
                     >
-                        DOWNLOAD RESUME
+                        RESUME
                     </a>
-                </div>
+                </BentoBox>
 
-                {/* Right Side: Orbital Rings & Spotify */}
-                <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? "30px" : "40px" }}>
-                    {/* Visual Anchor */}
-                    <div style={{
-                        height: isMobile ? 320 : 400,
-                        position: "relative",
-                        background: `radial-gradient(circle at center, ${t.accent}0a, transparent)`,
-                        borderRadius: "24px",
-                        border: `1px solid ${t.border}`,
-                        boxShadow: `0 20px 40px ${t.accent}11`,
-                        overflow: "hidden"
+                {/* 2. GALLERY BOX (2x2) */}
+                <BentoBox colSpan={2} rowSpan={2} style={{ padding: 0 }}>
+                    <SimpleCarousel items={galleryItems} />
+                </BentoBox>
+
+                {/* 3. SPOTIFY BOX (2x2) */}
+                <BentoBox colSpan={2} rowSpan={2} style={{ padding: 0, background: '#000', border: 'none' }}>
+                    <iframe 
+                        data-testid="embed-iframe" 
+                        style={{ 
+                            borderRadius: '24px',
+                            border: 'none',
+                            width: '100%',
+                            height: '100%',
+                            minHeight: '352px'
+                        }} 
+                        src={`https://open.spotify.com/embed/playlist/0Uggezps9kTbnOpFB7ovff?utm_source=generator&theme=${t.name === 'dark' ? '0' : '1'}`} 
+                        frameBorder="0" 
+                        allowFullScreen="" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                        loading="lazy"
+                    ></iframe>
+                </BentoBox>
+
+                {/* 4 & 5. STATS BOXES (1x1 each) */}
+                {[
+                    { n: counts.p || 0, l: "Projects", color: t.cyan },
+                    { n: counts.a || 0, l: "iOS Apps", color: t.accent }
+                ].map((s, i) => (
+                    <BentoBox key={i} colSpan={1} rowSpan={1} style={{ justifyContent: 'center', borderLeft: `4px solid ${s.color}` }}>
+                        <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>{s.n}</div>
+                        <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>{s.l}</div>
+                    </BentoBox>
+                ))}
+
+                {/* 7 & 8. STATS BOXES & MUSIC BOX */}
+                <BentoBox colSpan={1} rowSpan={1} style={{ justifyContent: 'center', borderLeft: `4px solid ${t.magenta}` }}>
+                    <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>{counts.m || 0}</div>
+                    <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>ML Models</div>
+                </BentoBox>
+
+                <BentoBox colSpan={1} rowSpan={1} style={{ 
+                    justifyContent: 'center', 
+                    borderLeft: `4px solid ${isPlaying ? '#1DB954' : t.gold}`,
+                    background: isPlaying ? 'rgba(29, 185, 84, 0.05)' : 'transparent'
+                }}>
+                    <div style={{ 
+                        ...FONTS.mono, 
+                        fontSize: "0.5rem", 
+                        color: isPlaying ? '#1DB954' : t.textMute, 
+                        letterSpacing: '1px', 
+                        marginBottom: '8px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px'
                     }}>
-                        <CircularGallery />
+                        {isPlaying && <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1 }}>●</motion.span>}
+                        {isPlaying ? "CURRENTLY LISTENING" : "TAKING A BREAK"}
+                    </div>
+                    
+                    <div style={{ 
+                        ...FONTS.orb, 
+                        fontWeight: 700, 
+                        fontSize: isPlaying ? "0.85rem" : "0.9rem", 
+                        color: t.textHi,
+                        lineHeight: 1.4,
+                        maxHeight: '4.2em',
+                        overflow: 'hidden',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: 'vertical'
+                    }}>
+                        {currentLyricLine}
                     </div>
 
-                    {/* Spotify Player */}
-                    <div style={{
-                        borderRadius: "20px",
-                        overflow: "hidden",
-                        border: `1px solid ${t.border}`,
-                        boxShadow: "0 20px 40px rgba(0,0,0,0.3)"
-                    }}>
-                        <div ref={spotifyEmbedRef}></div>
+                    {isPlaying && (
+                        <div style={{ ...FONTS.mono, fontSize: '0.6rem', color: t.textMute, marginTop: '8px', opacity: 0.6 }}>
+                            {title} — {artist}
+                        </div>
+                    )}
+                </BentoBox>
+
+                {/* 6. FUN FACT BOX (FULL WIDTH 4x1) */}
+                <BentoBox colSpan={isMobile ? 1 : 4} rowSpan={1} style={{
+                    justifyContent: 'center',
+                    background: `linear-gradient(135deg, ${t.surface}80, ${t.accent}10)`
+                }}>
+                    <div style={{ display: "flex", gap: "24px", alignItems: "center", justifyContent: 'center' }}>
+                        <div style={{ fontSize: "2.5rem" }}>🔧</div>
+                        <div>
+                            <div style={{ ...FONTS.mono, fontSize: "0.7rem", color: t.accent, letterSpacing: '2px', marginBottom: '4px' }}>FUN FACT</div>
+                            <div style={{ fontSize: "1rem", color: t.text, lineHeight: 1.5 }}>
+                                I build <strong style={{ color: t.textHi }}>Metal Earth</strong> — tiny, intricate 3D puzzles from laser-cut metal sheets.
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </BentoBox>
             </div>
         </section>
     );
 });
+
+
 
 export default About;

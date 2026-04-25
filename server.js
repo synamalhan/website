@@ -144,55 +144,127 @@ app.get('/api/track', async (req, res) => {
             return res.status(404).json({ error: "Track not found or unresolvable" });
         }
 
-        // 3. Resolve Metadata (Prefer cache, then Spotify)
-        let rawTitle, artist, albumImageUrl;
+// Utility to fetch lyrics from lrclib
+async function getLyrics(artist, title) {
+    const cleanTitle = title.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim();
+    const cacheKey = `${artist}-${cleanTitle}`.toLowerCase();
+
+    if (lyricsCache[cacheKey]) {
+        return lyricsCache[cacheKey] === "NO_LYRICS" ? null : lyricsCache[cacheKey];
+    }
+
+    try {
+        const lrcRes = await axios.get(`https://lrclib.net/api/search`, {
+            params: { q: `${artist} ${cleanTitle}` }
+        });
+        const match = lrcRes.data.find(track => track.syncedLyrics) || lrcRes.data[0];
+        if (match && match.syncedLyrics) {
+            lyricsCache[cacheKey] = match.syncedLyrics;
+            return match.syncedLyrics;
+        } else {
+            lyricsCache[cacheKey] = "NO_LYRICS";
+            return null;
+        }
+    } catch (lrcErr) {
+        console.error("Lrclib search error:", lrcErr.message);
+        lyricsCache[cacheKey] = "NO_LYRICS";
+        return null;
+    }
+}
+
+app.get('/api/now-playing', async (req, res) => {
+    try {
+        const token = await refreshSpotifyToken();
+        const spotifyRes = await axios.get('https://api.spotify.com/v1/me/player/currently-playing', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (spotifyRes.status === 204 || !spotifyRes.data) {
+            return res.json({ isPlaying: false });
+        }
+
+        const data = spotifyRes.data;
+        const track = data.item;
+
+        if (!track) return res.json({ isPlaying: false });
+
+        const syncedLyrics = await getLyrics(track.artists[0].name, track.name);
+
+        res.json({
+            isPlaying: data.is_playing,
+            title: track.name.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim(),
+            artist: track.artists[0].name,
+            albumImageUrl: track.album.images[0]?.url,
+            progressMs: data.progress_ms,
+            durationMs: track.duration_ms,
+            syncedLyrics,
+            uri: track.uri
+        });
+    } catch (err) {
+        console.error("Now playing error:", err.message);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.get('/api/track', async (req, res) => {
+    try {
+        const uri = req.query.uri;
+        const duration = parseInt(req.query.duration);
+        if (!uri) return res.status(400).json({ error: "Missing uri parameter" });
+
+        const token = await refreshSpotifyToken();
+        let trackId = null;
+        let cachedData = null;
+
+        // 🟢 PRE-CHECK: Look in our local Metadata Cache first
+        const cacheMatchKey = Object.keys(playlistCache).find(d => Math.abs(parseInt(d) - duration) < 2000);
+        
+        if (cacheMatchKey) {
+            cachedData = playlistCache[cacheMatchKey];
+            trackId = cachedData.id;
+        }
+
+        if (!trackId) {
+            if (uri.includes(':track:')) {
+                trackId = uri.split(':').pop();
+            } else if (uri.includes(':playlist:')) {
+                const playlistId = uri.split(':').pop();
+                try {
+                    const cToken = await getClientCredentialsToken();
+                    const playlistRes = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+                        headers: { 'Authorization': `Bearer ${cToken}` }
+                    });
+                    const tracks = playlistRes.data.tracks.items;
+                    const match = tracks.find(item => item.track && Math.abs(item.track.duration_ms - duration) < 4000);
+                    if (match) trackId = match.track.id;
+                } catch (err) {}
+            }
+        }
+
+        if (!trackId) return res.status(404).json({ error: "Track not found" });
+
+        let title, artist, albumImageUrl;
         
         if (cachedData) {
-            rawTitle = cachedData.name;
+            title = cachedData.name;
             artist = cachedData.artist;
             albumImageUrl = cachedData.albumImageUrl;
         } else {
             const spotifyRes = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
-            const song = spotifyRes.data;
-            rawTitle = song.name;
-            artist = song.artists[0].name;
-            albumImageUrl = song.album.images[0]?.url;
+            title = spotifyRes.data.name;
+            artist = spotifyRes.data.artists[0].name;
+            albumImageUrl = spotifyRes.data.album.images[0]?.url;
         }
 
-        // 🧼 Clean Title
-        const cleanTitle = rawTitle.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim();
-        console.log(`Backend resolving: [${artist}] - ${cleanTitle}`);
-        
-        let syncedLyrics = null;
-        const cacheKey = `${artist}-${cleanTitle}`.toLowerCase();
-
-        if (lyricsCache[cacheKey]) {
-            syncedLyrics = lyricsCache[cacheKey];
-        } else {
-            try {
-                const lrcRes = await axios.get(`https://lrclib.net/api/search`, {
-                    params: { q: `${artist} ${cleanTitle}` }
-                });
-                const match = lrcRes.data.find(track => track.syncedLyrics) || lrcRes.data[0];
-                if (match && match.syncedLyrics) {
-                    syncedLyrics = match.syncedLyrics;
-                    lyricsCache[cacheKey] = syncedLyrics;
-                } else {
-                    lyricsCache[cacheKey] = "NO_LYRICS";
-                }
-            } catch (lrcErr) {
-                console.error("Lrclib search error:", lrcErr.message);
-                lyricsCache[cacheKey] = "NO_LYRICS";
-            }
-        }
+        const syncedLyrics = await getLyrics(artist, title);
 
         res.json({
-            title: cleanTitle,
+            title: title.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim(),
             artist,
             albumImageUrl,
-            syncedLyrics: syncedLyrics === "NO_LYRICS" ? null : syncedLyrics
+            syncedLyrics
         });
 
     } catch (error) {

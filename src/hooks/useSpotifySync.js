@@ -17,70 +17,63 @@ export function useSpotifySync() {
     const isPlayingRef = useRef(false);
     const reqFrameRef = useRef(null);
 
-    // Listen to IFrame Controller Events
+    // Poll Spotify Now Playing
     useEffect(() => {
         let isMounted = true;
+        let pollInterval;
 
-        const handlePlaybackUpdate = async (e) => {
-            if (!isMounted) return;
-            const data = e.detail;
-            console.log("Sync Hook Received Data:", data);
-
-            if (!data) return;
-
-            isPlayingRef.current = !data.isPaused;
-            baseProgressRef.current = data.position || 0;
-            syncTimeRef.current = Date.now();
-
-            // 🔍 FIELD FIX: Spotify IFrame uses 'playingURI' for the specific track
-            const actualUri = data?.playingURI || data?.track?.uri || data?.uri || null;
-            console.log("📍 Detected Track URI:", actualUri);
-            
-            setPlaybackData(prev => {
-                // If URI changed, fetch new track metadata/lyrics
-                if (actualUri && actualUri !== prev.currentUri) {
-                    console.log(`URI Change detected: ${actualUri} (Duration: ${data.duration})`);
-                    fetchTrackData(actualUri, data.duration);
-                    return { ...prev, isPlaying: !data.isPaused, currentUri: actualUri };
-                }
-                // Even if URI doesn't change, update playing state
-                return { ...prev, isPlaying: !data.isPaused };
-            });
-        };
-
-        const fetchTrackData = async (uri, duration) => {
+        const fetchNowPlaying = async () => {
             try {
-                // 📡 API Switcher: Always use localhost if we are developing locally
                 const isLocal = window.location.hostname === 'localhost';
                 const API_BASE = isLocal ? 'http://localhost:3001' : (import.meta.env.VITE_API_URL || 'http://localhost:3001');
                 
-                const res = await fetch(`${API_BASE}/api/track?uri=${encodeURIComponent(uri)}&duration=${duration || 0}`);
+                const res = await fetch(`${API_BASE}/api/now-playing`);
                 if (!res.ok) throw new Error('API failed');
-                const trackData = await res.json();
+                const data = await res.json();
                 
-                if (isMounted) {
-                    let parsed = [];
-                    if (trackData.syncedLyrics) {
-                        parsed = parseLrc(trackData.syncedLyrics);
-                    }
-                    setPlaybackData(prev => ({
-                        ...prev,
-                        title: trackData.title,
-                        artist: trackData.artist,
-                        albumImageUrl: trackData.albumImageUrl,
-                        syncedLyrics: trackData.syncedLyrics,
-                        parsedLyrics: parsed
-                    }));
+                if (!isMounted) return;
+
+                if (!data.isPlaying) {
+                    isPlayingRef.current = false;
+                    setPlaybackData(prev => ({ ...prev, isPlaying: false }));
+                    return;
                 }
+
+                // Update sync refs
+                isPlayingRef.current = data.isPlaying;
+                baseProgressRef.current = data.progressMs || 0;
+                syncTimeRef.current = Date.now();
+
+                const actualUri = data.uri;
+                
+                setPlaybackData(prev => {
+                    const uriChanged = actualUri && actualUri !== prev.currentUri;
+                    
+                    if (uriChanged) {
+                        return {
+                            isPlaying: data.isPlaying,
+                            title: data.title,
+                            artist: data.artist,
+                            albumImageUrl: data.albumImageUrl,
+                            syncedLyrics: data.syncedLyrics,
+                            parsedLyrics: data.syncedLyrics ? parseLrc(data.syncedLyrics) : [],
+                            currentUri: actualUri
+                        };
+                    }
+
+                    return { ...prev, isPlaying: data.isPlaying };
+                });
             } catch (err) {
-                console.error("Spotify IFrame Fetch Error:", err);
+                console.error("Spotify Now Playing Error:", err);
             }
         };
 
-        window.addEventListener('spotifyPlaybackUpdate', handlePlaybackUpdate);
+        fetchNowPlaying();
+        pollInterval = setInterval(fetchNowPlaying, 3000);
+
         return () => {
             isMounted = false;
-            window.removeEventListener('spotifyPlaybackUpdate', handlePlaybackUpdate);
+            clearInterval(pollInterval);
         };
     }, []);
 
