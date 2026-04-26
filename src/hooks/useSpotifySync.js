@@ -28,12 +28,14 @@ export function useSpotifySync() {
                 const API_BASE = isLocal ? 'http://localhost:3001' : (import.meta.env.VITE_API_URL || 'http://localhost:3001');
                 
                 const res = await fetch(`${API_BASE}/api/now-playing`);
-                if (!res.ok) throw new Error('API failed');
+                if (!res.ok) throw new Error(`API failed: ${res.status}`);
                 const data = await res.json();
                 
+                console.log("Spotify Sync Data:", data);
+
                 if (!isMounted) return;
 
-                if (!data.isPlaying) {
+                if (!data || data.isPlaying === false) {
                     isPlayingRef.current = false;
                     setPlaybackData(prev => ({ ...prev, isPlaying: false }));
                     return;
@@ -69,7 +71,7 @@ export function useSpotifySync() {
         };
 
         fetchNowPlaying();
-        pollInterval = setInterval(fetchNowPlaying, 3000);
+        pollInterval = setInterval(fetchNowPlaying, 5000);
 
         return () => {
             isMounted = false;

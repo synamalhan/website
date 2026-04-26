@@ -6,6 +6,11 @@ import querystring from 'querystring';
 
 dotenv.config();
 
+// Fix for TLSSocket memory leak warning
+import { EventEmitter } from 'events';
+EventEmitter.defaultMaxListeners = 50;
+process.setMaxListeners(50);
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -14,6 +19,11 @@ const PORT = 3001;
 const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 const SPOTIFY_REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN;
+
+// Short-term cache for now-playing to avoid hitting Spotify too hard
+let lastNowPlaying = null;
+let lastNowPlayingTime = 0;
+const CACHE_TTL = 2000; // 2 seconds
 
 let accessToken = null;
 let tokenExpiresAt = null;
@@ -93,57 +103,6 @@ if (fs.existsSync(CACHE_PATH)) {
     }
 }
 
-app.get('/api/track', async (req, res) => {
-    try {
-        const uri = req.query.uri;
-        const duration = parseInt(req.query.duration);
-        if (!uri) return res.status(400).json({ error: "Missing uri parameter" });
-
-        const token = await refreshSpotifyToken();
-        let trackId = null;
-        let cachedData = null;
-
-        // 🟢 PRE-CHECK: Look in our local Metadata Cache first
-        // We match by duration (allowing 2s margin)
-        const cacheMatchKey = Object.keys(playlistCache).find(d => Math.abs(parseInt(d) - duration) < 2000);
-        
-        if (cacheMatchKey) {
-            cachedData = playlistCache[cacheMatchKey];
-            trackId = cachedData.id;
-            console.log(`✅ Cache Match: ${cachedData.name} (${cacheMatchKey}ms)`);
-        }
-
-        // 🔵 FALLBACK: If not in cache, try Spotify API
-        if (!trackId) {
-            if (uri.includes(':track:')) {
-                trackId = uri.split(':').pop();
-            } else if (uri.includes(':playlist:')) {
-                const playlistId = uri.split(':').pop();
-                console.log(`Resolving track in playlist [${playlistId}] via duration matching (${duration}ms)...`);
-                
-                try {
-                    const cToken = await getClientCredentialsToken();
-                    const playlistRes = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, {
-                        headers: { 'Authorization': `Bearer ${cToken}` }
-                    });
-
-                    const tracks = playlistRes.data.tracks.items;
-                    const match = tracks.find(item => item.track && Math.abs(item.track.duration_ms - duration) < 4000);
-
-                    if (match) {
-                        trackId = match.track.id;
-                        console.log(`✅ API Match: ${match.track.name}`);
-                    }
-                } catch (err) {
-                    console.error(`🛑 API Resolve Failed [${err.response?.status}]`);
-                }
-            }
-        }
-
-        if (!trackId) {
-            return res.status(404).json({ error: "Track not found or unresolvable" });
-        }
-
 // Utility to fetch lyrics from lrclib
 async function getLyrics(artist, title) {
     const cleanTitle = title.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim();
@@ -174,23 +133,36 @@ async function getLyrics(artist, title) {
 
 app.get('/api/now-playing', async (req, res) => {
     try {
+        // Return cached data if it's fresh
+        if (lastNowPlaying && Date.now() - lastNowPlayingTime < CACHE_TTL) {
+            return res.json(lastNowPlaying);
+        }
+
         const token = await refreshSpotifyToken();
         const spotifyRes = await axios.get('https://api.spotify.com/v1/me/player/currently-playing', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
         if (spotifyRes.status === 204 || !spotifyRes.data) {
-            return res.json({ isPlaying: false });
+            const idleData = { isPlaying: false };
+            lastNowPlaying = idleData;
+            lastNowPlayingTime = Date.now();
+            return res.json(idleData);
         }
 
         const data = spotifyRes.data;
         const track = data.item;
 
-        if (!track) return res.json({ isPlaying: false });
+        if (!track) {
+            const idleData = { isPlaying: false };
+            lastNowPlaying = idleData;
+            lastNowPlayingTime = Date.now();
+            return res.json(idleData);
+        }
 
         const syncedLyrics = await getLyrics(track.artists[0].name, track.name);
 
-        res.json({
+        const nowPlayingData = {
             isPlaying: data.is_playing,
             title: track.name.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim(),
             artist: track.artists[0].name,
@@ -199,8 +171,18 @@ app.get('/api/now-playing', async (req, res) => {
             durationMs: track.duration_ms,
             syncedLyrics,
             uri: track.uri
-        });
+        };
+
+        lastNowPlaying = nowPlayingData;
+        lastNowPlayingTime = Date.now();
+        res.json(nowPlayingData);
+
     } catch (err) {
+        if (err.response?.status === 429) {
+            console.error("🛑 Spotify Rate Limit (429) Hit. Throttling...");
+            // Return last known data to prevent frontend from crashing
+            if (lastNowPlaying) return res.json(lastNowPlaying);
+        }
         console.error("Now playing error:", err.message);
         res.status(500).json({ error: err.message });
     }
@@ -216,7 +198,6 @@ app.get('/api/track', async (req, res) => {
         let trackId = null;
         let cachedData = null;
 
-        // 🟢 PRE-CHECK: Look in our local Metadata Cache first
         const cacheMatchKey = Object.keys(playlistCache).find(d => Math.abs(parseInt(d) - duration) < 2000);
         
         if (cacheMatchKey) {
@@ -243,27 +224,16 @@ app.get('/api/track', async (req, res) => {
 
         if (!trackId) return res.status(404).json({ error: "Track not found" });
 
-        let title, artist, albumImageUrl;
-        
-        if (cachedData) {
-            title = cachedData.name;
-            artist = cachedData.artist;
-            albumImageUrl = cachedData.albumImageUrl;
-        } else {
-            const spotifyRes = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            title = spotifyRes.data.name;
-            artist = spotifyRes.data.artists[0].name;
-            albumImageUrl = spotifyRes.data.album.images[0]?.url;
-        }
+        const spotifyRes = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
 
-        const syncedLyrics = await getLyrics(artist, title);
+        const syncedLyrics = await getLyrics(spotifyRes.data.artists[0].name, spotifyRes.data.name);
 
         res.json({
-            title: title.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim(),
-            artist,
-            albumImageUrl,
+            title: spotifyRes.data.name.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim(),
+            artist: spotifyRes.data.artists[0].name,
+            albumImageUrl: spotifyRes.data.album.images[0]?.url,
             syncedLyrics
         });
 

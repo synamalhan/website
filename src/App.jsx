@@ -40,7 +40,7 @@ function AppContent() {
             <Projects />
             <WaveformSection />
             <Blog />
-            <LiveLyrics />
+            {/* <LiveLyrics /> */}
             <Contact />
             <Assembly ref={asmRef} prog={prog} inAssembly={inAssembly} />
             <Footer />
