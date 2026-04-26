@@ -56,11 +56,11 @@ const MusicTile = ({ t, counts, isMobile }) => {
         <motion.div
             whileHover={{ y: -5, boxShadow: isPlaying ? `0 10px 40px rgba(29, 185, 84, 0.3)` : `0 10px 30px ${t.accent}15` }}
             style={{
-                background: isPlaying ? `linear-gradient(135deg, ${t.surface}90, rgba(29, 185, 84, 0.1))` : `${t.surface}80`,
-                border: `1px solid ${isPlaying ? 'rgba(29, 185, 84, 0.4)' : t.border}`,
-                borderLeft: `4px solid ${isPlaying ? '#1DB954' : t.gold}`,
+                background: isPlaying ? `linear-gradient(135deg, ${t.surface}90, rgba(29, 185, 84, 0.1))` : '#000',
+                border: isPlaying ? `1px solid rgba(29, 185, 84, 0.4)` : 'none',
+                borderLeft: isPlaying ? `4px solid #1DB954` : 'none',
                 borderRadius: "24px",
-                padding: isMobile ? "20px" : "32px",
+                padding: isPlaying ? (isMobile ? "20px" : "32px") : 0,
                 height: "100%",
                 position: "relative",
                 overflow: "hidden",
@@ -73,105 +73,113 @@ const MusicTile = ({ t, counts, isMobile }) => {
                 justifyContent: 'center'
             }}
         >
-            <div style={{
-                ...FONTS.mono,
-                fontSize: "0.65rem",
-                color: isPlaying ? '#1DB954' : t.textMute,
-                letterSpacing: '2px',
-                marginBottom: "20px",
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                justifyContent: 'center'
-            }}>
-                {isPlaying && <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1 }}>●</motion.span>}
-                <span>{isPlaying ? "LIVE NOW" : "STATION IDLE"}</span>
-            </div>
+            {isPlaying ? (
+                <>
+                    <div style={{
+                        ...FONTS.mono,
+                        fontSize: "0.65rem",
+                        color: '#1DB954',
+                        letterSpacing: '2px',
+                        marginBottom: "20px",
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        justifyContent: 'center'
+                    }}>
+                        <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1 }}>●</motion.span>
+                        <span>LIVE NOW</span>
+                    </div>
 
-            <div style={{ 
-                flex: 1, 
-                display: 'flex', 
-                flexDirection: 'column', 
-                justifyContent: 'center', 
-                minHeight: '120px' 
-            }}>
-                <div style={{
-                    ...FONTS.orb,
-                    fontWeight: 800,
-                    color: t.textHi,
-                    lineHeight: 1.4,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '12px',
-                    textAlign: 'center'
-                }}>
-                    {isPlaying ? (
-                        hasLyrics ? (
-                            lyricWindow ? (
-                                <>
-                                    <div style={{ fontSize: "0.9rem", opacity: 0.15 }}>{lyricWindow.prev || " "}</div>
-                                    <div style={{ fontSize: "1.5rem", opacity: 1, color: '#1DB954' }}>{lyricWindow.curr}</div>
-                                    <div style={{ fontSize: "0.9rem", opacity: 0.15 }}>{lyricWindow.next || " "}</div>
-                                </>
-                            ) : (
-                                <div style={{ fontSize: "1.1rem", opacity: 0.4 }}>(Syncing...)</div>
-                            )
-                        ) : (
-                            <div style={{ fontSize: "1.4rem", color: '#1DB954' }}>{title}</div>
-                        )
-                    ) : (
-                        <div style={{ fontSize: "1.1rem", opacity: 0.6 }}>{idleMessage}</div>
-                    )}
-                </div>
-            </div>
-
-            {isPlaying && (
-                <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', paddingTop: '20px' }}>
-                    <div style={{ textAlign: 'center' }}>
+                    <div style={{ 
+                        flex: 1, 
+                        display: 'flex', 
+                        flexDirection: 'column', 
+                        justifyContent: 'center', 
+                        minHeight: '120px' 
+                    }}>
                         <div style={{
-                            ...FONTS.mono,
-                            fontSize: '0.85rem',
-                            color: '#1DB954',
+                            ...FONTS.orb,
                             fontWeight: 800,
-                            letterSpacing: '2px',
-                            textTransform: 'uppercase'
+                            color: t.textHi,
+                            lineHeight: 1.4,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '12px',
+                            textAlign: 'center'
                         }}>
-                            {title}
-                        </div>
-                        <div style={{ ...FONTS.mono, fontSize: '0.7rem', color: t.textMute, opacity: 0.6 }}>
-                            {artist}
+                            {hasLyrics ? (
+                                lyricWindow ? (
+                                    <>
+                                        <div style={{ fontSize: "0.9rem", opacity: 0.15 }}>{lyricWindow.prev || " "}</div>
+                                        <div style={{ fontSize: "1.5rem", opacity: 1, color: '#1DB954' }}>{lyricWindow.curr}</div>
+                                        <div style={{ fontSize: "0.9rem", opacity: 0.15 }}>{lyricWindow.next || " "}</div>
+                                    </>
+                                ) : (
+                                    <div style={{ fontSize: "1.1rem", opacity: 0.4 }}>(Syncing...)</div>
+                                )
+                            ) : (
+                                <div style={{ fontSize: "1.4rem", color: '#1DB954' }}>{title}</div>
+                            )}
                         </div>
                     </div>
 
-                    <a
-                        href={uri?.startsWith('spotify:track:') ? `https://open.spotify.com/track/${uri.split(':').pop()}` : 'https://open.spotify.com/playlist/0Uggezps9kTbnOpFB7ovff'}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                            padding: '12px 24px',
-                            background: '#1DB954',
-                            borderRadius: '30px',
-                            textDecoration: 'none',
-                            color: 'white',
-                            ...FONTS.mono,
-                            fontSize: '0.75rem',
-                            fontWeight: 700,
-                            letterSpacing: '1px',
-                            boxShadow: '0 8px 25px rgba(29, 185, 84, 0.4)',
-                            transition: 'all 0.3s'
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
-                        onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
-                    >
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="white">
-                            <path d="M8 5v14l11-7z" />
-                        </svg>
-                        LISTEN ON SPOTIFY
-                    </a>
-                </div>
+                    <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', paddingTop: '20px' }}>
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{
+                                ...FONTS.mono,
+                                fontSize: '0.85rem',
+                                color: '#1DB954',
+                                fontWeight: 800,
+                                letterSpacing: '2px',
+                                textTransform: 'uppercase'
+                            }}>
+                                {title}
+                            </div>
+                            <div style={{ ...FONTS.mono, fontSize: '0.7rem', color: t.textMute, opacity: 0.6 }}>
+                                {artist}
+                            </div>
+                        </div>
+
+                        <a
+                            href={uri?.startsWith('spotify:track:') ? `https://open.spotify.com/track/${uri.split(':').pop()}` : 'https://open.spotify.com/playlist/0Uggezps9kTbnOpFB7ovff'}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                padding: '12px 24px',
+                                background: '#1DB954',
+                                borderRadius: '30px',
+                                textDecoration: 'none',
+                                color: 'white',
+                                ...FONTS.mono,
+                                fontSize: '0.75rem',
+                                fontWeight: 700,
+                                letterSpacing: '1px',
+                                boxShadow: '0 8px 25px rgba(29, 185, 84, 0.4)',
+                                transition: 'all 0.3s'
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
+                            onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+                        >
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="white">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                            LISTEN ON SPOTIFY
+                        </a>
+                    </div>
+                </>
+            ) : (
+                <iframe 
+                    data-testid="embed-iframe" 
+                    style={{ borderRadius: '24px', border: 'none', width: '100%', height: '100%', minHeight: '352px' }} 
+                    src={`https://open.spotify.com/embed/playlist/0Uggezps9kTbnOpFB7ovff?utm_source=generator&theme=${t.name === 'dark' ? '0' : '1'}`} 
+                    frameBorder="0" 
+                    allowFullScreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy"
+                ></iframe>
             )}
         </motion.div>
     );
