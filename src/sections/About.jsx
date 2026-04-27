@@ -239,6 +239,35 @@ const MusicTile = ({ t, counts, isMobile }) => {
     );
 };
 
+const BentoBox = ({ children, style = {}, colSpan = 1, rowSpan = 1, hover = true }) => {
+    const { theme: t } = useTheme();
+    const isMobile = useIsMobile();
+    
+    return (
+        <motion.div
+            whileHover={hover ? { y: -5, boxShadow: `0 10px 30px ${t.accent}15`, borderColor: `${t.accent}40` } : {}}
+            style={{
+                background: `${t.surface}80`,
+                border: `1px solid ${t.border}`,
+                borderRadius: "24px",
+                padding: "24px",
+                height: "100%",
+                position: "relative",
+                overflow: "hidden",
+                backdropFilter: "blur(12px)",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                display: "flex",
+                flexDirection: "column",
+                gridColumn: isMobile ? "span 1" : `span ${colSpan}`,
+                gridRow: isMobile ? "auto" : `span ${rowSpan}`,
+                ...style
+            }}
+        >
+            {children}
+        </motion.div>
+    );
+};
+
 const About = forwardRef(function About({ counts = {} }, ref) {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
@@ -253,19 +282,6 @@ const About = forwardRef(function About({ counts = {} }, ref) {
     }, []);
 
     const bentoStyles = {
-        box: {
-            background: `${t.surface}80`,
-            border: `1px solid ${t.border}`,
-            borderRadius: "24px",
-            padding: "24px",
-            height: "100%",
-            position: "relative",
-            overflow: "hidden",
-            backdropFilter: "blur(12px)",
-            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-            display: "flex",
-            flexDirection: "column"
-        },
         grid: {
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "repeat(4, 1fr)",
@@ -276,19 +292,6 @@ const About = forwardRef(function About({ counts = {} }, ref) {
         }
     };
 
-    const BentoBox = ({ children, style = {}, colSpan = 1, rowSpan = 1, hover = true }) => (
-        <motion.div
-            whileHover={hover ? { y: -5, boxShadow: `0 10px 30px ${t.accent}15`, borderColor: `${t.accent}40` } : {}}
-            style={{
-                ...bentoStyles.box,
-                gridColumn: isMobile ? "span 1" : `span ${colSpan}`,
-                gridRow: isMobile ? "auto" : `span ${rowSpan}`,
-                ...style
-            }}
-        >
-            {children}
-        </motion.div>
-    );
 
     return (
         <section
