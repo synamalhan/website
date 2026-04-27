@@ -38,6 +38,7 @@ export default function SimpleCarousel({ items = [] }) {
         width: '100%',
         height: '70%',
         maxWidth: '400px',
+        maxHeight: '400px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'

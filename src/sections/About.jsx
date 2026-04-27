@@ -7,6 +7,7 @@ import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 import SimpleCarousel from "../components/SimpleCarousel";
 import resume from "../assets/SYNA_MALHAN.pdf";
+import { useState } from "react";
 
 import img1 from "../assets/profile/1.jpg";
 import img2 from "../assets/profile/2.jpg";
@@ -19,13 +20,64 @@ import img7 from "../assets/profile/7.jpg";
 import { useSpotifySync } from "../hooks/useSpotifySync";
 
 const galleryItems = [
-    { image: img1, title: "ENGINEER", description: "Crafting robust and scalable systems." },
-    { image: img2, title: "BUILDER", description: "Turning complex ideas into interactive reality." },
-    { image: img3, title: "EXPLORER", description: "Constantly pushing the boundaries of technology." },
-    { image: img4, title: "AI / ML", description: "Designing intelligent systems for the future." },
-    { image: img5, title: "MOBILE", description: "Creating fluid experiences on every device." },
-    { image: img6, title: "CREATIVE", description: "Where sophisticated code meets artistic vision." },
-    { image: img7, title: "DESIGN", description: "Finding elegance in every pixel and interaction." }
+    {
+        image: img1,
+        title: "This is me",
+        description: "Just me, no context needed."
+    },
+    {
+        image: img2,
+        title: "Another angle",
+        description: "Same person, different day."
+    },
+    {
+        image: img3,
+        title: "By the ocean",
+        description: "I go here when I need to think."
+    },
+    {
+        image: img4,
+        title: "In the water",
+        description: "Swimming helps me reset everything."
+    },
+    {
+        image: img5,
+        title: "Billu",
+        description: "We looked after this little guy for a while."
+    },
+    {
+        image: img6,
+        title: "A colorful space",
+        description: "I like places that feel a bit unexpected."
+    },
+    {
+        image: img7,
+        title: "A small build",
+        description: "Just something I put together for fun."
+    }
+];
+
+const funFacts = [
+    {
+        icon: "🔧",
+        label: "FUN FACT",
+        text: "I build Metal Earth kits — tiny laser-cut metal puzzles that require way more patience than I expect."
+    },
+    {
+        icon: "🌊",
+        label: "FUN FACT",
+        text: "I think best near water. Oceans reset my brain faster than anything else."
+    },
+    {
+        icon: "🎧",
+        label: "FUN FACT",
+        text: "I rotate the same 5 songs for weeks until they become background noise for my thoughts."
+    },
+    {
+        icon: "🧠",
+        label: "FUN FACT",
+        text: "Half my ideas come while I’m not trying to have ideas."
+    }
 ];
 
 const idleMessages = [
@@ -48,6 +100,8 @@ const MusicTile = ({ t, counts, isMobile }) => {
         curr: parsedLyrics[currentIndex]?.text,
         next: parsedLyrics[currentIndex + 1]?.text
     } : null;
+
+
 
     const idleMessage = idleMessages[Math.floor(Date.now() / 30000) % idleMessages.length];
     const hasLyrics = parsedLyrics.length > 0;
@@ -90,12 +144,12 @@ const MusicTile = ({ t, counts, isMobile }) => {
                         <span>LIVE NOW</span>
                     </div>
 
-                    <div style={{ 
-                        flex: 1, 
-                        display: 'flex', 
-                        flexDirection: 'column', 
-                        justifyContent: 'center', 
-                        minHeight: '120px' 
+                    <div style={{
+                        flex: 1,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        minHeight: '120px'
                     }}>
                         <div style={{
                             ...FONTS.orb,
@@ -171,13 +225,13 @@ const MusicTile = ({ t, counts, isMobile }) => {
                     </div>
                 </>
             ) : (
-                <iframe 
-                    data-testid="embed-iframe" 
-                    style={{ borderRadius: '24px', border: 'none', width: '100%', height: '100%', minHeight: '352px' }} 
-                    src={`https://open.spotify.com/embed/playlist/0Uggezps9kTbnOpFB7ovff?utm_source=generator&theme=${t.name === 'dark' ? '0' : '1'}`} 
-                    frameBorder="0" 
-                    allowFullScreen="" 
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                <iframe
+                    data-testid="embed-iframe"
+                    style={{ borderRadius: '24px', border: 'none', width: '100%', height: '100%', minHeight: '352px' }}
+                    src={`https://open.spotify.com/embed/playlist/0Uggezps9kTbnOpFB7ovff?utm_source=generator&theme=${t.name === 'dark' ? '0' : '1'}`}
+                    frameBorder="0"
+                    allowFullScreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     loading="lazy"
                 ></iframe>
             )}
@@ -188,6 +242,15 @@ const MusicTile = ({ t, counts, isMobile }) => {
 const About = forwardRef(function About({ counts = {} }, ref) {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
+    const [factIndex, setFactIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFactIndex((prev) => (prev + 1) % funFacts.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     const bentoStyles = {
         box: {
@@ -243,10 +306,15 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                     <Label>// About Me</Label>
                     <H2 style={{ fontSize: isMobile ? '2.5rem' : '3.5rem', marginBottom: '20px' }}>ABOUT<br />ME</H2>
                     <p style={{ fontSize: "1rem", lineHeight: 1.7, color: t.textHi, fontWeight: 400, marginBottom: 16 }}>
-                        I'm <span style={{ color: t.accent, fontWeight: 700 }}>Syna Malhan</span>, a developer crafting at the intersection of machine intelligence and human intuition.
+                        I'm <span style={{ color: t.accent, fontWeight: 700 }}>Syna Malhan</span>. I like building things that feel alive — systems that react, adapt, and quietly disappear into good design.
                     </p>
+
+                    <p style={{ fontSize: "0.9rem", lineHeight: 1.6, color: t.textMute, fontWeight: 300, marginBottom: 16 }}>
+                        Most of my work sits somewhere between <span style={{ color: t.cyan }}>AI/ML</span> and <span style={{ color: t.gold }}>product engineering</span>, but I care just as much about how something <span style={{ fontWeight: 700 }}>feels</span> as how it works.
+                    </p>
+
                     <p style={{ fontSize: "0.9rem", lineHeight: 1.6, color: t.textMute, fontWeight: 300, marginBottom: 24 }}>
-                        I build tools that are functional yet visually stunning, focusing on <span style={{ color: t.cyan }}>AI/ML and iOS development</span>. My goal is to create code that feels personal and empathetic.
+                        Outside of code, I’m usually building small things, overthinking interfaces, or finding quiet places to reset.
                     </p>
                     <a
                         href={resume}
@@ -298,17 +366,40 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                 </BentoBox>
 
                 {/* 6. FUN FACT BOX (FULL WIDTH 4x1) */}
-                <BentoBox colSpan={isMobile ? 1 : 4} rowSpan={1} style={{
-                    justifyContent: 'center',
-                    background: `linear-gradient(135deg, ${t.surface}80, ${t.accent}10)`
-                }}>
+                <BentoBox
+                    colSpan={isMobile ? 1 : 4}
+                    rowSpan={1}
+                    style={{
+                        justifyContent: 'center',
+                        background: `linear-gradient(135deg, ${t.surface}80, ${t.accent}10)`
+                    }}
+                >
                     <div style={{ display: "flex", gap: "24px", alignItems: "center", justifyContent: 'center' }}>
-                        <div style={{ fontSize: "2.5rem" }}>🔧</div>
-                        <div>
-                            <div style={{ ...FONTS.mono, fontSize: "0.7rem", color: t.accent, letterSpacing: '2px', marginBottom: '4px' }}>FUN FACT</div>
-                            <div style={{ fontSize: "1rem", color: t.text, lineHeight: 1.5 }}>
-                                I build <strong style={{ color: t.textHi }}>Metal Earth</strong> — tiny, intricate 3D puzzles from laser-cut metal sheets.
+
+                        <motion.div
+                            key={factIndex}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            style={{ fontSize: "2.5rem" }}
+                        >
+                            {funFacts[factIndex].icon}
+                        </motion.div>
+
+                        <div style={{ maxWidth: 600 }}>
+                            <div style={{ ...FONTS.mono, fontSize: "0.7rem", color: t.accent, letterSpacing: '2px', marginBottom: '4px' }}>
+                                {funFacts[factIndex].label}
                             </div>
+
+                            <motion.div
+                                key={factIndex + "-text"}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.6 }}
+                                style={{ fontSize: "1rem", color: t.text, lineHeight: 1.5 }}
+                            >
+                                {funFacts[factIndex].text}
+                            </motion.div>
                         </div>
                     </div>
                 </BentoBox>

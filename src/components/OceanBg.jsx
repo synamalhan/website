@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function OceanBg({ t }) {
-    const [scrollY, setScrollY] = useState(0);
-    
-    useEffect(() => {
-        const handleScroll = () => setScrollY(window.scrollY);
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    const { scrollY } = useScroll();
 
     // Generate random splotches only once on mount
     const [splotches] = useState(() => {
@@ -30,24 +25,27 @@ export default function OceanBg({ t }) {
         <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", background: t.bg, overflow: "hidden" }}>
             {/* Splotches Container */}
             <div style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}>
-                {splotches.map((s, i) => (
-                    <div
-                        key={i}
-                        style={{
-                            position: "absolute",
-                            left: `${s.x}%`,
-                            top: `${s.y}px`,
-                            width: s.size,
-                            height: s.size,
-                            borderRadius: "50%",
-                            background: s.color,
-                            opacity: s.opacity,
-                            filter: "blur(120px)",
-                            transform: `translate(-50%, -50%) translateY(${-scrollY * s.speed}px)`,
-                            transition: "transform 0.1s linear"
-                        }}
-                    />
-                ))}
+                {splotches.map((s, i) => {
+                    const y = useTransform(scrollY, val => -val * s.speed);
+                    return (
+                        <motion.div
+                            key={i}
+                            style={{
+                                position: "absolute",
+                                left: `${s.x}%`,
+                                top: `${s.y}px`,
+                                width: s.size,
+                                height: s.size,
+                                borderRadius: "50%",
+                                background: s.color,
+                                opacity: s.opacity,
+                                filter: "blur(120px)",
+                                transform: "translate(-50%, -50%)",
+                                y
+                            }}
+                        />
+                    );
+                })}
             </div>
             
             {/* Noise Overlay */}

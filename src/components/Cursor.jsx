@@ -5,12 +5,40 @@ export default function Cursor({ t }) {
     const trailBlob = useRef();
     
     useEffect(() => {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let trailX = window.innerWidth / 2;
+        let trailY = window.innerHeight / 2;
+        let panned = false;
+
         const move = e => {
-            mainBlob.current && Object.assign(mainBlob.current.style, { left: `${e.clientX}px`, top: `${e.clientY}px` });
-            setTimeout(() => trailBlob.current && Object.assign(trailBlob.current.style, { left: `${e.clientX}px`, top: `${e.clientY}px` }), 120);
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            panned = true;
+            if (mainBlob.current) {
+                mainBlob.current.style.left = `${mouseX}px`;
+                mainBlob.current.style.top = `${mouseY}px`;
+            }
         };
-        document.addEventListener("mousemove", move);
-        return () => document.removeEventListener("mousemove", move);
+
+        let raf;
+        const animate = () => {
+            if (panned && trailBlob.current) {
+                trailX += (mouseX - trailX) * 0.15;
+                trailY += (mouseY - trailY) * 0.15;
+                trailBlob.current.style.left = `${trailX}px`;
+                trailBlob.current.style.top = `${trailY}px`;
+            }
+            raf = requestAnimationFrame(animate);
+        };
+
+        document.addEventListener("mousemove", move, { passive: true });
+        raf = requestAnimationFrame(animate);
+
+        return () => {
+            document.removeEventListener("mousemove", move);
+            cancelAnimationFrame(raf);
+        };
     }, []);
     
     return (
