@@ -79,7 +79,7 @@ export function useSpotifySync() {
         };
     }, []);
 
-    // Interpolate progress smoothly at 60fps
+    // Interpolate progress smoothly, but limit React state updates to ease CPU load
     useEffect(() => {
         const loop = () => {
             if (isPlayingRef.current) {
@@ -88,10 +88,11 @@ export function useSpotifySync() {
             } else {
                 setCurrentProgress(baseProgressRef.current);
             }
-            reqFrameRef.current = requestAnimationFrame(loop);
         };
-        loop();
-        return () => cancelAnimationFrame(reqFrameRef.current);
+        
+        // 100ms is perfectly fine for lyric sync without destroying mobile CPU CPU usage
+        const intervalId = setInterval(loop, 100);
+        return () => clearInterval(intervalId);
     }, []);
 
     return { ...playbackData, currentProgress };

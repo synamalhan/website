@@ -89,7 +89,7 @@ const idleMessages = [
 ];
 
 const MusicTile = ({ t, counts, isMobile }) => {
-    const { isPlaying, title, artist, parsedLyrics, currentProgress, uri } = useSpotifySync();
+    const { isPlaying, title, artist, parsedLyrics, currentProgress, currentUri } = useSpotifySync();
 
     const currentIndex = parsedLyrics.findIndex((l, i) =>
         currentProgress >= l.time && (i === parsedLyrics.length - 1 || currentProgress < parsedLyrics[i + 1].time)
@@ -101,7 +101,68 @@ const MusicTile = ({ t, counts, isMobile }) => {
         next: parsedLyrics[currentIndex + 1]?.text
     } : null;
 
+    const [showPlayer, setShowPlayer] = useState(false);
+    
+    // Store latest progress to use inside iframe callback
+    const progressRef = useRef(currentProgress);
+    useEffect(() => {
+        progressRef.current = currentProgress;
+    }, [currentProgress]);
 
+    const playerDivRef = useRef(null);
+
+    useEffect(() => {
+        if (!showPlayer) return;
+        let isCancelled = false;
+
+        const loadPlayer = (IFrameAPI) => {
+            if (isCancelled || !playerDivRef.current) return;
+            
+            playerDivRef.current.innerHTML = '<div id="spotify-embed-mnt"></div>';
+            const mountPoint = playerDivRef.current.querySelector('#spotify-embed-mnt');
+
+            const options = {
+                uri: currentUri,
+                width: '100%',
+                height: '80',
+                theme: t.name === 'dark' ? '0' : '1'
+            };
+
+            const callback = (EmbedController) => {
+                if (isCancelled) {
+                    EmbedController.destroy();
+                    return;
+                }
+                EmbedController.addListener('ready', () => {
+                    EmbedController.seek(Math.floor(progressRef.current / 1000));
+                });
+            };
+
+            IFrameAPI.createController(mountPoint, options, callback);
+        };
+
+        if (!window.onSpotifyIframeApiReady) {
+            window.onSpotifyIframeApiReady = (IFrameAPI) => {
+                window.SpotifyIframeAPI = IFrameAPI;
+                loadPlayer(IFrameAPI);
+            };
+        } else if (window.SpotifyIframeAPI) {
+            loadPlayer(window.SpotifyIframeAPI);
+        }
+
+        const scriptId = 'spotify-api-script';
+        if (!document.getElementById(scriptId)) {
+            const script = document.createElement('script');
+            script.id = scriptId;
+            script.src = "https://open.spotify.com/embed/iframe-api/v1";
+            script.async = true;
+            document.body.appendChild(script);
+        }
+
+        return () => {
+            isCancelled = true;
+        };
+    }, [showPlayer, currentUri, t.name]);
 
     const idleMessage = idleMessages[Math.floor(Date.now() / 30000) % idleMessages.length];
     const hasLyrics = parsedLyrics.length > 0;
@@ -194,34 +255,62 @@ const MusicTile = ({ t, counts, isMobile }) => {
                             </div>
                         </div>
 
-                        <a
-                            href={uri?.startsWith('spotify:track:') ? `https://open.spotify.com/track/${uri.split(':').pop()}` : 'https://open.spotify.com/playlist/0Uggezps9kTbnOpFB7ovff'}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '10px',
-                                padding: '12px 24px',
-                                background: '#1DB954',
-                                borderRadius: '30px',
-                                textDecoration: 'none',
-                                color: 'white',
-                                ...FONTS.mono,
-                                fontSize: '0.75rem',
-                                fontWeight: 700,
-                                letterSpacing: '1px',
-                                boxShadow: '0 8px 25px rgba(29, 185, 84, 0.4)',
-                                transition: 'all 0.3s'
-                            }}
-                            onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
-                            onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
-                        >
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="white">
-                                <path d="M8 5v14l11-7z" />
-                            </svg>
-                            LISTEN ON SPOTIFY
-                        </a>
+                        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            {currentUri?.startsWith('spotify:track:') && (
+                                <button
+                                    onClick={() => setShowPlayer(!showPlayer)}
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '10px',
+                                        padding: '12px 24px',
+                                        background: showPlayer ? 'rgba(29, 185, 84, 0.2)' : '#1DB954',
+                                        border: `1px solid #1DB954`,
+                                        borderRadius: '30px',
+                                        color: showPlayer ? '#1DB954' : 'white',
+                                        ...FONTS.mono,
+                                        fontSize: '0.75rem',
+                                        fontWeight: 700,
+                                        letterSpacing: '1px',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.3s'
+                                    }}
+                                    onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
+                                    onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+                                >
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                        {showPlayer ? (
+                                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                                        ) : (
+                                            <path d="M8 5v14l11-7z" />
+                                        )}
+                                    </svg>
+                                    {showPlayer ? "CLOSE PLAYER" : "PLAY HERE"}
+                                </button>
+                            )}
+                        </div>
+
+                        {showPlayer && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                style={{
+                                    position: 'absolute',
+                                    bottom: 0,
+                                    left: 0,
+                                    right: 0,
+                                    zIndex: 50,
+                                    padding: isMobile ? "15px" : "24px",
+                                    paddingBottom: isMobile ? "10px" : "15px",
+                                    background: `linear-gradient(to top, rgba(0,0,0,0.95) 60%, transparent)`,
+                                    borderBottomLeftRadius: '24px',
+                                    borderBottomRightRadius: '24px',
+                                    boxShadow: `0 -10px 40px rgba(29, 185, 84, 0.2)`
+                                }}
+                            >
+                                <div ref={playerDivRef} style={{ width: '100%', borderRadius: '12px', overflow: 'hidden' }}></div>
+                            </motion.div>
+                        )}
                     </div>
                 </>
             ) : (
@@ -242,7 +331,7 @@ const MusicTile = ({ t, counts, isMobile }) => {
 const BentoBox = ({ children, style = {}, colSpan = 1, rowSpan = 1, hover = true }) => {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
-    
+
     return (
         <motion.div
             whileHover={hover ? { y: -5, boxShadow: `0 10px 30px ${t.accent}15`, borderColor: `${t.accent}40` } : {}}
