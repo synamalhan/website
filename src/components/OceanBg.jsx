@@ -37,9 +37,8 @@ export default function OceanBg({ t }) {
                                 width: s.size,
                                 height: s.size,
                                 borderRadius: "50%",
-                                background: s.color,
+                                background: `radial-gradient(circle, ${s.color} 0%, transparent 70%)`,
                                 opacity: s.opacity,
-                                filter: "blur(120px)",
                                 transform: "translate(-50%, -50%)",
                                 y
                             }}

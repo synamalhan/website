@@ -282,9 +282,9 @@ export default function MetallicEarth3D({ progress, t, onNodeHover, onNodeClick,
         <div style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}>
             <Canvas
                 camera={{ position: [0, 0, isMobile ? 12 : 11], fov: isMobile ? 60 : 50 }}
-                gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+                gl={{ antialias: !isMobile, alpha: true, powerPreference: "high-performance" }}
                 style={{ background: "transparent" }}
-                dpr={isMobile ? 1.5 : 2}
+                dpr={isMobile ? 1 : 1.5}
             >
                 <EarthScene
                     progress={progress}
