@@ -5,8 +5,32 @@ import ripik from '../assets/ripik.svg';
 import headstarter from '../assets/headstarter.png';
 import eyLogo from '../assets/eyLogo.png';
 import mps from '../assets/mps.png';
+import micron from '../assets/micron.avif';
 
 export const EXPERIENCES = [
+    {
+        role: "Data Science Intern",
+        company: "Micron Technology",
+        years: "May 2026 – Present",
+        desc: "Working on AI and machine learning initiatives focused on product development, validation, and optimization within engineering systems.",
+        details: [
+            "Developing and applying machine learning models to support product optimization and engineering workflows.",
+            "Collaborating with engineering teams to analyze complex datasets and build data-driven solutions.",
+            "Exploring modern AI techniques including predictive modeling, deep learning, and LLM-based systems.",
+            "Contributing to scalable data science pipelines and experimentation for real-world manufacturing and engineering applications."
+        ],
+        techStack: [
+            "Python",
+            "PyTorch",
+            "TensorFlow",
+            "Machine Learning",
+            "Deep Learning",
+            "LLMs",
+            "Data Analysis",
+            "Predictive Modeling"
+        ],
+        logo: micron
+    },
     {
         role: "Research Assistant",
         company: "Make Programming Simple Lab (MPS Lab)",
