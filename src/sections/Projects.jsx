@@ -6,14 +6,23 @@ import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 import ProjectThumb from "../components/ProjectThumb";
 import { categorizedProjects } from "../data/projects";
+import { useProjectCardLink } from "../hooks/useProjectCardLink";
 
-function FlippableProjectCard({ project, index, theme: t, primaryColor }) {
+function FlippableProjectCard({ project, index, theme: t, primaryColor, categoryAnchorId, onOpen }) {
     const isMobile = useIsMobile();
     const [flipped, setFlipped] = useState(false);
     const accentColor = primaryColor || t.accent;
 
+    const handleCardLink = (event) => {
+        event.stopPropagation();
+        if (project.anchorId && onOpen) {
+            onOpen(categoryAnchorId, project.anchorId);
+        }
+    };
+
     return (
         <div
+            id={project.anchorId}
             onClick={(e) => {
                 e.stopPropagation();
                 setFlipped(!flipped);
@@ -158,7 +167,7 @@ function FlippableProjectCard({ project, index, theme: t, primaryColor }) {
                                         background: t.surface,
                                         transition: "all 0.2s"
                                     }}
-                                    onMouseEnter={e => e.currentTarget.style.borderColor = accentColor}
+                                    onMouseEnter={e => e.currentTarget.style.borderColor = t.borderHi}
                                     onMouseLeave={e => e.currentTarget.style.borderColor = t.border}
                                 >
                                     VIEW REPO ↗
@@ -175,12 +184,119 @@ function FlippableProjectCard({ project, index, theme: t, primaryColor }) {
 export default function Projects() {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
+    const { openProjectCard } = useProjectCardLink();
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const [targetProjectId, setTargetProjectId] = useState(null);
 
     useEffect(() => {
         if (selectedCategory) document.body.style.overflow = "hidden";
         else document.body.style.overflow = "auto";
     }, [selectedCategory]);
+
+    useEffect(() => {
+        const syncFromHash = () => {
+            const hash = window.location.hash.replace("#", "");
+            if (!hash) {
+                setSelectedCategory(null);
+                setTargetProjectId(null);
+                return;
+            }
+
+            const matchingProject = categorizedProjects
+                .flatMap((cat) => cat.projects)
+                .find((proj) => proj.anchorId === hash);
+
+            if (matchingProject) {
+                const matchingCategory = categorizedProjects.find((cat) =>
+                    cat.projects.some((proj) => proj.anchorId === hash)
+                );
+                setTargetProjectId(hash);
+                setSelectedCategory(matchingCategory || null);
+                return;
+            }
+
+            const matchingCategory = categorizedProjects.find((cat) => cat.anchorId === hash);
+            if (matchingCategory) {
+                setTargetProjectId(null);
+                setSelectedCategory(matchingCategory);
+            }
+        };
+
+        const handleOpenProject = (event) => {
+            const { categoryAnchorId, projectAnchorId } = event.detail || {};
+
+            if (categoryAnchorId) {
+                const matchingCategory = categorizedProjects.find((cat) => cat.anchorId === categoryAnchorId);
+                if (matchingCategory) {
+                    setSelectedCategory(matchingCategory);
+                    setTargetProjectId(projectAnchorId || null);
+                    window.location.hash = projectAnchorId || categoryAnchorId;
+                    return;
+                }
+            }
+
+            if (projectAnchorId) {
+                openProjectByAnchor(projectAnchorId);
+            }
+        };
+
+        syncFromHash();
+        window.addEventListener("hashchange", syncFromHash);
+        window.addEventListener("open-project", handleOpenProject);
+        return () => {
+            window.removeEventListener("hashchange", syncFromHash);
+            window.removeEventListener("open-project", handleOpenProject);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!selectedCategory || !targetProjectId) return;
+
+        const timer = window.setTimeout(() => {
+            const targetId = targetProjectId || selectedCategory?.anchorId;
+            const target = targetId ? document.getElementById(targetId) : null;
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        }, 180);
+
+        return () => window.clearTimeout(timer);
+    }, [selectedCategory, targetProjectId]);
+
+    const openCategory = (cat, projectAnchorId = null) => {
+        setSelectedCategory(cat);
+        setTargetProjectId(projectAnchorId);
+
+        if (projectAnchorId) {
+            window.location.hash = projectAnchorId;
+        } else if (cat.anchorId) {
+            window.location.hash = cat.anchorId;
+        } else {
+            window.history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+    };
+
+    const openProjectByAnchor = (projectAnchorId) => {
+        const matchingProject = categorizedProjects
+            .flatMap((cat) => cat.projects)
+            .find((proj) => proj.anchorId === projectAnchorId);
+
+        if (!matchingProject) return;
+
+        const matchingCategory = categorizedProjects.find((cat) =>
+            cat.projects.some((proj) => proj.anchorId === projectAnchorId)
+        );
+
+        setSelectedCategory(matchingCategory || null);
+        setTargetProjectId(projectAnchorId);
+        window.location.hash = projectAnchorId;
+    };
+
+    const closeModal = () => {
+        setSelectedCategory(null);
+        setTargetProjectId(null);
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    };
 
     return (
         <section id="projects" style={{ padding: isMobile ? "80px 24px" : "120px 24px", position: "relative", zIndex: selectedCategory ? 1001 : 1, maxWidth: 1200, margin: "0 auto" }}>
@@ -197,7 +313,8 @@ export default function Projects() {
                 {categorizedProjects.map((cat, i) => (
                     <div
                         key={i}
-                        onClick={() => setSelectedCategory(cat)}
+                        id={cat.anchorId}
+                        onClick={() => openCategory(cat)}
                         style={{
                             background: t.surface,
                             border: `1px solid ${t.border}`,
@@ -208,11 +325,12 @@ export default function Projects() {
                             overflow: "hidden",
                             display: "flex",
                             flexDirection: "column",
-                            height: isMobile ? 260 : 300
+                            height: isMobile ? 260 : 300,
+                            scrollMarginTop: isMobile ? 100 : 120
                         }}
                         onMouseEnter={e => {
                             if (isMobile) return;
-                            e.currentTarget.style.borderColor = cat.colors[0];
+                            e.currentTarget.style.borderColor = t.borderHi;
                             e.currentTarget.style.transform = "translateY(-5px)";
                         }}
                         onMouseLeave={e => {
@@ -259,7 +377,7 @@ export default function Projects() {
             {/* Modal */}
             {selectedCategory && (
                 <div
-                    onClick={() => setSelectedCategory(null)}
+                    onClick={closeModal}
                     style={{
                         position: "fixed",
                         inset: 0,
@@ -279,7 +397,7 @@ export default function Projects() {
                             maxWidth: 1000,
                             maxHeight: isMobile ? "92vh" : "85vh",
                             background: t.bg,
-                            border: `1px solid ${addAlpha(selectedCategory.colors[0], "55")}`,
+                            border: `1px solid ${t.borderHi}`,
                             borderRadius: isMobile ? 16 : 24,
                             padding: isMobile ? "24px 16px" : "48px 32px",
                             position: "relative",
@@ -296,7 +414,7 @@ export default function Projects() {
                                     <H2 style={{ fontSize: isMobile ? "1.4rem" : "1.8rem", margin: 0 }}>{selectedCategory.title}</H2>
                                 </div>
                                 <button
-                                    onClick={() => setSelectedCategory(null)}
+                                    onClick={closeModal}
                                     style={{
                                         background: t.surface,
                                         border: `1px solid ${addAlpha(selectedCategory.colors[0], "44")}`,
@@ -307,8 +425,8 @@ export default function Projects() {
                                         padding: "6px 12px",
                                         borderRadius: 8
                                     }}
-                                    onMouseEnter={e => e.currentTarget.style.borderColor = selectedCategory.colors[0]}
-                                    onMouseLeave={e => e.currentTarget.style.borderColor = addAlpha(selectedCategory.colors[0], "44")}
+                                    onMouseEnter={e => e.currentTarget.style.borderColor = t.borderHi}
+                                    onMouseLeave={e => e.currentTarget.style.borderColor = t.border}
                                 >
                                     CLOSE
                                 </button>
@@ -324,7 +442,15 @@ export default function Projects() {
                             gap: isMobile ? "20px" : "24px"
                         }}>
                             {selectedCategory.projects.map((proj, idx) => (
-                                <FlippableProjectCard key={idx} index={idx} project={proj} theme={t} primaryColor={selectedCategory.colors[0]} />
+                                <FlippableProjectCard
+                                    key={idx}
+                                    index={idx}
+                                    project={proj}
+                                    theme={t}
+                                    primaryColor={selectedCategory.colors[0]}
+                                    categoryAnchorId={selectedCategory.anchorId}
+                                    onOpen={openProjectCard}
+                                />
                             ))}
                         </div>
                     </div>

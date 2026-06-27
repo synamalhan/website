@@ -1,7 +1,29 @@
+export const heroSpotlightProjects = [
+    {
+        id: "wildlife-monitoring",
+        title: "Wildlife Monitoring",
+        description: "Computer Vision for Wildlife Conservation",
+        tech: ["PyTorch", "OpenCV", "YOLO"],
+        accent: "cyan",
+        anchorId: "project-computer-vision",
+        projectAnchorId: "project-wildlife-monitoring-conservation"
+    },
+    {
+        id: "credit-risk-assistant",
+        title: "Credit Risk Assistant",
+        description: "RAG System for Financial Analysis",
+        tech: ["LangGraph", "Neo4j", "LLMs"],
+        accent: "magenta",
+        anchorId: "project-machine-learning-ai",
+        projectAnchorId: "project-credit-risk-rag-model"
+    }
+];
+
 export const categorizedProjects = [
     {
         title: "Machine Learning & AI",
         type: "ml",
+        anchorId: "project-machine-learning-ai",
         colors: ["#22d3ee", "#8b5cf6"],
         tags: ["TensorFlow", "PyTorch", "NLP", "RL"],
         projects: [
@@ -21,6 +43,7 @@ export const categorizedProjects = [
             },
             {
                 title: "Credit Risk RAG Model",
+                anchorId: "project-credit-risk-rag-model",
                 motivation: "RAG-based credit risk assessment system using LangGraph and Neo4j.",
                 techStack: ["Python", "Streamlit", "Neo4j", "LangGraph"],
                 details: "Situation: Financial institutions need contextual insights combining structured data and regulatory knowledge. Problem: Traditional ML models lack explainability for dynamic knowledge. Action: Built a RAG system using LangGraph for reasoning and Neo4j for credit rule relationships. Result: Delivered explainable credit decisions with dynamic reasoning paths.",
@@ -222,6 +245,7 @@ export const categorizedProjects = [
     {
         title: "Computer Vision",
         type: "vision",
+        anchorId: "project-computer-vision",
         colors: ["#818cf8", "#c084fc"],
         tags: ["OpenCV", "YOLO", "FastSAM", "Roboflow"],
         projects: [
@@ -234,6 +258,7 @@ export const categorizedProjects = [
             },
             {
                 title: "Wildlife Monitoring and Conservation",
+                anchorId: "project-wildlife-monitoring-conservation",
                 motivation: "Automated detection and monitor of wildlife using YOLO and SAM.",
                 techStack: ["YOLO", "Faster R-CNN", "SAM", "FastSAM"],
                 details: "Situation: Manual tracking of endangered species was inefficient. Problem: Needed 24/7 monitoring of remote wildlife zones. Action: Used YOLO/Faster R-CNN for detection and SAM for segmentation. Result: Enabled automated monitoring with over 92% accuracy.",

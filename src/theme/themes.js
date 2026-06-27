@@ -2,8 +2,8 @@ export const THEMES = {
     dark: {
         bg: "#1c1c1f",
         surface: "#2b2b30",
-        border: "rgba(255,180,100,0.3)",
-        borderHi: "rgba(255,180,100,0.8)",
+        border: "rgba(255,255,255,0.18)",
+        borderHi: "rgba(255,255,255,0.42)",
         text: "#f0f0f0",
         textMute: "#d0d0d0", // brighter and opaque
         textHi: "#ffffff",
@@ -26,8 +26,8 @@ export const THEMES = {
     light: {
         bg: "#f8f5ee",
         surface: "#ffffff",
-        border: "rgba(0,0,0,0.15)",
-        borderHi: "rgba(0,0,0,0.4)",
+        border: "rgba(0,0,0,0.12)",
+        borderHi: "rgba(0,0,0,0.24)",
         text: "#222222",
         textMute: "#444444", // brighter and opaque
         textHi: "#000000",
