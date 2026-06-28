@@ -516,35 +516,6 @@ export default function Hero() {
                 )}
             </div>
 
-            {isMobile && (
-                <div
-                    style={{
-                        position: "relative",
-                        zIndex: 2,
-                        width: "100%",
-                        maxWidth: 360,
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 14,
-                        marginTop: 8,
-                    }}
-                >
-                    {spotlightProjects.map((project) => (
-                        <SpotlightProject
-                            key={project.title}
-                            title={project.title}
-                            description={project.description}
-                            tech={project.tech}
-                            accent={t[project.accent]}
-                            href={`#${project.anchorId}`}
-                            onClick={handleSpotlightClick(project)}
-                            isMobile={isMobile}
-                            t={t}
-                        />
-                    ))}
-                </div>
-            )}
-
             <div
                 style={{
                     position: "absolute",
