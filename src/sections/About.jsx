@@ -23,37 +23,19 @@ const galleryItems = [
     {
         image: img1,
         title: "This is me",
-        description: "Just me, no context needed."
+        description: ""
     },
-    {
-        image: img2,
-        title: "Another angle",
-        description: "Same person, different day."
-    },
-    {
-        image: img3,
-        title: "By the ocean",
-        description: "I go here when I need to think."
-    },
-    {
-        image: img4,
-        title: "In the water",
-        description: "Swimming helps me reset everything."
-    },
+
     {
         image: img5,
         title: "Billu",
         description: "We looked after this little guy for a while."
     },
-    {
-        image: img6,
-        title: "A colorful space",
-        description: "I like places that feel a bit unexpected."
-    },
+
     {
         image: img7,
         title: "A small build",
-        description: "Just something I put together for fun."
+        description: "A metal earth model!"
     }
 ];
 

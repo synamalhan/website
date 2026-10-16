@@ -37,7 +37,7 @@ function SpotlightProject({ title, description, tech, accent, href, onClick, isM
                 position: "relative",
                 display: "block",
                 width: "100%",
-                maxWidth: isMobile ? 320 : 280,
+                maxWidth: isMobile ? 360 : "none",
                 padding: isMobile ? "20px 20px 18px" : "22px 22px 20px",
                 borderRadius: 24,
                 border: "1px solid rgba(255,255,255,0.8)",
@@ -193,54 +193,6 @@ export default function Hero() {
     const offset = useParallax(0.15);
     const isMobile = useIsMobile();
     const { openProjectCard } = useProjectCardLink();
-    const [hoveredDoodle, setHoveredDoodle] = useState(null);
-
-    const doodles = [
-        {
-            id: "star",
-            link: "#skills",
-            color: t.accent,
-            top: isMobile ? "8%" : "24%",
-            left: isMobile ? "6%" : "12%",
-            rot: -15,
-            scale: isMobile ? 0.5 : 0.8,
-            delay: "0s",
-            svg: <path d="M50 5 L60 40 L95 40 L65 60 L75 95 L50 75 L25 95 L35 60 L5 40 L40 40 Z" fill="none" stroke="currentColor" strokeWidth="4" strokeLinejoin="round" />,
-        },
-        {
-            id: "spiral",
-            link: "#projects",
-            color: t.cyan,
-            top: isMobile ? "16%" : "28%",
-            right: isMobile ? "4%" : "16%",
-            rot: 24,
-            scale: isMobile ? 0.58 : 0.9,
-            delay: "1.2s",
-            svg: <path d="M50 50 C 50 15, 85 15, 85 50 C 85 85, 15 85, 15 50 C 15 5, 95 5, 95 50" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />,
-        },
-        {
-            id: "heart",
-            link: "#about",
-            color: t.magenta,
-            top: isMobile ? "74%" : "64%",
-            left: isMobile ? "8%" : "18%",
-            rot: -20,
-            scale: isMobile ? 0.48 : 0.7,
-            delay: "0.8s",
-            svg: <path d="M50 30 C 50 10, 20 10, 20 30 C 20 50, 50 75, 50 90 C 50 75, 80 50, 80 30 C 80 10, 50 10, 50 30 Z" fill="none" stroke="currentColor" strokeWidth="4" strokeLinejoin="round" />,
-        },
-        {
-            id: "arrow",
-            link: "#notes",
-            color: t.gold,
-            top: isMobile ? "78%" : "70%",
-            right: isMobile ? "10%" : "20%",
-            rot: 15,
-            scale: isMobile ? 0.48 : 0.8,
-            delay: "1.6s",
-            svg: <path d="M20 80 L80 20 M80 20 L40 20 M80 20 L80 60" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />,
-        },
-    ];
 
     const spotlightProjects = heroSpotlightProjects;
 
@@ -252,7 +204,7 @@ export default function Hero() {
     return (
         <section
             style={{
-                minHeight: "100vh",
+                minHeight: "100svh",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -266,10 +218,6 @@ export default function Hero() {
             }}
         >
             <style>{`
-                @keyframes floatDoodle {
-                    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-                    50% { transform: translate3d(0, -10px, 0) rotate(4deg); }
-                }
                 @keyframes floatSoft {
                     0%, 100% { transform: translateY(0px); }
                     50% { transform: translateY(-6px); }
@@ -314,66 +262,19 @@ export default function Hero() {
                 }}
             />
 
-            {doodles.map((d) => (
-                <a
-                    key={d.id}
-                    href={d.link}
-                    onMouseEnter={() => setHoveredDoodle(d.id)}
-                    onMouseLeave={() => setHoveredDoodle(null)}
-                    style={{
-                        position: "absolute",
-                        top: d.top,
-                        left: d.left,
-                        right: d.right,
-                        color: hoveredDoodle === d.id ? d.color : t.textMute,
-                        cursor: "pointer",
-                        transform: `translateY(${offset * 0.15}px) rotate(${d.rot}deg) scale(${hoveredDoodle === d.id ? d.scale * 1.12 : d.scale})`,
-                        transition: "all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)",
-                        zIndex: 3,
-                        opacity: hoveredDoodle === d.id ? 0.9 : 0.28,
-                        display: "block",
-                        width: isMobile ? 58 : 96,
-                        height: isMobile ? 58 : 96,
-                        animation: `floatDoodle 6.5s ease-in-out infinite`,
-                        animationDelay: d.delay,
-                    }}
-                >
-                    <svg viewBox="0 0 100 100" style={{ width: "100%", height: "100%", filter: `drop-shadow(2px 4px 0px ${hoveredDoodle === d.id ? d.color + "44" : "transparent"})` }}>
-                        {d.svg}
-                    </svg>
-                </a>
-            ))}
-
             <div
                 style={{
                     position: "relative",
                     zIndex: 2,
                     width: "100%",
                     maxWidth: 1280,
-                    display: "grid",
-                    gridTemplateColumns: isMobile ? "1fr" : "minmax(220px, 1fr) minmax(360px, 1.05fr) minmax(220px, 1fr)",
-                    gap: isMobile ? 24 : 36,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: isMobile ? 24 : 32,
                     alignItems: "center",
                 }}
             >
-                {!isMobile && (
-                    <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
-                        <div style={{ width: "100%", maxWidth: 280 }}>
-                            <SpotlightProject
-                                title={spotlightProjects[0].title}
-                                description={spotlightProjects[0].description}
-                                tech={spotlightProjects[0].tech}
-                                accent={t[spotlightProjects[0].accent]}
-                                href={`#${spotlightProjects[0].anchorId}`}
-                                onClick={handleSpotlightClick(spotlightProjects[0])}
-                                isMobile={isMobile}
-                                t={t}
-                            />
-                        </div>
-                    </div>
-                )}
-
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%", order: 0 }}>
                     <p
                         style={{
                             ...FONTS.mono,
@@ -459,7 +360,6 @@ export default function Hero() {
                         {[
                             { label: "View Work", link: "#projects", color: t.cyan },
                             { label: "Experience", link: "#experience", color: t.magenta },
-                            { label: "Read Blog", link: "#notes", color: t.gold },
                             { label: "Connect", link: "#contact", color: t.accent },
                         ].map((btn, index) => (
                             <a
@@ -498,22 +398,29 @@ export default function Hero() {
                     </div>
                 </div>
 
-                {!isMobile && (
-                    <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
-                        <div style={{ width: "100%", maxWidth: 280 }}>
+                <div style={{
+                    display: "grid",
+                    gridTemplateColumns: isMobile ? "1fr" : "repeat(4, minmax(0, 1fr))",
+                    alignItems: "start",
+                    gap: isMobile ? 16 : 20,
+                    width: "100%",
+                    order: 1,
+                }}>
+                        {spotlightProjects.map((project, index) => (
+                            <div key={project.id} style={{ paddingTop: !isMobile && index % 2 === 1 ? 24 : 0 }}>
                             <SpotlightProject
-                                title={spotlightProjects[1].title}
-                                description={spotlightProjects[1].description}
-                                tech={spotlightProjects[1].tech}
-                                accent={t[spotlightProjects[1].accent]}
-                                href={`#${spotlightProjects[1].anchorId}`}
-                                onClick={handleSpotlightClick(spotlightProjects[1])}
+                                title={project.title}
+                                description={project.description}
+                                tech={project.tech}
+                                accent={t[project.accent]}
+                                href={`#${project.projectAnchorId}`}
+                                onClick={handleSpotlightClick(project)}
                                 isMobile={isMobile}
                                 t={t}
                             />
-                        </div>
-                    </div>
-                )}
+                            </div>
+                        ))}
+                </div>
             </div>
 
             <div

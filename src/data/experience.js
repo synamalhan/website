@@ -9,6 +9,25 @@ import micron from '../assets/micron.avif';
 
 export const EXPERIENCES = [
     {
+        role: "Computer Science and Mathematics Tutor",
+        company: "ASU Pulse Tutoring",
+        years: "Aug 2026 – Present",
+        desc: "Tutor undergraduate students in calculus and upper-division computer science, building independent problem-solving skills through clear explanations and guided debugging.",
+        details: [
+            "Tutor undergraduate students in Calculus I and II, covering limits, derivatives, integration techniques, sequences, and series.",
+            "Support upper-division CS coursework in Data Structures & Algorithms, Operating Systems, and Principles of Programming Languages.",
+            "Explain algorithmic complexity, trees and graphs, process scheduling, concurrency, memory management, and language semantics.",
+            "Guide students through debugging and problem decomposition, adapting explanations to build independent problem-solving skills."
+        ],
+        techStack: [
+            "Calculus I & II",
+            "Data Structures & Algorithms",
+            "Operating Systems",
+            "Programming Languages"
+        ],
+        logo: asu
+    },
+    {
         role: "Data Science Intern",
         company: "Micron Technology",
         years: "May 2026 – Present",

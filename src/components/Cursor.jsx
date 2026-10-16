@@ -42,7 +42,7 @@ export default function Cursor({ t }) {
     }, []);
     
     return (
-        <div style={{ pointerEvents: "none", zIndex: 9999 }}>
+        <div style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 2000 }}>
             <div ref={mainBlob} style={{
                 position: "fixed", width: 15, height: 15, 
                 background: `radial-gradient(circle at 30% 30%, ${t.cyan}ee, ${t.accent}aa)`,

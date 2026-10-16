@@ -12,10 +12,8 @@ import Hero from "./sections/Hero";
 import Assembly from "./sections/Assembly";
 import About from "./sections/About";
 import WorkExperience from "./sections/WorkExperience";
-import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
 import WaveformSection from "./sections/WaveformSection";
-import Blog from "./sections/Blog";
 import LiveLyrics from "./components/LiveLyrics";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
@@ -36,10 +34,8 @@ function AppContent() {
             <Hero />
             <About ref={abtRef} counts={counts} />
             <WorkExperience />
-            <Skills />
             <Projects />
             <WaveformSection />
-            <Blog />
             {/* <LiveLyrics /> */}
             <Contact />
             <Assembly ref={asmRef} prog={prog} inAssembly={inAssembly} />

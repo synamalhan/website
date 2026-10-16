@@ -9,13 +9,31 @@ export const heroSpotlightProjects = [
         projectAnchorId: "project-wildlife-monitoring-conservation"
     },
     {
-        id: "credit-risk-assistant",
-        title: "Credit Risk Assistant",
-        description: "RAG System for Financial Analysis",
-        tech: ["LangGraph", "Neo4j", "LLMs"],
+        id: "surgical-video-vlm",
+        title: "Surgical Video Analysis VLM",
+        description: "Vision-Language Models for Neurosurgery Workflow Analysis",
+        tech: ["PyTorch", "Hugging Face", "VLMs"],
         accent: "magenta",
-        anchorId: "project-machine-learning-ai",
-        projectAnchorId: "project-credit-risk-rag-model"
+        anchorId: "project-computer-vision",
+        projectAnchorId: "project-surgical-video-vlm"
+    },
+    {
+        id: "recall",
+        title: "Recall",
+        description: "Private Personal Search Across Notes, PDFs and Screenshots",
+        tech: ["Semantic Search", "Local LLM", "macOS"],
+        accent: "gold",
+        anchorId: "project-ios-swift-projects",
+        projectAnchorId: "project-recall"
+    },
+    {
+        id: "pulse-health-analytics",
+        title: "Pulse",
+        description: "Personal Health and Activity Analytics",
+        tech: ["Health Data", "Time Series", "Privacy"],
+        accent: "cyan",
+        anchorId: "project-ios-swift-projects",
+        projectAnchorId: "project-pulse-analytics"
     }
 ];
 
@@ -257,11 +275,19 @@ export const categorizedProjects = [
                 link: "https://github.com/synamalhan/nutri-snap"
             },
             {
-                title: "Wildlife Monitoring and Conservation",
+                title: "Wildlife Monitoring",
                 anchorId: "project-wildlife-monitoring-conservation",
-                motivation: "Automated detection and monitor of wildlife using YOLO and SAM.",
+                motivation: "Automated wildlife detection and monitoring for conservation using YOLO and SAM.",
                 techStack: ["YOLO", "Faster R-CNN", "SAM", "FastSAM"],
-                details: "Situation: Manual tracking of endangered species was inefficient. Problem: Needed 24/7 monitoring of remote wildlife zones. Action: Used YOLO/Faster R-CNN for detection and SAM for segmentation. Result: Enabled automated monitoring with over 92% accuracy.",
+                details: "Situation: Manual tracking of endangered species was inefficient. Problem: Needed monitoring of remote wildlife zones. Action: Used YOLO and Faster R-CNN for detection and SAM for segmentation. Result: Enabled automated wildlife monitoring.",
+                link: ""
+            },
+            {
+                title: "Vision-Language Models for Surgical Video Analysis",
+                anchorId: "project-surgical-video-vlm",
+                motivation: "An in-development ASU capstone using vision-language models for neurosurgery workflow and instrument recognition.",
+                techStack: ["Capstone Project", "PyTorch", "Hugging Face", "Vision-Language Models"],
+                details: "In development at Arizona State University with advisor Dr. Yalin Wang. Building end-to-end pipelines to benchmark baseline and fine-tuned vision-language models on real surgical video data, and prototyping surgical video captioning and visual question answering with experimental performance analysis.",
                 link: ""
             },
             {
@@ -279,9 +305,54 @@ export const categorizedProjects = [
         colors: ["#f97316", "#e040fb"],
         tags: ["SwiftUI", "CoreML", "HealthKit", "WatchKit"],
         projects: [
-
+            {
+                title: "Recall: Private Personal Search Engine",
+                anchorId: "project-recall",
+                motivation: "A macOS AI app that searches notes, PDFs, and screenshots with semantic search and a local language model.",
+                techStack: ["macOS", "Semantic Search", "Local LLM", "On-Device Privacy"],
+                details: "Search across personal notes, PDFs, and screenshots using semantic retrieval and a local language model. Recall provides context-aware answers with links back to the original sources while keeping processing on-device.",
+                link: ""
+            },
+            {
+                title: "WildSense",
+                anchorId: "project-wildsense",
+                motivation: "A computer vision system that detects, tracks, and identifies wildlife in challenging camera-trap footage.",
+                techStack: ["Computer Vision", "Object Tracking", "Wildlife Monitoring", "Uncertainty Estimation"],
+                details: "Detect, track, and identify wildlife in camera-trap footage affected by low light, occlusion, and motion blur. WildSense analyzes animal activity patterns and communicates uncertainty when predictions are unreliable.",
+                link: ""
+            },
+            {
+                title: "EchoBench: Speech AI Benchmarking",
+                motivation: "An evaluation platform for comparing speech recognition models across accents, noise, and speaking conditions.",
+                techStack: ["Speech Recognition", "Model Evaluation", "Robustness", "Statistical Analysis"],
+                details: "Compare speech recognition accuracy, latency, and subgroup performance across accents, background noise, and speaking conditions. EchoBench helps identify model weaknesses and evaluate improvements statistically.",
+                link: ""
+            },
+            {
+                title: "Pulse: Personal Health and Activity Analytics",
+                anchorId: "project-pulse-analytics",
+                motivation: "Privacy-focused analysis of activity, sleep, and workout data to surface trends and anomalies.",
+                techStack: ["Health Analytics", "Time-Series Modeling", "Anomaly Detection", "Privacy"],
+                details: "Analyze activity, sleep, and workout data to identify trends, detect anomalies, and generate evidence-based summaries. Pulse distinguishes correlations from causal claims and explores personalized time-series modeling.",
+                link: ""
+            },
+            {
+                title: "ModelGuard: ML Reliability Platform",
+                motivation: "A platform for monitoring model drift, missing features, and declining performance.",
+                techStack: ["Model Monitoring", "Data Drift", "Reliability", "Reproducible Experiments"],
+                details: "Monitor machine learning models for data drift, missing features, and declining performance. ModelGuard lets users simulate production failures, compare detection methods, and evaluate monitoring systems through reproducible experiments.",
+                link: ""
+            },
+            {
+                title: "Atlas: Multimodal Research Assistant",
+                motivation: "An AI research tool that searches scientific papers, figures, tables, and citations.",
+                techStack: ["Multimodal Retrieval", "Grounded Responses", "Citation Verification", "Research AI"],
+                details: "Search across scientific papers, figures, tables, and citations, then answer questions by connecting claims to supporting evidence. Atlas focuses on multimodal retrieval, grounded responses, and citation verification.",
+                link: ""
+            },
             {
                 "title": "Health Metrics Dashboard",
+                "anchorId": "project-health-metrics-dashboard",
                 "motivation": "Centralized dashboard to monitor health metrics seamlessly across iPhone and Apple Watch.",
                 "techStack": ["SwiftUI", "HealthKit", "MVVM", "Swift Concurrency", "Secure Enclave", "Keychain", "XCTest"],
                 "details": "Situation: Users want a single interface to view health metrics. Problem: Data scattered between devices. Action: Built SwiftUI app with MVVM architecture, HealthKit integration, and async data fetching. Result: Real-time, secure, and privacy-focused dashboard that scales with new metrics.",
@@ -289,6 +360,7 @@ export const categorizedProjects = [
             },
             {
                 "title": "Continuous Activity Tracking System",
+                "anchorId": "project-continuous-activity-tracking",
                 "motivation": "Intelligently track user activity and adapt daily recommendations using on-device ML.",
                 "techStack": ["iOS", "watchOS", "CoreMotion", "CoreBluetooth", "Combine", "BGTaskScheduler", "Core Data", "Core ML", "Swift Concurrency"],
                 "details": "Situation: Users want personalized activity insights and recommendations. Problem: Activity data is continuous, noisy, and battery-sensitive. Action: Captured motion data via CoreMotion, integrated wearables via CoreBluetooth, and used Core ML for adaptive activity suggestions. Result: Real-time, battery-efficient activity tracking with dynamic ML-driven recommendations.",
