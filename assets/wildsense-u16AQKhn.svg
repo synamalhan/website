@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t"><title id="t">WildSense architecture</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 1L10 5L0 9z" fill="#1f2937"/></marker></defs>
+<rect width="1200" height="900" fill="#fbfaf7"/>
+<rect x="0" y="0" width="201" height="12" fill="#4f46e5"/>
+<rect x="200" y="0" width="201" height="12" fill="#9333ea"/>
+<rect x="400" y="0" width="201" height="12" fill="#db2777"/>
+<rect x="600" y="0" width="201" height="12" fill="#c2410c"/>
+<rect x="800" y="0" width="201" height="12" fill="#15803d"/>
+<rect x="1000" y="0" width="201" height="12" fill="#0e7490"/>
+<text x="70" y="112" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="50" font-weight="800" fill="#1f2937">WildSense</text>
+<text x="70" y="156" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="24" fill="#475569">Wildlife detection, tracking, and uncertainty on camera traps</text>
+<rect x="70" y="184" width="82" height="32" rx="16" fill="#e9e8fb" stroke="#4f46e5" stroke-width="1.4"/><text x="111" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#4f46e5">Python</text>
+<rect x="162" y="184" width="90" height="32" rx="16" fill="#f2e6fc" stroke="#9333ea" stroke-width="1.4"/><text x="207" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#9333ea">PyTorch</text>
+<rect x="262" y="184" width="168" height="32" rx="16" fill="#fae5ee" stroke="#db2777" stroke-width="1.4"/><text x="346" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#db2777">Ultralytics YOLO</text>
+<rect x="439" y="184" width="107" height="32" rx="16" fill="#f7e8e1" stroke="#c2410c" stroke-width="1.4"/><text x="493" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#c2410c">ByteTrack</text>
+<rect x="557" y="184" width="150" height="32" rx="16" fill="#e2efe7" stroke="#15803d" stroke-width="1.4"/><text x="632" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#15803d">Albumentations</text>
+<rect x="70" y="300" width="230" height="280" rx="8" fill="#efeefc" stroke="#4f46e5" stroke-width="1.4"/>
+<path d="M70 352 V308 a8 8 0 0 1 8 -8 H292 a8 8 0 0 1 8 8 V352 Z" fill="#4f46e5"/>
+<text x="185" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Detect</text>
+<text x="185" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">YOLO fine-tuned on</text>
+<text x="185" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">public camera-trap</text>
+<text x="185" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">images</text>
+<text x="185" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">blur, occlusion and</text>
+<text x="185" y="480" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">low-light augmentation</text>
+<line x1="84" x2="286" y1="534" y2="534" stroke="#4f46e5" stroke-opacity=".35"/>
+<text x="185" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#4f46e5">→ boxes + species</text>
+<rect x="346" y="300" width="230" height="280" rx="8" fill="#f5ecfd" stroke="#9333ea" stroke-width="1.4"/>
+<path d="M346 352 V308 a8 8 0 0 1 8 -8 H569 a8 8 0 0 1 8 8 V352 Z" fill="#9333ea"/>
+<text x="462" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Track</text>
+<text x="462" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">ByteTrack links</text>
+<text x="462" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">boxes across frames</text>
+<text x="462" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">keeps one ID per</text>
+<text x="462" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">animal</text>
+<line x1="360" x2="563" y1="534" y2="534" stroke="#9333ea" stroke-opacity=".35"/>
+<text x="462" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#9333ea">→ tracks</text>
+<rect x="623" y="300" width="230" height="280" rx="8" fill="#fbebf2" stroke="#db2777" stroke-width="3.2"/>
+<path d="M623 352 V308 a8 8 0 0 1 8 -8 H846 a8 8 0 0 1 8 8 V352 Z" fill="#db2777"/>
+<text x="738" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Uncertainty</text>
+<text x="738" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">MC dropout or an</text>
+<text x="738" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">ensemble per</text>
+<text x="738" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">prediction,</text>
+<text x="738" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">calibrated and</text>
+<text x="738" y="480" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">checked with ECE</text>
+<line x1="637" x2="840" y1="534" y2="534" stroke="#db2777" stroke-opacity=".35"/>
+<text x="738" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#db2777">→ confidence</text>
+<rect x="900" y="300" width="230" height="280" rx="8" fill="#f9ede9" stroke="#c2410c" stroke-width="1.4"/>
+<path d="M900 352 V308 a8 8 0 0 1 8 -8 H1122 a8 8 0 0 1 8 8 V352 Z" fill="#c2410c"/>
+<text x="1015" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Review</text>
+<text x="1015" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">low-confidence</text>
+<text x="1015" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">cases go to a</text>
+<text x="1015" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">human queue;</text>
+<text x="1015" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">reviewer sees the</text>
+<text x="1015" y="480" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">frames and tracks</text>
+<line x1="914" x2="1116" y1="534" y2="534" stroke="#c2410c" stroke-opacity=".35"/>
+<text x="1015" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#c2410c">→ labels come back</text>
+<path d="M300 440 H344" fill="none" stroke="#4f46e5" stroke-width="2.4" marker-end="url(#a)"/>
+<path d="M577 440 H621" fill="none" stroke="#9333ea" stroke-width="2.4" marker-end="url(#a)"/>
+<path d="M854 440 H898" fill="none" stroke="#db2777" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="70" y="614" width="1060" height="84" rx="8" fill="#fceff5" stroke="#db2777" stroke-width="1.4" stroke-dasharray="7 5"/>
+<rect x="70" y="614" width="8" height="84" rx="3" fill="#db2777"/>
+<text x="100" y="647" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#db2777">Evaluation (planned)</text>
+<text x="100" y="676" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5" fill="#1f2937">mAP per condition (clear, blur, low light), calibration (ECE), and how many uncertain cases a reviewer must check.</text>
+<rect x="70" y="714" width="1060" height="84" rx="8" fill="#faf1ed" stroke="#c2410c" stroke-width="1.4"/>
+<rect x="70" y="714" width="8" height="84" rx="3" fill="#c2410c"/>
+<text x="100" y="747" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#c2410c">Why it matters</text>
+<text x="100" y="776" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5" fill="#1f2937">A detector that reports how sure it is lets a person check only the frames that need it.</text>
+<text x="70" y="870" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="18" fill="#64748b">github.com/synamalhan/wildsense</text></svg>
