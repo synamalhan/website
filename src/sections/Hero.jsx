@@ -5,6 +5,7 @@ import { useIsMobile } from "../hooks/useMediaQuery";
 import React, { lazy, Suspense, useState } from "react";
 import { ClientOnly } from "vite-react-ssg";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import Guard from "../components/Guard";
 import HeroHighlights from "./HeroHighlights";
 const MetalOrca3D = lazy(() => import("../components/MetalOrca3D"));
 import resumeUrl from "../assets/SYNA_MALHAN.pdf";
@@ -238,7 +239,7 @@ export default function Hero() {
                             I build Metal Earth kits and I think best near the ocean. So here is an orca on a wave, in the style of a Metal Earth kit.
                         </p>
                         <div style={{ height: 460 }}>
-                            <ClientOnly>{() => <Suspense fallback={null}><MetalOrca3D exploded={exploded} reduced={reduced} rotate /></Suspense>}</ClientOnly>
+                            <Guard><ClientOnly>{() => <Suspense fallback={null}><MetalOrca3D exploded={exploded} reduced={reduced} rotate /></Suspense>}</ClientOnly></Guard>
                         </div>
                         <button type="button" onClick={() => setExploded(e => !e)} aria-pressed={exploded} style={{
                             ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".14em", padding: "12px 22px", cursor: "pointer", borderRadius: 10,

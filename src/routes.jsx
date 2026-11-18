@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { ClientOnly } from "vite-react-ssg";
 import { ThemeProvider, useTheme } from "./theme/ThemeContext";
 import { FONTS } from "./components/styles";
@@ -10,6 +10,28 @@ import Home from "./App";
 import ArchivePage from "./pages/ArchivePage";
 import ProjectPage from "./pages/ProjectPage";
 import { projects } from "./data/portfolio";
+
+// A deploy replaces hashed chunk files, so a tab opened before it can request a chunk that no longer exists. Reload once to pick up the new build.
+if (typeof window !== "undefined") {
+    window.addEventListener("vite:preloadError", () => {
+        try { if (sessionStorage.getItem("chunk-reload")) return; sessionStorage.setItem("chunk-reload", "1"); } catch { /* storage blocked: still reload once */ }
+        window.location.reload();
+    });
+}
+
+// Replaces React Router's default "Unexpected Application Error" screen.
+function ErrorPage() {
+    return (
+        <div style={{ minHeight: "100vh", display: "grid", placeItems: "center", textAlign: "center", padding: 24, background: "#1c1c1f", color: "#eee", fontFamily: "Inter, system-ui, sans-serif" }}>
+            <div>
+                <h1 style={{ fontSize: "1.6rem", marginBottom: 12 }}>Something went wrong</h1>
+                <p style={{ marginBottom: 20, opacity: 0.8 }}>The page failed to load. Try again, or head back home.</p>
+                <button onClick={() => window.location.reload()} style={{ padding: "10px 20px", borderRadius: 10, marginRight: 12, cursor: "pointer" }}>Reload</button>
+                <Link to="/" style={{ color: "#e062f3" }}>Home</Link>
+            </div>
+        </div>
+    );
+}
 
 function Shell() {
     const { theme: t } = useTheme();
@@ -30,6 +52,7 @@ const Layout = () => <ThemeProvider><Shell /></ThemeProvider>;
 export default [{
     path: "/",
     Component: Layout,
+    ErrorBoundary: ErrorPage,
     children: [
         { index: true, Component: Home },
         { path: "projects", Component: ArchivePage },

@@ -3,6 +3,7 @@ import { ClientOnly } from "vite-react-ssg";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useIsMobile, useMediaQuery } from "../hooks/useMediaQuery";
+import Guard from "../components/Guard";
 import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 const MetalOrca3D = lazy(() => import("../components/MetalOrca3D"));
@@ -32,7 +33,7 @@ export default function Workshop() {
                     I build Metal Earth kits and I think best near the ocean. So here is an orca on a wave, in the style of a Metal Earth kit.
                 </p>
                 <div ref={box} style={{ height: isMobile ? 380 : 500, marginTop: 24 }}>
-                    {near && <ClientOnly>{() => <Suspense fallback={null}><MetalOrca3D exploded={exploded} reduced={reduced} rotate={!isMobile} /></Suspense>}</ClientOnly>}
+                    {near && <Guard><ClientOnly>{() => <Suspense fallback={null}><MetalOrca3D exploded={exploded} reduced={reduced} rotate={!isMobile} /></Suspense>}</ClientOnly></Guard>}
                 </div>
                 <button type="button" onClick={() => setExploded(e => !e)} aria-pressed={exploded} style={{
                     ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".14em", padding: "12px 22px", cursor: "pointer", borderRadius: 10,
