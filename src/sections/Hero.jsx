@@ -2,144 +2,12 @@ import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useParallax } from "../hooks/useParallax";
 import { useIsMobile } from "../hooks/useMediaQuery";
-import React, { useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
+import { ClientOnly } from "vite-react-ssg";
+import { useMediaQuery } from "../hooks/useMediaQuery";
+import HeroHighlights from "./HeroHighlights";
+const MetalOrca3D = lazy(() => import("../components/MetalOrca3D"));
 import resumeUrl from "../assets/SYNA_MALHAN.pdf";
-import { heroSpotlightProjects } from "../data/projects";
-import { useProjectCardLink } from "../hooks/useProjectCardLink";
-
-function SpotlightProject({ title, description, tech, accent, href, onClick, isMobile, t }) {
-    const [hovered, setHovered] = useState(false);
-    const [tilt, setTilt] = useState({ x: 0, y: 0 });
-
-    const handleMove = (event) => {
-        const rect = event.currentTarget.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width;
-        const y = (event.clientY - rect.top) / rect.height;
-        setTilt({ x: (x - 0.5) * 8, y: (0.5 - y) * 8 });
-    };
-
-    const handleLeave = () => {
-        setHovered(false);
-        setTilt({ x: 0, y: 0 });
-    };
-
-    return (
-        <a
-            href={href}
-            onClick={onClick}
-            aria-label={`View spotlight project: ${title}`}
-            onMouseEnter={() => setHovered(true)}
-            onMouseMove={handleMove}
-            onMouseLeave={handleLeave}
-            onFocus={() => setHovered(true)}
-            onBlur={handleLeave}
-            style={{
-                position: "relative",
-                display: "block",
-                width: "100%",
-                maxWidth: isMobile ? 360 : "none",
-                padding: isMobile ? "20px 20px 18px" : "22px 22px 20px",
-                borderRadius: 24,
-                border: "1px solid rgba(255,255,255,0.8)",
-                background: hovered ? `${accent}11` : t.cardBg,
-                backdropFilter: "blur(18px)",
-                boxShadow: hovered
-                    ? `0 20px 70px ${accent}28, inset 0 1px 0 rgba(255,255,255,0.22)`
-                    : `0 16px 50px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.16)`,
-                transform: hovered
-                    ? `translateY(-6px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) scale(1.01)`
-                    : `translateY(0) rotateX(0deg) rotateY(0deg) scale(1)`,
-                transition: "transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, background 0.35s ease, border-color 0.35s ease",
-                textDecoration: "none",
-                color: t.textHi,
-                overflow: "hidden",
-            }}
-        >
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: `radial-gradient(circle at top left, ${accent}22, transparent 56%)`,
-                    opacity: hovered ? 1 : 0.7,
-                    pointerEvents: "none",
-                }}
-            />
-            <div style={{ position: "relative", zIndex: 1 }}>
-                <div
-                    style={{
-                        ...FONTS.mono,
-                        fontSize: "0.6rem",
-                        letterSpacing: ".32em",
-                        color: t.textMute,
-                        textTransform: "uppercase",
-                        marginBottom: 12,
-                        opacity: 0.85,
-                    }}
-                >
-                    Spotlight Project
-                </div>
-                <h3
-                    style={{
-                        ...FONTS.orb,
-                        fontSize: isMobile ? "1.15rem" : "1.2rem",
-                        fontWeight: 800,
-                        margin: "0 0 8px",
-                        lineHeight: 1.2,
-                        color: t.textHi,
-                    }}
-                >
-                    {title}
-                </h3>
-                <p
-                    style={{
-                        fontSize: isMobile ? "0.9rem" : "0.92rem",
-                        lineHeight: 1.6,
-                        color: t.textMute,
-                        margin: "0 0 14px",
-                    }}
-                >
-                    {description}
-                </p>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
-                    {tech.map((item) => (
-                        <span
-                            key={item}
-                            style={{
-                                border: `1px solid ${accent}44`,
-                                borderRadius: 999,
-                                padding: "6px 10px",
-                                fontSize: "0.72rem",
-                                color: accent,
-                                background: `${accent}12`,
-                                ...FONTS.mono,
-                                letterSpacing: ".1em",
-                                textTransform: "uppercase",
-                            }}
-                        >
-                            {item}
-                        </span>
-                    ))}
-                </div>
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 8,
-                        fontSize: "0.8rem",
-                        fontWeight: 700,
-                        color: accent,
-                        letterSpacing: ".12em",
-                        textTransform: "uppercase",
-                        ...FONTS.mono,
-                    }}
-                >
-                    <span>View Project</span>
-                    <span aria-hidden="true">→</span>
-                </div>
-            </div>
-        </a>
-    );
-}
 
 function ResumeButton({ accent, isMobile, t }) {
     const [hovered, setHovered] = useState(false);
@@ -162,7 +30,7 @@ function ResumeButton({ accent, isMobile, t }) {
                 borderRadius: 999,
                 border: "1px solid rgba(255,255,255,0.9)",
                 background: accent,
-                color: "#ffffff",
+                color: t.onAccent,
                 boxShadow: hovered ? `0 18px 45px ${accent}44` : `0 12px 30px ${accent}30`,
                 transform: hovered ? "translateY(-3px) scale(1.01)" : "translateY(0) scale(1)",
                 transition: "transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease",
@@ -192,15 +60,9 @@ export default function Hero() {
     const { theme: t } = useTheme();
     const offset = useParallax(0.15);
     const isMobile = useIsMobile();
-    const { openProjectCard } = useProjectCardLink();
-
-    const spotlightProjects = heroSpotlightProjects;
-
-    const handleSpotlightClick = (project) => (event) => {
-        event.preventDefault();
-        openProjectCard(project.anchorId, project.projectAnchorId);
-    };
-
+    const wide = useMediaQuery("(min-width: 1100px)"); // orca only where it fits beside the centred text
+    const [exploded, setExploded] = useState(false);
+    const reduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     return (
         <section
             style={{
@@ -209,12 +71,11 @@ export default function Hero() {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                textAlign: "center",
+                textAlign: wide ? "left" : "center",
                 padding: isMobile ? "88px 24px 72px" : "110px 32px 80px",
                 position: "relative",
                 zIndex: 1,
                 overflow: "hidden",
-                background: `radial-gradient(circle at top left, ${t.accentGlow}, transparent 34%), radial-gradient(circle at 80% 20%, ${t.cyanGlow}, transparent 26%), linear-gradient(135deg, ${t.bg}, ${t.surface})`,
             }}
         >
             <style>{`
@@ -230,51 +91,18 @@ export default function Hero() {
 
             <div
                 style={{
-                    position: "absolute",
-                    inset: 0,
-                    backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.14) 1px, transparent 1px)`,
-                    backgroundSize: "18px 18px",
-                    opacity: 0.18,
-                    pointerEvents: "none",
-                }}
-            />
-            <div
-                style={{
-                    position: "absolute",
-                    inset: "8% 12% auto",
-                    height: 260,
-                    background: `linear-gradient(90deg, transparent, ${t.accentGlow}, transparent)`,
-                    filter: "blur(60px)",
-                    opacity: 0.2,
-                    pointerEvents: "none",
-                }}
-            />
-            <div
-                style={{
-                    position: "absolute",
-                    inset: "auto 8% 8% auto",
-                    width: 220,
-                    height: 220,
-                    background: `radial-gradient(circle, ${t.cyanGlow}, transparent 70%)`,
-                    filter: "blur(40px)",
-                    opacity: 0.3,
-                    pointerEvents: "none",
-                }}
-            />
-
-            <div
-                style={{
                     position: "relative",
                     zIndex: 2,
                     width: "100%",
                     maxWidth: 1280,
                     display: "flex",
-                    flexDirection: "column",
-                    gap: isMobile ? 24 : 32,
+                    flexDirection: wide ? "row" : "column",
+                    gap: wide ? 48 : isMobile ? 24 : 32,
                     alignItems: "center",
                 }}
             >
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%", order: 0 }}>
+                <div style={{ flex: wide ? "1 1 55%" : undefined, minWidth: 0, width: "100%" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: wide ? "flex-start" : "center", justifyContent: "center", width: "100%", order: 0 }}>
                     <p
                         style={{
                             ...FONTS.mono,
@@ -316,7 +144,7 @@ export default function Hero() {
                         style={{
                             width: 80,
                             height: 2,
-                            margin: isMobile ? "20px auto 18px" : "26px auto 22px",
+                            margin: wide ? "26px 0 22px" : isMobile ? "20px auto 18px" : "26px auto 22px",
                             background: `linear-gradient(90deg, transparent, ${t.accent}, transparent)`,
                             borderRadius: 2,
                             boxShadow: `0 0 18px ${t.accentGlow}`,
@@ -344,6 +172,10 @@ export default function Hero() {
                         <span style={{ color: t.gold, fontWeight: 700 }}>creative design</span>.
                     </p>
 
+                    <p style={{ ...FONTS.mono, fontSize: isMobile ? ".62rem" : ".7rem", letterSpacing: ".12em", color: t.textHi, margin: "0 0 22px", position: "relative", zIndex: 2, textTransform: "uppercase" }}>
+                        BS Computer Science @ ASU · Data Science minor · Class of 2027 · Seeking ML/AI/SWE new-grad roles
+                    </p>
+
                     <ResumeButton accent={t.accent} isMobile={isMobile} t={t} />
 
                     <div
@@ -352,7 +184,7 @@ export default function Hero() {
                             gap: isMobile ? 10 : 16,
                             alignItems: "center",
                             flexWrap: "wrap",
-                            justifyContent: "center",
+                            justifyContent: wide ? "flex-start" : "center",
                             position: "relative",
                             zIndex: 2,
                         }}
@@ -398,70 +230,23 @@ export default function Hero() {
                     </div>
                 </div>
 
-                <div style={{
-                    display: "grid",
-                    gridTemplateColumns: isMobile ? "1fr" : "repeat(4, minmax(0, 1fr))",
-                    alignItems: "start",
-                    gap: isMobile ? 16 : 20,
-                    width: "100%",
-                    order: 1,
-                }}>
-                        {spotlightProjects.map((project, index) => (
-                            <div key={project.id} style={{ paddingTop: !isMobile && index % 2 === 1 ? 24 : 0 }}>
-                            <SpotlightProject
-                                title={project.title}
-                                description={project.description}
-                                tech={project.tech}
-                                accent={t[project.accent]}
-                                href={`#${project.projectAnchorId}`}
-                                onClick={handleSpotlightClick(project)}
-                                isMobile={isMobile}
-                                t={t}
-                            />
-                            </div>
-                        ))}
+                <HeroHighlights left={wide} />
                 </div>
-            </div>
-
-            <div
-                style={{
-                    position: "absolute",
-                    bottom: 28,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 10,
-                    opacity: 0.75,
-                    zIndex: 3,
-                }}
-            >
-                <div
-                    style={{
-                        width: 24,
-                        height: 38,
-                        border: `1px solid ${t.textMute}`,
-                        borderRadius: 999,
-                        display: "flex",
-                        justifyContent: "center",
-                        paddingTop: 6,
-                        animation: "floatSoft 2.4s ease-in-out infinite",
-                    }}
-                >
-                    <div
-                        style={{
-                            width: 2,
-                            height: 8,
-                            background: t.textMute,
-                            borderRadius: 2,
-                            animation: "pulseGlow 2.2s ease-in-out infinite",
-                        }}
-                    />
-                </div>
-                <div style={{ ...FONTS.mono, fontSize: ".48rem", letterSpacing: ".35em", color: t.textMute }}>
-                    SCROLL
-                </div>
+                {wide && (
+                    <div style={{ flex: "1 1 45%", minWidth: 0, textAlign: "center" }}>
+                        <p style={{ color: t.textMute, fontSize: ".9rem", lineHeight: 1.6, maxWidth: "40ch", margin: "0 auto 8px" }}>
+                            I build Metal Earth kits and I think best near the ocean. So here is an orca on a wave, in the style of a Metal Earth kit.
+                        </p>
+                        <div style={{ height: 460 }}>
+                            <ClientOnly>{() => <Suspense fallback={null}><MetalOrca3D exploded={exploded} reduced={reduced} rotate /></Suspense>}</ClientOnly>
+                        </div>
+                        <button type="button" onClick={() => setExploded(e => !e)} aria-pressed={exploded} style={{
+                            ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".14em", padding: "12px 22px", cursor: "pointer", borderRadius: 10,
+                            background: "transparent", color: t.textHi, border: `1px solid ${t.borderHi}`,
+                        }}>{exploded ? "ASSEMBLE" : "EXPLODE VIEW"}</button>
+                        <div style={{ ...FONTS.mono, fontSize: ".75rem", letterSpacing: ".14em", color: t.textMute, marginTop: 14 }}>DRAG TO ROTATE</div>
+                    </div>
+                )}
             </div>
         </section>
     );

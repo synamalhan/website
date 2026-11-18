@@ -66,7 +66,7 @@ export function useSpotifySync() {
                     return { ...prev, isPlaying: data.isPlaying };
                 });
             } catch (err) {
-                console.error("Spotify Now Playing Error:", err);
+                // Backend unreachable (offline or not deployed): the tile just shows its idle state.
             }
         };
 

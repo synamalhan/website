@@ -5,11 +5,15 @@ import { useIsMobile } from "../hooks/useMediaQuery";
 import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 import { EXPERIENCES } from "../data/experience";
+import ExperienceModal from "./ExperienceModal";
 
 export default function WorkExperience() {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
     const [flipped, setFlipped] = useState({});
+    const [openId, setOpenId] = useState(null);
+
+    const halo = e => (e.internship ? t.gold : t.accent);
 
     const toggleFlip = (i) => {
         setFlipped(prev => ({ ...prev, [i]: !prev[i] }));
@@ -20,7 +24,7 @@ export default function WorkExperience() {
             <div style={{ textAlign: "center", marginBottom: isMobile ? 48 : 72 }}>
                 <Label center>// Experience</Label>
                 <H2 style={{ textAlign: "center" }}>WORK<br />EXPERIENCE</H2>
-                <p style={{ ...FONTS.mono, fontSize: isMobile ? "0.6rem" : "0.7rem", color: t.textMute, marginTop: 12 }}>CLICK CARDS TO EXPLORE DEPTH</p>
+                <p style={{ ...FONTS.mono, fontSize: isMobile ? "0.6rem" : "0.7rem", color: t.textMute, marginTop: 12 }}>FLIP A CARD FOR DETAILS · FLOATING GOLD CARDS ARE INTERNSHIPS</p>
             </div>
 
             <div style={{
@@ -31,7 +35,8 @@ export default function WorkExperience() {
             }}>
                 {EXPERIENCES.map((exp, i) => (
                     <div
-                        key={i}
+                        key={exp.id}
+                        className={exp.internship ? "float-y" : undefined}
                         onClick={() => toggleFlip(i)}
                         style={{
                             height: isMobile ? 400 : 450,
@@ -66,7 +71,7 @@ export default function WorkExperience() {
                                 alignItems: "center",
                                 textAlign: "center",
                                 transformStyle: "preserve-3d",
-                                boxShadow: `0 20px 40px rgba(0,0,0,0.4)`
+                                boxShadow: `0 0 0 1px ${halo(exp)}, 0 0 26px ${halo(exp)}66, 0 20px 40px rgba(0,0,0,0.4)`
                             }}>
                                 {/* Floating Logo Front */}
                                 <div style={{
@@ -212,7 +217,7 @@ export default function WorkExperience() {
                                         {Array.isArray(exp.details) ? exp.details.map((detail, idx) => (
                                             <div key={idx} style={{
                                                 ...FONTS.inter,
-                                                fontSize: isMobile ? "0.8rem" : "0.85rem",
+                                                fontSize: isMobile ? "0.9rem" : "0.95rem",
                                                 color: t.textMute,
                                                 lineHeight: 1.5,
                                                 marginBottom: 10,
@@ -240,7 +245,7 @@ export default function WorkExperience() {
                                     {exp.techStack.map((tech, idx) => (
                                         <span key={idx} style={{
                                             ...FONTS.mono,
-                                            fontSize: isMobile ? "0.55rem" : "0.6rem",
+                                            fontSize: isMobile ? "0.68rem" : "0.72rem",
                                             padding: "3px 8px",
                                             background: `${t.accent}15`,
                                             border: `1px solid ${t.accent}30`,
@@ -253,6 +258,10 @@ export default function WorkExperience() {
                                     ))}
                                 </div>
 
+                                <button type="button" onClick={e => { e.stopPropagation(); setOpenId(exp.id); }} style={{
+                                    ...FONTS.mono, fontSize: ".8rem", letterSpacing: 2, padding: "10px 14px", marginBottom: 12, cursor: "pointer",
+                                    background: t.accent, color: t.onAccent, border: "none", borderRadius: 8, transform: "translateZ(60px)"
+                                }}>VIEW FULL DETAILS</button>
                                 <div style={{
                                     ...FONTS.mono,
                                     fontSize: "0.6rem",
@@ -272,6 +281,7 @@ export default function WorkExperience() {
                     </div>
                 ))}
             </div>
+            {openId && <ExperienceModal exp={EXPERIENCES.find(e => e.id === openId)} onClose={() => setOpenId(null)} />}
         </section>
     );
 }

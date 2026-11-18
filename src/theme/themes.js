@@ -7,12 +7,13 @@ export const THEMES = {
         text: "#f0f0f0",
         textMute: "#d0d0d0", // brighter and opaque
         textHi: "#ffffff",
-        accent: "#d946ef", // pink/purple
+        accent: "#e062f3", // pink/purple
         accentGlow: "rgba(217,70,239,0.25)",
-        cyan: "#3b82f6", // blue
+        cyan: "#5b9bf8", // blue
         cyanGlow: "rgba(59,130,246,0.2)",
-        magenta: "#ec4899", // pink
+        magenta: "#f472b6", // pink
         gold: "#eab308", // yellow
+        green: "#34d399",
         particle1: "139,92,246", // purple
         particle2: "59,130,246", // blue
         particle3: "234,179,8",  // yellow
@@ -21,6 +22,7 @@ export const THEMES = {
         metalHi: "#e3e3e0",
         metalMid: "#828285",
         metalLo: "#3a3a40",
+        onAccent: "#1c1c1f",
         name: "dark",
     },
     light: {
@@ -31,12 +33,13 @@ export const THEMES = {
         text: "#222222",
         textMute: "#444444", // brighter and opaque
         textHi: "#000000",
-        accent: "#d946ef", // pink/purple
+        accent: "#b01fc4", // pink/purple
         accentGlow: "rgba(217,70,239,0.15)",
-        cyan: "#3b82f6", // blue
+        cyan: "#2563eb", // blue
         cyanGlow: "rgba(59,130,246,0.15)",
-        magenta: "#ec4899", // pink
-        gold: "#eab308", // yellow
+        magenta: "#be185d", // pink
+        gold: "#a16207", // yellow
+        green: "#047857",
         particle1: "139,92,246", // purple
         particle2: "59,130,246", // blue
         particle3: "234,179,8",  // yellow
@@ -45,6 +48,7 @@ export const THEMES = {
         metalHi: "#666666",
         metalMid: "#aaaaaa",
         metalLo: "#e5e3dc",
+        onAccent: "#ffffff",
         name: "light",
     },
 };

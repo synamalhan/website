@@ -5,17 +5,19 @@ export default function OceanBg({ t }) {
     const { scrollY } = useScroll();
 
     // Generate random splotches only once on mount
+    // Deterministic pseudo-random values so the prerendered HTML matches what the browser renders.
+    const rnd = n => { const x = Math.sin(n * 12.9898) * 43758.5453; return x - Math.floor(x); };
     const [splotches] = useState(() => {
         const colors = [t.accent, t.cyan, t.magenta, t.gold];
         const items = [];
         for (let i = 0; i < 15; i++) {
             items.push({
-                x: Math.random() * 100, // percentage
-                y: Math.random() * 5000, // absolute px spread out vertically
-                size: Math.random() * 400 + 300,
-                color: colors[Math.floor(Math.random() * colors.length)],
-                opacity: Math.random() * 0.15 + 0.1,
-                speed: Math.random() * 0.6 + 0.2 // parallax speed
+                x: rnd(i + 1) * 100, // percentage
+                y: rnd(i + 21) * 5000, // absolute px spread out vertically
+                size: rnd(i + 41) * 400 + 300,
+                color: colors[Math.floor(rnd(i + 61) * colors.length)],
+                opacity: rnd(i + 81) * 0.15 + 0.1,
+                speed: rnd(i + 101) * 0.6 + 0.2 // parallax speed
             });
         }
         return items;

@@ -19,11 +19,7 @@ export default function Footer() {
             zIndex: 1
         }}>
             <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: isMobile ? ".7rem" : ".8rem", letterSpacing: ".3em", color: t.textMute }}>SYNA</div>
-            <div style={{ ...FONTS.mono, fontSize: isMobile ? ".5rem" : ".54rem", letterSpacing: ".18em", color: t.textMute, opacity: .5, textTransform: "uppercase", textAlign: "center" }}>© 2025 cyber-metal ocean</div>
-            <div style={{ display: "flex", alignItems: "center", gap: 7, ...FONTS.mono, fontSize: isMobile ? ".5rem" : ".54rem", letterSpacing: ".16em", color: t.textMute, textTransform: "uppercase" }}>
-                <div style={{ width: 6, height: 6, background: "#22c55e", borderRadius: "50%", boxShadow: "0 0 7px #22c55e", animation: "pulse 2s ease-in-out infinite" }} />
-                online
-            </div>
+            <div style={{ ...FONTS.mono, fontSize: ".75rem", letterSpacing: ".12em", color: t.textMute, textTransform: "uppercase", textAlign: "center" }}>© {new Date().getFullYear()} Syna Malhan</div>
         </footer>
     );
 }

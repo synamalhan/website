@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useTheme } from "../theme/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle";
 import { FONTS } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
+
+// Projects is its own page; everything else is an anchor on the home page.
+const NavLink = ({ l, ...p }) => l === "Projects" ? <Link to="/projects" {...p} /> : <a href={`#${l.toLowerCase()}`} {...p} />;
 
 export default function Navbar({ navUp }) {
     const { theme: t, isDark, toggleTheme } = useTheme();
@@ -11,7 +15,7 @@ export default function Navbar({ navUp }) {
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
-    const navLinks = ["About", "Projects", "Globe", "Contact"];
+    const navLinks = ["About", "Experience", "Internships", "Featured", "Projects", "Contact"];
 
     return (
         <nav style={{
@@ -35,7 +39,7 @@ export default function Navbar({ navUp }) {
             {!isMobile && (
                 <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
                     {navLinks.map(l => (
-                        <a key={l} href={`#${l.toLowerCase()}`} style={{
+                        <NavLink key={l} l={l} style={{
                             ...FONTS.mono, fontSize: ".65rem", letterSpacing: ".16em",
                             color: t.textMute, textDecoration: "none", textTransform: "uppercase",
                             transition: "color .2s"
@@ -43,7 +47,7 @@ export default function Navbar({ navUp }) {
                             onMouseEnter={e => e.target.style.color = t.cyan}
                             onMouseLeave={e => e.target.style.color = t.textMute}>
                             {l}
-                        </a>
+                        </NavLink>
                     ))}
                     <ThemeToggle isDark={isDark} toggle={toggleTheme} t={t} />
                 </div>
@@ -55,6 +59,8 @@ export default function Navbar({ navUp }) {
                     <ThemeToggle isDark={isDark} toggle={toggleTheme} t={t} />
                     <button 
                         onClick={toggleMenu}
+                        aria-label={isOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isOpen}
                         style={{
                             background: "none", border: "none", cursor: "pointer",
                             width: 30, height: 20, position: "relative",
@@ -79,7 +85,7 @@ export default function Navbar({ navUp }) {
                     paddingTop: isOpen ? 60 : 0
                 }}>
                     {navLinks.map(l => (
-                        <a key={l} href={`#${l.toLowerCase()}`} 
+                        <NavLink key={l} l={l}
                             onClick={() => setIsOpen(false)}
                             style={{
                                 ...FONTS.orb, fontSize: "1.5rem", letterSpacing: ".1em",
@@ -88,7 +94,7 @@ export default function Navbar({ navUp }) {
                                 textTransform: "uppercase"
                             }}>
                             {l}
-                        </a>
+                        </NavLink>
                     ))}
                 </div>
             )}

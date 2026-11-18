@@ -1,4 +1,5 @@
 import { forwardRef, useEffect, useRef } from "react";
+import { yearsSinceFirstRole } from "../data/portfolio";
 import { motion } from "framer-motion";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
@@ -39,29 +40,6 @@ const galleryItems = [
     }
 ];
 
-const funFacts = [
-    {
-        icon: "🔧",
-        label: "FUN FACT",
-        text: "I build Metal Earth kits — tiny laser-cut metal puzzles that require way more patience than I expect."
-    },
-    {
-        icon: "🌊",
-        label: "FUN FACT",
-        text: "I think best near water. Oceans reset my brain faster than anything else."
-    },
-    {
-        icon: "🎧",
-        label: "FUN FACT",
-        text: "I rotate the same 5 songs for weeks until they become background noise for my thoughts."
-    },
-    {
-        icon: "🧠",
-        label: "FUN FACT",
-        text: "Half my ideas come while I’m not trying to have ideas."
-    }
-];
-
 const idleMessages = [
     "Taking a sonic breather.",
     "Refueling my neural playlist.",
@@ -84,7 +62,7 @@ const MusicTile = ({ t, counts, isMobile }) => {
     } : null;
 
     const [showPlayer, setShowPlayer] = useState(false);
-    
+        
     // Store latest progress to use inside iframe callback
     const progressRef = useRef(currentProgress);
     useEffect(() => {
@@ -298,6 +276,7 @@ const MusicTile = ({ t, counts, isMobile }) => {
             ) : (
                 <iframe
                     data-testid="embed-iframe"
+                    title="Spotify playlist player"
                     style={{ borderRadius: '24px', border: 'none', width: '100%', height: '100%', minHeight: '352px' }}
                     src={`https://open.spotify.com/embed/playlist/0Uggezps9kTbnOpFB7ovff?utm_source=generator&theme=${t.name === 'dark' ? '0' : '1'}`}
                     frameBorder="0"
@@ -342,16 +321,6 @@ const BentoBox = ({ children, style = {}, colSpan = 1, rowSpan = 1, hover = true
 const About = forwardRef(function About({ counts = {} }, ref) {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
-    const [factIndex, setFactIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setFactIndex((prev) => (prev + 1) % funFacts.length);
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, []);
-
     const bentoStyles = {
         grid: {
             display: "grid",
@@ -397,7 +366,7 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                             alignSelf: 'flex-start',
                             padding: "12px 24px",
                             background: t.accent,
-                            color: "#fff",
+                            color: t.onAccent,
                             borderRadius: "12px",
                             textDecoration: "none",
                             ...FONTS.mono,
@@ -426,56 +395,17 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                 </BentoBox>
                 <BentoBox colSpan={1} rowSpan={1} style={{ justifyContent: 'center', borderLeft: `4px solid ${t.accent}` }}>
                     <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>{counts.a || 0}</div>
-                    <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>iOS Apps</div>
+                    <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>iOS Projects</div>
                 </BentoBox>
                 <BentoBox colSpan={1} rowSpan={1} style={{ justifyContent: 'center', borderLeft: `4px solid ${t.magenta}` }}>
                     <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>{counts.m || 0}</div>
-                    <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>ML Models</div>
+                    <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>ML & Vision Projects</div>
                 </BentoBox>
 
                 {/* 5. YEARS EXPERIENCE BOX (1x1) */}
                 <BentoBox colSpan={1} rowSpan={1} style={{ justifyContent: 'center', borderLeft: `4px solid ${t.gold}` }}>
-                    <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>3</div>
+                    <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>{yearsSinceFirstRole()}</div>
                     <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>Years Exp</div>
-                </BentoBox>
-
-                {/* 6. FUN FACT BOX (FULL WIDTH 4x1) */}
-                <BentoBox
-                    colSpan={isMobile ? 1 : 4}
-                    rowSpan={1}
-                    style={{
-                        justifyContent: 'center',
-                        background: `linear-gradient(135deg, ${t.surface}80, ${t.accent}10)`
-                    }}
-                >
-                    <div style={{ display: "flex", gap: "24px", alignItems: "center", justifyContent: 'center' }}>
-
-                        <motion.div
-                            key={factIndex}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                            style={{ fontSize: "2.5rem" }}
-                        >
-                            {funFacts[factIndex].icon}
-                        </motion.div>
-
-                        <div style={{ maxWidth: 600 }}>
-                            <div style={{ ...FONTS.mono, fontSize: "0.7rem", color: t.accent, letterSpacing: '2px', marginBottom: '4px' }}>
-                                {funFacts[factIndex].label}
-                            </div>
-
-                            <motion.div
-                                key={factIndex + "-text"}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.6 }}
-                                style={{ fontSize: "1rem", color: t.text, lineHeight: 1.5 }}
-                            >
-                                {funFacts[factIndex].text}
-                            </motion.div>
-                        </div>
-                    </div>
                 </BentoBox>
             </div>
         </section>

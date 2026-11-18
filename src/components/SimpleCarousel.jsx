@@ -71,6 +71,7 @@ export default function SimpleCarousel({ items = [] }) {
         {/* Navigation Overlays */}
         <button
           onClick={prevItem}
+          aria-label="Previous photo"
           style={{
             position: 'absolute',
             left: '10px',
@@ -97,6 +98,7 @@ export default function SimpleCarousel({ items = [] }) {
         </button>
         <button
           onClick={nextItem}
+          aria-label="Next photo"
           style={{
             position: 'absolute',
             right: '10px',

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t"><title id="t">Atlas architecture</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 1L10 5L0 9z" fill="#1f2937"/></marker></defs>
+<rect width="1200" height="900" fill="#fbfaf7"/>
+<rect x="0" y="0" width="201" height="12" fill="#4f46e5"/>
+<rect x="200" y="0" width="201" height="12" fill="#9333ea"/>
+<rect x="400" y="0" width="201" height="12" fill="#db2777"/>
+<rect x="600" y="0" width="201" height="12" fill="#c2410c"/>
+<rect x="800" y="0" width="201" height="12" fill="#15803d"/>
+<rect x="1000" y="0" width="201" height="12" fill="#0e7490"/>
+<text x="70" y="112" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="50" font-weight="800" fill="#1f2937">Atlas</text>
+<text x="70" y="156" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="24" fill="#475569">Multimodal research assistant with verified citations</text>
+<rect x="70" y="184" width="82" height="32" rx="16" fill="#e9e8fb" stroke="#4f46e5" stroke-width="1.4"/><text x="111" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#4f46e5">Python</text>
+<rect x="162" y="184" width="116" height="32" rx="16" fill="#f2e6fc" stroke="#9333ea" stroke-width="1.4"/><text x="220" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#9333ea">PDF parser</text>
+<rect x="288" y="184" width="133" height="32" rx="16" fill="#fae5ee" stroke="#db2777" stroke-width="1.4"/><text x="354" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#db2777">vector index</text>
+<rect x="431" y="184" width="64" height="32" rx="16" fill="#f7e8e1" stroke="#c2410c" stroke-width="1.4"/><text x="463" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#c2410c">BM25</text>
+<rect x="505" y="184" width="90" height="32" rx="16" fill="#e2efe7" stroke="#15803d" stroke-width="1.4"/><text x="550" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#15803d">LLM API</text>
+<rect x="605" y="184" width="82" height="32" rx="16" fill="#e2eef1" stroke="#0e7490" stroke-width="1.4"/><text x="646" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#0e7490">web UI</text>
+<rect x="70" y="300" width="138" height="280" rx="8" fill="#efeefc" stroke="#4f46e5" stroke-width="1.4"/>
+<path d="M70 352 V308 a8 8 0 0 1 8 -8 H200 a8 8 0 0 1 8 8 V352 Z" fill="#4f46e5"/>
+<text x="139" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Ingest</text>
+<text x="139" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">PDF to text,</text>
+<text x="139" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">figures, tables</text>
+<text x="139" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">about 50 arXiv</text>
+<text x="139" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">papers</text>
+<line x1="84" x2="194" y1="534" y2="534" stroke="#4f46e5" stroke-opacity=".35"/>
+<text x="139" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#4f46e5">→ raw chunks</text>
+<rect x="254" y="300" width="138" height="280" rx="8" fill="#f5ecfd" stroke="#9333ea" stroke-width="1.4"/>
+<path d="M254 352 V308 a8 8 0 0 1 8 -8 H385 a8 8 0 0 1 8 8 V352 Z" fill="#9333ea"/>
+<text x="324" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Index</text>
+<text x="324" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">embed each chunk</text>
+<text x="324" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">BM25 index too</text>
+<text x="324" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">keep paper, page,</text>
+<text x="324" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">figure ID</text>
+<line x1="268" x2="379" y1="534" y2="534" stroke="#9333ea" stroke-opacity=".35"/>
+<text x="324" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#9333ea">→ search index</text>
+<rect x="439" y="300" width="138" height="280" rx="8" fill="#fbebf2" stroke="#db2777" stroke-width="1.4"/>
+<path d="M439 352 V308 a8 8 0 0 1 8 -8 H569 a8 8 0 0 1 8 8 V352 Z" fill="#db2777"/>
+<text x="508" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Retrieve</text>
+<text x="508" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">dense + BM25</text>
+<text x="508" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">hybrid search</text>
+<text x="508" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">rerank top hits</text>
+<text x="508" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">keep source IDs</text>
+<line x1="453" x2="563" y1="534" y2="534" stroke="#db2777" stroke-opacity=".35"/>
+<text x="508" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#db2777">→ top chunks</text>
+<rect x="623" y="300" width="138" height="280" rx="8" fill="#f9ede9" stroke="#c2410c" stroke-width="1.4"/>
+<path d="M623 352 V308 a8 8 0 0 1 8 -8 H753 a8 8 0 0 1 8 8 V352 Z" fill="#c2410c"/>
+<text x="692" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Generate</text>
+<text x="692" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">LLM drafts the</text>
+<text x="692" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">answer as claims</text>
+<text x="692" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">each claim cites</text>
+<text x="692" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">chunk IDs</text>
+<line x1="637" x2="747" y1="534" y2="534" stroke="#c2410c" stroke-opacity=".35"/>
+<text x="692" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#c2410c">→ cited claims</text>
+<rect x="807" y="300" width="138" height="280" rx="8" fill="#e9f3ed" stroke="#15803d" stroke-width="3.2"/>
+<path d="M807 352 V308 a8 8 0 0 1 8 -8 H938 a8 8 0 0 1 8 8 V352 Z" fill="#15803d"/>
+<text x="876" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Verify</text>
+<text x="876" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">exact quote check</text>
+<text x="876" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">number check</text>
+<text x="876" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">LLM judge for</text>
+<text x="876" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">paraphrases</text>
+<line x1="821" x2="932" y1="534" y2="534" stroke="#15803d" stroke-opacity=".35"/>
+<text x="876" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#15803d">→ pass or fail</text>
+<rect x="992" y="300" width="138" height="280" rx="8" fill="#e9f2f5" stroke="#0e7490" stroke-width="1.4"/>
+<path d="M992 352 V308 a8 8 0 0 1 8 -8 H1122 a8 8 0 0 1 8 8 V352 Z" fill="#0e7490"/>
+<text x="1061" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Answer</text>
+<text x="1061" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">inline citations</text>
+<text x="1061" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">link to source</text>
+<text x="1061" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">page and figure</text>
+<text x="1061" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">abstains if</text>
+<text x="1061" y="480" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">unsupported</text>
+<line x1="1006" x2="1116" y1="534" y2="534" stroke="#0e7490" stroke-opacity=".35"/>
+<text x="1061" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#0e7490">→ final answer</text>
+<path d="M208 440 H252" fill="none" stroke="#4f46e5" stroke-width="2.4" marker-end="url(#a)"/>
+<path d="M393 440 H437" fill="none" stroke="#9333ea" stroke-width="2.4" marker-end="url(#a)"/>
+<path d="M577 440 H621" fill="none" stroke="#db2777" stroke-width="2.4" marker-end="url(#a)"/>
+<path d="M761 440 H805" fill="none" stroke="#c2410c" stroke-width="2.4" marker-end="url(#a)"/>
+<path d="M946 440 H990" fill="none" stroke="#15803d" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="70" y="614" width="1060" height="84" rx="8" fill="#fceff5" stroke="#db2777" stroke-width="1.4" stroke-dasharray="7 5"/>
+<rect x="70" y="614" width="8" height="84" rx="3" fill="#db2777"/>
+<text x="100" y="647" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#db2777">Evaluation (planned)</text>
+<text x="100" y="676" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5" fill="#1f2937">30 hand-written questions: retrieval recall, verified-citation rate, abstention accuracy, text-only vs multimodal.</text>
+<rect x="70" y="714" width="1060" height="84" rx="8" fill="#faf1ed" stroke="#c2410c" stroke-width="1.4"/>
+<rect x="70" y="714" width="8" height="84" rx="3" fill="#c2410c"/>
+<text x="100" y="747" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#c2410c">Why verify</text>
+<text x="100" y="776" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5" fill="#1f2937">Most RAG demos cite sources without checking them. Atlas checks every citation against the source text before showing it.</text>
+<text x="70" y="870" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="18" fill="#64748b">github.com/synamalhan/atlas-research-assistant</text></svg>

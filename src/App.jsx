@@ -1,53 +1,41 @@
 import { useRef } from "react";
-import { ThemeProvider, useTheme } from "./theme/ThemeContext";
-import { FONTS } from "./components/styles";
-import { useAssemblyScroll } from "./hooks/useAssemblyScroll";
-
-import GlobalStyle from "./components/GlobalStyle";
-import OceanBg from "./components/OceanBg";
-import Cursor from "./components/Cursor";
+import Seo from "./components/Seo";
+import { useHomeScroll } from "./hooks/useHomeScroll";
 
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
-import Assembly from "./sections/Assembly";
+import Workshop from "./sections/Workshop";
 import About from "./sections/About";
+import Education from "./sections/Education";
+import Internships from "./sections/Internships";
+import Skills from "./sections/Skills";
+import Featured from "./sections/Featured";
 import WorkExperience from "./sections/WorkExperience";
-import Projects from "./sections/Projects";
 import WaveformSection from "./sections/WaveformSection";
-import LiveLyrics from "./components/LiveLyrics";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 
-function AppContent() {
-    const { theme: t } = useTheme();
-    const asmRef = useRef();
+export default function Home() {
     const abtRef = useRef();
-    const { prog, inAssembly, navUp, counts } = useAssemblyScroll(asmRef, abtRef);
+    const { navUp, counts } = useHomeScroll(abtRef);
 
     return (
-        <div style={{ background: t.bg, color: t.text, ...FONTS.inter, overflowX: "hidden", minHeight: "100vh", transition: "background .4s, color .4s" }}>
-            <GlobalStyle />
-            <OceanBg t={t} />
-            <Cursor t={t} />
-
+        <>
+            <Seo title="Syna Malhan: ML/AI & Software Engineering" />
             <Navbar navUp={navUp} />
+            <main>
             <Hero />
             <About ref={abtRef} counts={counts} />
+            <Education />
             <WorkExperience />
-            <Projects />
+            <Internships />
+            <Featured />
+            <Skills />
             <WaveformSection />
-            {/* <LiveLyrics /> */}
             <Contact />
-            <Assembly ref={asmRef} prog={prog} inAssembly={inAssembly} />
+            <Workshop />
+            </main>
             <Footer />
-        </div>
-    );
-}
-
-export default function App() {
-    return (
-        <ThemeProvider>
-            <AppContent />
-        </ThemeProvider>
+        </>
     );
 }

@@ -1,7 +1,6 @@
 export default function GlobalStyle() {
     return (
         <style>{`
-      @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Inter:wght@300;400;600&display=swap');
       *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
       html { scroll-behavior:smooth; }
       body { overflow-x:hidden; cursor:none; }
@@ -17,6 +16,8 @@ export default function GlobalStyle() {
       @keyframes g2 { 0%,87%,100%{opacity:0;transform:translate(2px,2px)}  90%{opacity:.7;transform:translate(4px,0)}  94%{opacity:0} }
 
       @keyframes shake { 0%{transform:rotate(0deg)} 25%{transform:rotate(-1deg)} 50%{transform:rotate(0deg)} 75%{transform:rotate(1deg)} 100%{transform:rotate(0deg)} }
+
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 
       .glitch { position:relative; display:inline-block; animation:shake 3s infinite; }
       .scanbar { animation:scanLine 3s infinite; border-radius: 5px; }

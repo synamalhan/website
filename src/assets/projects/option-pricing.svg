@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t"><title id="t">Options Pricing architecture</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 1L10 5L0 9z" fill="#1f2937"/></marker></defs>
+<rect width="1200" height="900" fill="#fbfaf7"/>
+<rect x="0" y="0" width="201" height="12" fill="#4f46e5"/>
+<rect x="200" y="0" width="201" height="12" fill="#9333ea"/>
+<rect x="400" y="0" width="201" height="12" fill="#db2777"/>
+<rect x="600" y="0" width="201" height="12" fill="#c2410c"/>
+<rect x="800" y="0" width="201" height="12" fill="#15803d"/>
+<rect x="1000" y="0" width="201" height="12" fill="#0e7490"/>
+<text x="70" y="112" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="50" font-weight="800" fill="#1f2937">Options Pricing</text>
+<text x="70" y="156" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="24" fill="#475569">Pricing and risk with Monte Carlo and Black-Scholes</text>
+<rect x="70" y="184" width="82" height="32" rx="16" fill="#e9e8fb" stroke="#4f46e5" stroke-width="1.4"/><text x="111" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#4f46e5">Python</text>
+<rect x="162" y="184" width="107" height="32" rx="16" fill="#f2e6fc" stroke="#9333ea" stroke-width="1.4"/><text x="215" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#9333ea">Streamlit</text>
+<rect x="279" y="184" width="125" height="32" rx="16" fill="#fae5ee" stroke="#db2777" stroke-width="1.4"/><text x="341" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#db2777">Monte Carlo</text>
+<rect x="414" y="184" width="142" height="32" rx="16" fill="#f7e8e1" stroke="#c2410c" stroke-width="1.4"/><text x="484" y="205" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#c2410c">Black-Scholes</text>
+<rect x="70" y="300" width="230" height="280" rx="8" fill="#efeefc" stroke="#4f46e5" stroke-width="1.4"/>
+<path d="M70 352 V308 a8 8 0 0 1 8 -8 H292 a8 8 0 0 1 8 8 V352 Z" fill="#4f46e5"/>
+<text x="185" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Inputs</text>
+<text x="185" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">spot, strike,</text>
+<text x="185" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">rate, volatility</text>
+<text x="185" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">and maturity</text>
+<text x="185" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">set in the app</text>
+<line x1="84" x2="286" y1="534" y2="534" stroke="#4f46e5" stroke-opacity=".35"/>
+<text x="185" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#4f46e5">→ parameters</text>
+<rect x="346" y="300" width="230" height="130" rx="8" fill="#f5ecfd" stroke="#9333ea" stroke-width="1.4"/>
+<path d="M346 334 V308 a8 8 0 0 1 8 -8 H569 a8 8 0 0 1 8 8 V334 Z" fill="#9333ea"/>
+<text x="462" y="324" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#fff">Black-Scholes</text>
+<text x="462" y="358" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">closed-form</text>
+<text x="462" y="379" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">European price</text>
+<rect x="346" y="450" width="230" height="130" rx="8" fill="#f5ecfd" stroke="#9333ea" stroke-width="1.4"/>
+<path d="M346 484 V458 a8 8 0 0 1 8 -8 H569 a8 8 0 0 1 8 8 V484 Z" fill="#9333ea"/>
+<text x="462" y="474" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#fff">Monte Carlo</text>
+<text x="462" y="508" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">simulated paths,</text>
+<text x="462" y="529" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">average payoff</text>
+<rect x="623" y="300" width="230" height="280" rx="8" fill="#fbebf2" stroke="#db2777" stroke-width="3.2"/>
+<path d="M623 352 V308 a8 8 0 0 1 8 -8 H846 a8 8 0 0 1 8 8 V352 Z" fill="#db2777"/>
+<text x="738" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Risk</text>
+<text x="738" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">VaR and Expected</text>
+<text x="738" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">Shortfall from the</text>
+<text x="738" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">simulated</text>
+<text x="738" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">distribution</text>
+<line x1="637" x2="840" y1="534" y2="534" stroke="#db2777" stroke-opacity=".35"/>
+<text x="738" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#db2777">→ risk numbers</text>
+<rect x="900" y="300" width="230" height="280" rx="8" fill="#f9ede9" stroke="#c2410c" stroke-width="1.4"/>
+<path d="M900 352 V308 a8 8 0 0 1 8 -8 H1122 a8 8 0 0 1 8 8 V352 Z" fill="#c2410c"/>
+<text x="1015" y="333" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Streamlit</text>
+<text x="1015" y="384" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">price comparison</text>
+<text x="1015" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">simulated path</text>
+<text x="1015" y="432" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">charts</text>
+<text x="1015" y="456" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937">VaR and ES</text>
+<line x1="914" x2="1116" y1="534" y2="534" stroke="#c2410c" stroke-opacity=".35"/>
+<text x="1015" y="554" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#c2410c">→ dashboard</text>
+<path d="M300 440 H324 V365 H344" fill="none" stroke="#4f46e5" stroke-width="2.4" marker-end="url(#a)"/>
+<path d="M300 440 H324 V515 H344" fill="none" stroke="#4f46e5" stroke-width="2.4" marker-end="url(#a)"/>
+<path d="M577 365 H600 V440 H621" fill="none" stroke="#9333ea" stroke-width="2.4" marker-end="url(#a)"/>
+<path d="M577 515 H600 V440 H621" fill="none" stroke="#9333ea" stroke-width="2.4" marker-end="url(#a)"/>
+<path d="M854 440 H898" fill="none" stroke="#db2777" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="70" y="614" width="1060" height="84" rx="8" fill="#fceff5" stroke="#db2777" stroke-width="1.4"/>
+<rect x="70" y="614" width="8" height="84" rx="3" fill="#db2777"/>
+<text x="100" y="647" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#db2777">Two ways to price</text>
+<text x="100" y="676" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5" fill="#1f2937">The closed form gives an exact reference; Monte Carlo shows the spread of outcomes that risk is read from.</text>
+<text x="70" y="870" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="18" fill="#64748b">github.com/synamalhan/option-pricing</text></svg>

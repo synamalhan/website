@@ -1,0 +1,3047 @@
+{
+  "profile": {
+    "name": "Syna Malhan",
+    "school": "Arizona State University",
+    "degree": "B.S. Computer Science",
+    "minor": "Data Science",
+    "gradYear": 2027,
+    "target": "ML/AI/SWE new-grad roles",
+    "now": "Taking ML for Data Science and Image Processing, and finishing Atlas, infserve, WildSense and tsbench.",
+    "links": {
+      "email": "synamalhan22@gmail.com",
+      "linkedin": "https://linkedin.com/in/synamalhan",
+      "github": "https://github.com/synamalhan"
+    },
+    "coursework": [
+      {
+        "name": "Data Structures & Algorithms",
+        "area": "cs",
+        "status": "done"
+      },
+      {
+        "name": "Operating Systems",
+        "area": "cs",
+        "status": "done"
+      },
+      {
+        "name": "Principles of Programming Languages",
+        "area": "cs",
+        "status": "done"
+      },
+      {
+        "name": "Theoretical Computer Science",
+        "area": "cs",
+        "status": "done"
+      },
+      {
+        "name": "Software Engineering",
+        "area": "cs",
+        "status": "done"
+      },
+      {
+        "name": "Information Assurance",
+        "area": "cs",
+        "status": "done"
+      },
+      {
+        "name": "Computer Organization",
+        "area": "cs",
+        "status": "done"
+      },
+      {
+        "name": "Foundations of Machine Learning",
+        "area": "cs",
+        "status": "done"
+      },
+      {
+        "name": "Quantum Computation",
+        "area": "cs",
+        "status": "done"
+      },
+      {
+        "name": "Calculus I–III",
+        "area": "math",
+        "status": "done"
+      },
+      {
+        "name": "Discrete Math",
+        "area": "math",
+        "status": "done"
+      },
+      {
+        "name": "Applied Linear Algebra",
+        "area": "math",
+        "status": "done"
+      },
+      {
+        "name": "Probability & Statistics",
+        "area": "math",
+        "status": "done"
+      },
+      {
+        "name": "Statistical Modeling & Inference",
+        "area": "data",
+        "status": "done"
+      },
+      {
+        "name": "Data Science in R & Python",
+        "area": "data",
+        "status": "done"
+      },
+      {
+        "name": "Machine Learning for Data Science",
+        "area": "data",
+        "status": "in-progress"
+      },
+      {
+        "name": "Image Processing & Analysis",
+        "area": "cs",
+        "status": "in-progress"
+      },
+      {
+        "name": "Database Management",
+        "area": "cs",
+        "status": "in-progress"
+      },
+      {
+        "name": "Human-Computer Interaction",
+        "area": "cs",
+        "status": "in-progress"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "id": "swift",
+      "label": "Swift",
+      "area": "iOS"
+    },
+    {
+      "id": "swiftui",
+      "label": "SwiftUI",
+      "area": "iOS"
+    },
+    {
+      "id": "arkit",
+      "label": "ARKit",
+      "area": "iOS"
+    },
+    {
+      "id": "coreml",
+      "label": "CoreML",
+      "area": "iOS"
+    },
+    {
+      "id": "uikit",
+      "label": "UIKit",
+      "area": "iOS"
+    },
+    {
+      "id": "combine",
+      "label": "Combine",
+      "area": "iOS"
+    },
+    {
+      "id": "coredata",
+      "label": "CoreData",
+      "area": "iOS"
+    },
+    {
+      "id": "xcode",
+      "label": "Xcode",
+      "area": "iOS"
+    },
+    {
+      "id": "app-architecture",
+      "label": "App Architecture",
+      "area": "iOS"
+    },
+    {
+      "id": "python",
+      "label": "Python",
+      "area": "ML/AI"
+    },
+    {
+      "id": "pytorch",
+      "label": "PyTorch",
+      "area": "ML/AI"
+    },
+    {
+      "id": "tensorflow",
+      "label": "TensorFlow",
+      "area": "ML/AI"
+    },
+    {
+      "id": "numpy",
+      "label": "NumPy",
+      "area": "ML/AI"
+    },
+    {
+      "id": "pandas",
+      "label": "Pandas",
+      "area": "ML/AI"
+    },
+    {
+      "id": "scikit-learn",
+      "label": "scikit-learn",
+      "area": "ML/AI"
+    },
+    {
+      "id": "ml-concepts",
+      "label": "ML Concepts",
+      "area": "ML/AI"
+    },
+    {
+      "id": "data-analysis",
+      "label": "Data Analysis",
+      "area": "ML/AI"
+    },
+    {
+      "id": "visualization",
+      "label": "Visualization",
+      "area": "ML/AI"
+    },
+    {
+      "id": "javascript",
+      "label": "JavaScript",
+      "area": "Web/3D"
+    },
+    {
+      "id": "typescript",
+      "label": "TypeScript",
+      "area": "Web/3D"
+    },
+    {
+      "id": "react",
+      "label": "React",
+      "area": "Web/3D"
+    },
+    {
+      "id": "three-js",
+      "label": "Three.js",
+      "area": "Web/3D"
+    },
+    {
+      "id": "webgl",
+      "label": "WebGL",
+      "area": "Web/3D"
+    },
+    {
+      "id": "gsap",
+      "label": "GSAP",
+      "area": "Web/3D"
+    },
+    {
+      "id": "canvas",
+      "label": "Canvas",
+      "area": "Web/3D"
+    },
+    {
+      "id": "svg",
+      "label": "SVG",
+      "area": "Web/3D"
+    },
+    {
+      "id": "ui-animations",
+      "label": "UI Animations",
+      "area": "Web/3D"
+    },
+    {
+      "id": "shaders",
+      "label": "Shaders",
+      "area": "Web/3D"
+    },
+    {
+      "id": "c",
+      "label": "C",
+      "area": "Languages"
+    },
+    {
+      "id": "c",
+      "label": "C++",
+      "area": "Languages"
+    },
+    {
+      "id": "java",
+      "label": "Java",
+      "area": "Languages"
+    },
+    {
+      "id": "figma",
+      "label": "Figma",
+      "area": "Design"
+    },
+    {
+      "id": "sketch",
+      "label": "Sketch",
+      "area": "Design"
+    },
+    {
+      "id": "blender",
+      "label": "Blender",
+      "area": "Design"
+    },
+    {
+      "id": "illustrator",
+      "label": "Illustrator",
+      "area": "Design"
+    },
+    {
+      "id": "photoshop",
+      "label": "Photoshop",
+      "area": "Design"
+    },
+    {
+      "id": "drawing",
+      "label": "Drawing",
+      "area": "Design"
+    },
+    {
+      "id": "git",
+      "label": "Git",
+      "area": "Tools"
+    },
+    {
+      "id": "docker",
+      "label": "Docker",
+      "area": "Tools"
+    },
+    {
+      "id": "vscode",
+      "label": "VSCode",
+      "area": "Tools"
+    },
+    {
+      "id": "jupyter",
+      "label": "Jupyter",
+      "area": "Tools"
+    },
+    {
+      "id": "fastlane",
+      "label": "Fastlane",
+      "area": "Tools"
+    },
+    {
+      "id": "testing",
+      "label": "Testing",
+      "area": "Tools"
+    },
+    {
+      "id": "debugging",
+      "label": "Debugging",
+      "area": "Tools"
+    },
+    {
+      "id": "documentation",
+      "label": "Documentation",
+      "area": "Tools"
+    }
+  ],
+  "categories": [
+    {
+      "type": "ml",
+      "title": "Machine Learning & AI",
+      "anchorId": "project-machine-learning-ai",
+      "colors": [
+        "#22d3ee",
+        "#8b5cf6"
+      ],
+      "tags": [
+        "TensorFlow",
+        "PyTorch",
+        "NLP",
+        "RL"
+      ]
+    },
+    {
+      "type": "fullstack",
+      "title": "Full Stack Applications",
+      "colors": [
+        "#f472b6",
+        "#fb923c"
+      ],
+      "tags": [
+        "React",
+        "Node.js",
+        "Vite",
+        "Supabase"
+      ]
+    },
+    {
+      "type": "default",
+      "title": "Data Visualization & Analytics",
+      "colors": [
+        "#4ade80",
+        "#22d3ee"
+      ],
+      "tags": [
+        "Plotly",
+        "D3.js",
+        "Pandas",
+        "Folium"
+      ]
+    },
+    {
+      "type": "vision",
+      "title": "Computer Vision",
+      "anchorId": "project-computer-vision",
+      "colors": [
+        "#818cf8",
+        "#c084fc"
+      ],
+      "tags": [
+        "OpenCV",
+        "YOLO",
+        "FastSAM",
+        "Roboflow"
+      ]
+    },
+    {
+      "type": "ios",
+      "title": "iOS/Swift Projects",
+      "colors": [
+        "#f97316",
+        "#e040fb"
+      ],
+      "tags": [
+        "SwiftUI",
+        "CoreML",
+        "HealthKit",
+        "WatchKit"
+      ]
+    },
+    {
+      "type": "hackathon",
+      "title": "Hackathon Winners",
+      "colors": [
+        "#facc15",
+        "#ef4444"
+      ],
+      "tags": [
+        "Winner",
+        "Innovation",
+        "Social Good"
+      ]
+    },
+    {
+      "type": "creative",
+      "title": "Creative / Fun / Games",
+      "colors": [
+        "#15fa20ff",
+        "#22d3ee"
+      ],
+      "tags": [
+        "React",
+        "Three.js",
+        "A-Frame",
+        "Storytelling"
+      ]
+    },
+    {
+      "type": "tools",
+      "title": "Utilities & Tools",
+      "colors": [
+        "#94a3b8",
+        "#cbd5e1"
+      ],
+      "tags": [
+        "Automation",
+        "LLM",
+        "Efficiency"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "frozenlake-q-learning-agent",
+      "title": "FrozenLake Q-Learning Agent",
+      "summary": "A reinforcement learning agent that learns to navigate the FrozenLake environment using Q-Learning.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "React",
+        "Python",
+        "Flask"
+      ],
+      "skills": [
+        "react",
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/frozenlake-q-learning.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: A simple yet effective reinforcement learning agent was trained to navigate a frozen 4x4 grid. Problem: The agent had to balance exploration vs exploitation using the Q-Learning algorithm. Action: Used a Q-table based learning loop to train an optimal policy. Result: Learned to reach the goal with near-perfect consistency after 20,000 episodes.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "k-means-image-compressor",
+      "title": "K-Means Image Compressor",
+      "summary": "Compressing images using K-Means clustering by reducing the number of unique colors.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Streamlit",
+        "scikit-learn",
+        "PIL",
+        "NumPy"
+      ],
+      "skills": [
+        "scikit-learn",
+        "numpy"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/k-means-image-compressor.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: A Streamlit app that compresses images by reducing unique colors. Problem: Treating pixels as points in 3D RGB space to group by similarity. Action: Replaced pixels with cluster centroid colors to reduce file size. Result: Effective visualization of unsupervised learning in action.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "credit-risk-rag-model",
+      "title": "Credit Risk RAG Model",
+      "summary": "RAG-based credit risk assessment system using LangGraph and Neo4j.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Streamlit",
+        "Neo4j",
+        "LangGraph"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Financial institutions need contextual insights combining structured data and regulatory knowledge. Problem: Traditional ML models lack explainability for dynamic knowledge. Action: Built a RAG system using LangGraph for reasoning and Neo4j for credit rule relationships. Result: Delivered explainable credit decisions with dynamic reasoning paths.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "text-optimized-image-generation-model",
+      "title": "Text-Optimized Image Generation Model",
+      "summary": "Custom-trained diffusion model optimized for rendering clean text in images.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Python",
+        "HuggingFace",
+        "PyTorch",
+        "LoRA"
+      ],
+      "skills": [
+        "python",
+        "pytorch"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Most generative models struggle to render readable text for UI components. Problem: Needed a model that could reliably generate labels and form fields. Action: Fine-tuned Stable Diffusion with LoRA on curated labeled visuals. Result: Achieved significantly higher OCR accuracy in generated samples.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "emotion-detection-from-images",
+      "title": "Emotion Detection from Images",
+      "summary": "Real-time emotion detection app using Hugging Face RoBERTa model.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Hugging Face",
+        "RoBERTa",
+        "Streamlit",
+        "Python"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2024,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/emotion-detect.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Needed a real-time tool to quantify user sentiment during sessions. Problem: Emotion models lacked real-time interactivity. Action: Used RoBERTa for classification and built a Streamlit dashboard. Result: Enabled real-time analysis of user mood and engagement.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "medical-image-analysis-for-early-brain-tumor-detection",
+      "title": "Medical Image Analysis for Early Brain Tumor Detection",
+      "summary": "Binary brain-tumor classification (ResNet) and pixel-level segmentation (U-Net) on MRI scans, with a Streamlit viewer.",
+      "category": "vision",
+      "tags": [],
+      "stack": [
+        "Python",
+        "TensorFlow",
+        "ResNet",
+        "U-Net",
+        "Streamlit",
+        "scikit-learn"
+      ],
+      "skills": [
+        "python",
+        "scikit-learn",
+        "tensorflow"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": true,
+      "tier": "case-study",
+      "verifiedMine": true,
+      "links": {
+        "repo": "https://github.com/synamalhan/brain-tumor-cnn",
+        "demo": null,
+        "video": null
+      },
+      "images": [
+        {
+          "src": "brain-tumor-cnn.svg",
+          "alt": "Medical Image Analysis for Early Brain Tumor Detection architecture diagram",
+          "kind": "diagram"
+        }
+      ],
+      "metrics": [],
+      "details": "Situation: Early detection of tumors in radiology scans was inconsistent. Problem: High false negatives in automated diagnosis. Action: Trained U-Net for segmentation and ResNet for classification. Result: Reduced false negative rate by 35% while maintaining high precision.",
+      "caseStudy": {
+        "role": "Author of the repository: designed and built it.",
+        "problem": "Flag whether an MRI scan shows a tumor and, if so, localize it at pixel level.",
+        "decisions": [
+          {
+            "choice": "Two separate models: a ResNet classifier and a U-Net segmenter",
+            "tradeoff": "Each is simple to train and evaluate (accuracy, F1, ROC AUC; Dice, IoU), but they are not a single joint model."
+          },
+          {
+            "choice": "Binary classification on single-modality scans first",
+            "tradeoff": "Simpler problem; multi-class (glioma, meningioma, pituitary) and multi-modal input are future work."
+          },
+          {
+            "choice": "Ship a Streamlit app to visualize predictions",
+            "tradeoff": "Easy to inspect outputs, though it is a demo, not a clinical tool."
+          }
+        ],
+        "result": null
+      },
+      "status": "built",
+      "featuredRank": 3,
+      "projectedCompletion": null
+    },
+    {
+      "id": "portfolio-analyzer-and-stock-prediction-dashboard",
+      "title": "Portfolio Analyzer and Stock Prediction Dashboard",
+      "summary": "Portfolio management with real-time tracking and ML-driven forecasts.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Streamlit",
+        "Random Forest",
+        "LSTM"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2024,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/stock_pred.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Investors wanted analytics combined with price forecasting. Problem: Most dashboards lacked predictive capability. Action: Built backend with LSTM/Random Forest and integrated real-time stock APIs. Result: Delivered daily forecasts with 87% accuracy.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "slab-sizing",
+      "title": "Slab Sizing",
+      "summary": "Optimizing computer vision algorithms using YOLO for industrial measurement.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Ultralytics",
+        "YOLO",
+        "Python",
+        "FastSAM"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Manual measurement of steel slabs was time-consuming. Problem: Automated models lacked precision under varied lighting. Action: Fine-tuned YOLO and FastSAM models for precise detection. Result: Boosted measurement accuracy by 80%.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "customer-segmentation-via-k-means",
+      "title": "Customer Segmentation via K-Means",
+      "summary": "Applying K-Means clustering on mall customer data to identify marketing segments.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Python",
+        "K-Means",
+        "Matplotlib",
+        "Seaborn"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2024,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/customer-segmentation",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Marketing teams needed to segment customers for targeted campaigns. Problem: Manual segmentation was imprecise. Action: Used K-Means clustering and elbow method to find optimal groups. Result: Enhanced targeted marketing strategies and ROI.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "options-pricing-and-risk-assessment-tool",
+      "title": "Options Pricing and Risk Assessment Tool",
+      "summary": "Streamlit app that prices European options with Black-Scholes and Monte Carlo simulation and reports Value at Risk and Expected Shortfall.",
+      "category": "default",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Streamlit",
+        "NumPy",
+        "SciPy",
+        "Plotly",
+        "Matplotlib"
+      ],
+      "skills": [
+        "numpy",
+        "python"
+      ],
+      "year": 2024,
+      "dates": null,
+      "featured": true,
+      "tier": "case-study",
+      "verifiedMine": true,
+      "links": {
+        "repo": "https://github.com/synamalhan/option-pricing",
+        "demo": null,
+        "video": "https://youtu.be/HZKh0vNGbHU"
+      },
+      "images": [
+        {
+          "src": "option-pricing.svg",
+          "alt": "Options Pricing and Risk Assessment Tool architecture diagram",
+          "kind": "diagram"
+        }
+      ],
+      "metrics": [],
+      "details": "Situation: Finance students needed a simulation-based learning tool. Problem: Existing tools were non-interactive. Action: Built a Streamlit dashboard with VaR/ES risk metrics. Result: Helped users visualize pricing dynamics and scenario-based risk.",
+      "caseStudy": {
+        "role": "Author of the repository: designed and built it.",
+        "problem": "Estimate the fair value of options and the downside risk attached to them, with interactive inputs.",
+        "decisions": [
+          {
+            "choice": "Price with both closed-form Black-Scholes and Monte Carlo simulation",
+            "tradeoff": "Black-Scholes is exact for European options only; Monte Carlo is sampling-based but simulates the price paths directly."
+          },
+          {
+            "choice": "Report Value at Risk and Expected Shortfall from the simulated paths",
+            "tradeoff": "Gives a fuller view of downside risk than price alone."
+          }
+        ],
+        "result": null
+      },
+      "status": "built",
+      "featuredRank": 4,
+      "projectedCompletion": null
+    },
+    {
+      "id": "portfolio-optimizer-with-esg-integration",
+      "title": "Portfolio Optimizer with ESG Integration",
+      "summary": "Portfolio optimization under ESG score constraints using modern portfolio theory.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Streamlit",
+        "Pandas",
+        "NumPy"
+      ],
+      "skills": [
+        "python",
+        "pandas",
+        "numpy"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/esg-score-optimizer.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Investors wanted to balance financial returns and ESG impacts. Problem: No simple tools to incorporate ESG constraints. Action: Developed an app to optimize portfolios using mean-variance and ESG data. Result: Enabled sustainable investing with quantified tradeoffs.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "finance-helper",
+      "title": "Finance Helper",
+      "summary": "Simplifying and automating common financial tasks using local LLMs.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Streamlit",
+        "Python",
+        "LLM",
+        "FRED API"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/finance-assist",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: People struggle to track spending and savings effectively. Problem: Manual financial management is challenging. Action: Provided tools for expense tracking and budget analytics. Result: Empowered users to make informed financial decisions.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "ai-researcher-paper-summarizer",
+      "title": "AI Researcher Paper Summarizer",
+      "summary": "Generate concise summaries of research papers using state-of-the-art AI.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "React",
+        "Python",
+        "Flask"
+      ],
+      "skills": [
+        "react",
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/research-paper-summarizer",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Navigating large research PDFs is time-consuming. Problem: Extracting full text for reliable summarization. Action: Used BART models to generate abstractive summaries with user controls. Result: Provided previews and downloads for research summaries.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "facetrack-advanced-facial-recognition-attendance-system",
+      "title": "FaceTrack - Advanced Facial Recognition Attendance System",
+      "summary": "Facial recognition attendance management system combining AI and biometrics.",
+      "category": "fullstack",
+      "tags": [],
+      "stack": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite"
+      ],
+      "skills": [
+        "react",
+        "typescript"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/facial-attendance",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Traditional attendance tracking was time-consuming and error-prone. Problem: Lacked real-time analytics and efficiency. Action: Developed an AI-powered system with a dark purple professional UI. Result: Achieved accurate real-time tracking and reporting.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "eduflex-educational-learning-platform",
+      "title": "EduFlex+ Educational Learning Platform",
+      "summary": "AI-powered educational platform that adapts to emotional state and learning style.",
+      "category": "fullstack",
+      "tags": [],
+      "stack": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS"
+      ],
+      "skills": [
+        "react",
+        "typescript"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/eduflex-plus",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Modern education needs personalization. Problem: Adapting to individual student vibes. Action: Built with React/TS and integrated Ollama for local AI processing. Result: Created a platform that adapts to user emotions and learning styles.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "curamind-ai-powered-mental-health-support",
+      "title": "CuraMind - AI-Powered Mental Health Support",
+      "summary": "Multilingual, offline-capable mental health support chatbot with emotion detection, crisis detection and mood tracking.",
+      "category": "fullstack",
+      "tags": [],
+      "stack": [
+        "React",
+        "TypeScript",
+        "FastAPI",
+        "Ollama (Mistral/LLaMA2)",
+        "Whisper",
+        "IndexedDB",
+        "SQLite"
+      ],
+      "skills": [
+        "react",
+        "typescript"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": true,
+      "tier": "case-study",
+      "verifiedMine": true,
+      "links": {
+        "repo": "https://github.com/synamalhan/curamind",
+        "demo": null,
+        "video": null
+      },
+      "images": [
+        {
+          "src": "curamind.svg",
+          "alt": "CuraMind - AI-Powered Mental Health Support architecture diagram",
+          "kind": "diagram"
+        }
+      ],
+      "metrics": [],
+      "details": "Situation: Mental health support is expensive and not always available. Problem: Language barriers and offline limitations. Action: Built a multilingual chatbot providing empathetic responses. Result: Provided accessible and personalized mental health assistance.",
+      "caseStudy": {
+        "role": "Author of the repository: designed and built it.",
+        "problem": "Mental health support is expensive, rarely available around the clock, mostly English-only, and out of reach where connectivity is poor.",
+        "decisions": [
+          {
+            "choice": "Run the language model locally through Ollama and keep data in IndexedDB",
+            "tradeoff": "Works offline and keeps conversations on the device, but requires a locally installed model."
+          },
+          {
+            "choice": "Support English, Hindi, Tamil and Spanish with one-click switching",
+            "tradeoff": "Wider reach, at the cost of responses that must be adapted per language and culture."
+          },
+          {
+            "choice": "Detect emotion in text and voice, and flag crisis situations with resources",
+            "tradeoff": "Faster, more relevant help, but a support tool, not a clinical one."
+          }
+        ],
+        "result": null
+      },
+      "status": "built",
+      "featuredRank": 2,
+      "projectedCompletion": null
+    },
+    {
+      "id": "medihub-platform",
+      "title": "MediHub Platform",
+      "summary": "Modern AI-powered medical education platform for students and professionals.",
+      "category": "fullstack",
+      "tags": [],
+      "stack": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Supabase"
+      ],
+      "skills": [
+        "react",
+        "typescript"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/medi-hub.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Medical education tools are often fragmented. Problem: Need for a consolidated intelligent system. Action: Integrated simulators, flashcards, and analytics into one platform. Result: Delivered a best-in-class learning experience for medical pros.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "front-end-portal",
+      "title": "Front-end Portal",
+      "summary": "React portal with reusable components and dynamic filters for enterprise data.",
+      "category": "fullstack",
+      "tags": [],
+      "stack": [
+        "React",
+        "AWS Amplify",
+        "REST API",
+        "JavaScript"
+      ],
+      "skills": [
+        "react",
+        "javascript"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Needed a scalable portal for data display and video previews. Problem: Existing solutions lacked dynamic filtering. Action: Developed custom components and integrated multiple REST endpoints. Result: Improved engagement with dynamic visualization and video access.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "specialized-chatbot",
+      "title": "Specialized Chatbot",
+      "summary": "React-based chatbot with AWS Amplify and Cognito for admin management.",
+      "category": "fullstack",
+      "tags": [],
+      "stack": [
+        "React",
+        "AWS Amplify",
+        "AWS Cognito"
+      ],
+      "skills": [
+        "react"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Needed an intelligent chatbot with admin data controls. Problem: Lack of monitoring and management analytics. Action: Built frontend with React/Amplify and implemented Cognito auth. Result: Enabled seamless user interaction and real-time monitoring.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "chatbot-referral-agent",
+      "title": "Chatbot Referral Agent",
+      "summary": "Referral chatbot for secure data handling and analytics insights.",
+      "category": "fullstack",
+      "tags": [],
+      "stack": [
+        "React",
+        "AWS Amplify",
+        "AWS Cognito"
+      ],
+      "skills": [
+        "react"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Needed a scalable solution for referral tracking. Problem: No easy way to manage referral data. Action: Built React chatbot with Cognito auth and an admin portal. Result: Streamlined referral process with secure data handling.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "career-pilot",
+      "title": "Career Pilot",
+      "summary": "Helping users navigate and manage career growth and job applications.",
+      "category": "fullstack",
+      "tags": [],
+      "stack": [
+        "React",
+        "Python",
+        "Flask"
+      ],
+      "skills": [
+        "react",
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/career-pilot",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Advance in career requires organization. Problem: Overwhelming to track applications and milestones. Action: Built application to track interviews, goals, and professional documents. Result: Gained clarity on career paths and streamlined job searches.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "mindscape-your-personalized-wellness-companion",
+      "title": "MindScape — Your Personalized Wellness Companion",
+      "summary": "AI-powered wellness journal using sentiment analysis to suggest mindful actions.",
+      "category": "fullstack",
+      "tags": [],
+      "stack": [
+        "React",
+        "Python",
+        "FastAPI",
+        "HuggingFace"
+      ],
+      "skills": [
+        "react",
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/mind-scape",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Students need specialized emotional support. Problem: Navigating emotional landscapes requires guidance. Action: Built full-stack app using FastAPI and Transformers for sentiment detection. Result: Suggests personalized mindful actions based on journals.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "last-point-distribution-analysis",
+      "title": "Last Point Distribution Analysis",
+      "summary": "Optimized dispatch operations with K-means and real-time cost calculations.",
+      "category": "default",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Streamlit",
+        "K-means",
+        "Folium"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2024,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/dispatch_optimization_FG_forecasting",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Dispatch team faced inefficient routing and unclear clustering. Problem: Poorly defined last-mile zones. Action: Applied K-means to optimize zones and Folium for geospatial visualization. Result: Reduced path overlap and improved logistical efficiency.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "us-census-data-project",
+      "title": "US Census Data Project",
+      "summary": "Analyzing demographic, economic, and geographic trends across the USA.",
+      "category": "default",
+      "tags": [],
+      "stack": [
+        "React",
+        "Python",
+        "Flask"
+      ],
+      "skills": [
+        "react",
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/us-census-stats",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Understanding broad demographic shifts requires large-scale analysis. Problem: Visualizing US Census trends intuitively. Action: Built exploratory data analysis tools and interactive visualizations. Result: Provided valuable insights into US economic and geographic trends.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "blast-furnace-lab-automation",
+      "title": "Blast Furnace Lab Automation",
+      "summary": "Full-stack portal to automate and streamline industrial lab processes.",
+      "category": "default",
+      "tags": [],
+      "stack": [
+        "AngularJS",
+        "Spring Boot",
+        "SQL"
+      ],
+      "skills": [],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Lab processes were manual and fragmented. Problem: Lack of centralized data across lab operations. Action: Built a web portal integrating multiple lab workflows on cloud platforms. Result: Improved operational efficiency and centralized data access.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "plate-mill-fg-forecasting",
+      "title": "Plate Mill FG Forecasting",
+      "summary": "Predictive models to forecast finished goods for better dispatch planning.",
+      "category": "default",
+      "tags": [],
+      "stack": [
+        "Python",
+        "XGBoost",
+        "ARIMA",
+        "Prophet"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2024,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/dispatch_optimization_FG_forecasting",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Manual forecasting led to supply chain inefficiencies. Problem: Dispatch lacked accurate predictive backing. Action: Trained time series and ensemble models for weekly inventory forecasting. Result: Improved accuracy by 30% for production scheduling.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "portfolio-performance-analyzer",
+      "title": "Portfolio Performance Analyzer",
+      "summary": "Input, validate, and visualize stock portfolios with risk-return metrics.",
+      "category": "default",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Streamlit",
+        "yFinance",
+        "Plotly"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2024,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/portfolio_analyzer",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Investors needed a simple tool for portfolio visualization. Problem: Lack of interactive tools for asset analysis. Action: Developed Streamlit dashboard with yFinance integration and sector plots. Result: Improved user insights into risk, returns, and exposures.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "ocean-pollution-tracker",
+      "title": "Ocean Pollution Tracker",
+      "summary": "Monitoring and raising awareness about global ocean pollution.",
+      "category": "default",
+      "tags": [],
+      "stack": [
+        "React",
+        "Python",
+        "Flask"
+      ],
+      "skills": [
+        "react",
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/ocean-pollution-tracker",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Ocean pollution has severe impacts on marine ecosystems. Problem: Understanding pollutant distribution globally. Action: Collected and analyzed data to display in interactive maps and dashboards. Result: Raised awareness and promoted action via data visibility.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "nutrisnap-food-nutrition-database",
+      "title": "NutriSnap Food Nutrition Database",
+      "summary": "Food nutrition database and YOLOv8 detector covering 43 food classes, used to turn detected foods into per-100g macros in the NutriSnap app.",
+      "category": "vision",
+      "tags": [],
+      "stack": [
+        "Python",
+        "YOLOv8",
+        "Ultralytics",
+        "pandas"
+      ],
+      "skills": [
+        "pandas",
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": true,
+      "tier": "card",
+      "verifiedMine": true,
+      "links": {
+        "repo": "https://github.com/synamalhan/nutri-snap",
+        "demo": null,
+        "video": null
+      },
+      "images": [
+        {
+          "src": "nutri-snap.svg",
+          "alt": "NutriSnap Food Nutrition Database architecture diagram",
+          "kind": "diagram"
+        }
+      ],
+      "metrics": [],
+      "details": "food_db.csv maps common foods to calories, protein, carbs and fat per 100 g. A custom YOLOv8 model detects 43 food classes, and its detections are matched against the CSV to show macros. The training pipeline is in a Colab notebook linked from the repo.",
+      "caseStudy": null,
+      "status": "built",
+      "featuredRank": 7,
+      "projectedCompletion": null
+    },
+    {
+      "id": "wildlife-monitoring-conservation",
+      "title": "Wildlife Monitoring",
+      "summary": "Automated wildlife detection and monitoring for conservation using YOLO and SAM.",
+      "category": "vision",
+      "tags": [],
+      "stack": [
+        "YOLO",
+        "Faster R-CNN",
+        "SAM",
+        "FastSAM"
+      ],
+      "skills": [],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Manual tracking of endangered species was inefficient. Problem: Needed monitoring of remote wildlife zones. Action: Used YOLO and Faster R-CNN for detection and SAM for segmentation. Result: Enabled automated wildlife monitoring.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "surgical-video-vlm",
+      "title": "Vision-Language Models for Surgical Video Analysis",
+      "summary": "An in-development ASU capstone using vision-language models for neurosurgery workflow and instrument recognition.",
+      "category": "vision",
+      "tags": [],
+      "stack": [
+        "Capstone Project",
+        "PyTorch",
+        "Hugging Face",
+        "Vision-Language Models"
+      ],
+      "skills": [
+        "pytorch"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "In development at Arizona State University with advisor Dr. Yalin Wang. Building end-to-end pipelines to benchmark baseline and fine-tuned vision-language models on real surgical video data, and prototyping surgical video captioning and visual question answering with experimental performance analysis.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "ocr-training",
+      "title": "OCR Training",
+      "summary": "Improving recognition accuracy with Donut model fine-tuning.",
+      "category": "vision",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Donut Model",
+        "AWS OCR",
+        "Azure OCR"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Industrial log sheets are hard for standard OCR models. Problem: Poor recognition of critical text fields and symbols. Action: Fine-tuned Donut transformer models and benchmarked against commercial APIs. Result: Increased accuracy by over 25% on form fields.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "recall",
+      "title": "Recall: Private Personal Search Engine",
+      "summary": "A macOS AI app that searches notes, PDFs, and screenshots with semantic search and a local language model.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "macOS",
+        "Semantic Search",
+        "Local LLM",
+        "On-Device Privacy"
+      ],
+      "skills": [],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Search across personal notes, PDFs, and screenshots using semantic retrieval and a local language model. Recall provides context-aware answers with links back to the original sources while keeping processing on-device.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "wildsense",
+      "title": "WildSense",
+      "summary": "A computer vision system that detects, tracks, and identifies wildlife in challenging camera-trap footage.",
+      "category": "vision",
+      "tags": [],
+      "stack": [
+        "Python",
+        "PyTorch",
+        "Ultralytics YOLO",
+        "ByteTrack",
+        "Albumentations"
+      ],
+      "skills": [
+        "python",
+        "pytorch"
+      ],
+      "year": 2026,
+      "dates": null,
+      "featured": true,
+      "tier": "card",
+      "verifiedMine": true,
+      "links": {
+        "repo": "https://github.com/synamalhan/wildsense",
+        "demo": null,
+        "video": null
+      },
+      "images": [
+        {
+          "src": "wildsense.svg",
+          "alt": "WildSense architecture diagram",
+          "kind": "diagram"
+        }
+      ],
+      "metrics": [],
+      "details": "Design stage: the repository currently holds the architecture and plan. Planned: fine-tune a YOLO detector on public camera-trap data, augment for blur, occlusion and low light, track with ByteTrack, estimate uncertainty (MC dropout or an ensemble), report calibration (ECE) and route uncertain cases to a human review queue. No results are reported yet.",
+      "caseStudy": null,
+      "status": "in-progress",
+      "featuredRank": 6,
+      "projectedCompletion": "2026-11-26"
+    },
+    {
+      "id": "echobench-speech-ai-benchmarking",
+      "title": "EchoBench: Speech AI Benchmarking",
+      "summary": "An evaluation platform for comparing speech recognition models across accents, noise, and speaking conditions.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "Speech Recognition",
+        "Model Evaluation",
+        "Robustness",
+        "Statistical Analysis"
+      ],
+      "skills": [],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Compare speech recognition accuracy, latency, and subgroup performance across accents, background noise, and speaking conditions. EchoBench helps identify model weaknesses and evaluate improvements statistically.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "pulse-analytics",
+      "title": "Pulse: Personal Health and Activity Analytics",
+      "summary": "Privacy-focused analysis of activity, sleep, and workout data to surface trends and anomalies.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "Health Analytics",
+        "Time-Series Modeling",
+        "Anomaly Detection",
+        "Privacy"
+      ],
+      "skills": [],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Analyze activity, sleep, and workout data to identify trends, detect anomalies, and generate evidence-based summaries. Pulse distinguishes correlations from causal claims and explores personalized time-series modeling.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "modelguard-ml-reliability-platform",
+      "title": "ModelGuard: ML Reliability Platform",
+      "summary": "Python library and Streamlit dashboard that detects data drift, missing features and falling accuracy in deployed models, with a drift simulator to measure how fast and reliably it notices.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Streamlit",
+        "SQLite",
+        "scikit-learn",
+        "pytest",
+        "GitHub Actions"
+      ],
+      "skills": [
+        "python",
+        "scikit-learn"
+      ],
+      "year": 2026,
+      "dates": null,
+      "featured": true,
+      "tier": "case-study",
+      "verifiedMine": true,
+      "links": {
+        "repo": "https://github.com/synamalhan/model-guard",
+        "demo": null,
+        "video": null
+      },
+      "images": [
+        {
+          "src": "model-guard.svg",
+          "alt": "ModelGuard: ML Reliability Platform architecture diagram",
+          "kind": "diagram"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Scenarios detected (4 drift scenarios, 3 detector settings)",
+          "value": "20/20 held-out runs each",
+          "source": "model-guard README, results/eval"
+        },
+        {
+          "label": "Detection delay after drift starts",
+          "value": "1.55–4.50 batches (mean)",
+          "source": "model-guard README, results/eval"
+        },
+        {
+          "label": "False alarms on clean streams",
+          "value": "1 in 800 batches (0.12 per 100)",
+          "source": "model-guard README, results/eval"
+        }
+      ],
+      "details": "Monitor machine learning models for data drift, missing features, and declining performance. ModelGuard lets users simulate production failures, compare detection methods, and evaluate monitoring systems through reproducible experiments.",
+      "caseStudy": {
+        "role": "Author of the repository: designed and built it.",
+        "problem": "A deployed model rarely fails loudly: input data shifts, a feature goes missing, and accuracy erodes weeks before labels arrive to prove it. ModelGuard watches for those three failures and alerts only when they persist.",
+        "decisions": [
+          {
+            "choice": "Alert only after 3 consecutive breaching batches",
+            "tradeoff": "One noisy batch never pages anyone, but detection can't be faster than three batches."
+          },
+          {
+            "choice": "All state in one SQLite file; the dashboard is read-only and never calls the monitors",
+            "tradeoff": "Simple and reproducible, but single-process and not load-tested."
+          },
+          {
+            "choice": "Tune thresholds on seeds 0–9 under a false-alarm budget, report on seeds 10–29",
+            "tradeoff": "A held-out seed split, not a held-out data split; drift is synthetic, injected into one public dataset with one fixed model."
+          }
+        ],
+        "result": "On synthetic drift injected into the Adult dataset, every scenario was detected in 20/20 held-out runs for every detector setting, with mean detection delay between 1.55 and 4.50 batches and one false alarm across 800 clean batches. These are synthetic-drift results, not evidence about real production traffic."
+      },
+      "status": "built",
+      "featuredRank": 1,
+      "projectedCompletion": null
+    },
+    {
+      "id": "atlas-multimodal-research-assistant",
+      "title": "Atlas: Multimodal Research Assistant",
+      "summary": "Research assistant over arXiv papers that reads text, figures and tables, and verifies every citation against its source before showing an answer.",
+      "category": "ml",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Hybrid dense + BM25 retrieval",
+        "LLM API"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2026,
+      "dates": null,
+      "featured": true,
+      "tier": "card",
+      "verifiedMine": true,
+      "links": {
+        "repo": "https://github.com/synamalhan/atlas-research-assistant",
+        "demo": null,
+        "video": null
+      },
+      "images": [
+        {
+          "src": "atlas-research-assistant.svg",
+          "alt": "Atlas: Multimodal Research Assistant architecture diagram",
+          "kind": "diagram"
+        }
+      ],
+      "metrics": [],
+      "details": "Design stage: the repository currently holds the architecture and plan. Planned: ingest about 50 arXiv PDFs into text, figure and table chunks; retrieve with dense plus BM25 search and rerank; generate answers as claims with cited chunk IDs; verify each citation with exact quote and number checks plus a judge for paraphrases. Planned evaluation: 30 hand-written questions measuring retrieval recall, verified-citation rate, abstention accuracy and text-only vs multimodal. No results are reported yet.",
+      "caseStudy": null,
+      "status": "in-progress",
+      "featuredRank": 5,
+      "projectedCompletion": "2026-11-27"
+    },
+    {
+      "id": "health-metrics-dashboard",
+      "title": "Health Metrics Dashboard",
+      "summary": "Centralized dashboard to monitor health metrics seamlessly across iPhone and Apple Watch.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "SwiftUI",
+        "HealthKit",
+        "MVVM",
+        "Swift Concurrency",
+        "Secure Enclave",
+        "Keychain",
+        "XCTest"
+      ],
+      "skills": [
+        "swiftui"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/health-metrics-dashboard.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Users want a single interface to view health metrics. Problem: Data scattered between devices. Action: Built SwiftUI app with MVVM architecture, HealthKit integration, and async data fetching. Result: Real-time, secure, and privacy-focused dashboard that scales with new metrics.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "continuous-activity-tracking",
+      "title": "Continuous Activity Tracking System",
+      "summary": "Intelligently track user activity and adapt daily recommendations using on-device ML.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "iOS",
+        "watchOS",
+        "CoreMotion",
+        "CoreBluetooth",
+        "Combine",
+        "BGTaskScheduler",
+        "Core Data",
+        "Core ML",
+        "Swift Concurrency"
+      ],
+      "skills": [
+        "combine"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/continuous-activity-tracking.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Users want personalized activity insights and recommendations. Problem: Activity data is continuous, noisy, and battery-sensitive. Action: Captured motion data via CoreMotion, integrated wearables via CoreBluetooth, and used Core ML for adaptive activity suggestions. Result: Real-time, battery-efficient activity tracking with dynamic ML-driven recommendations.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "sleep-pattern-analysis-app",
+      "title": "Sleep Pattern Analysis App",
+      "summary": "Analyze sleep patterns while preserving privacy and providing meaningful trends.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "CoreMotion"
+      ],
+      "skills": [
+        "swift",
+        "swiftui"
+      ],
+      "year": 2026,
+      "dates": null,
+      "featured": true,
+      "tier": "card",
+      "verifiedMine": true,
+      "links": {
+        "repo": "https://github.com/synamalhan/sleep-pattern-analysis",
+        "demo": null,
+        "video": null
+      },
+      "images": [
+        {
+          "src": "sleep-pattern-analysis.svg",
+          "alt": "Sleep Pattern Analysis App architecture diagram",
+          "kind": "diagram"
+        }
+      ],
+      "metrics": [],
+      "details": "Design stage: the original repo was lost and is being rebuilt, so the repository currently holds the architecture and plan. Planned: CoreMotion capture, sliding-window motion detection, sleep/wake segmentation, on-device aggregation (nightly totals, restlessness, weekly trends) and SwiftUI timeline and trend views, validated against Apple Health sleep data or a hand-kept log. Motion is a proxy, not clinical sleep staging. No results are reported yet.",
+      "caseStudy": null,
+      "status": "in-progress",
+      "featuredRank": 8,
+      "projectedCompletion": "2026-11-24"
+    },
+    {
+      "id": "wellness-journal",
+      "title": "Wellness Journal",
+      "summary": "Simple and colorful iOS app to track daily mood and thoughts.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "SwiftUI",
+        "Xcode"
+      ],
+      "skills": [
+        "swiftui",
+        "xcode"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/wellness-journal-ios.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Need a clean space to journal feelings. Problem: Keeping entries organized and engaging. Action: Built SwiftUI app with emoji selection and local data persistence. Result: Users can easily track moods with a responsive, colorful UI.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "tapfast-a-rapid-tapping-game-for-apple-watch",
+      "title": "TapFast – A Rapid Tapping Game for Apple Watch",
+      "summary": "Fast-paced tapping game to test reaction speed on watchOS.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "SwiftUI",
+        "WatchKit",
+        "Xcode"
+      ],
+      "skills": [
+        "swiftui",
+        "xcode"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/tap-fast-watch-OS.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Fun way to test coordination on wearable devices. Problem: Lightweight interaction design for Watch. Action: Built with SwiftUI and WatchKit for high-performance tapping logic. Result: Challenge friends and test reactions from the wrist.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "neurotrack",
+      "title": "NeuroTrack",
+      "summary": "Cognitive training app improving memory through fun matching games.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "HealthKit",
+        "Xcode"
+      ],
+      "skills": [
+        "swift",
+        "swiftui",
+        "xcode"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/neurotrack",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Users need engaging brain-training tools. Problem: Tracking cognitive activity over time. Action: Built SwiftUI app with HealthKit integration to log mindful sessions. Result: Users track cognitive health and improve memory skills.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "pulseguardian-real-time-stress-monitor",
+      "title": "PulseGuardian: Real-Time Stress Monitor",
+      "summary": "Heart rate variability-based stress detection for Watch and iPhone.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "Swift",
+        "WatchKit",
+        "HealthKit",
+        "SwiftUI"
+      ],
+      "skills": [
+        "swift",
+        "swiftui"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Continuous stress monitoring is a key health metric. Problem: Needs real-time detection and relief strategies. Action: Monitored HRV via HealthKit to trigger guided breathing. Result: Achieved 92% detection accuracy in cross-device tests.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "moodsync-voice-journal-with-emotion-detection",
+      "title": "MoodSync: Voice Journal with Emotion Detection",
+      "summary": "Voice journaling with CoreML-powered mood tracking.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "Swift",
+        "CoreML",
+        "AVFoundation",
+        "Speech"
+      ],
+      "skills": [
+        "swift",
+        "coreml"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Traditional journaling can be tedious. Problem: Inconsistent mood analysis. Action: Used AVFoundation and Speech framework for hands-free sentiment classification. Result: Auto-tagged moods and visualized emotional trends over time.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "lensocr-ai-enhanced-document-scanner",
+      "title": "LensOCR: AI-Enhanced Document Scanner",
+      "summary": "iOS document scanner with real-time OCR and table extraction.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "Swift",
+        "Vision",
+        "CoreML",
+        "UIKit"
+      ],
+      "skills": [
+        "swift",
+        "coreml",
+        "uikit"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": null,
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Mobile scanners often fail with complex table structures. Problem: Need for structured data extraction on-device. Action: Used Apple Vision for edge detection and CoreML for table inference. Result: High accuracy scans with PDF and structured output.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "caresketch",
+      "title": "CareSketch",
+      "summary": "AI-powered care planning assistant built for social good.",
+      "category": "hackathon",
+      "tags": [],
+      "stack": [
+        "Streamlit",
+        "Ollama",
+        "Plotly",
+        "FPDF"
+      ],
+      "skills": [],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/care-sketch",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Caregivers need help planning personalized daily tasks. Problem: Traditional planning is manual and lacks emotional context. Action: Built during Hack the Vibe 2025 to create goal-based care plans. Result: Empowered caregivers with emotion-aware, exportable summaries.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "cropgenius",
+      "title": "CropGenius",
+      "summary": "100% accurate crop recommendations using XGBoost and Weather API.",
+      "category": "hackathon",
+      "tags": [],
+      "stack": [
+        "XGBoost",
+        "Random Forest",
+        "Streamlit",
+        "Weather API"
+      ],
+      "skills": [],
+      "year": 2024,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/ai-crop-optimizer",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Farmers need region-specific Soil-based crop advice. Problem: Traditional systems lacked precision. Action: Trained models using agri-datasets and live weather data. Result: Achieved perfectly accurate recommendations on validation cases.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "haunted-escape-room-react",
+      "title": "Haunted Escape Room (React)",
+      "summary": "Atmospheric horror escape room built with React and custom sound.",
+      "category": "creative",
+      "tags": [],
+      "stack": [
+        "React",
+        "CSS",
+        "MP3 Audio"
+      ],
+      "skills": [
+        "react"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/escape-room",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Trapped in a haunted house with eerie puzzles. Problem: Increasing difficulty and spectral interference. Action: Solve riddles to open doors and escape the spirits. Result: A fun, browser-based escape experience with immersive cues.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "personal-portfolio-website",
+      "title": "Personal Portfolio Website",
+      "summary": "Responsive portfolio showing technical skills and creative identity.",
+      "category": "creative",
+      "tags": [],
+      "stack": [
+        "React",
+        "Lottie",
+        "GitHub Pages"
+      ],
+      "skills": [
+        "react"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/website.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Needed a personalized platform to showcase complex work. Problem: Static resumes are too limiting. Action: Built a fully responsive React site with Lottie animations. Result: Created a dynamic presence reflecting my hybrid skillset.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "gamify-life-productivity-to-do-app",
+      "title": "Gamify Life – Productivity To-Do App",
+      "summary": "Productivity tracker with a reward system to gamify tasks and habits.",
+      "category": "creative",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Streamlit",
+        "Supabase",
+        "PostgreSQL"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/gamify-life.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Simple to-do apps lack motivation. Problem: Need for habit behavioral feedback. Action: Backed by Supabase to assign reward points and penalties. Result: Improved consistency through a personalized gamified approach.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "the-untold-legacy-of-bayard-rustin",
+      "title": "The Untold Legacy of Bayard Rustin",
+      "summary": "Digital tribute to an overlooked figure in the civil rights movement.",
+      "category": "creative",
+      "tags": [],
+      "stack": [
+        "React",
+        "JavaScript",
+        "Tailwind CSS"
+      ],
+      "skills": [
+        "react",
+        "javascript"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/hackstory.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Hackathon celebrating history and marginalized voices. Problem: Highlight unsung heroes of social change. Action: Created a dynamic multimedia tribute using React and Tailwind. Result: Shed light on Rustin's immense impact on history.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "solar-system-simulation-in-a-frame",
+      "title": "Solar System Simulation in A-Frame",
+      "summary": "Interactive 3D solar system model exploring WebXR and entity-component design.",
+      "category": "creative",
+      "tags": [],
+      "stack": [
+        "HTML",
+        "A-Frame",
+        "WebGL",
+        "Three.js"
+      ],
+      "skills": [
+        "webgl",
+        "three-js"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/a-frame-vr.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Exploration of 3D web and VR environment construction. Problem: No prior experience with spatial rendering. Action: Mapped planetary textures and orbits using A-Frame components. Result: Browser-based simulation of real orbital mechanics.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "github-linkedin-post-generator",
+      "title": "GitHub LinkedIn Post Generator",
+      "summary": "Transform GitHub activity into engaging LinkedIn posts using local AI.",
+      "category": "tools",
+      "tags": [],
+      "stack": [
+        "Python",
+        "Ollama",
+        "Streamlit"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/git-post",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Sharing dev work on social media is time-consuming. Problem: Need for human-sounding summaries of commits. Action: Uses Ollama to fetch repo activity and generate narratives. Result: Highlights projects with emojis and professional formatting.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "drag-and-drop-json-editor",
+      "title": "Drag & Drop JSON Editor",
+      "summary": "Visually edit JSON data with intuitive drag-and-drop fields.",
+      "category": "tools",
+      "tags": [],
+      "stack": [
+        "React",
+        "Node.js"
+      ],
+      "skills": [
+        "react"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/drag-drop-json",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Manual JSON editing is error-prone. Problem: Provide a more visual and intuitive structure management. Action: Built React app to rearrange and add fields dynamically. Result: Simplified config file management for developers.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "project-creator-with-local-llm-integration",
+      "title": "Project Creator with Local LLM Integration",
+      "summary": "Automates formatted project entries for portfolio websites using LLMs.",
+      "category": "tools",
+      "tags": [],
+      "stack": [
+        "React",
+        "Python",
+        "Flask"
+      ],
+      "skills": [
+        "react",
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/project-formatter.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Updating portfolio projects requires consistent formatting. Problem: Manual JSX creation is repetitive. Action: Uses Ollama to generate summary strings in consistent formats. Result: Minimal manual effort needed to add and update entries.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "streamlit-resume-builder-with-pdf-export",
+      "title": "Streamlit Resume Builder with PDF Export",
+      "summary": "Build and export professional resumes without formatting hassle.",
+      "category": "tools",
+      "tags": [],
+      "stack": [
+        "Streamlit",
+        "fpdf",
+        "Python"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": 2025,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/synamalhan/resume-formatter",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Dreaded process of fixing layout issues in Word/LaTeX. Problem: Need for separation of content and formatting. Action: Created JSON-backed builder that exports clean, professional PDFs. Result: Intuitive interface makes updating resumes simple.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "content-censoring-solution",
+      "title": "Content Censoring Solution",
+      "summary": "NLP-based moderation for text, audio, and video content.",
+      "category": "tools",
+      "tags": [],
+      "stack": [
+        "Python",
+        "NLP",
+        "Speech-to-Text"
+      ],
+      "skills": [
+        "python"
+      ],
+      "year": null,
+      "dates": null,
+      "featured": false,
+      "tier": null,
+      "verifiedMine": null,
+      "links": {
+        "repo": "https://github.com/PratGit1606/WhatTheBleep-AutomaticCensor.git",
+        "demo": null,
+        "video": null
+      },
+      "images": [],
+      "metrics": [],
+      "details": "Situation: Automate moderation for user-generated content. Problem: Manual moderation is slow and inconsistent. Action: Speech-to-text filters combined with NLP rules. Result: Scalable moderation with configurable censoring parameters.",
+      "caseStudy": null,
+      "status": null,
+      "featuredRank": null,
+      "projectedCompletion": null
+    },
+    {
+      "id": "infserve",
+      "tags": [],
+      "skills": [
+        "python"
+      ],
+      "year": 2026,
+      "dates": null,
+      "featured": true,
+      "featuredRank": 9,
+      "tier": "card",
+      "verifiedMine": true,
+      "images": [
+        {
+          "src": "infserve.svg",
+          "alt": "infserve: Dynamic-Batching Inference Server architecture diagram",
+          "kind": "diagram"
+        }
+      ],
+      "metrics": [],
+      "caseStudy": null,
+      "title": "infserve: Dynamic-Batching Inference Server",
+      "summary": "FastAPI inference server with an asyncio dynamic batcher on ONNX Runtime, plus benchmarks of what batching buys under load.",
+      "category": "ml",
+      "stack": [
+        "Python",
+        "FastAPI",
+        "asyncio",
+        "ONNX Runtime"
+      ],
+      "links": {
+        "repo": "https://github.com/synamalhan/infserve",
+        "demo": null,
+        "video": null
+      },
+      "details": "Design stage: the repository currently holds the architecture and plan. Planned: a bounded queue that returns 429 when full, a batcher that flushes on max batch size or max wait, ONNX Runtime workers in fp32 and int8, an open-loop load generator, and p50/p95/p99 latency, queue depth and throughput metrics. Benchmarks will compare batching off vs on and fp32 vs int8. No numbers are reported yet.",
+      "projectedCompletion": "2026-11-25",
+      "status": "in-progress"
+    },
+    {
+      "id": "tsbench",
+      "tags": [],
+      "skills": [
+        "numpy",
+        "pandas",
+        "python",
+        "pytorch",
+        "scikit-learn"
+      ],
+      "year": 2026,
+      "dates": null,
+      "featured": true,
+      "featuredRank": 10,
+      "tier": "card",
+      "verifiedMine": true,
+      "images": [
+        {
+          "src": "tsbench.svg",
+          "alt": "tsbench: Anomaly-Detection Benchmark architecture diagram",
+          "kind": "diagram"
+        }
+      ],
+      "metrics": [],
+      "caseStudy": null,
+      "title": "tsbench: Anomaly-Detection Benchmark",
+      "summary": "Benchmark showing how much the ranking of time-series anomaly detectors depends on the evaluation metric, including point-adjusted scoring.",
+      "category": "ml",
+      "stack": [
+        "Python",
+        "NumPy",
+        "pandas",
+        "scikit-learn",
+        "statsmodels",
+        "stumpy",
+        "PyTorch"
+      ],
+      "links": {
+        "repo": "https://github.com/synamalhan/tsbench",
+        "demo": null,
+        "video": null
+      },
+      "details": "Design stage: the repository currently holds the architecture and plan. Planned: z-score, STL residual, Isolation Forest, LOF, ARIMA, matrix profile and autoencoder detectors plus random and flag-all baselines on NAB and UCR, scored with point-wise, point-adjusted, event-based, AUC and detection-delay metrics over 5 seeds with bootstrap intervals and Wilcoxon tests. No results are reported yet.",
+      "projectedCompletion": "2026-11-23",
+      "status": "in-progress"
+    }
+  ],
+  "experiences": [
+    {
+      "id": "asu-pulse-tutoring",
+      "role": "Computer Science and Mathematics Tutor",
+      "company": "ASU Pulse Tutoring",
+      "lane": "work",
+      "start": "2026-08-15",
+      "end": null,
+      "internship": false,
+      "logo": "asu",
+      "summary": "Tutor undergraduate students in calculus and upper-division computer science, building independent problem-solving skills through clear explanations and guided debugging.",
+      "built": [
+        "Help students in Calculus I–II and upper-division CS (data structures and algorithms, operating systems, programming languages) move from following worked examples to solving problems on their own.",
+        "Explain algorithmic complexity, trees and graphs, scheduling, concurrency, memory management and language semantics at the level each student needs.",
+        "Guide debugging and problem decomposition so students learn to find their own errors."
+      ],
+      "stack": [
+        "Calculus I & II",
+        "Data Structures & Algorithms",
+        "Operating Systems",
+        "Programming Languages"
+      ],
+      "context": "Peer tutoring through ASU's Pulse Tutoring program, supporting students in both math and core CS courses.",
+      "impact": [
+        "Helps students move from following worked examples to solving problems on their own.",
+        "Covers a range of material, from calculus through algorithms, operating systems and language semantics."
+      ]
+    },
+    {
+      "id": "micron-technology",
+      "role": "Data Science Intern",
+      "company": "Micron Technology",
+      "lane": "work",
+      "start": "2026-05-15",
+      "end": "2026-08-15",
+      "internship": true,
+      "logo": "micron",
+      "summary": "Built an unsupervised clustering pipeline that groups post-manufacturing chip failures by underlying root cause, running in production.",
+      "built": [
+        "Built an unsupervised pipeline using HDBSCAN with Manhattan distance to group failures that share a root cause, with no labeled ground truth.",
+        "Engineered statistical features that capture a failure's real signature rather than surface similarity, alongside anomaly detection workflows.",
+        "Worked with domain engineers who reviewed the clusters and confirmed or rejected groupings, building ground truth iteratively.",
+        "Architected Snowflake and GCP/Azure workflows over large-scale failure analysis data, delivering cluster output to engineers as Jira tickets."
+      ],
+      "stack": [
+        "Python",
+        "Snowflake",
+        "GCP",
+        "Azure",
+        "HDBSCAN",
+        "Jira",
+        "Anomaly Detection"
+      ],
+      "context": "Summer internship on a failure analysis team in semiconductor manufacturing. Failures that look alike often have different root causes, and failures that look different can share one, so I grouped them by root cause so engineers can fix a cluster once instead of investigating every chip. Employer work, so details are kept high level.",
+      "impact": [
+        "Pipeline runs in production: Snowflake data, GCP clustering, output as Jira tickets.",
+        "Engineers work on grouped failure modes instead of every individual chip."
+      ]
+    },
+    {
+      "id": "make-programming-simple-lab-mps-lab",
+      "role": "Research Assistant",
+      "company": "Make Programming Simple Lab (MPS Lab)",
+      "lane": "research",
+      "start": "2025-07-15",
+      "end": "2025-10-15",
+      "internship": false,
+      "logo": "mps",
+      "summary": "Conducted research in Intelligent Transportation Systems (ITS), neural networks, and scalable machine learning systems.",
+      "built": [
+        "Benchmarked classical ML against CNN, RNN and LSTM models for traffic time-series forecasting and anomaly detection.",
+        "Built reproducible ML pipelines so experiments could be rerun and compared.",
+        "Contributed to research papers on deep learning for intelligent transportation systems."
+      ],
+      "stack": [
+        "Python",
+        "PyTorch",
+        "TensorFlow",
+        "NumPy",
+        "Scikit-learn",
+        "Deep Learning",
+        "Time Series Modeling"
+      ],
+      "context": "Research assistantship in an academic lab focused on machine learning for intelligent transportation systems.",
+      "impact": [
+        "Benchmarked classical ML against deep learning for traffic time-series forecasting.",
+        "Contributed reproducible pipelines and supported the lab's research papers."
+      ]
+    },
+    {
+      "id": "infinite-uptime",
+      "role": "Data Science Intern",
+      "company": "Infinite Uptime",
+      "lane": "work",
+      "start": "2025-07-15",
+      "end": "2025-09-15",
+      "internship": true,
+      "logo": "iu",
+      "summary": "Analyzed large-scale industrial sensor data on bearing systems to help customers anticipate failures and plan maintenance.",
+      "built": [
+        "Analyzed relationships across multiple variables in large-scale bearing sensor time series to classify failure modes and see how usage, operating conditions and bearing class affect failure timelines.",
+        "Built machine learning models and explainability layers that turned those findings into actionable maintenance recommendations.",
+        "Built dashboards and presentations for senior leadership, used across teams."
+      ],
+      "stack": [
+        "Python",
+        "Pandas",
+        "Scikit-learn",
+        "Matplotlib",
+        "Power BI",
+        "Time-Series Analysis",
+        "Explainability"
+      ],
+      "context": "Summer 2025 data science internship at an industrial IoT startup, communicating with both technical and non-technical stakeholders in a fast-paced environment.",
+      "impact": [
+        "Findings were reviewed by senior leadership and used across teams.",
+        "Explainability layers helped bridge complex models and real operational maintenance decisions."
+      ]
+    },
+    {
+      "id": "ernst-and-young",
+      "role": "Gen AI Intern",
+      "company": "Ernst & Young",
+      "lane": "work",
+      "start": "2025-06-15",
+      "end": "2025-08-15",
+      "internship": true,
+      "logo": "eyLogo",
+      "summary": "Generative AI internship building graph-based RAG, multimodal and agent workflows for enterprise use cases.",
+      "built": [
+        "Built a Retrieval-Augmented Generation pipeline with Neo4j and LangGraph, designing graph traversals, memory management and modular workflows for contextual grounding.",
+        "Evaluated and optimized multimodal text-to-text and text-to-image workflows, tuning prompts and outputs to business requirements while balancing quality and computational cost.",
+        "Contributed to an MCP-style agent in LangGraph, enabling tool use and dynamic behavior through graph-based state transitions, and explored multi-model optimization across performance, cost and latency.",
+        "Built dashboards visualizing AI outputs and knowledge-graph insights, and took part in sprint planning, documentation and technical presentations."
+      ],
+      "stack": [
+        "Python",
+        "LangChain",
+        "LangGraph",
+        "Neo4j",
+        "RAG",
+        "Multimodal AI",
+        "MCP",
+        "Prompt Engineering"
+      ],
+      "context": "Summer 2025 Generative AI internship, working with stakeholders to turn business use cases into deployable GenAI solutions. Client details are confidential.",
+      "impact": [
+        "Delivered a graph-grounded RAG pipeline for reasoning over structured knowledge graphs.",
+        "Helped the team weigh multimodal and multi-model options on quality, cost and latency."
+      ]
+    },
+    {
+      "id": "arizona-state-university-ai-cloud-innovation-center",
+      "role": "Cloud Front End Developer",
+      "company": "Arizona State University AI Cloud Innovation Center",
+      "lane": "work",
+      "start": "2024-08-15",
+      "end": "2025-08-15",
+      "internship": false,
+      "logo": "asu",
+      "summary": "Part-time frontend and cloud developer at ASU's AI Cloud Innovation Center, building data-driven AI applications on AWS.",
+      "built": [
+        "Built React frontends for data-driven AI applications and designed UI, wireframes and visualizations for public-sector cloud workflows.",
+        "Developed Python backends and worked extensively with AWS services.",
+        "Explored graph databases and graph neural networks to model complex relationships.",
+        "Contributed to scalable, cloud-native system design and deployment workflows."
+      ],
+      "stack": [
+        "React",
+        "JavaScript",
+        "Python",
+        "AWS",
+        "Graph Databases",
+        "GNNs",
+        "UI/UX Design"
+      ],
+      "context": "Part-time role over a year, including summer 2025 when it ran alongside two internships. The center builds cloud and AI prototypes for public-sector organizations.",
+      "impact": [
+        "Shipped production-facing frontend and backend work for public-sector AI prototypes.",
+        "Connected model, infrastructure and user-facing layers in real AI products."
+      ]
+    },
+    {
+      "id": "jindal-steel-and-power-ltd",
+      "role": "Intern in Digitalization",
+      "company": "Jindal Steel and Power Ltd",
+      "lane": "work",
+      "start": "2024-05-15",
+      "end": "2024-07-15",
+      "internship": true,
+      "logo": "jspl",
+      "summary": "Built three internal tools for a steel manufacturer's IT & Digitalization team: a plate-mill finished-goods date forecaster, a stockyard allocation optimizer, and a blast furnace data system.",
+      "built": [
+        "Plate Mill FG Date Forecasting: after interviewing users and cleaning historical data, engineered features with Gini index and SHAP values and compared ARIMA, Random Forest, Prophet and XGBoost. XGBoost performed best and was used to predict finished-goods creation dates to support dispatch planning and on-time, in-full (OTIF) delivery.",
+        "Last Point Distribution Analysis: grouped customers and stockyards with KNN clustering and geospatial analysis, then used OSRM distance APIs and historical costs to estimate transport cost, in a Streamlit app, to optimize how finished goods are allocated to stockyards.",
+        "Blast Furnace Lab system: built a centralized data management system with Spring Boot (Java) and Angular on Microsoft SQL Server, secured it with JWT authentication, and deployed it to a remote server on Tomcat for company-wide access."
+      ],
+      "stack": [
+        "Python",
+        "XGBoost",
+        "Streamlit",
+        "KNN Clustering",
+        "OSRM",
+        "Spring Boot",
+        "Angular",
+        "Node.js",
+        "MS SQL Server",
+        "JWT",
+        "Tomcat"
+      ],
+      "context": "Two-month summer internship in the Digitalization team of the IT & Communications department at Jindal Steel & Power, working with plate mill, logistics and blast furnace stakeholders.",
+      "impact": [
+        "The forecasting model supports dispatch planning and on-time, in-full delivery for the plate mill.",
+        "The distribution analysis gave planners a data-driven way to cut transport cost and improve delivery efficiency.",
+        "The blast furnace system centralized lab data collection with secure, company-wide access for performance analysis."
+      ]
+    },
+    {
+      "id": "ripik-ai",
+      "role": "Intern in Machine Learning and Data Analytics",
+      "company": "Ripik.AI",
+      "lane": "work",
+      "start": "2024-07-15",
+      "end": "2024-08-15",
+      "internship": true,
+      "logo": "ripik",
+      "summary": "Remote data science internship at an industrial AI startup, working on computer vision and OCR for manufacturing clients.",
+      "built": [
+        "Used Ultralytics (YOLO) for a slab-sizing computer vision project, going from little prior computer vision experience to contributing to a production use case.",
+        "Trained an open-source OCR model end to end: annotated data, fine-tuned the model, debugged it and prepared it for deployment.",
+        "Worked on projects for industrial clients across paints, steel and copper, and built dashboards and analytics for client reporting."
+      ],
+      "stack": [
+        "Python",
+        "Ultralytics (YOLO)",
+        "OpenCV",
+        "OCR",
+        "Computer Vision",
+        "Deep Learning"
+      ],
+      "context": "Two-month remote internship at a fast-moving AI startup serving large manufacturing companies, mentored by a senior data scientist.",
+      "impact": [
+        "Contributed to slab-sizing vision work used in real client engagements.",
+        "Delivered an OCR model fine-tuned on annotated data, improving document recognition for industrial use."
+      ]
+    },
+    {
+      "id": "headstarter-ai",
+      "role": "Software Engineering Fellow",
+      "company": "Headstarter AI",
+      "lane": "work",
+      "start": "2024-07-15",
+      "end": "2024-09-15",
+      "internship": false,
+      "logo": "headstarter",
+      "summary": "Built multiple AI applications using modern full-stack technologies.",
+      "built": [
+        "Shipped multiple AI-powered full-stack applications with Next.js, React, OpenAI APIs, Pinecone and Stripe.",
+        "Led peer code reviews and engineering presentations.",
+        "Mentored other fellows in full-stack development."
+      ],
+      "stack": [
+        "Next.js",
+        "React",
+        "OpenAI API",
+        "Pinecone",
+        "Stripe API",
+        "Full Stack Development"
+      ],
+      "context": "Software engineering fellowship in a cohort-based program where fellows ship AI-powered applications.",
+      "impact": [
+        "Shipped multiple AI-powered full-stack applications.",
+        "Strengthened the cohort through peer reviews, presentations and mentoring."
+      ]
+    }
+  ],
+  "internshipWork": [
+    {
+      "id": "product-and-engineering-optimization",
+      "experienceId": "micron-technology",
+      "title": "Defect signature clustering and failure analysis",
+      "problemType": "Unsupervised ML, anomaly detection and root-cause grouping",
+      "role": "Built an unsupervised clustering pipeline (HDBSCAN, Manhattan distance) that groups failed chips by underlying root cause with no labeled ground truth, validated iteratively by domain engineers.",
+      "tools": [
+        "Python",
+        "Snowflake",
+        "GCP",
+        "Azure",
+        "HDBSCAN",
+        "Jira"
+      ],
+      "impact": "Runs in production, delivering clusters to engineers as Jira tickets so each root cause is fixed once. Details are kept high level as employer work."
+    },
+    {
+      "id": "bearing-failure-prediction",
+      "experienceId": "infinite-uptime",
+      "title": "Bearing failure prediction",
+      "problemType": "Predictive maintenance on industrial sensor data",
+      "role": "Analyzed multi-variable time series, classified failure modes, and built models, explainability layers and dashboards for leadership.",
+      "tools": [
+        "Python",
+        "Pandas",
+        "Scikit-learn",
+        "Power BI"
+      ],
+      "impact": "Reviewed by senior leadership and used across teams."
+    },
+    {
+      "id": "graph-grounded-rag",
+      "experienceId": "ernst-and-young",
+      "title": "Graph-grounded RAG",
+      "problemType": "Retrieval-augmented generation over knowledge graphs",
+      "role": "Built a RAG pipeline with Neo4j and LangGraph, designing graph traversals, memory management and modular workflows.",
+      "tools": [
+        "Neo4j",
+        "LangGraph",
+        "Python"
+      ],
+      "impact": "Enables reasoning over structured knowledge with grounded context."
+    },
+    {
+      "id": "multimodal-model-optimization",
+      "experienceId": "ernst-and-young",
+      "title": "Multimodal model optimization",
+      "problemType": "Text-to-image generation",
+      "role": "Explored and tuned text-to-image workflows and prompts to meet business requirements, balancing quality, coherence and compute.",
+      "tools": [
+        "Python",
+        "LangChain",
+        "Prompt engineering"
+      ],
+      "impact": "Helped weigh multimodal options on quality and cost."
+    },
+    {
+      "id": "mcp-style-agent",
+      "experienceId": "ernst-and-young",
+      "title": "MCP-style agent",
+      "problemType": "LLM agent orchestration",
+      "role": "Contributed to an MCP-style agent in LangGraph, with tool use and behavior driven by graph-based state transitions.",
+      "tools": [
+        "LangGraph",
+        "LangChain",
+        "Python"
+      ],
+      "impact": "Enables dynamic agent behavior and tool-use strategies."
+    },
+    {
+      "id": "slab-sizing",
+      "experienceId": "ripik-ai",
+      "title": "Slab sizing",
+      "problemType": "Computer vision (object detection)",
+      "role": "Used Ultralytics YOLO on a slab-sizing project, with guidance from a mentor.",
+      "tools": [
+        "Python",
+        "Ultralytics (YOLO)"
+      ],
+      "impact": "Contributed to real client applications."
+    },
+    {
+      "id": "ocr-model-fine-tuning",
+      "experienceId": "ripik-ai",
+      "title": "OCR model fine-tuning",
+      "problemType": "Document recognition",
+      "role": "Annotated data, fine-tuned an open-source OCR model, then debugged it and prepared it for deployment.",
+      "tools": [
+        "Python",
+        "OCR"
+      ],
+      "impact": "Improved document recognition for industrial use."
+    },
+    {
+      "id": "plate-mill-date-forecasting",
+      "experienceId": "jindal-steel-and-power-ltd",
+      "title": "Plate mill date forecasting",
+      "problemType": "Forecasting and regression",
+      "role": "Interviewed stakeholders, cleaned historical data, engineered features (Gini index, SHAP) and compared ARIMA, Random Forest, Prophet and XGBoost. XGBoost performed best.",
+      "tools": [
+        "Python",
+        "XGBoost",
+        "SHAP"
+      ],
+      "impact": "Supports dispatch planning and on-time, in-full delivery."
+    },
+    {
+      "id": "stockyard-allocation",
+      "experienceId": "jindal-steel-and-power-ltd",
+      "title": "Stockyard allocation",
+      "problemType": "Geospatial clustering and cost estimation",
+      "role": "Reviewed current dispatch methods with stakeholders, clustered customers and stockyards with KNN, and estimated distances (OSRM) and costs in a Streamlit app.",
+      "tools": [
+        "Python",
+        "Streamlit",
+        "KNN",
+        "OSRM"
+      ],
+      "impact": "Aims to cut transport cost and improve delivery efficiency."
+    },
+    {
+      "id": "blast-furnace-lab-system",
+      "experienceId": "jindal-steel-and-power-ltd",
+      "title": "Blast furnace lab system",
+      "problemType": "Full-stack data management",
+      "role": "Worked on the Spring Boot backend, Angular frontend and SQL Server storage, with JWT authentication, deployed on Tomcat.",
+      "tools": [
+        "Spring Boot",
+        "Angular",
+        "SQL Server",
+        "JWT",
+        "Tomcat"
+      ],
+      "impact": "Centralizes furnace data with secure, company-wide access."
+    }
+  ]
+}
