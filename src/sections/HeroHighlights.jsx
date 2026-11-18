@@ -23,7 +23,7 @@ export default function HeroHighlights({ left }) {
             )}
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: 16 }}>
                 {top3.map((p, i) => (
-                    <Link key={p.id} to={`/projects/${p.id}`} className="float-y" style={{
+                    <Link key={p.id} to={`/projects/${p.id}`} className="float-y hover-card" style={{
                         textDecoration: "none", textAlign: "left", padding: "16px 18px", borderRadius: 14,
                         background: t.surface, border: `1px solid ${t.border}`, borderTop: `3px solid ${accents[i]}`,
                         boxShadow: "0 12px 28px rgba(0,0,0,.25)",

@@ -23,7 +23,7 @@ export default function Skills() {
                 <p style={{ color: t.textMute, fontSize: "1.05rem", margin: "0 0 32px" }}>Click a skill to see the projects that use it.</p>
                 <div style={{ display: "grid", gridTemplateColumns: isMobile ? "minmax(0,1fr)" : "repeat(2, minmax(0,1fr))", gap: 20 }}>
                     {AREAS.map(([key, title]) => (
-                        <div key={key} style={{ background: t.surface, border: `1px solid ${t.border}`, borderTop: `3px solid ${colors[key]}`, borderRadius: 16, padding: "20px 22px" }}>
+                        <div key={key} className="hover-card" style={{ background: t.surface, border: `1px solid ${t.border}`, borderTop: `3px solid ${colors[key]}`, borderRadius: 16, padding: "20px 22px" }}>
                             <h3 style={{ ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".16em", color: colors[key], marginBottom: 14 }}>{title.toUpperCase()}</h3>
                             <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
                                 {skills.filter(s => s.area === key).map(s => {

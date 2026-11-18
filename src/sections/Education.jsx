@@ -18,7 +18,7 @@ export default function Education() {
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <Label>// Education</Label>
                 <H2>EDUCATION</H2>
-                <div style={{ border: `1px solid ${t.border}`, background: t.surface, borderRadius: 16, padding: 24 }}>
+                <div className="hover-card" style={{ border: `1px solid ${t.border}`, background: t.surface, borderRadius: 16, padding: 24 }}>
                     <div style={{ ...FONTS.orb, fontWeight: 700, fontSize: "1.5rem", color: t.textHi }}>{profile.school}</div>
                     <div style={{ color: t.text, fontSize: "1.1rem", margin: "8px 0" }}>{profile.degree} · Minor in {profile.minor}</div>
                     <div style={{ ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".12em", color: t.textMute, marginBottom: 16 }}>EXPECTED {profile.gradYear}</div>

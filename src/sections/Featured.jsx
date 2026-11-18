@@ -15,7 +15,7 @@ function Card({ p, big }) {
     const { theme: t } = useTheme();
     const status = statusLabel(p);
     return (
-        <Link to={`/projects/${p.id}`} style={{
+        <Link to={`/projects/${p.id}`} className="hover-card" style={{
             display: "flex", flexDirection: "column", gap: 12, padding: 14, textDecoration: "none",
             background: t.surface, border: `1px solid ${t.border}`, borderRadius: 16, color: t.text,
         }}>

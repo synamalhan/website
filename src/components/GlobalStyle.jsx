@@ -21,6 +21,19 @@ export default function GlobalStyle() {
 
       .glitch { position:relative; display:inline-block; animation:shake 3s infinite; }
       .scanbar { animation:scanLine 3s infinite; border-radius: 5px; }
+      /* Hover/focus feedback for everything clickable. Uses the separate "translate" property so it never fights inline transforms. */
+      a[href], button, [role="button"], select, summary, label[for] { transition: translate .2s ease, filter .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease, opacity .2s ease; }
+      @media (hover: hover) {
+        a[href]:hover, button:not(:disabled):hover, [role="button"]:hover, summary:hover { translate: 0 -2px; filter: brightness(1.12); }
+        select:hover { filter: brightness(1.12); }
+      }
+      a[href]:active, button:not(:disabled):active, [role="button"]:active { translate: 0 0; filter: brightness(.95); }
+      a[href]:focus-visible, button:focus-visible, [role="button"]:focus-visible, select:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+      /* Cards: lift with a soft shadow. filter: drop-shadow works even where cards set their own inline box-shadow. */
+      .hover-card, [style*="cursor: pointer"] { transition: translate .25s ease, filter .25s ease; }
+      @media (hover: hover) {
+        .hover-card:hover, div[style*="cursor: pointer"]:hover, a.hover-card:hover { translate: 0 -4px; filter: drop-shadow(0 14px 20px rgba(0,0,0,.35)); }
+      }
       .float-y { animation:floatY 2s ease-in-out infinite; }
     `}</style>
     );

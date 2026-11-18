@@ -42,7 +42,7 @@ export default function ArchivePage() {
     const chip = on => ({ ...FONTS.inter, fontSize: ".92rem", padding: "7px 14px", borderRadius: 999, cursor: "pointer", whiteSpace: "nowrap",
         background: on ? t.accent : "transparent", color: on ? "#fff" : t.text, border: `1px solid ${on ? t.accent : t.border}` });
     const Row = ({ p }) => (
-        <li style={{ background: t.surface, border: `1px solid ${t.border}`, borderLeft: `4px solid ${catColor(p.category)}`, borderRadius: 12, padding: "14px 16px", display: "grid", gap: 8 }}>
+        <li className="hover-card" style={{ background: t.surface, border: `1px solid ${t.border}`, borderLeft: `4px solid ${catColor(p.category)}`, borderRadius: 12, padding: "14px 16px", display: "grid", gap: 8 }}>
             <Link to={`/projects/${p.id}`} style={{ ...FONTS.inter, fontWeight: 600, fontSize: "1.05rem", lineHeight: 1.35, color: t.textHi, textDecoration: "none" }}>{p.title}</Link>
             <div style={{ ...FONTS.mono, fontSize: ".75rem", color: t.textMute }}>
                 {catTitle(p.category)}{p.year ? ` · ${p.year}` : ""}{p.status === "in-progress" ? <span style={{ color: t.gold }}> · IN PROGRESS</span> : ""}
@@ -55,7 +55,7 @@ export default function ArchivePage() {
     );
     const FeaturedCard = ({ p }) => (
         <li style={{ listStyle: "none" }}>
-            <Link to={`/projects/${p.id}`} style={{ display: "grid", gap: 10, padding: 12, textDecoration: "none", background: t.surface, border: `1px solid ${t.border}`, borderRadius: 14, height: "100%" }}>
+            <Link to={`/projects/${p.id}`} className="hover-card" style={{ display: "grid", gap: 10, padding: 12, textDecoration: "none", background: t.surface, border: `1px solid ${t.border}`, borderRadius: 14, height: "100%" }}>
                 <ProjectImage project={p} ratio="16 / 10" />
                 <div style={{ padding: "0 4px 4px" }}>
                     <div style={{ ...FONTS.inter, fontWeight: 600, color: t.textHi, lineHeight: 1.3 }}>{p.title}</div>
@@ -92,7 +92,7 @@ export default function ArchivePage() {
                     {active && <button type="button" onClick={reset} style={{ ...field, cursor: "pointer" }}>Clear filters</button>}
                 </div>
 
-                <details style={{ marginBottom: 8, background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: "4px 16px" }}>
+                <details className="hover-card" style={{ marginBottom: 8, background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: "4px 16px" }}>
                     <summary style={{ ...link, cursor: "pointer", padding: "12px 0" }}>SKILLS × CATEGORIES MATRIX</summary>
                     <p style={{ color: t.textMute, margin: "0 0 12px", fontSize: ".95rem" }}>Projects using each skill, by category. Click a number to filter.</p>
                     <div style={{ overflowX: "auto", paddingBottom: 12 }}>

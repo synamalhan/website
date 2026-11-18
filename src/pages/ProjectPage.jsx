@@ -71,7 +71,7 @@ export default function ProjectPage() {
                             <Sec title="KEY DECISIONS AND TRADE-OFFS">
                                 <div style={{ display: "grid", gap: 14 }}>
                                     {cs.decisions.map((x, i) => (
-                                        <div key={x.choice} style={{ ...card, display: "grid", gridTemplateColumns: isMobile ? "minmax(0,1fr)" : "1fr 1fr", gap: isMobile ? 12 : 28, borderLeft: `4px solid ${color}` }}>
+                                        <div key={x.choice} className="hover-card" style={{ ...card, display: "grid", gridTemplateColumns: isMobile ? "minmax(0,1fr)" : "1fr 1fr", gap: isMobile ? 12 : 28, borderLeft: `4px solid ${color}` }}>
                                             <div>
                                                 <div style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".14em", color: t.textMute, marginBottom: 6 }}>DECISION {i + 1}</div>
                                                 <div style={{ fontSize: "1.02rem", lineHeight: 1.55, color: t.textHi, fontWeight: 600 }}>{x.choice}</div>
@@ -88,7 +88,7 @@ export default function ProjectPage() {
                                 {p.metrics.length > 0 && (
                                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))", gap: 14, marginBottom: 18 }}>
                                         {p.metrics.map(m => (
-                                            <div key={m.label} style={card}>
+                                            <div key={m.label} className="hover-card" style={card}>
                                                 <div style={{ ...FONTS.orb, fontSize: "1.45rem", fontWeight: 800, color: t.textHi, lineHeight: 1.2 }}>{m.value}</div>
                                                 <div style={{ fontSize: ".92rem", color: t.textMute, marginTop: 8, lineHeight: 1.45 }}>{m.label}</div>
                                             </div>

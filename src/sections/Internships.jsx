@@ -29,7 +29,7 @@ export default function Internships() {
                         </div>
                         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "minmax(0,1fr)" : "repeat(auto-fill, minmax(340px, 1fr))", gap: 14 }}>
                             {internshipWork.filter(w => w.experienceId === c.id).map(w => (
-                                <details key={w.id} style={{ background: t.surface, border: `1px solid ${t.border}`, borderLeft: `5px solid ${color}`, borderRadius: 14, padding: "16px 18px" }}>
+                                <details key={w.id} className="hover-card" style={{ background: t.surface, border: `1px solid ${t.border}`, borderLeft: `5px solid ${color}`, borderRadius: 14, padding: "16px 18px" }}>
                                     <summary style={{ cursor: "pointer", listStyle: "none" }}>
                                         <div style={{ ...FONTS.inter, fontWeight: 600, fontSize: "1.05rem", color: t.textHi }}>{w.title} <span aria-hidden="true" style={{ color }}>+</span></div>
                                         <div style={{ ...FONTS.mono, fontSize: ".75rem", letterSpacing: ".06em", color, margin: "6px 0 10px" }}>{w.problemType.toUpperCase()}</div>
