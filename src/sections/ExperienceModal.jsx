@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import Tag from "../components/ui/Tag";
@@ -27,8 +28,9 @@ export default function ExperienceModal({ exp, onClose }) {
     }, [onClose]);
     const body = { ...FONTS.inter, fontSize: "1rem", lineHeight: 1.7, color: t.text };
     const list = items => items.map((x, i) => <div key={i} style={{ ...body, display: "flex", gap: 10, marginBottom: 8 }}><span style={{ color: t.accent }}>•</span>{x}</div>);
-    return (
-        <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,.7)", display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
+    // Portal to <body>: inside a flipping/floating card, `position: fixed` is relative to the transformed card, not the screen.
+    return createPortal(
+        <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 2000, background: "rgba(0,0,0,.7)", display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
             <div role="dialog" aria-modal="true" aria-label={`${exp.role} at ${exp.company}`} onClick={e => e.stopPropagation()}
                 style={{ background: t.bg, border: `2px solid ${t.accent}`, borderRadius: 20, maxWidth: 720, width: "100%", maxHeight: "88vh", overflowY: "auto", padding: "32px clamp(20px,4vw,40px)" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", gap: 16 }}>
@@ -45,6 +47,7 @@ export default function ExperienceModal({ exp, onClose }) {
                 <Section t={t} title="IMPACT">{list(exp.impact)}</Section>
                 <Section t={t} title="STACK"><div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>{exp.techStack.map(s => <Tag key={s}>{s}</Tag>)}</div></Section>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
