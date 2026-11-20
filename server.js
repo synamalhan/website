@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { fetchReading } from './scripts/goodreads-lib.mjs';
 import querystring from 'querystring';
 
 dotenv.config();
@@ -139,6 +140,18 @@ async function getLastPlayed(token) {
         return t ? { title: t.name.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim(), artist: t.artists[0].name, albumImageUrl: t.album.images[0]?.url } : null;
     } catch { return null; }
 }
+
+// Live Goodreads shelf, cached 10 minutes so visitors never hammer Goodreads.
+let readingCache = { at: 0, books: [] };
+app.get('/api/reading', async (req, res) => {
+    try {
+        if (Date.now() - readingCache.at > 10 * 60 * 1000) readingCache = { at: Date.now(), books: await fetchReading() };
+        res.json(readingCache.books);
+    } catch (err) {
+        console.error("Reading error:", err.message);
+        res.json(readingCache.books); // stale or empty; the site falls back to its build-time copy
+    }
+});
 
 app.get('/api/now-playing', async (req, res) => {
     try {

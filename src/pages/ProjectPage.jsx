@@ -23,6 +23,7 @@ export default function ProjectPage() {
     const color = cat?.colors[0] || t.accent;
     const status = statusLabel(p);
     const diagram = p.images.find(i => i.kind === "diagram");
+    const shots = p.images.filter(i => i.kind === "screenshot");
     const fi = featured.findIndex(x => x.id === p.id);
     const prev = fi >= 0 && featured[(fi - 1 + featured.length) % featured.length];
     const next = fi >= 0 && featured[(fi + 1) % featured.length];
@@ -57,6 +58,14 @@ export default function ProjectPage() {
 
                 <div style={{ display: "grid", gridTemplateColumns: isMobile ? "minmax(0,1fr)" : "minmax(0,1fr) 270px", gap: 40, alignItems: "start" }}>
                     <div>
+                        {shots.length > 0 && (
+                            <Sec title="SCREENSHOTS">
+                                <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+                                    {shots.map(i => <img key={i.src} src={projectImage(i.src)} alt={i.alt} loading="lazy" style={{ width: isMobile ? "46%" : 210, borderRadius: 16, border: `1px solid ${t.border}`, boxShadow: "0 10px 24px rgba(0,0,0,.35)" }} />)}
+                                </div>
+                                <p style={{ ...FONTS.mono, fontSize: ".75rem", color: t.textMute, marginTop: 10 }}>iOS Simulator screenshots from the repository.</p>
+                            </Sec>
+                        )}
                         {diagram && (
                             <Sec title="ARCHITECTURE">
                                 <figure style={{ margin: 0 }}>

@@ -6,7 +6,7 @@
   "homepage": "https://synamalhan.github.io/website",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/sitemap.mjs && vite-react-ssg build",
+    "build": "node scripts/goodreads.mjs && node scripts/sitemap.mjs && vite-react-ssg build",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },

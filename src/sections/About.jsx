@@ -1,4 +1,6 @@
 import { forwardRef, useEffect, useRef } from "react";
+import { useReading } from "../hooks/useReading";
+import uboat from "../assets/metalearth.png";
 import { yearsSinceFirstRole, profile } from "../data/portfolio";
 import { motion } from "framer-motion";
 import { useTheme } from "../theme/ThemeContext";
@@ -129,6 +131,7 @@ const MusicTile = ({ t, counts, isMobile, sync }) => {
 
     return (
         <motion.div
+            className="hover-card"
             whileHover={{ y: -5, boxShadow: isPlaying ? `0 10px 40px rgba(29, 185, 84, 0.3)` : `0 10px 30px ${t.accent}15` }}
             style={{
                 background: isPlaying ? `linear-gradient(135deg, ${t.surface}90, rgba(29, 185, 84, 0.1))` : '#000',
@@ -295,6 +298,7 @@ const BentoBox = ({ children, style = {}, colSpan = 1, rowSpan = 1, hover = true
 
     return (
         <motion.div
+            className="hover-card"
             whileHover={hover ? { y: -5, boxShadow: `0 10px 30px ${t.accent}15`, borderColor: `${t.accent}40` } : {}}
             style={{
                 background: `${t.surface}80`,
@@ -322,10 +326,15 @@ const About = forwardRef(function About({ counts = {} }, ref) {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
     const sync = useSpotifySync();
-    const song = sync.isPlaying ? ["NOW PLAYING ·", `${sync.title} by ${sync.artist}`]
-        : sync.lastPlayed ? ["LAST PLAYED ·", `${sync.lastPlayed.title} by ${sync.lastPlayed.artist}`] : ["ON REPEAT ·", profile.currently?.song];
-    const book = profile.currently?.reading;
-    const currently = [["NOW READING ·", book], song, ["ON THE DESK ·", profile.currently?.metalEarth]].filter(([, v]) => v);
+    const book = useReading()[0];
+    const song = sync.isPlaying ? { label: "NOW PLAYING", title: sync.title, sub: sync.artist, img: sync.albumImageUrl }
+        : sync.lastPlayed ? { label: "LAST PLAYED", title: sync.lastPlayed.title, sub: sync.lastPlayed.artist, img: sync.lastPlayed.albumImageUrl } : null;
+    const model = profile.currently?.metalEarth;
+    const cards = [
+        song && { ...song, color: "#1DB954" },
+        book && { label: "NOW READING", title: book.title, sub: book.author, img: book.cover, link: book.link, color: t.cyan, tall: true },
+        model && { label: "ON THE DESK", title: model.name, sub: "Metal Earth", img: uboat, link: model.link, color: t.gold, wide: true },
+    ].filter(Boolean);
     const bentoStyles = {
         grid: {
             display: "grid",
@@ -370,11 +379,6 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                             <span key={label} className="wobble" style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".08em", padding: "6px 12px", borderRadius: 8, color: c, border: `1.5px dashed ${c}`, rotate: `${r}deg`, textTransform: "uppercase" }}>{label}</span>
                         ))}
                     </div>
-                    {currently.length > 0 && (
-                        <div style={{ ...FONTS.mono, fontSize: ".78rem", letterSpacing: ".06em", lineHeight: 1.9, color: t.textMute, marginBottom: 24 }}>
-                            {currently.map(([k, v]) => <div key={k}><span style={{ color: t.accent }}>{k} </span>{v}</div>)}
-                        </div>
-                    )}
                     <a
                         href={resume}
                         download="Syna_Malhan_Resume.pdf"
@@ -423,6 +427,26 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                     <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>{yearsSinceFirstRole()}</div>
                     <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>Years Exp</div>
                 </BentoBox>
+                {cards.length > 0 && (
+                    <div style={{ gridColumn: "1 / -1", display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${cards.length}, minmax(0, 1fr))`, gap: 16 }}>
+                        {cards.map(c => {
+                            const Tag = c.link ? "a" : "div";
+                            return (
+                                <Tag key={c.label} {...(c.link ? { href: c.link, target: "_blank", rel: "noopener noreferrer" } : {})} className="hover-card"
+                                    style={{ display: "flex", gap: 16, alignItems: "center", padding: 16, textDecoration: "none", background: t.surface, border: `1px solid ${t.border}`, borderLeft: `4px solid ${c.color}`, borderRadius: 16, color: t.text, minWidth: 0 }}>
+                                    <div style={{ flex: "none", width: c.wide ? 130 : c.tall ? 72 : 88, height: c.tall ? 108 : 88, borderRadius: 8, overflow: "hidden", background: c.wide ? "transparent" : t.bg, boxShadow: c.wide ? "none" : "0 6px 14px rgba(0,0,0,.4)" }}>
+                                        {c.img && <img src={c.img} alt={`${c.title} cover`} style={{ width: "100%", height: "100%", objectFit: c.wide ? "contain" : "cover", display: "block", filter: c.wide ? "drop-shadow(0 6px 8px rgba(0,0,0,.5))" : undefined }} />}
+                                    </div>
+                                    <div style={{ minWidth: 0 }}>
+                                        <div style={{ ...FONTS.mono, fontSize: ".68rem", letterSpacing: ".14em", color: c.color, marginBottom: 6 }}>{c.label}</div>
+                                        <div style={{ ...FONTS.inter, fontWeight: 700, fontSize: "1.05rem", color: t.textHi, lineHeight: 1.25 }}>{c.title}</div>
+                                        <div style={{ ...FONTS.inter, fontSize: ".9rem", color: t.textMute, marginTop: 2 }}>{c.sub}</div>
+                                    </div>
+                                </Tag>
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         </section>
     );

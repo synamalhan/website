@@ -70,9 +70,10 @@
       }
     ],
     "currently": {
-      "reading": "",
-      "song": "",
-      "metalEarth": "German U-Boat Type XXI"
+      "metalEarth": {
+        "name": "German U-Boat Type XXI",
+        "link": "https://www.metalearth.com/ships/german-u-boat-type-xxi"
+      }
     }
   },
   "skills": [
@@ -398,6 +399,105 @@
   ],
   "projects": [
     {
+      "id": "personalization-on-device-image-learning",
+      "title": "Personalization: On-Device Image Learning",
+      "summary": "iOS app that learns new image classes from a handful of photos entirely on the phone: a frozen Core ML backbone turns each photo into a vector, a small classifier is fit on the device, and only the vectors are stored.",
+      "category": "ios",
+      "tags": [],
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "Core ML",
+        "PyTorch",
+        "Python",
+        "DINOv2",
+        "MobileNetV3"
+      ],
+      "skills": [
+        "swift",
+        "swiftui",
+        "coreml",
+        "python",
+        "pytorch"
+      ],
+      "year": 2026,
+      "dates": null,
+      "featured": true,
+      "tier": "case-study",
+      "verifiedMine": true,
+      "links": {
+        "repo": "https://github.com/synamalhan/personalization",
+        "demo": null,
+        "video": null
+      },
+      "images": [
+        {
+          "src": "personalization.svg",
+          "alt": "Personalization architecture diagram: offline experiments on a laptop and the on-device pipeline on iPhone",
+          "kind": "diagram"
+        },
+        {
+          "src": "personalization-teach.png",
+          "alt": "Teach screen of the Personalization iOS app (simulator)",
+          "kind": "screenshot"
+        },
+        {
+          "src": "personalization-library.png",
+          "alt": "Library screen of the Personalization iOS app with sample classes (simulator)",
+          "kind": "screenshot"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "DINOv2-small, 1 photo per class, 5-way (nearest class mean)",
+          "value": "0.996 accuracy [0.992, 0.999]",
+          "source": "personalization README, results/summary.md (Flowers102 2000-image subset)"
+        },
+        {
+          "label": "Unknown-class detection, DINOv2 (AUROC)",
+          "value": "0.994 [0.992, 0.995]",
+          "source": "personalization README, results/summary.md (Flowers102 2000-image subset)"
+        },
+        {
+          "label": "Classes still recognized after learning 10 in sequence, MobileNetV3 (nearest class mean vs logistic head without replay)",
+          "value": "0.924 vs 0.000",
+          "source": "personalization README, results/summary.md (Flowers102 2000-image subset)"
+        },
+        {
+          "label": "Real iPhone vs Python embeddings, MobileNetV3, 20 images",
+          "value": "mean cosine 0.9945 (worst 0.9843)",
+          "source": "personalization README, gate check (Debug build, one device)"
+        }
+      ],
+      "details": "A Swift package (PersonalizeCore) holds the embedding store and two classifier heads and is checked against a Python reference; a SwiftUI app handles teaching, recognizing and a library of classes; Python scripts run the experiments and convert PyTorch backbones to Core ML.",
+      "caseStudy": {
+        "role": "Author of the repository: built the Swift package, the SwiftUI app, the Python experiments and the Core ML conversion.",
+        "problem": "Teaching an app your own objects usually means uploading photos to a server. This app learns new classes from a few photos on the phone itself, with no network code, so nothing leaves the device.",
+        "decisions": [
+          {
+            "choice": "Freeze a Core ML backbone and fit only a small classifier head on the device",
+            "tradeoff": "Learning from one or two photos is fast and cheap, but accuracy depends on the backbone: MobileNetV3 at one photo per class is the weakest result (0.834) versus 0.996 for DINOv2-small."
+          },
+          {
+            "choice": "Store only embedding vectors, not photos, and ship no network code or analytics",
+            "tradeoff": "Privacy rests on build settings and a source audit, not a formal guarantee, and photos are kept if the user turns off deleting them after embedding."
+          },
+          {
+            "choice": "Offer two heads: nearest class mean and a logistic head",
+            "tradeoff": "Nearest class mean never forgets earlier classes because class means don't change; logistic is slightly better for MobileNetV3 at five photos (+0.009) but forgets almost everything without replay."
+          },
+          {
+            "choice": "Check the Swift classifier against the Python reference with a shared fixture",
+            "tradeoff": "Probabilities agree within 1e-4, but that only proves the Swift code matches my own Python code, not that either is optimal."
+          }
+        ],
+        "result": "On a 2000-image Flowers102 subset, DINOv2-small reaches 0.996 accuracy with one photo per class (5-way) and rejects unseen classes with AUROC 0.994. On one real iPhone, MobileNetV3 embeddings matched the Python ones with mean cosine 0.9945. Not yet measured: on-device latency, the Pets dataset, photos from real users, and a phone check for the DINO models. The numbers are a preview."
+      },
+      "status": "built",
+      "featuredRank": 2,
+      "projectedCompletion": null
+    },
+    {
       "id": "frozenlake-q-learning-agent",
       "title": "FrozenLake Q-Learning Agent",
       "summary": "A reinforcement learning agent that learns to navigate the FrozenLake environment using Q-Learning.",
@@ -622,7 +722,7 @@
         "result": null
       },
       "status": "built",
-      "featuredRank": 3,
+      "featuredRank": 4,
       "projectedCompletion": null
     },
     {
@@ -745,7 +845,7 @@
       "year": 2024,
       "dates": null,
       "featured": true,
-      "tier": "case-study",
+      "tier": "card",
       "verifiedMine": true,
       "links": {
         "repo": "https://github.com/synamalhan/option-pricing",
@@ -777,7 +877,7 @@
         "result": null
       },
       "status": "built",
-      "featuredRank": 4,
+      "featuredRank": 5,
       "projectedCompletion": null
     },
     {
@@ -1006,7 +1106,7 @@
         "result": null
       },
       "status": "built",
-      "featuredRank": 2,
+      "featuredRank": 3,
       "projectedCompletion": null
     },
     {
@@ -1440,7 +1540,7 @@
       "details": "food_db.csv maps common foods to calories, protein, carbs and fat per 100 g. A custom YOLOv8 model detects 43 food classes, and its detections are matched against the CSV to show macros. The training pipeline is in a Colab notebook linked from the repo.",
       "caseStudy": null,
       "status": "built",
-      "featuredRank": 7,
+      "featuredRank": 8,
       "projectedCompletion": null
     },
     {
@@ -1609,7 +1709,7 @@
       "details": "Design stage: the repository currently holds the architecture and plan. Planned: fine-tune a YOLO detector on public camera-trap data, augment for blur, occlusion and low light, track with ByteTrack, estimate uncertainty (MC dropout or an ensemble), report calibration (ECE) and route uncertain cases to a human review queue. No results are reported yet.",
       "caseStudy": null,
       "status": "in-progress",
-      "featuredRank": 6,
+      "featuredRank": 7,
       "projectedCompletion": "2026-11-26"
     },
     {
@@ -1785,7 +1885,7 @@
       "details": "Design stage: the repository currently holds the architecture and plan. Planned: ingest about 50 arXiv PDFs into text, figure and table chunks; retrieve with dense plus BM25 search and rerank; generate answers as claims with cited chunk IDs; verify each citation with exact quote and number checks plus a judge for paraphrases. Planned evaluation: 30 hand-written questions measuring retrieval recall, verified-citation rate, abstention accuracy and text-only vs multimodal. No results are reported yet.",
       "caseStudy": null,
       "status": "in-progress",
-      "featuredRank": 5,
+      "featuredRank": 6,
       "projectedCompletion": "2026-11-27"
     },
     {
@@ -1898,7 +1998,7 @@
       "details": "Design stage: the original repo was lost and is being rebuilt, so the repository currently holds the architecture and plan. Planned: CoreMotion capture, sliding-window motion detection, sleep/wake segmentation, on-device aggregation (nightly totals, restlessness, weekly trends) and SwiftUI timeline and trend views, validated against Apple Health sleep data or a hand-kept log. Motion is a proxy, not clinical sleep staging. No results are reported yet.",
       "caseStudy": null,
       "status": "in-progress",
-      "featuredRank": 8,
+      "featuredRank": 9,
       "projectedCompletion": "2026-11-24"
     },
     {
@@ -2499,7 +2599,7 @@
       "year": 2026,
       "dates": null,
       "featured": false,
-      "featuredRank": 9,
+      "featuredRank": 10,
       "tier": "card",
       "verifiedMine": true,
       "images": [
@@ -2542,7 +2642,7 @@
       "year": 2026,
       "dates": null,
       "featured": false,
-      "featuredRank": 10,
+      "featuredRank": 11,
       "tier": "card",
       "verifiedMine": true,
       "images": [

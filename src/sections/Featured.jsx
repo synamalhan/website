@@ -43,7 +43,7 @@ export default function Featured() {
                 <Label>// Featured Projects</Label>
                 <H2>FEATURED WORK</H2>
                 <div style={{ ...grid(2), marginBottom: 20 }}>{cases.map(p => <Card key={p.id} p={p} big />)}</div>
-                <div style={grid(3)}>{cards.map(p => <Card key={p.id} p={p} />)}</div>
+                <div style={grid(Math.min(cards.length, 3))}>{cards.map(p => <Card key={p.id} p={p} />)}</div>
                 {building.length > 0 && (
                     <div style={{ marginTop: 36 }}>
                         <div style={{ ...FONTS.mono, fontSize: ".8rem", letterSpacing: ".12em", color: t.gold, marginBottom: 12 }}>BUILDING NOW</div>

@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1180" width="1200" height="1180" role="img" aria-labelledby="t"><title id="t">Personalization architecture</title>
+<defs><marker id="a-indigo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 1L10 5L0 9z" fill="#4f46e5"/></marker><marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 1L10 5L0 9z" fill="#9333ea"/></marker><marker id="a-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 1L10 5L0 9z" fill="#db2777"/></marker><marker id="a-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 1L10 5L0 9z" fill="#c2410c"/></marker><marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 1L10 5L0 9z" fill="#15803d"/></marker><marker id="a-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 1L10 5L0 9z" fill="#0e7490"/></marker></defs>
+<rect width="1200" height="1180" fill="#fbfaf7"/>
+<rect x="0" y="0" width="201" height="12" fill="#4f46e5"/>
+<rect x="200" y="0" width="201" height="12" fill="#9333ea"/>
+<rect x="400" y="0" width="201" height="12" fill="#db2777"/>
+<rect x="600" y="0" width="201" height="12" fill="#c2410c"/>
+<rect x="800" y="0" width="201" height="12" fill="#15803d"/>
+<rect x="1000" y="0" width="201" height="12" fill="#0e7490"/>
+<text x="70" y="112" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="50" fill="#1f2937" font-weight="800">Personalization</text>
+<text x="70" y="156" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="24" fill="#475569">On-device few-shot learning: teach an iPhone new things from a few photos</text>
+<rect x="70" y="184" width="74" height="32" rx="16" fill="#e9e8fb" stroke="#4f46e5" stroke-width="1.4"/>
+<text x="107" y="205" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#4f46e5" font-weight="600" text-anchor="middle">Swift</text>
+<rect x="153.5" y="184" width="92" height="32" rx="16" fill="#f2e6fc" stroke="#9333ea" stroke-width="1.4"/>
+<text x="200" y="205" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#9333ea" font-weight="600" text-anchor="middle">Core ML</text>
+<rect x="256.0" y="184" width="83" height="32" rx="16" fill="#fae5ee" stroke="#db2777" stroke-width="1.4"/>
+<text x="298" y="205" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#db2777" font-weight="600" text-anchor="middle">Vision</text>
+<rect x="349.0" y="184" width="92" height="32" rx="16" fill="#f7e8e1" stroke="#c2410c" stroke-width="1.4"/>
+<text x="395" y="205" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#c2410c" font-weight="600" text-anchor="middle">SwiftUI</text>
+<rect x="451.5" y="184" width="83" height="32" rx="16" fill="#e3f0e8" stroke="#15803d" stroke-width="1.4"/>
+<text x="493" y="205" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#15803d" font-weight="600" text-anchor="middle">Python</text>
+<rect x="544.5" y="184" width="92" height="32" rx="16" fill="#e2eef2" stroke="#0e7490" stroke-width="1.4"/>
+<text x="591" y="205" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#0e7490" font-weight="600" text-anchor="middle">PyTorch</text>
+<text x="70" y="268" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#4f46e5" font-weight="800">ON THE PHONE</text>
+<line x1="202" x2="1130" y1="263" y2="263" stroke="#4f46e5" stroke-opacity=".35"/>
+<rect x="70" y="300" width="138" height="280" rx="8" fill="#efeefc" stroke="#4f46e5" stroke-width="1.4"/>
+<path d="M70 352 V308 a8 8 0 0 1 8 -8 H200 a8 8 0 0 1 8 8 V352 Z" fill="#4f46e5"/>
+<text x="139" y="333" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" fill="#fff" font-weight="700" text-anchor="middle">Photo</text>
+<text x="139" y="384" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">pick a photo,</text>
+<text x="139" y="410" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">shoot one, or</text>
+<text x="139" y="436" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">teach from the</text>
+<text x="139" y="462" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">live camera</text>
+<line x1="84" x2="194" y1="534" y2="534" stroke="#4f46e5" stroke-opacity=".35"/>
+<text x="139" y="554" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#4f46e5" font-weight="700" text-anchor="middle">→ image</text>
+<path d="M208 440 H250" fill="none" stroke="#4f46e5" stroke-width="2.4" marker-end="url(#a-indigo)"/>
+<rect x="254" y="300" width="138" height="280" rx="8" fill="#f5ecfd" stroke="#9333ea" stroke-width="1.4"/>
+<path d="M254 352 V308 a8 8 0 0 1 8 -8 H384 a8 8 0 0 1 8 8 V352 Z" fill="#9333ea"/>
+<text x="323" y="333" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" fill="#fff" font-weight="700" text-anchor="middle">Cutout</text>
+<text x="323" y="384" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">Apple Vision</text>
+<text x="323" y="410" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">lifts the subject,</text>
+<text x="323" y="436" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">grays the room,</text>
+<text x="323" y="462" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">crops tight</text>
+<line x1="268" x2="378" y1="534" y2="534" stroke="#9333ea" stroke-opacity=".35"/>
+<text x="323" y="554" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#9333ea" font-weight="700" text-anchor="middle">→ subject</text>
+<path d="M392 440 H434" fill="none" stroke="#9333ea" stroke-width="2.4" marker-end="url(#a-purple)"/>
+<rect x="438" y="300" width="138" height="280" rx="8" fill="#fbebf2" stroke="#db2777" stroke-width="1.4"/>
+<path d="M438 352 V308 a8 8 0 0 1 8 -8 H568 a8 8 0 0 1 8 8 V352 Z" fill="#db2777"/>
+<text x="507" y="333" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" fill="#fff" font-weight="700" text-anchor="middle">Backbone</text>
+<text x="507" y="384" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">Core ML, frozen:</text>
+<text x="507" y="410" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">DINOv3, DINOv2</text>
+<text x="507" y="436" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">or MobileNetV3</text>
+<text x="507" y="462" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">fp16, on device</text>
+<line x1="452" x2="562" y1="534" y2="534" stroke="#db2777" stroke-opacity=".35"/>
+<text x="507" y="554" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#db2777" font-weight="700" text-anchor="middle">→ embedding</text>
+<path d="M576 440 H618" fill="none" stroke="#db2777" stroke-width="2.4" marker-end="url(#a-pink)"/>
+<rect x="622" y="300" width="138" height="280" rx="8" fill="#f9ede9" stroke="#c2410c" stroke-width="3.2"/>
+<path d="M622 352 V308 a8 8 0 0 1 8 -8 H752 a8 8 0 0 1 8 8 V352 Z" fill="#c2410c"/>
+<text x="691" y="333" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" fill="#fff" font-weight="700" text-anchor="middle">Library</text>
+<text x="691" y="384" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">vectors only,</text>
+<text x="691" y="410" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">never photos,</text>
+<text x="691" y="436" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">one saved library</text>
+<text x="691" y="462" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">per backbone</text>
+<line x1="636" x2="746" y1="534" y2="534" stroke="#c2410c" stroke-opacity=".35"/>
+<text x="691" y="554" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#c2410c" font-weight="700" text-anchor="middle">→ JSON store</text>
+<path d="M760 440 H802" fill="none" stroke="#c2410c" stroke-width="2.4" marker-end="url(#a-orange)"/>
+<rect x="806" y="300" width="138" height="280" rx="8" fill="#e9f3ed" stroke="#15803d" stroke-width="1.4"/>
+<path d="M806 352 V308 a8 8 0 0 1 8 -8 H936 a8 8 0 0 1 8 8 V352 Z" fill="#15803d"/>
+<text x="875" y="333" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" fill="#fff" font-weight="700" text-anchor="middle">Head</text>
+<text x="875" y="384" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">refit from all</text>
+<text x="875" y="410" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">stored vectors:</text>
+<text x="875" y="436" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">nearest mean</text>
+<text x="875" y="462" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">or logistic</text>
+<line x1="820" x2="930" y1="534" y2="534" stroke="#15803d" stroke-opacity=".35"/>
+<text x="875" y="554" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#15803d" font-weight="700" text-anchor="middle">→ probabilities</text>
+<path d="M944 440 H986" fill="none" stroke="#15803d" stroke-width="2.4" marker-end="url(#a-green)"/>
+<rect x="990" y="300" width="138" height="280" rx="8" fill="#e9f2f5" stroke="#0e7490" stroke-width="1.4"/>
+<path d="M990 352 V308 a8 8 0 0 1 8 -8 H1120 a8 8 0 0 1 8 8 V352 Z" fill="#0e7490"/>
+<text x="1059" y="333" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20" fill="#fff" font-weight="700" text-anchor="middle">Answer</text>
+<text x="1059" y="384" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">class + confidence</text>
+<text x="1059" y="410" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">or “Unknown”,</text>
+<text x="1059" y="436" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">top-3 bars,</text>
+<text x="1059" y="462" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">live smoothing</text>
+<line x1="1004" x2="1114" y1="534" y2="534" stroke="#0e7490" stroke-opacity=".35"/>
+<text x="1059" y="554" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#0e7490" font-weight="700" text-anchor="middle">→ result</text>
+<path d="M875 582 V606 H691 V584" fill="none" stroke="#15803d" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a-green)"/>
+<text x="783" y="626" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#15803d" font-weight="600" text-anchor="middle">replay: every teach refits from ALL stored vectors</text>
+<text x="70" y="668" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#db2777" font-weight="800">ON THE LAPTOP</text>
+<line x1="213" x2="1130" y1="663" y2="663" stroke="#db2777" stroke-opacity=".35"/>
+<rect x="70" y="700" width="1060" height="84" rx="8" fill="#fceff5" stroke="#db2777" stroke-width="1.4"/>
+<rect x="70" y="700" width="8" height="84" rx="3" fill="#db2777"/>
+<text x="100" y="733" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" fill="#db2777" font-weight="700">Experiments</text>
+<text x="100" y="762" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5" fill="#1f2937">Flowers102 subset → embeddings → heads compared, forgetting and unknown detection, with 95% CIs.</text>
+<rect x="70" y="800" width="1060" height="84" rx="8" fill="#f7effd" stroke="#9333ea" stroke-width="1.4"/>
+<rect x="70" y="800" width="8" height="84" rx="3" fill="#9333ea"/>
+<text x="100" y="833" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" fill="#9333ea" font-weight="700">Conversion</text>
+<text x="100" y="862" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5" fill="#1f2937">PyTorch → Core ML fp16 and int8, each checked against PyTorch; DINOv3 needs float32 layer-norms.</text>
+<rect x="70" y="900" width="1060" height="84" rx="8" fill="#eef6f1" stroke="#15803d" stroke-width="1.4"/>
+<rect x="70" y="900" width="8" height="84" rx="3" fill="#15803d"/>
+<text x="100" y="933" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" fill="#15803d" font-weight="700">Parity</text>
+<text x="100" y="962" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5" fill="#1f2937">Swift heads match the NumPy reference within 1e-4; 45 Swift and 13 Python tests.</text>
+<rect x="70" y="1000" width="1060" height="84" rx="8" fill="#faf1ed" stroke="#c2410c" stroke-width="1.4"/>
+<rect x="70" y="1000" width="8" height="84" rx="3" fill="#c2410c"/>
+<text x="100" y="1033" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" fill="#c2410c" font-weight="700">Design note</text>
+<text x="100" y="1062" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5" fill="#1f2937">Only vectors are stored, so it is private and tiny, but changing the model or cutout means re-teaching.</text>
+<text x="70" y="1140" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="18" fill="#64748b">github.com/synamalhan/personalization</text>
+</svg>
