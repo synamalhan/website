@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useRef } from "react";
-import { yearsSinceFirstRole } from "../data/portfolio";
+import { yearsSinceFirstRole, profile } from "../data/portfolio";
 import { motion } from "framer-motion";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
@@ -48,8 +48,8 @@ const idleMessages = [
     "My ears are in deep-focus mode."
 ];
 
-const MusicTile = ({ t, counts, isMobile }) => {
-    const { isPlaying, title, artist, parsedLyrics, currentProgress, currentUri } = useSpotifySync();
+const MusicTile = ({ t, counts, isMobile, sync }) => {
+    const { isPlaying, title, artist, parsedLyrics, currentProgress, currentUri } = sync;
 
     const currentIndex = parsedLyrics.findIndex((l, i) =>
         currentProgress >= l.time && (i === parsedLyrics.length - 1 || currentProgress < parsedLyrics[i + 1].time)
@@ -321,6 +321,11 @@ const BentoBox = ({ children, style = {}, colSpan = 1, rowSpan = 1, hover = true
 const About = forwardRef(function About({ counts = {} }, ref) {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
+    const sync = useSpotifySync();
+    const song = sync.isPlaying ? ["NOW PLAYING ·", `${sync.title} by ${sync.artist}`]
+        : sync.lastPlayed ? ["LAST PLAYED ·", `${sync.lastPlayed.title} by ${sync.lastPlayed.artist}`] : ["ON REPEAT ·", profile.currently?.song];
+    const book = profile.currently?.reading;
+    const currently = [["NOW READING ·", book], song, ["ON THE DESK ·", profile.currently?.metalEarth]].filter(([, v]) => v);
     const bentoStyles = {
         grid: {
             display: "grid",
@@ -349,20 +354,30 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                     <Label>// About Me</Label>
                     <H2 style={{ fontSize: isMobile ? '2.5rem' : '3.5rem', marginBottom: '20px' }}>ABOUT<br />ME</H2>
                     <p style={{ fontSize: "1rem", lineHeight: 1.7, color: t.textHi, fontWeight: 400, marginBottom: 16 }}>
-                        I'm <span style={{ color: t.accent, fontWeight: 700 }}>Syna Malhan</span>. I like building things that feel alive — systems that react, adapt, and quietly disappear into good design.
+                        Hi, I'm <span style={{ color: t.accent, fontWeight: 700 }}>Syna</span>. I teach computers to find patterns, then spend an unreasonable amount of time making the result look good.
                     </p>
 
-                    <p style={{ fontSize: "0.9rem", lineHeight: 1.6, color: t.textMute, fontWeight: 300, marginBottom: 16 }}>
-                        Most of my work sits somewhere between <span style={{ color: t.cyan }}>AI/ML</span> and <span style={{ color: t.gold }}>product engineering</span>, but I care just as much about how something <span style={{ fontWeight: 700 }}>feels</span> as how it works.
+                    <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: t.textMute, fontWeight: 400, marginBottom: 16 }}>
+                        <span style={{ color: t.cyan }}>Machine learning</span> hooked me because every model is a small mystery. At Micron my clustering pipeline sorts chip failures by root cause, and it runs in production, so the mystery is solved daily.
                     </p>
 
-                    <p style={{ fontSize: "0.9rem", lineHeight: 1.6, color: t.textMute, fontWeight: 300, marginBottom: 24 }}>
-                        Outside of code, I’m usually building small things, overthinking interfaces, or finding quiet places to reset.
+                    <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: t.textMute, fontWeight: 400, marginBottom: 18 }}>
+                        The guy on my playlist cover is the reason I code at all. Thank you, Codemy.com. Offline I bend tiny metal sheets into <span style={{ color: t.gold }}>Metal Earth</span> models and read a lot. My best thinking happens near the ocean, which is how an orca ended up on this page.
                     </p>
+
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24 }}>
+                        {[["Metal Earth builder", t.gold, -2], ["Bookworm", t.cyan, 1.5], ["Ocean thinker", t.accent, -1], ["Tutor, CS + math", t.magenta, 2]].map(([label, c, r]) => (
+                            <span key={label} className="wobble" style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".08em", padding: "6px 12px", borderRadius: 8, color: c, border: `1.5px dashed ${c}`, rotate: `${r}deg`, textTransform: "uppercase" }}>{label}</span>
+                        ))}
+                    </div>
+                    {currently.length > 0 && (
+                        <div style={{ ...FONTS.mono, fontSize: ".78rem", letterSpacing: ".06em", lineHeight: 1.9, color: t.textMute, marginBottom: 24 }}>
+                            {currently.map(([k, v]) => <div key={k}><span style={{ color: t.accent }}>{k} </span>{v}</div>)}
+                        </div>
+                    )}
                     <a
                         href={resume}
                         download="Syna_Malhan_Resume.pdf"
-                        download
                         style={{
                             alignSelf: 'flex-start',
                             padding: "12px 24px",
@@ -387,7 +402,7 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                 </BentoBox>
 
                 {/* 3. DYNAMIC MUSIC & LYRICS BOX (2x2) */}
-                <MusicTile t={t} counts={counts} isMobile={isMobile} />
+                <MusicTile t={t} counts={counts} isMobile={isMobile} sync={sync} />
 
                 {/* STATS BOXES */}
                 <BentoBox colSpan={1} rowSpan={1} style={{ justifyContent: 'center', borderLeft: `4px solid ${t.cyan}` }}>

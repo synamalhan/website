@@ -131,6 +131,15 @@ async function getLyrics(artist, title) {
     }
 }
 
+// Needs the user-read-recently-played scope; without it this quietly returns null.
+async function getLastPlayed(token) {
+    try {
+        const r = await axios.get('https://api.spotify.com/v1/me/player/recently-played?limit=1', { headers: { Authorization: `Bearer ${token}` } });
+        const t = r.data.items?.[0]?.track;
+        return t ? { title: t.name.replace(/\s\-\s.*$/, "").replace(/\(.*\)/, "").trim(), artist: t.artists[0].name, albumImageUrl: t.album.images[0]?.url } : null;
+    } catch { return null; }
+}
+
 app.get('/api/now-playing', async (req, res) => {
     try {
         // Return cached data if it's fresh
@@ -143,8 +152,8 @@ app.get('/api/now-playing', async (req, res) => {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        if (spotifyRes.status === 204 || !spotifyRes.data) {
-            const idleData = { isPlaying: false };
+        if (spotifyRes.status === 204 || !spotifyRes.data || !spotifyRes.data.item) {
+            const idleData = { isPlaying: false, lastPlayed: await getLastPlayed(token) };
             lastNowPlaying = idleData;
             lastNowPlayingTime = Date.now();
             return res.json(idleData);

@@ -37,7 +37,7 @@ export function useSpotifySync() {
 
                 if (!data || data.isPlaying === false) {
                     isPlayingRef.current = false;
-                    setPlaybackData(prev => ({ ...prev, isPlaying: false }));
+                    setPlaybackData(prev => ({ ...prev, isPlaying: false, lastPlayed: data?.lastPlayed || prev.lastPlayed }));
                     return;
                 }
 

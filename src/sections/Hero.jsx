@@ -18,7 +18,6 @@ function ResumeButton({ accent, isMobile, t }) {
         <a
             href={resumeUrl}
             download="Syna_Malhan_Resume.pdf"
-            download
             aria-label="Download resume"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}

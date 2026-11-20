@@ -68,7 +68,12 @@
         "area": "cs",
         "status": "in-progress"
       }
-    ]
+    ],
+    "currently": {
+      "reading": "",
+      "song": "",
+      "metalEarth": "German U-Boat Type XXI"
+    }
   },
   "skills": [
     {
