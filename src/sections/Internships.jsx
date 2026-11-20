@@ -6,7 +6,8 @@ import Label from "../components/ui/Label";
 import { internshipWork } from "../data/portfolio";
 import { EXPERIENCES } from "../data/experience";
 
-const companies = EXPERIENCES.filter(e => internshipWork.some(w => w.experienceId === e.id));
+const companies = EXPERIENCES.filter(e => internshipWork.some(w => w.experienceId === e.id))
+    .sort((a, b) => (b.id === "micron-technology") - (a.id === "micron-technology")); // strongest first
 
 export default function Internships() {
     const { theme: t } = useTheme();
@@ -16,8 +17,8 @@ export default function Internships() {
     return (
         <section id="internships" style={{ padding: isMobile ? "60px 20px" : "100px 24px", position: "relative", zIndex: 10 }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-                <Label>// Internship Work</Label>
-                <H2>WHAT I WORKED ON</H2>
+                <Label>// Internships</Label>
+                <H2>INTERNSHIP WORK</H2>
                 <p style={{ color: t.textMute, fontSize: "1.05rem", maxWidth: "60ch", margin: "0 0 36px" }}>
                     Work from my internships, described by the kind of problem, my part and the tools. Company internals stay private.
                 </p>

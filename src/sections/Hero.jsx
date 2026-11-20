@@ -1,5 +1,6 @@
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
+import TechText from "../components/TechText";
 import { useParallax } from "../hooks/useParallax";
 import { useIsMobile } from "../hooks/useMediaQuery";
 import React, { lazy, Suspense, useState } from "react";
@@ -16,6 +17,7 @@ function ResumeButton({ accent, isMobile, t }) {
     return (
         <a
             href={resumeUrl}
+            download="Syna_Malhan_Resume.pdf"
             download
             aria-label="Download resume"
             onMouseEnter={() => setHovered(true)}
@@ -121,24 +123,9 @@ export default function Hero() {
                         engineer · creator · builder · explorer
                     </p>
 
-                    <h1
-                        className="glitch"
-                        data-text="SYNA"
-                        style={{
-                            ...FONTS.orb,
-                            fontWeight: 900,
-                            fontSize: isMobile ? "clamp(4rem, 18vw, 6.2rem)" : "clamp(5.2rem, 11vw, 8.8rem)",
-                            lineHeight: 0.84,
-                            color: t.textHi,
-                            textShadow: `0 0 62px ${t.accentGlow}, 4px 4px 0px ${t.accent}`,
-                            margin: 0,
-                            letterSpacing: ".08em",
-                            transform: `translateY(${-offset * 0.1}px)`,
-                            position: "relative",
-                            zIndex: 2,
-                        }}
-                    >
-                        SYNA
+                    <h1 aria-label="SYNA" style={{ margin: 0, width: "100%", height: isMobile ? 130 : 200, position: "relative", zIndex: 2, transform: `translateY(${-offset * 0.1}px)` }}>
+                        <TechText text="SYNA" fontFamily="Nunito, sans-serif" fontWeight={900} fontSize={isMobile ? 110 : 190} letterSpacing={0.08}
+                            color={t.textHi} accentColor={t.accent} align={wide ? "left" : "center"} reveal="letter" clickKick />
                     </h1>
 
                     <div
@@ -174,7 +161,7 @@ export default function Hero() {
                     </p>
 
                     <p style={{ ...FONTS.mono, fontSize: isMobile ? ".62rem" : ".7rem", letterSpacing: ".12em", color: t.textHi, margin: "0 0 22px", position: "relative", zIndex: 2, textTransform: "uppercase" }}>
-                        BS Computer Science @ ASU · Data Science minor · Class of 2027 · Seeking ML/AI/SWE new-grad roles
+                        BS Computer Science @ ASU · Data Science minor · Graduating May 2027 · Seeking ML/AI/SWE new-grad roles
                     </p>
 
                     <ResumeButton accent={t.accent} isMobile={isMobile} t={t} />

@@ -15,6 +15,8 @@ export default function GlobalStyle() {
       @keyframes g1 { 0%,87%,100%{opacity:0;transform:translate(-2px,-2px)} 90%{opacity:.7;transform:translate(-4px,0)} 94%{opacity:0} }
       @keyframes g2 { 0%,87%,100%{opacity:0;transform:translate(2px,2px)}  90%{opacity:.7;transform:translate(4px,0)}  94%{opacity:0} }
 
+      .quirk:nth-child(odd){rotate:-1.2deg} .quirk:nth-child(even){rotate:1.2deg} .quirk{transition:rotate .25s ease,translate .25s ease,filter .25s ease} .quirk:hover{rotate:0deg}
+      .wobble:hover{animation:shake .35s ease 2}
       @keyframes shake { 0%{transform:rotate(0deg)} 25%{transform:rotate(-1deg)} 50%{transform:rotate(0deg)} 75%{transform:rotate(1deg)} 100%{transform:rotate(0deg)} }
 
       @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
@@ -34,6 +36,18 @@ export default function GlobalStyle() {
       @media (hover: hover) {
         .hover-card:hover, div[style*="cursor: pointer"]:hover, a.hover-card:hover { translate: 0 -4px; filter: drop-shadow(0 14px 20px rgba(0,0,0,.35)); }
       }
+      /* 3D depth: cards keep their own space, children float forward, and a stacked "thickness" edge sits below. */
+      .hover-card { position: relative; transform-style: preserve-3d; will-change: transform; border-radius: 16px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.38), inset 0 -2px 0 rgba(0,0,0,.4), 0 5px 0 rgba(0,0,0,.4), 0 16px 26px rgba(0,0,0,.3);
+        transition: transform .15s ease-out, translate .25s ease, filter .25s ease, box-shadow .25s ease; }
+      /* Specular glare: invisible until hovered, then follows the cursor. */
+      .hover-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 3; opacity: 0; transition: opacity .25s;
+        background: radial-gradient(circle at var(--mx, 25%) var(--my, 0%), rgba(255,255,255,.16), transparent 55%); }
+      .hover-card:hover::before { opacity: 1; }
+      .hover-card > * { transform: translateZ(24px); }
+      .hover-card:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -2px 0 rgba(0,0,0,.45), 0 9px 0 rgba(0,0,0,.4), 0 26px 40px rgba(0,0,0,.4); }
+      .hover-card:active { translate: 0 4px; box-shadow: inset 0 2px 6px rgba(0,0,0,.45), 0 2px 0 rgba(0,0,0,.4); }
+      section[id] { scroll-margin-top: 80px; }
       .float-y { animation:floatY 2s ease-in-out infinite; }
     `}</style>
     );

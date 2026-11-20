@@ -6,7 +6,7 @@
     "minor": "Data Science",
     "gradYear": 2027,
     "target": "ML/AI/SWE new-grad roles",
-    "now": "Taking ML for Data Science and Image Processing, and finishing Atlas, infserve, WildSense and tsbench.",
+    "now": "Taking ML for Data Science and Image Processing, and building the projects listed under Building now.",
     "links": {
       "email": "synamalhan22@gmail.com",
       "linkedin": "https://linkedin.com/in/synamalhan",
@@ -24,48 +24,13 @@
         "status": "done"
       },
       {
-        "name": "Principles of Programming Languages",
-        "area": "cs",
-        "status": "done"
-      },
-      {
-        "name": "Theoretical Computer Science",
-        "area": "cs",
-        "status": "done"
-      },
-      {
         "name": "Software Engineering",
-        "area": "cs",
-        "status": "done"
-      },
-      {
-        "name": "Information Assurance",
-        "area": "cs",
-        "status": "done"
-      },
-      {
-        "name": "Computer Organization",
         "area": "cs",
         "status": "done"
       },
       {
         "name": "Foundations of Machine Learning",
         "area": "cs",
-        "status": "done"
-      },
-      {
-        "name": "Quantum Computation",
-        "area": "cs",
-        "status": "done"
-      },
-      {
-        "name": "Calculus I–III",
-        "area": "math",
-        "status": "done"
-      },
-      {
-        "name": "Discrete Math",
-        "area": "math",
         "status": "done"
       },
       {
@@ -100,11 +65,6 @@
       },
       {
         "name": "Database Management",
-        "area": "cs",
-        "status": "in-progress"
-      },
-      {
-        "name": "Human-Computer Interaction",
         "area": "cs",
         "status": "in-progress"
       }
@@ -159,7 +119,7 @@
     {
       "id": "python",
       "label": "Python",
-      "area": "ML/AI"
+      "area": "Languages"
     },
     {
       "id": "pytorch",
@@ -184,11 +144,6 @@
     {
       "id": "scikit-learn",
       "label": "scikit-learn",
-      "area": "ML/AI"
-    },
-    {
-      "id": "ml-concepts",
-      "label": "ML Concepts",
       "area": "ML/AI"
     },
     {
@@ -257,7 +212,7 @@
       "area": "Languages"
     },
     {
-      "id": "c",
+      "id": "cpp",
       "label": "C++",
       "area": "Languages"
     },
@@ -269,32 +224,7 @@
     {
       "id": "figma",
       "label": "Figma",
-      "area": "Design"
-    },
-    {
-      "id": "sketch",
-      "label": "Sketch",
-      "area": "Design"
-    },
-    {
-      "id": "blender",
-      "label": "Blender",
-      "area": "Design"
-    },
-    {
-      "id": "illustrator",
-      "label": "Illustrator",
-      "area": "Design"
-    },
-    {
-      "id": "photoshop",
-      "label": "Photoshop",
-      "area": "Design"
-    },
-    {
-      "id": "drawing",
-      "label": "Drawing",
-      "area": "Design"
+      "area": "Tools"
     },
     {
       "id": "git",
@@ -304,11 +234,6 @@
     {
       "id": "docker",
       "label": "Docker",
-      "area": "Tools"
-    },
-    {
-      "id": "vscode",
-      "label": "VSCode",
       "area": "Tools"
     },
     {
@@ -327,13 +252,28 @@
       "area": "Tools"
     },
     {
-      "id": "debugging",
-      "label": "Debugging",
+      "id": "sql",
+      "label": "SQL",
+      "area": "Languages"
+    },
+    {
+      "id": "langgraph-rag",
+      "label": "LangGraph / RAG",
+      "area": "ML/AI"
+    },
+    {
+      "id": "fastapi",
+      "label": "FastAPI",
       "area": "Tools"
     },
     {
-      "id": "documentation",
-      "label": "Documentation",
+      "id": "aws",
+      "label": "AWS",
+      "area": "Tools"
+    },
+    {
+      "id": "neo4j",
+      "label": "Neo4j",
       "area": "Tools"
     }
   ],
@@ -1645,7 +1585,7 @@
       ],
       "year": 2026,
       "dates": null,
-      "featured": true,
+      "featured": false,
       "tier": "card",
       "verifiedMine": true,
       "links": {
@@ -1821,7 +1761,7 @@
       ],
       "year": 2026,
       "dates": null,
-      "featured": true,
+      "featured": false,
       "tier": "card",
       "verifiedMine": true,
       "links": {
@@ -1934,7 +1874,7 @@
       ],
       "year": 2026,
       "dates": null,
-      "featured": true,
+      "featured": false,
       "tier": "card",
       "verifiedMine": true,
       "links": {
@@ -2553,7 +2493,7 @@
       ],
       "year": 2026,
       "dates": null,
-      "featured": true,
+      "featured": false,
       "featuredRank": 9,
       "tier": "card",
       "verifiedMine": true,
@@ -2596,7 +2536,7 @@
       ],
       "year": 2026,
       "dates": null,
-      "featured": true,
+      "featured": false,
       "featuredRank": 10,
       "tier": "card",
       "verifiedMine": true,

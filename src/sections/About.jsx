@@ -361,6 +361,7 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                     </p>
                     <a
                         href={resume}
+                        download="Syna_Malhan_Resume.pdf"
                         download
                         style={{
                             alignSelf: 'flex-start',

@@ -36,7 +36,7 @@ export default function WorkExperience() {
                 {EXPERIENCES.map((exp, i) => (
                     <div
                         key={exp.id}
-                        className={exp.internship ? "float-y" : undefined}
+                        className={exp.internship ? "float-y" : "tilt-only"}
                         onClick={() => toggleFlip(i)}
                         style={{
                             height: isMobile ? 400 : 450,
@@ -71,7 +71,7 @@ export default function WorkExperience() {
                                 alignItems: "center",
                                 textAlign: "center",
                                 transformStyle: "preserve-3d",
-                                boxShadow: `0 0 0 1px ${halo(exp)}, 0 0 26px ${halo(exp)}66, 0 20px 40px rgba(0,0,0,0.4)`
+                                boxShadow: `inset 0 1px 0 rgba(255,255,255,.38), inset 0 -2px 0 rgba(0,0,0,.4), 0 6px 0 rgba(0,0,0,.4), 0 0 0 1px ${halo(exp)}, 0 0 26px ${halo(exp)}66, 0 22px 34px rgba(0,0,0,.35)`
                             }}>
                                 {/* Floating Logo Front */}
                                 <div style={{
@@ -94,7 +94,7 @@ export default function WorkExperience() {
                                     padding: 12,
                                     backdropFilter: "blur(4px)"
                                 }}>
-                                    <img src={exp.logo} alt="logo" style={{ width: "100%", height: "100%", objectFit: "contain", filter: t.name === "dark" ? "brightness(1.1) contrast(1.1)" : "none" }} />
+                                    <img src={exp.logo} alt={`${exp.company} logo`} style={{ width: "100%", height: "100%", objectFit: "contain", filter: t.name === "dark" ? "brightness(1.1) contrast(1.1)" : "none" }} />
                                 </div>
 
                                 <div style={{
@@ -160,7 +160,7 @@ export default function WorkExperience() {
                                 display: "flex",
                                 flexDirection: "column",
                                 transformStyle: "preserve-3d",
-                                boxShadow: `0 0 50px ${t.accent}33`
+                                boxShadow: `inset 0 1px 0 rgba(255,255,255,.3), inset 0 -2px 0 rgba(0,0,0,.4), 0 6px 0 rgba(0,0,0,.4), 0 0 40px ${t.accent}33`
                             }}>
                                 {/* Floating Logo Back */}
                                 <div style={{
@@ -183,7 +183,7 @@ export default function WorkExperience() {
                                     padding: 15,
                                     backdropFilter: "blur(8px)"
                                 }}>
-                                    <img src={exp.logo} alt="logo" style={{ width: "100%", height: "100%", objectFit: "contain", filter: t.name === "dark" ? "brightness(1.1) contrast(1.1)" : "none" }} />
+                                    <img src={exp.logo} alt={`${exp.company} logo`} style={{ width: "100%", height: "100%", objectFit: "contain", filter: t.name === "dark" ? "brightness(1.1) contrast(1.1)" : "none" }} />
                                 </div>
 
                                 <div style={{

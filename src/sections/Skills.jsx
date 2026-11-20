@@ -6,13 +6,13 @@ import H2 from "../components/ui/H2";
 import Label from "../components/ui/Label";
 import { skills, projects } from "../data/portfolio";
 
-const AREAS = [["ML/AI", "ML / AI"], ["Languages", "Languages"], ["Web/3D", "Web & 3D"], ["iOS", "iOS"], ["Tools", "Tools"], ["Design", "Design"]];
+const AREAS = [["ML/AI", "ML / AI"], ["Languages", "Languages"], ["Web/3D", "Web & 3D"], ["iOS", "iOS"], ["Tools", "Tools"]];
 const count = id => projects.filter(p => p.skills.includes(id)).length;
 
 export default function Skills() {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
-    const colors = { "ML/AI": t.accent, Languages: t.cyan, "Web/3D": t.green, iOS: t.magenta, Tools: t.gold, Design: t.accent };
+    const colors = { "ML/AI": t.accent, Languages: t.cyan, "Web/3D": t.green, iOS: t.magenta, Tools: t.gold };
     const chip = (linked, c) => ({ ...FONTS.inter, fontSize: ".95rem", padding: "6px 12px", borderRadius: 999, textDecoration: "none",
         color: c, border: `1px solid ${c}${linked ? "" : "66"}`, background: "transparent", fontWeight: linked ? 600 : 400 });
     return (
@@ -22,15 +22,15 @@ export default function Skills() {
                 <H2>SKILLS</H2>
                 <p style={{ color: t.textMute, fontSize: "1.05rem", margin: "0 0 32px" }}>Click a skill to see the projects that use it.</p>
                 <div style={{ display: "grid", gridTemplateColumns: isMobile ? "minmax(0,1fr)" : "repeat(2, minmax(0,1fr))", gap: 20 }}>
-                    {AREAS.map(([key, title]) => (
-                        <div key={key} className="hover-card" style={{ background: t.surface, border: `1px solid ${t.border}`, borderTop: `3px solid ${colors[key]}`, borderRadius: 16, padding: "20px 22px" }}>
+                    {AREAS.map(([key, title], i) => (
+                        <div key={key} className="hover-card" style={{ gridColumn: !isMobile && i === AREAS.length - 1 && AREAS.length % 2 ? "1 / -1" : undefined, background: t.surface, border: `1px solid ${t.border}`, borderTop: `3px solid ${colors[key]}`, borderRadius: 16, padding: "20px 22px" }}>
                             <h3 style={{ ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".16em", color: colors[key], marginBottom: 14 }}>{title.toUpperCase()}</h3>
                             <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
                                 {skills.filter(s => s.area === key).map(s => {
                                     const n = count(s.id);
                                     return n
-                                        ? <Link key={s.id} to={`/projects?skill=${s.id}`} style={chip(true, colors[key])}>{s.label}</Link>
-                                        : <span key={s.id} style={chip(false, colors[key])}>{s.label}</span>;
+                                        ? <Link className="wobble" key={s.id} to={`/projects?skill=${s.id}`} style={chip(true, colors[key])}>{s.label}</Link>
+                                        : <span className="wobble" key={s.id} style={chip(false, colors[key])}>{s.label}</span>;
                                 })}
                             </div>
                         </div>

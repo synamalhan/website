@@ -13,7 +13,7 @@ export default function PageNav({ current }) {
         <nav aria-label="Site" style={{ position: "sticky", top: 0, zIndex: 50, background: t.navBg, backdropFilter: "blur(14px)", borderBottom: `1px solid ${t.border}` }}>
             <div style={{ maxWidth: 1100, margin: "0 auto", padding: "14px 20px", display: "flex", alignItems: "center", gap: isMobile ? 14 : 24 }}>
                 <Link to="/" style={{ ...FONTS.orb, fontWeight: 900, letterSpacing: ".3em", color: t.textHi, textDecoration: "none", marginRight: "auto" }}>SYNA</Link>
-                {!isMobile && <Link to="/#featured" style={link(current === "featured")}>Featured</Link>}
+                <Link to="/" style={link(false)}>Home</Link>
                 <Link to="/projects" style={link(current === "projects")} aria-current={current === "projects" ? "page" : undefined}>{isMobile ? "Projects" : "All projects"}</Link>
                 <ThemeToggle isDark={isDark} toggle={toggleTheme} t={t} />
             </div>

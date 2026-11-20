@@ -21,7 +21,7 @@ export default function Education() {
                 <div className="hover-card" style={{ border: `1px solid ${t.border}`, background: t.surface, borderRadius: 16, padding: 24 }}>
                     <div style={{ ...FONTS.orb, fontWeight: 700, fontSize: "1.5rem", color: t.textHi }}>{profile.school}</div>
                     <div style={{ color: t.text, fontSize: "1.1rem", margin: "8px 0" }}>{profile.degree} · Minor in {profile.minor}</div>
-                    <div style={{ ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".12em", color: t.textMute, marginBottom: 16 }}>EXPECTED {profile.gradYear}</div>
+                    <div style={{ ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".12em", color: t.textMute, marginBottom: 16 }}>EXPECTED MAY {profile.gradYear}</div>
 
                     <div style={{ display: "flex", gap: 18, flexWrap: "wrap", marginBottom: 6 }} aria-label="Color key">
                         {Object.values(AREAS).map(([name, color]) => (

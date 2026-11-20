@@ -2,7 +2,7 @@ import { Head } from "vite-react-ssg";
 import { profile } from "../data/portfolio";
 
 export const SITE = "https://synamalhan.github.io/website";
-const DEFAULT = "Syna Malhan: CS student at Arizona State University (Data Science minor, class of 2027) building machine learning and software systems. Seeking ML, AI and SWE new-grad roles.";
+const DEFAULT = "Syna Malhan: CS student at Arizona State University (Data Science minor, graduating May 2027) building machine learning and software systems. Seeking ML, AI and SWE new-grad roles.";
 
 // Title, description, canonical, Open Graph and Twitter tags for one page. `path` is the route ("/" or "/projects/x").
 export default function Seo({ title, description = DEFAULT, path = "/" }) {

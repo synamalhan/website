@@ -5,6 +5,7 @@ import { ThemeProvider, useTheme } from "./theme/ThemeContext";
 import { FONTS } from "./components/styles";
 import GlobalStyle from "./components/GlobalStyle";
 import OceanBg from "./components/OceanBg";
+import Tilt3D from "./components/Tilt3D";
 import Cursor from "./components/Cursor";
 import Home from "./App";
 import ArchivePage from "./pages/ArchivePage";
@@ -41,7 +42,7 @@ function Shell() {
     return (
         <div style={{ visibility: ready ? "visible" : "hidden", background: t.bg, color: t.text, ...FONTS.inter, overflowX: "hidden", minHeight: "100vh", transition: "background .4s, color .4s" }}>
             <GlobalStyle />
-            <ClientOnly>{() => <><OceanBg t={t} /><Cursor t={t} /></>}</ClientOnly>
+            <ClientOnly>{() => <><OceanBg t={t} /><Cursor t={t} /><Tilt3D /></>}</ClientOnly>
             <Outlet />
         </div>
     );

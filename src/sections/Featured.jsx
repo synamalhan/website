@@ -9,6 +9,7 @@ import ProjectImage from "../components/ProjectImage";
 import { projects } from "../data/portfolio";
 import { statusLabel } from "../data/format";
 
+const building = projects.filter(p => p.status === "in-progress");
 const featured = projects.filter(p => p.featured).sort((a, b) => a.featuredRank - b.featuredRank);
 
 function Card({ p, big }) {
@@ -31,6 +32,7 @@ function Card({ p, big }) {
 }
 
 export default function Featured() {
+    const { theme: t } = useTheme();
     const isMobile = useIsMobile();
     const cases = featured.filter(p => p.tier === "case-study");
     const cards = featured.filter(p => p.tier === "card");
@@ -42,7 +44,15 @@ export default function Featured() {
                 <H2>FEATURED WORK</H2>
                 <div style={{ ...grid(2), marginBottom: 20 }}>{cases.map(p => <Card key={p.id} p={p} big />)}</div>
                 <div style={grid(3)}>{cards.map(p => <Card key={p.id} p={p} />)}</div>
-                <p style={{ marginTop: 28, fontSize: "1rem" }}><Link to="/projects" style={{ color: "inherit" }}>Browse all {projects.length} projects →</Link></p>
+                {building.length > 0 && (
+                    <div style={{ marginTop: 36 }}>
+                        <div style={{ ...FONTS.mono, fontSize: ".8rem", letterSpacing: ".12em", color: t.gold, marginBottom: 12 }}>BUILDING NOW</div>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+                            {building.map(p => <Link key={p.id} to={`/projects/${p.id}`} style={{ ...FONTS.inter, fontSize: ".95rem", padding: "6px 14px", borderRadius: 999, color: t.text, border: `1px solid ${t.border}`, textDecoration: "none" }}>{p.title.split(":")[0]}</Link>)}
+                        </div>
+                    </div>
+                )}
+                <p style={{ marginTop: 28, fontSize: "1rem" }}><Link to="/projects" style={{ color: "inherit" }}>Full archive →</Link></p>
             </div>
         </section>
     );
