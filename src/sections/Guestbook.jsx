@@ -34,7 +34,7 @@ export default function Guestbook() {
             <div style={{ textAlign: "center" }}>
                 <Label center>// Guestbook</Label>
                 <H2 style={{ textAlign: "center" }}>LEAVE A NOTE</H2>
-                <p style={{ color: t.textMute, margin: "8px auto 28px", maxWidth: "50ch" }}>Feedback, a favorite project, a book I should read. Notes appear after I approve them.</p>
+                <p style={{ color: t.textMute, margin: "8px auto 28px", maxWidth: "50ch" }}>Feedback, a favorite project, a book I should read.</p>
             </div>
             <form onSubmit={submit} className="hover-card" style={{ display: "grid", gap: 12, padding: 22, borderRadius: 16, background: t.surface, border: `1px solid ${t.border}` }}>
                 <input aria-label="Your name" placeholder="Name (optional)" maxLength={40} value={f.name} onChange={e => setF({ ...f, name: e.target.value })} style={field} />
