@@ -11,6 +11,7 @@ import H2 from "../components/ui/H2";
 import SimpleCarousel from "../components/SimpleCarousel";
 import resume from "../assets/SYNA_MALHAN.pdf";
 import { useState } from "react";
+import Suggest from "./Suggest";
 
 import img1 from "../assets/profile/1.jpg";
 import img2 from "../assets/profile/2.jpg";
@@ -447,6 +448,7 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                         })}
                     </div>
                 )}
+                <Suggest />
             </div>
         </section>
     );

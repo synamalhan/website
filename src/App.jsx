@@ -12,6 +12,7 @@ import Skills from "./sections/Skills";
 import Featured from "./sections/Featured";
 import WorkExperience from "./sections/WorkExperience";
 import Workshop from "./sections/Workshop";
+import Guestbook from "./sections/Guestbook";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 
@@ -32,6 +33,7 @@ export default function Home() {
             <Reveal><Skills /></Reveal>
             <Reveal><Education /></Reveal>
             <Reveal><Workshop /></Reveal>
+            <Reveal><Guestbook /></Reveal>
             <Reveal><Contact /></Reveal>
             </main>
             <Footer />

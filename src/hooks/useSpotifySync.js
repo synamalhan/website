@@ -8,7 +8,8 @@ export function useSpotifySync() {
         albumImageUrl: null,
         syncedLyrics: null,
         parsedLyrics: [],
-        currentUri: null
+        currentUri: null,
+        lastPlayed: readCached()
     });
     const [currentProgress, setCurrentProgress] = useState(0);
 
@@ -37,6 +38,7 @@ export function useSpotifySync() {
 
                 if (!data || data.isPlaying === false) {
                     isPlayingRef.current = false;
+                    if (data?.lastPlayed) try { localStorage.setItem('lastPlayed', JSON.stringify(data.lastPlayed)); } catch { /* storage blocked */ }
                     setPlaybackData(prev => ({ ...prev, isPlaying: false, lastPlayed: data?.lastPlayed || prev.lastPlayed }));
                     return;
                 }
@@ -96,6 +98,11 @@ export function useSpotifySync() {
     }, []);
 
     return { ...playbackData, currentProgress };
+}
+
+// Last song survives the free Render server's cold start, so the tile shows instantly.
+function readCached() {
+    try { return JSON.parse(localStorage.getItem('lastPlayed')) || null; } catch { return null; }
 }
 
 // Utility to parse raw LRC strings [mm:ss.xx] text

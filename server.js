@@ -14,7 +14,8 @@ process.setMaxListeners(50);
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.set('trust proxy', 1);
+app.use(express.json({ limit: '10kb' }));
 
 const PORT = process.env.PORT || 3001;
 const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
@@ -263,6 +264,45 @@ app.get('/api/track', async (req, res) => {
         console.error("Server API error:", error.message);
         res.status(500).json({ error: error.message });
     }
+});
+
+// Song autocomplete for the suggestion box (public Spotify catalog search, cached per query).
+const songCache = new Map();
+app.get('/api/search-song', async (req, res) => {
+    const q = String(req.query.q || '').trim().slice(0, 80);
+    if (q.length < 2) return res.json([]);
+    if (songCache.has(q)) return res.json(songCache.get(q));
+    try {
+        const r = await axios.get('https://api.spotify.com/v1/search', { params: { q, type: 'track', limit: 5 }, headers: { Authorization: `Bearer ${await getClientCredentialsToken()}` } });
+        const out = r.data.tracks.items.map(t => ({ title: t.name, sub: t.artists.map(a => a.name).join(', '), img: t.album.images.at(-1)?.url }));
+        if (songCache.size > 500) songCache.clear();
+        songCache.set(q, out);
+        res.json(out);
+    } catch { res.json([]); }
+});
+
+// Guestbook: notes live in a Supabase table; new ones stay hidden until approved=true is set in the dashboard.
+const SB = process.env.SUPABASE_URL, SB_KEY = process.env.SUPABASE_SERVICE_KEY;
+const sb = (qs = '', opt = {}) => axios({ url: `${SB}/rest/v1/guestbook${qs}`, headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}`, ...opt.headers }, ...opt });
+const lastPost = new Map(); // ip -> time; one note per minute
+
+app.get('/api/guestbook', async (_req, res) => {
+    if (!SB) return res.json([]);
+    try { res.json((await sb('?select=name,message,created_at&approved=eq.true&kind=eq.note&order=created_at.desc&limit=30')).data); }
+    catch { res.json([]); }
+});
+
+app.post('/api/guestbook', async (req, res) => {
+    const { name = '', message = '', website = '', kind = 'note' } = req.body || {};
+    if (!['note', 'song', 'book'].includes(kind)) return res.status(400).json({ error: 'Bad request.' });
+    if (website) return res.json({ ok: true }); // honeypot: bots fill this hidden field
+    const msg = String(message).trim().slice(0, 400), nm = String(name).trim().slice(0, 40) || 'Anonymous';
+    if (msg.length < 2) return res.status(400).json({ error: 'Write a little more.' });
+    if (!SB) return res.status(503).json({ error: 'Guestbook is not set up yet.' });
+    const ip = `${req.ip}:${kind === 'note' ? 'note' : 'pick'}`;
+    if (Date.now() - (lastPost.get(ip) || 0) < 60000) return res.status(429).json({ error: 'Slow down, try again in a minute.' });
+    try { await sb('', { method: 'POST', data: { name: nm, message: msg, kind } }); lastPost.set(ip, Date.now()); res.json({ ok: true }); }
+    catch { res.status(500).json({ error: 'Could not save, try again later.' }); }
 });
 
 app.listen(PORT, () => {
