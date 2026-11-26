@@ -21,7 +21,7 @@ export default function Hero() {
             textAlign: "center", padding: isMobile ? "88px 24px 72px" : "110px 32px 80px", position: "relative", zIndex: 1,
         }}>
             <h1 aria-label="SYNA" style={{ margin: 0, width: "100%", maxWidth: 900, height: isMobile ? 130 : 200 }}>
-                <TechText text="SYNA" fontFamily="Nunito, sans-serif" fontWeight={900} fontSize={isMobile ? 110 : 190} letterSpacing={0.08}
+                <TechText text="SYNA" fontFamily="Bricolage Grotesque, sans-serif" fontWeight={800} fontSize={isMobile ? 110 : 190} letterSpacing={0.08}
                     color={t.textHi} accentColor={t.accent} accentColors={[t.cyan, t.accent, t.gold, t.magenta]} align="center" reveal="letter" clickKick />
             </h1>
             <p style={{ ...FONTS.inter, fontSize: isMobile ? "1.1rem" : "1.45rem", fontWeight: 700, lineHeight: 1.5, color: t.textHi, margin: "28px 0 36px" }}>

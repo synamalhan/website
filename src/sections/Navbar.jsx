@@ -14,13 +14,13 @@ const NavLink = ({ l, ...p }) => <Link to={PAGES[l]} {...p} />;
 // Hover preview: a small card of what is on the page, built from the same data the page uses.
 function Preview({ l, t }) {
     const feat = projects.filter(p => p.featured).sort((a, b) => a.featuredRank - b.featuredRank).slice(0, 4);
-    const eyebrow = { ...FONTS.mono, fontSize: ".68rem", letterSpacing: ".14em", color: t.textMute, marginBottom: 8 };
+    const eyebrow = { ...FONTS.mono, fontSize: "0.85rem", letterSpacing: ".14em", color: t.textMute, marginBottom: 8 };
     const row = { ...FONTS.inter, fontSize: ".85rem", color: t.textHi, display: "flex", alignItems: "center", gap: 8, marginBottom: 6 };
     const dot = c => <span style={{ width: 8, height: 8, borderRadius: 4, background: c, flexShrink: 0 }} />;
     const body = {
         Work: <><div style={eyebrow}>{projects.length} PROJECTS · FEATURED</div>{feat.map(p => <div key={p.id} style={row}>{dot(catColor(t, p.category))}{p.title}</div>)}</>,
         Experience: <><div style={eyebrow}>{EXPERIENCES.length} ROLES · INTERNSHIPS, RESEARCH, TUTORING</div>{EXPERIENCES.slice(0, 4).map(e => <div key={e.id} style={row}>{dot(e.internship ? t.gold : t.cyan)}<span>{e.company}<span style={{ color: t.textMute }}> · {e.role}</span></span></div>)}</>,
-        About: <><div style={eyebrow}>OUTSIDE WORK</div><div style={{ ...row, display: "block", lineHeight: 1.5 }}>{profile.degree}, {profile.minor} minor, {profile.school}.</div><div style={{ ...row, display: "block", color: t.textMute, lineHeight: 1.5 }}>Music, books, a metal orca built in three.js.</div></>,
+        About: <><div style={eyebrow}>ABOUT ME</div><div style={{ ...row, display: "block", lineHeight: 1.5 }}>{profile.degree}, {profile.minor} minor, {profile.school}.</div><div style={{ ...row, display: "block", color: t.textMute, lineHeight: 1.5 }}>Music, books, a metal orca built in three.js.</div></>,
         Contact: <><div style={eyebrow}>LOOKING FOR</div><div style={{ ...row, display: "block", lineHeight: 1.5 }}>{profile.target}</div><div style={{ ...row, color: t.textMute }}>Email · LinkedIn · GitHub · guestbook</div></>,
     }[l];
     return (
@@ -64,7 +64,7 @@ export default function Navbar({ navUp }) {
                     {navLinks.map(l => (
                         <div key={l} style={{ position: "relative" }} onMouseEnter={() => setHover(l)} onMouseLeave={() => setHover(null)} onFocus={() => setHover(l)} onBlur={() => setHover(null)}>
                             <NavLink l={l} style={{
-                                ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".12em",
+                                ...FONTS.mono, fontSize: "0.97rem", letterSpacing: ".12em",
                                 color: hover === l ? t.cyan : t.textMute, textDecoration: "none", textTransform: "uppercase",
                                 transition: "color .2s"
                             }}>

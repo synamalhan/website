@@ -15,7 +15,7 @@ const Stats = forwardRef(function Stats({ counts = {} }, ref) {
                 {items.map(([n, label]) => (
                     <div key={label} style={{ textAlign: "center" }}>
                         <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: isMobile ? "2rem" : "2.6rem", color: t.textHi }}>{n || 0}</div>
-                        <div style={{ ...FONTS.mono, fontSize: ".75rem", letterSpacing: ".14em", color: t.textMute, textTransform: "uppercase", marginTop: 4 }}>{label}</div>
+                        <div style={{ ...FONTS.mono, fontSize: "0.87rem", letterSpacing: ".14em", color: t.textMute, textTransform: "uppercase", marginTop: 4 }}>{label}</div>
                     </div>
                 ))}
             </div>

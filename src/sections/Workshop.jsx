@@ -36,14 +36,14 @@ export default function Workshop() {
                     {near && <Guard><ClientOnly>{() => <Suspense fallback={null}><MetalOrca3D exploded={exploded} reduced={reduced} rotate={!isMobile} play={seen} buildKey={buildKey} /></Suspense>}</ClientOnly></Guard>}
                 </div>
                 <button type="button" onClick={() => setExploded(e => !e)} aria-pressed={exploded} style={{
-                    ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".14em", padding: "12px 22px", cursor: "pointer", borderRadius: 10,
+                    ...FONTS.mono, fontSize: "0.97rem", letterSpacing: ".14em", padding: "12px 22px", cursor: "pointer", borderRadius: 10,
                     background: "transparent", color: t.textHi, border: `1px solid ${t.borderHi}`,
                 }}>{exploded ? "ASSEMBLE" : "EXPLODE VIEW"}</button>
                 {!reduced && <button type="button" onClick={() => { setExploded(false); setBuildKey(k => k + 1); }} style={{
-                    ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".14em", padding: "12px 22px", cursor: "pointer", borderRadius: 10, marginLeft: 12,
+                    ...FONTS.mono, fontSize: "0.97rem", letterSpacing: ".14em", padding: "12px 22px", cursor: "pointer", borderRadius: 10, marginLeft: 12,
                     background: "transparent", color: t.textHi, border: `1px solid ${t.borderHi}`,
                 }}>REPLAY BUILD</button>}
-                {!isMobile && <div style={{ ...FONTS.mono, fontSize: ".75rem", letterSpacing: ".14em", color: t.textMute, marginTop: 14 }}>DRAG TO ROTATE</div>}
+                {!isMobile && <div style={{ ...FONTS.mono, fontSize: "0.87rem", letterSpacing: ".14em", color: t.textMute, marginTop: 14 }}>DRAG TO ROTATE</div>}
             </div>
         </section>
     );

@@ -22,7 +22,7 @@ export default function Contact() {
             </p>
             <a href={`mailto:${email}`} style={{
                 display: "inline-flex", alignItems: "center", gap: 12, padding: "16px 28px", borderRadius: 14, textDecoration: "none",
-                background: t.accent, color: t.onAccent, ...FONTS.mono, fontSize: "1rem", letterSpacing: ".06em", boxShadow: `0 10px 28px ${t.accent}44`,
+                background: t.accent, color: t.onAccent, ...FONTS.mono, fontSize: "1.12rem", letterSpacing: ".06em", boxShadow: `0 10px 28px ${t.accent}44`,
             }}><FaEnvelope aria-hidden="true" /> {email}</a>
             <div style={{ display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap", marginTop: 22 }}>
                 {links.map(l => (

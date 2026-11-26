@@ -10,7 +10,7 @@ const months = (s, e) => Math.max(1, Math.round(((e ? Date.parse(e) : Date.now()
 function Section({ title, color, children }) {
     return (
         <div style={{ marginTop: 18, padding: "16px 18px", borderRadius: 12, background: `${color}14`, border: `1px solid ${color}44`, borderLeft: `4px solid ${color}` }}>
-            <div style={{ ...FONTS.mono, fontSize: ".75rem", letterSpacing: ".14em", color, fontWeight: 700, marginBottom: 12 }}>{title}</div>
+            <div style={{ ...FONTS.mono, fontSize: "0.87rem", letterSpacing: ".14em", color, fontWeight: 700, marginBottom: 12 }}>{title}</div>
             {children}
         </div>
     );
@@ -39,7 +39,7 @@ export default function ExperienceModal({ exp, onClose }) {
                     <div>
                         <h3 style={{ ...FONTS.orb, fontSize: "1.7rem", color: t.textHi, margin: "0 0 4px" }}>{exp.company}</h3>
                         <div style={{ ...FONTS.inter, fontSize: "1.1rem", color: t.textHi, fontWeight: 600 }}>{exp.role}</div>
-                        <div style={{ ...FONTS.mono, fontSize: ".8rem", letterSpacing: ".08em", color: t.textMute, marginTop: 6 }}>{exp.years} · {months(exp.start, exp.end)} mo{exp.internship ? " · Internship" : ""}</div>
+                        <div style={{ ...FONTS.mono, fontSize: "0.92rem", letterSpacing: ".08em", color: t.textMute, marginTop: 6 }}>{exp.years} · {months(exp.start, exp.end)} mo{exp.internship ? " · Internship" : ""}</div>
                     </div>
                     <button ref={closeRef} onClick={onClose} aria-label="Close details" style={{ alignSelf: "flex-start", background: "none", border: `1px solid ${t.border}`, color: t.textHi, borderRadius: 8, width: 40, height: 40, fontSize: "1.2rem", cursor: "pointer" }}>✕</button>
                 </div>
@@ -53,14 +53,14 @@ export default function ExperienceModal({ exp, onClose }) {
                                 <div style={{ ...body, color: t.textMute, fontSize: ".9rem", margin: "2px 0 8px" }}>{w.problemType}</div>
                                 <p style={{ ...body, marginBottom: 6 }}>{w.role}</p>
                                 <p style={{ ...body, marginBottom: 6 }}>{w.impact}</p>
-                                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{w.tools.map(x => <span key={x} style={{ ...FONTS.mono, fontSize: ".72rem", padding: "3px 8px", borderRadius: 6, background: `${t.gold}1f`, border: `1px solid ${t.gold}44`, color: t.textHi }}>{x}</span>)}</div>
+                                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{w.tools.map(x => <span key={x} style={{ ...FONTS.mono, fontSize: "0.85rem", padding: "3px 8px", borderRadius: 6, background: `${t.gold}1f`, border: `1px solid ${t.gold}44`, color: t.textHi }}>{x}</span>)}</div>
                             </div>
                         ))}
                     </Section>
                 )}
                 <Section color={t.green} title="IMPACT">{list(exp.impact)}</Section>
                 <Section color={t.accent} title="TECH STACK">
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{exp.techStack.map(x => <span key={x} style={{ ...FONTS.mono, fontSize: ".74rem", padding: "4px 10px", borderRadius: 6, background: `${t.accent}1f`, border: `1px solid ${t.accent}44`, color: t.textHi }}>{x}</span>)}</div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{exp.techStack.map(x => <span key={x} style={{ ...FONTS.mono, fontSize: "0.86rem", padding: "4px 10px", borderRadius: 6, background: `${t.accent}1f`, border: `1px solid ${t.accent}44`, color: t.textHi }}>{x}</span>)}</div>
                 </Section>
             </div>
         </div>,

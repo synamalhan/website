@@ -1,11 +1,12 @@
 export const FONTS = {
-    mono: { fontFamily: "'Courier New', monospace" },
-    orb: { fontFamily: "'Nunito', sans-serif" },
-    inter: { fontFamily: "'Inter', sans-serif" },
+    // Labels and small headers: a bold monospace (was Courier New). Display: Bricolage Grotesque. Body: Plus Jakarta Sans.
+    mono: { fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontWeight: 700 },
+    orb: { fontFamily: "'Bricolage Grotesque', sans-serif" },
+    inter: { fontFamily: "'Plus Jakarta Sans', sans-serif" },
 };
 
 export const btnBase = {
-    ...{ fontFamily: "'Nunito', sans-serif" },
+    ...{ fontFamily: "'Bricolage Grotesque', sans-serif" },
     fontWeight: 700,
     fontSize: "1rem",
     letterSpacing: ".05em",

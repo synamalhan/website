@@ -107,7 +107,7 @@ export default function Blog() {
                                 e.currentTarget.style.transform = `translate(${fl.x}px,${fl.y}px) rotate(${fl.r}deg)`;
                                 e.currentTarget.style.zIndex = 1;
                             }}>
-                            <div style={{ ...FONTS.mono, fontSize: ".54rem", letterSpacing: ".28em", color: t.cyan, marginBottom: 7 }}>{post.date}</div>
+                            <div style={{ ...FONTS.mono, fontSize: "0.85rem", letterSpacing: ".28em", color: t.cyan, marginBottom: 7 }}>{post.date}</div>
                             <div style={{ ...FONTS.orb, fontWeight: 700, fontSize: ".82rem", color: t.textHi, lineHeight: 1.4, marginBottom: 9 }}>{post.title}</div>
                             <div style={{ fontSize: ".75rem", lineHeight: 1.7, color: t.textMute }}>{post.excerpt}</div>
                         </div>
@@ -170,7 +170,7 @@ export default function Blog() {
                         </button>
 
                         <div style={{ overflowY: "auto", paddingRight: 10 }}>
-                            <div style={{ ...FONTS.mono, fontSize: "0.6rem", color: t.cyan, letterSpacing: 2, marginBottom: 8 }}>{selectedPost.date}</div>
+                            <div style={{ ...FONTS.mono, fontSize: "0.85rem", color: t.cyan, letterSpacing: 2, marginBottom: 8 }}>{selectedPost.date}</div>
                             <H2 style={{ fontSize: isMobile ? "1.4rem" : "2rem", marginBottom: 20, color: t.accent, lineHeight: 1.2 }}>{selectedPost.title}</H2>
                             <div
                                 style={{

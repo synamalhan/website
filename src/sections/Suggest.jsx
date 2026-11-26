@@ -50,7 +50,7 @@ export default function Suggest() {
     return (
         <div className="hover-card" style={{ gridColumn: "1 / -1", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "minmax(0,.8fr) minmax(0,1.4fr)", gap: isMobile ? 18 : 32, alignItems: "center", padding: isMobile ? 20 : 28, background: t.surface, border: `1px solid ${t.border}`, borderLeft: `4px solid ${color}`, borderRadius: 18 }}>
             <div>
-                <div style={{ ...FONTS.mono, fontSize: ".68rem", letterSpacing: ".14em", color }}>YOUR TURN</div>
+                <div style={{ ...FONTS.mono, fontSize: "0.85rem", letterSpacing: ".14em", color }}>YOUR TURN</div>
                 <div style={{ ...FONTS.orb, fontSize: isMobile ? "1.35rem" : "1.6rem", fontWeight: 800, color: t.textHi, margin: "8px 0", lineHeight: 1.15 }}>Got a song or book for me?</div>
                 <p style={{ margin: 0, color: t.textMute, lineHeight: 1.6, fontSize: ".95rem" }}>Search for it and send it over. The best ones end up on my playlist and shelf.</p>
             </div>
@@ -59,14 +59,14 @@ export default function Suggest() {
                 <div style={{ textAlign: "center", padding: "18px 0" }}>
                     <div style={{ fontSize: "2rem", color }}>{KINDS[f.kind].icon}</div>
                     <div style={{ ...FONTS.inter, fontWeight: 700, color: t.textHi, margin: "6px 0" }}>Added to my list. Thank you!</div>
-                    <button type="button" onClick={() => setState({ status: "idle", text: "" })} style={{ ...FONTS.mono, fontSize: ".75rem", letterSpacing: 2, background: "none", border: "none", color, cursor: "pointer" }}>SUGGEST ANOTHER</button>
+                    <button type="button" onClick={() => setState({ status: "idle", text: "" })} style={{ ...FONTS.mono, fontSize: "0.87rem", letterSpacing: 2, background: "none", border: "none", color, cursor: "pointer" }}>SUGGEST ANOTHER</button>
                 </div>
             ) : (
                 <form onSubmit={submit} style={{ display: "grid", gap: 12 }}>
                     <div role="tablist" aria-label="Suggestion type" style={{ display: "flex", gap: 6, padding: 4, borderRadius: 12, background: t.bg, width: "fit-content" }}>
                         {Object.entries(KINDS).map(([k, v]) => (
                             <button key={k} type="button" role="tab" aria-selected={f.kind === k} onClick={() => { setF({ ...f, kind: k, message: "" }); setSel(null); }}
-                                style={{ ...FONTS.mono, fontSize: ".78rem", letterSpacing: 1.5, padding: "8px 16px", borderRadius: 9, border: "none", cursor: "pointer", background: f.kind === k ? color : "transparent", color: f.kind === k ? "#fff" : t.textMute, boxShadow: f.kind === k ? "0 3px 0 rgba(0,0,0,.3)" : "none" }}>
+                                style={{ ...FONTS.mono, fontSize: "0.90rem", letterSpacing: 1.5, padding: "8px 16px", borderRadius: 9, border: "none", cursor: "pointer", background: f.kind === k ? color : "transparent", color: f.kind === k ? "#fff" : t.textMute, boxShadow: f.kind === k ? "0 3px 0 rgba(0,0,0,.3)" : "none" }}>
                                 {v.icon} {v.label.toUpperCase()}
                             </button>
                         ))}
@@ -105,7 +105,7 @@ export default function Suggest() {
                         <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={f.website} onChange={e => setF({ ...f, website: e.target.value })} style={{ position: "absolute", left: "-9999px" }} />
                         <button type="submit" disabled={state.status === "sending"} style={{ ...FONTS.mono, letterSpacing: 2, padding: "13px 24px", borderRadius: 12, border: "none", cursor: "pointer", background: color, color: "#fff", boxShadow: "0 4px 0 rgba(0,0,0,.35)", flex: isMobile ? "1 1 100%" : "none" }}>SEND IT</button>
                     </div>
-                    <span role="status" style={{ ...FONTS.mono, fontSize: ".75rem", color: state.status === "error" ? "#ff6b6b" : t.textMute, minHeight: "1em" }}>{state.text}</span>
+                    <span role="status" style={{ ...FONTS.mono, fontSize: "0.87rem", color: state.status === "error" ? "#ff6b6b" : t.textMute, minHeight: "1em" }}>{state.text}</span>
                 </form>
             )}
         </div>

@@ -37,7 +37,7 @@ export default function Guestbook() {
                 <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={f.website} onChange={e => setF({ ...f, website: e.target.value })} style={{ position: "absolute", left: "-9999px" }} />
                 <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
                     <button type="submit" style={{ ...FONTS.mono, letterSpacing: 2, padding: "11px 20px", borderRadius: 10, border: "none", cursor: "pointer", background: t.accent, color: t.onAccent }}>SEND</button>
-                    <span role="status" style={{ ...FONTS.mono, fontSize: ".78rem", color: t.textMute }}>{msg}</span>
+                    <span role="status" style={{ ...FONTS.mono, fontSize: "0.90rem", color: t.textMute }}>{msg}</span>
                 </div>
             </form>
             {notes.length > 0 && (
@@ -45,7 +45,7 @@ export default function Guestbook() {
                     {notes.map((n, i) => (
                         <div key={i} className="hover-card" style={{ padding: "16px 18px", borderRadius: 14, background: t.surface, border: `1px solid ${t.border}` }}>
                             <p style={{ margin: 0, lineHeight: 1.6, color: t.textHi, overflowWrap: "anywhere" }}>{n.message}</p>
-                            <div style={{ ...FONTS.mono, fontSize: ".72rem", color: t.textMute, marginTop: 10 }}>{n.name}</div>
+                            <div style={{ ...FONTS.mono, fontSize: "0.85rem", color: t.textMute, marginTop: 10 }}>{n.name}</div>
                         </div>
                     ))}
                 </div>

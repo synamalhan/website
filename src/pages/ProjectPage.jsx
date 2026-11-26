@@ -39,9 +39,9 @@ export default function ProjectPage() {
 
     const card = { background: t.surface, border: `1px solid ${t.border}`, borderRadius: 16, padding: "22px 24px" };
     const body = { fontSize: "1.05rem", lineHeight: 1.75, color: t.text, maxWidth: "68ch" };
-    const eyebrow = { ...FONTS.mono, fontSize: ".78rem", letterSpacing: ".16em", color };
+    const eyebrow = { ...FONTS.mono, fontSize: "0.90rem", letterSpacing: ".16em", color };
     const Sec = ({ title, children }) => <section style={{ marginTop: 44 }}><h2 style={{ ...eyebrow, marginBottom: 14 }}>{title}</h2>{children}</section>;
-    const btn = primary => ({ ...FONTS.mono, fontSize: ".8rem", letterSpacing: ".1em", textDecoration: "none", padding: "11px 18px", borderRadius: 10,
+    const btn = primary => ({ ...FONTS.mono, fontSize: "0.92rem", letterSpacing: ".1em", textDecoration: "none", padding: "11px 18px", borderRadius: 10,
         background: primary ? t.accent : "transparent", color: primary ? "#fff" : t.textHi, border: `1px solid ${primary ? t.accent : t.borderHi}` });
 
     return (
@@ -53,8 +53,8 @@ export default function ProjectPage() {
                 <header>
                     <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center", marginBottom: 16 }}>
                         <span style={{ ...eyebrow, padding: "5px 12px", border: `1px solid ${color}`, borderRadius: 999 }}>{cat?.title.toUpperCase()}</span>
-                        {p.year && <span style={{ ...FONTS.mono, fontSize: ".78rem", color: t.textMute }}>{p.year}</span>}
-                        {status && <span style={{ ...FONTS.mono, fontSize: ".78rem", letterSpacing: ".06em", color: t.gold, padding: "5px 12px", border: `1px solid ${t.gold}`, borderRadius: 999 }}>{status.toUpperCase()}</span>}
+                        {p.year && <span style={{ ...FONTS.mono, fontSize: "0.90rem", color: t.textMute }}>{p.year}</span>}
+                        {status && <span style={{ ...FONTS.mono, fontSize: "0.90rem", letterSpacing: ".06em", color: t.gold, padding: "5px 12px", border: `1px solid ${t.gold}`, borderRadius: 999 }}>{status.toUpperCase()}</span>}
                     </div>
                     <h1 style={{ ...FONTS.orb, fontSize: "clamp(2rem,4.6vw,3.2rem)", color: t.textHi, lineHeight: 1.12, maxWidth: "20ch" }}>{p.title}</h1>
                     <p style={{ ...body, color: t.textMute, fontSize: "1.2rem", marginTop: 18 }}>{p.summary}</p>
@@ -75,14 +75,14 @@ export default function ProjectPage() {
                                     // Wide screenshots flow into two columns (no cropping, no ragged rows); phone screenshots sit in their own row.
                                     return list.length > 0 && <div key={String(wide)} style={wide ? { columnCount: isMobile ? 1 : 2, columnGap: 16 } : { display: "flex", gap: 16, flexWrap: "wrap" }}>{list.map(img)}</div>;
                                 })}
-                                <p style={{ ...FONTS.mono, fontSize: ".75rem", color: t.textMute, marginTop: 10 }}>Screenshots from the project repository. Click one to expand.</p>
+                                <p style={{ ...FONTS.mono, fontSize: "0.87rem", color: t.textMute, marginTop: 10 }}>Screenshots from the project repository. Click one to expand.</p>
                             </Sec>
                         )}
                         {diagram && (
                             <Sec title="ARCHITECTURE">
                                 <figure style={{ margin: 0 }}>
                                     <img {...zoom(diagram.src)} src={projectImage(diagram.src)} alt={diagram.alt} style={{ width: "100%", display: "block", cursor: "zoom-in", borderRadius: 14, border: `1px solid ${t.border}`, background: "#fff" }} />
-                                    <figcaption style={{ ...FONTS.mono, fontSize: ".75rem", color: t.textMute, marginTop: 10 }}>Diagram from the project repository.</figcaption>
+                                    <figcaption style={{ ...FONTS.mono, fontSize: "0.87rem", color: t.textMute, marginTop: 10 }}>Diagram from the project repository.</figcaption>
                                 </figure>
                             </Sec>
                         )}
@@ -94,11 +94,11 @@ export default function ProjectPage() {
                                     {cs.decisions.map((x, i) => (
                                         <div key={x.choice} className="hover-card" style={{ ...card, display: "grid", gridTemplateColumns: isMobile ? "minmax(0,1fr)" : "1fr 1fr", gap: isMobile ? 12 : 28, borderLeft: `4px solid ${color}` }}>
                                             <div>
-                                                <div style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".14em", color: t.textMute, marginBottom: 6 }}>DECISION {i + 1}</div>
+                                                <div style={{ ...FONTS.mono, fontSize: "0.85rem", letterSpacing: ".14em", color: t.textMute, marginBottom: 6 }}>DECISION {i + 1}</div>
                                                 <div style={{ fontSize: "1.02rem", lineHeight: 1.55, color: t.textHi, fontWeight: 600 }}>{x.choice}</div>
                                             </div>
                                             <div>
-                                                <div style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".14em", color: t.textMute, marginBottom: 6 }}>TRADE-OFF</div>
+                                                <div style={{ ...FONTS.mono, fontSize: "0.85rem", letterSpacing: ".14em", color: t.textMute, marginBottom: 6 }}>TRADE-OFF</div>
                                                 <div style={{ fontSize: "1rem", lineHeight: 1.6, color: t.text }}>{x.tradeoff}</div>
                                             </div>
                                         </div>

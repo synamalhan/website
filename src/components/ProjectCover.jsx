@@ -6,7 +6,7 @@ import { projectImage } from "../data/assets";
 const shotsOf = p => p.images.filter(i => i.kind === "screenshot").slice(0, 3);
 // A screenshot can carry a dark-mode variant ({ dark: { src, bg } }); pick the one for the current theme.
 export const shotFor = (t, i) => (t.name === "dark" && i.dark ? { ...i, ...i.dark } : i);
-const CAT_COLOR = { ml: "cyan", ios: "accent", vision: "green", fullstack: "magenta", default: "gold", hackathon: "gold", creative: "magenta", tools: "cyan" };
+const CAT_COLOR = { ml: "cyan", ios: "accent", vision: "green", fullstack: "magenta", default: "gold", hackathon: "red", creative: "teal", tools: "lime" }; // eight categories, eight hues
 // One hue per category, from the theme, so every card for a category matches.
 export const catColor = (t, type) => t[CAT_COLOR[type]] || t.accent;
 
@@ -18,7 +18,7 @@ function Cover({ p, big }) {
     const headline = m ? m.value.replace(/\s*\[.*?\]/, "") : null;
     return (
         <div style={{ aspectRatio: big ? "16 / 9" : "16 / 10", borderRadius: 10, padding: "18px 20px", boxSizing: "border-box", display: "flex", flexDirection: "column", justifyContent: "space-between", background: `${c}22`, border: `1px solid ${c}55`, overflow: "hidden" }}>
-            <div style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".12em", color: c, display: "flex", justifyContent: "space-between" }}>
+            <div style={{ ...FONTS.mono, fontSize: "0.85rem", letterSpacing: ".12em", color: c, display: "flex", justifyContent: "space-between" }}>
                 <span>{(categories.find(x => x.type === p.category)?.title || "").toUpperCase()}</span><span>{p.year}</span>
             </div>
             {headline ? (

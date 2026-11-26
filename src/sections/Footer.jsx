@@ -19,7 +19,7 @@ export default function Footer() {
             zIndex: 1
         }}>
             <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: isMobile ? ".7rem" : ".8rem", letterSpacing: ".3em", color: t.textMute }}>SYNA</div>
-            <div style={{ ...FONTS.mono, fontSize: ".75rem", letterSpacing: ".12em", color: t.textMute, textTransform: "uppercase", textAlign: "center" }}>© {new Date().getFullYear()} Syna Malhan</div>
+            <div style={{ ...FONTS.mono, fontSize: "0.87rem", letterSpacing: ".12em", color: t.textMute, textTransform: "uppercase", textAlign: "center" }}>© {new Date().getFullYear()} Syna Malhan</div>
         </footer>
     );
 }

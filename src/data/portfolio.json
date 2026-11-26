@@ -853,7 +853,8 @@
       "caseStudy": null,
       "status": null,
       "featuredRank": null,
-      "projectedCompletion": null
+      "projectedCompletion": null,
+      "internship": "ripik-ai"
     },
     {
       "id": "customer-segmentation-via-k-means",
@@ -1490,7 +1491,8 @@
       "caseStudy": null,
       "status": null,
       "featuredRank": null,
-      "projectedCompletion": null
+      "projectedCompletion": null,
+      "internship": "jindal-steel-and-power-ltd"
     },
     {
       "id": "us-census-data-project",
@@ -1553,7 +1555,8 @@
       "caseStudy": null,
       "status": null,
       "featuredRank": null,
-      "projectedCompletion": null
+      "projectedCompletion": null,
+      "internship": "jindal-steel-and-power-ltd"
     },
     {
       "id": "plate-mill-fg-forecasting",
@@ -1586,7 +1589,8 @@
       "caseStudy": null,
       "status": null,
       "featuredRank": null,
-      "projectedCompletion": null
+      "projectedCompletion": null,
+      "internship": "jindal-steel-and-power-ltd"
     },
     {
       "id": "portfolio-performance-analyzer",
@@ -1828,7 +1832,8 @@
       "caseStudy": null,
       "status": null,
       "featuredRank": null,
-      "projectedCompletion": null
+      "projectedCompletion": null,
+      "internship": "ripik-ai"
     },
     {
       "id": "recall",

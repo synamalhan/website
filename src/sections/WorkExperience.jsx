@@ -135,7 +135,7 @@ export default function WorkExperience() {
                                     {exp.desc}
                                 </div>
 
-                                <div style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".14em", color: t.textMute, marginTop: 22, transform: "translateZ(40px)" }}>TAP TO FLIP ↻</div>
+                                <div style={{ ...FONTS.mono, fontSize: "0.85rem", letterSpacing: ".14em", color: t.textMute, marginTop: 22, transform: "translateZ(40px)" }}>TAP TO FLIP ↻</div>
                             </div>
 
                             {/* BACK */}
@@ -251,12 +251,12 @@ export default function WorkExperience() {
                                 </div>
 
                                 <button type="button" onClick={e => { e.stopPropagation(); setOpenId(exp.id); }} style={{
-                                    ...FONTS.mono, fontSize: ".8rem", letterSpacing: 2, padding: "10px 14px", marginBottom: 12, cursor: "pointer",
+                                    ...FONTS.mono, fontSize: "0.92rem", letterSpacing: 2, padding: "10px 14px", marginBottom: 12, cursor: "pointer",
                                     background: t.accent, color: t.onAccent, border: "none", borderRadius: 8, transform: "translateZ(60px)"
                                 }}>VIEW FULL DETAILS</button>
                                 <div style={{
                                     ...FONTS.mono,
-                                    fontSize: "0.6rem",
+                                    fontSize: "0.85rem",
                                     color: t.textMute,
                                     letterSpacing: 2,
                                     display: "flex",

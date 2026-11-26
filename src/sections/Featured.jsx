@@ -22,8 +22,8 @@ function Card({ p, big }) {
         }}>
             <ProjectCover p={p} big={big} />
             <div style={{ padding: "0 6px 6px", display: "flex", flexDirection: "column", gap: 10 }}>
-                <div style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".12em", color: c, fontWeight: 700 }}>{(categories.find(x => x.type === p.category)?.title || "").toUpperCase()}</div>
-                {status && <div style={{ ...FONTS.mono, fontSize: ".75rem", letterSpacing: ".08em", color: t.gold }}>{status.toUpperCase()}</div>}
+                <div style={{ ...FONTS.mono, fontSize: "0.85rem", letterSpacing: ".12em", color: c, fontWeight: 700 }}>{(categories.find(x => x.type === p.category)?.title || "").toUpperCase()}</div>
+                {status && <div style={{ ...FONTS.mono, fontSize: "0.87rem", letterSpacing: ".08em", color: t.gold }}>{status.toUpperCase()}</div>}
                 <div style={{ ...FONTS.orb, fontWeight: 800, fontSize: big ? "1.3rem" : "1.05rem", color: t.textHi, lineHeight: 1.2 }}>{p.title}</div>
                 {big && <p style={{ fontSize: ".95rem", lineHeight: 1.5, color: t.textMute, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{p.summary}</p>}
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>{p.stack.slice(0, 3).map(s => <Tag key={s}>{s}</Tag>)}</div>
@@ -46,7 +46,7 @@ export default function Featured() {
                 <div style={grid(Math.min(cards.length, 3))}>{cards.map(p => <Card key={p.id} p={p} />)}</div>
                 {building.length > 0 && (
                     <div style={{ marginTop: 36 }}>
-                        <div style={{ ...FONTS.mono, fontSize: ".8rem", letterSpacing: ".12em", color: t.gold, marginBottom: 12 }}>BUILDING NOW</div>
+                        <div style={{ ...FONTS.mono, fontSize: "0.92rem", letterSpacing: ".12em", color: t.gold, marginBottom: 12 }}>BUILDING NOW</div>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
                             {building.map(p => <Link key={p.id} to={`/projects/${p.id}`} style={{ ...FONTS.inter, fontSize: ".95rem", padding: "6px 14px", borderRadius: 999, color: t.text, border: `1px solid ${t.border}`, textDecoration: "none" }}>{p.title.split(":")[0]}</Link>)}
                         </div>

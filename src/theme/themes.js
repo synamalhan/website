@@ -14,6 +14,7 @@ export const THEMES = {
         magenta: "#f472b6", // pink
         gold: "#eab308", // yellow
         green: "#34d399",
+        red: "#f87171", lime: "#a3e635", teal: "#22d3ee", // extra category hues
         particle1: "139,92,246", // purple
         particle2: "59,130,246", // blue
         particle3: "234,179,8",  // yellow
@@ -40,6 +41,7 @@ export const THEMES = {
         magenta: "#be185d", // pink
         gold: "#a16207", // yellow
         green: "#047857",
+        red: "#dc2626", lime: "#4d7c0f", teal: "#0e7490", // extra category hues
         particle1: "139,92,246", // purple
         particle2: "59,130,246", // blue
         particle3: "234,179,8",  // yellow
