@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import axios from 'axios';
 import dotenv from 'dotenv';
-import { fetchReading } from './scripts/goodreads-lib.mjs';
+import { fetchReading } from './scripts/reading-lib.mjs';
 import querystring from 'querystring';
 
 dotenv.config();
@@ -142,7 +142,7 @@ async function getLastPlayed(token) {
     } catch { return null; }
 }
 
-// Live Goodreads shelf, cached 10 minutes so visitors never hammer Goodreads.
+// Live Hardcover shelf, cached 10 minutes so visitors never hammer Hardcover.
 let readingCache = { at: 0, books: [] };
 app.get('/api/reading', async (req, res) => {
     try {
