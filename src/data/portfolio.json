@@ -698,26 +698,74 @@
           "src": "brain-tumor-cnn.svg",
           "alt": "Medical Image Analysis for Early Brain Tumor Detection architecture diagram",
           "kind": "diagram"
+        },
+        {
+          "src": "brain-tumor-thumb-light.png",
+          "alt": "NeuroScan overview: Grad-CAM on a held-out scan, U-Net segmentation, ROC curve and held-out metrics",
+          "kind": "screenshot",
+          "wide": true,
+          "fit": "contain",
+          "bg": "#ffffff",
+          "dark": {
+            "src": "brain-tumor-thumb-dark.png",
+            "bg": "#0d1117"
+          }
+        },
+        {
+          "src": "brain-tumor-detection-tumor.png",
+          "alt": "NeuroScan detection tab flagging a tumor scan",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "brain-tumor-segmentation.png",
+          "alt": "NeuroScan segmentation tab with the predicted tumor mask",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "brain-tumor-detection-healthy.png",
+          "alt": "NeuroScan detection tab on a healthy scan",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "brain-tumor-performance.png",
+          "alt": "NeuroScan performance tab with held-out metrics",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "brain-tumor-gradcam.png",
+          "alt": "Grad-CAM examples: evidence for tumor falls on the lesion",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "brain-tumor-seg-examples.png",
+          "alt": "U-Net segmentation examples on held-out patients",
+          "kind": "screenshot",
+          "wide": true
         }
       ],
       "metrics": [
         {
-          "label": "Test accuracy on 747 held-out MRI scans (was 74.0% before the fixes)",
+          "label": "Classifier accuracy on 747 held-out MRI scans (was 74.0% before the fixes)",
           "value": "97.1%",
-          "source": "brain-tumor-cnn README, docs/results/metrics.json (747 held-out scans)"
+          "source": "brain-tumor-cnn README, docs/results/metrics.json and segmentation_metrics.json"
         },
         {
-          "label": "ROC AUC (was 0.799)",
+          "label": "Classifier ROC AUC (was 0.799); tumor recall 98.6%, healthy recall 95.5%",
           "value": "0.989",
-          "source": "brain-tumor-cnn README, docs/results/metrics.json (747 held-out scans)"
+          "source": "brain-tumor-cnn README, docs/results/metrics.json and segmentation_metrics.json"
         },
         {
-          "label": "Tumor recall / healthy recall (was 86% / 60%)",
-          "value": "98.6% / 95.5%",
-          "source": "brain-tumor-cnn README, docs/results/metrics.json (747 held-out scans)"
+          "label": "U-Net segmentation Dice on 330 slices from 11 unseen patients (IoU 0.579)",
+          "value": "0.734",
+          "source": "brain-tumor-cnn README, docs/results/metrics.json and segmentation_metrics.json"
         }
       ],
-      "details": "Situation: Early detection of tumors in radiology scans was inconsistent. Problem: High false negatives in automated diagnosis. Action: Trained U-Net for segmentation and ResNet for classification. Result: 97.1% accuracy and 0.989 ROC AUC on 747 held-out scans, with a leak-free split.",
+      "details": "Situation: Early detection of tumors in radiology scans was inconsistent. Problem: High false negatives in automated diagnosis. Action: Trained U-Net for segmentation and ResNet for classification. Result: 97.1% accuracy and 0.989 ROC AUC on 747 held-out scans (leak-free split), and 0.734 Dice for segmentation on unseen patients.",
       "caseStudy": {
         "role": "Author of the repository: designed and built it.",
         "problem": "Flag whether an MRI scan shows a tumor and, if so, localize it at pixel level.",
@@ -735,7 +783,7 @@
             "tradeoff": "Easy to inspect outputs, though it is a demo, not a clinical tool."
           }
         ],
-        "result": "On 747 held-out scans the classifier reaches 97.1% accuracy and 0.989 ROC AUC, up from 74.0% and 0.799. It catches 360 of 365 tumors and falsely flags 17 of 382 healthy scans. The biggest gain came from fixing input preprocessing (the ImageNet ResNet50 was fed [0,1] images instead of the 0-255 caffe-style input it expects). The split is now grouped by perceptual hash because about 2,100 of the 4,600 images are copies of the same scan, so the old 74% was probably flattering. Grad-CAM shows the evidence for 'tumor' falling on the lesion. Web-sourced slices from mixed scanners: this is a research project, not a clinical tool."
+        "result": "Classifier: on 747 held-out scans it reaches 97.1% accuracy and 0.989 ROC AUC, up from 74.0% and 0.799. It catches 360 of 365 tumors and falsely flags 17 of 382 healthy scans. The biggest gain came from fixing input preprocessing (the ImageNet ResNet50 was fed [0,1] images instead of the 0-255 caffe-style input it expects). The split is now grouped by perceptual hash because about 2,100 of the 4,600 images are copies of the same scan, so the old 74% was probably flattering. Grad-CAM shows the evidence for 'tumor' falling on the lesion. Segmentation: the U-Net scores Dice 0.734 (IoU 0.579) on 330 slices from 11 patients it never saw. It is weaker per slice: mean Dice 0.559 on slices that contain tumor, tumors found in 69.7% of those slices, and 10.4% of tumor-free slices get a false mask. Most misses are small tumors at the edge of the volume. Web-sourced slices from mixed scanners: this is a research project, not a clinical tool."
       },
       "status": "built",
       "featuredRank": 4,

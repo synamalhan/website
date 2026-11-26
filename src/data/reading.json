@@ -1,26 +1,26 @@
 [
   {
-    "title": "The Hunger Games (The Hunger Games, #1)",
-    "link": "https://www.goodreads.com/review/show/9130491170",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586722975l/2767052._SX318_.jpg",
-    "author": "Suzanne Collins"
-  },
-  {
     "title": "Imogen, Obviously",
-    "link": "https://www.goodreads.com/review/show/9113186897",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1665161544l/61896624._SX318_.jpg",
+    "link": "https://hardcover.app/books/imogen-obviously",
+    "cover": "https://assets.hardcover.app/edition/31488833/c2cde309b4b092a99ef3c3bb1a80a77c8d47297f.jpeg",
     "author": "Becky Albertalli"
   },
   {
+    "title": "The Hunger Games",
+    "link": "https://hardcover.app/books/the-hunger-games",
+    "cover": "https://assets.hardcover.app/editions/1589497/2979196565308831-lf%202.jpeg",
+    "author": "Suzanne Collins"
+  },
+  {
     "title": "Circe",
-    "link": "https://www.goodreads.com/review/show/8987241384",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1565909496l/35959740._SX318_.jpg",
+    "link": "https://hardcover.app/books/circe",
+    "cover": "https://assets.hardcover.app/editions/187333/9694237244087422-circe.jpg",
     "author": "Madeline Miller"
   },
   {
     "title": "Carmilla",
-    "link": "https://www.goodreads.com/review/show/5111830776",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1657795822l/48037._SX318_.jpg",
+    "link": "https://hardcover.app/books/carmilla",
+    "cover": "https://assets.hardcover.app/editions/3910455/9bd4c571-daf3-43c0-9ecb-63d966d25d50.jpg",
     "author": "J. Sheridan Le Fanu"
   }
 ]

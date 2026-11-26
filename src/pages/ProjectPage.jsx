@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { shotFor } from "../components/ProjectCover";
+import Lightbox from "../components/Lightbox";
 import { Link, useParams } from "react-router-dom";
 import Seo from "../components/Seo";
 import { useTheme } from "../theme/ThemeContext";
@@ -17,6 +19,7 @@ export default function ProjectPage() {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
     const { id } = useParams();
+    const [open, setOpen] = useState(null); // index into `gallery`, or null
     const p = projects.find(x => x.id === id);
     if (!p) return <main style={{ padding: 40, position: "relative", zIndex: 10 }}><Link to="/">← Back home</Link></main>;
 
@@ -26,6 +29,10 @@ export default function ProjectPage() {
     const status = statusLabel(p);
     const diagram = p.images.find(i => i.kind === "diagram");
     const shots = p.images.filter(i => i.kind === "screenshot");
+    // Everything that can be expanded, in the order it appears on the page.
+    const themed = shots.map(i => shotFor(t, i));
+    const gallery = [...themed.filter(i => i.wide), ...themed.filter(i => !i.wide), ...(diagram ? [diagram] : [])].map(i => ({ key: i.src, url: projectImage(i.src), alt: i.alt }));
+    const zoom = src => ({ onClick: () => setOpen(gallery.findIndex(g => g.key === src)), role: "button", tabIndex: 0, "aria-label": "Expand image", onKeyDown: e => e.key === "Enter" && setOpen(gallery.findIndex(g => g.key === src)) });
     const fi = featured.findIndex(x => x.id === p.id);
     const prev = fi >= 0 && featured[(fi - 1 + featured.length) % featured.length];
     const next = fi >= 0 && featured[(fi + 1) % featured.length];
@@ -64,17 +71,17 @@ export default function ProjectPage() {
                             <Sec title="SCREENSHOTS">
                                 {[true, false].map(wide => {
                                     const list = shots.map(i => shotFor(t, i)).filter(i => !!i.wide === wide);
-                                    const img = i => <img key={i.src} src={projectImage(i.src)} alt={i.alt} loading="lazy" style={{ display: "block", borderRadius: 14, border: `1px solid ${t.border}`, boxShadow: "0 10px 24px rgba(0,0,0,.35)", ...(wide ? { width: "100%", marginBottom: 16, breakInside: "avoid" } : { width: isMobile ? "46%" : 210 }) }} />;
+                                    const img = i => <img key={i.src} {...zoom(i.src)} src={projectImage(i.src)} alt={i.alt} loading="lazy" style={{ display: "block", cursor: "zoom-in", borderRadius: 14, border: `1px solid ${t.border}`, boxShadow: "0 10px 24px rgba(0,0,0,.35)", ...(wide ? { width: "100%", marginBottom: 16, breakInside: "avoid" } : { width: isMobile ? "46%" : 210 }) }} />;
                                     // Wide screenshots flow into two columns (no cropping, no ragged rows); phone screenshots sit in their own row.
                                     return list.length > 0 && <div key={String(wide)} style={wide ? { columnCount: isMobile ? 1 : 2, columnGap: 16 } : { display: "flex", gap: 16, flexWrap: "wrap" }}>{list.map(img)}</div>;
                                 })}
-                                <p style={{ ...FONTS.mono, fontSize: ".75rem", color: t.textMute, marginTop: 10 }}>Screenshots from the project repository.</p>
+                                <p style={{ ...FONTS.mono, fontSize: ".75rem", color: t.textMute, marginTop: 10 }}>Screenshots from the project repository. Click one to expand.</p>
                             </Sec>
                         )}
                         {diagram && (
                             <Sec title="ARCHITECTURE">
                                 <figure style={{ margin: 0 }}>
-                                    <img src={projectImage(diagram.src)} alt={diagram.alt} style={{ width: "100%", display: "block", borderRadius: 14, border: `1px solid ${t.border}`, background: "#fff" }} />
+                                    <img {...zoom(diagram.src)} src={projectImage(diagram.src)} alt={diagram.alt} style={{ width: "100%", display: "block", cursor: "zoom-in", borderRadius: 14, border: `1px solid ${t.border}`, background: "#fff" }} />
                                     <figcaption style={{ ...FONTS.mono, fontSize: ".75rem", color: t.textMute, marginTop: 10 }}>Diagram from the project repository.</figcaption>
                                 </figure>
                             </Sec>
@@ -130,6 +137,7 @@ export default function ProjectPage() {
                     {next ? <Link to={`/projects/${next.id}`} style={{ textDecoration: "none", color: t.textHi, textAlign: "right" }}><div style={{ ...eyebrow, color: t.textMute }}>NEXT FEATURED →</div><div style={{ marginTop: 4, fontWeight: 600 }}>{next.title}</div></Link> : <span />}
                 </nav>
             </main>
+            {open != null && <Lightbox items={gallery} index={open} onIndex={setOpen} onClose={() => setOpen(null)} />}
             <Footer />
         </>
     );
