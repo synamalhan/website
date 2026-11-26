@@ -67,15 +67,17 @@ export default function ProjectPage() {
 
                 <div style={{ display: "grid", gridTemplateColumns: isMobile ? "minmax(0,1fr)" : "minmax(0,1fr) 270px", gap: 40, alignItems: "start" }}>
                     <div>
+                        {/* The problem comes first, then the UI that solves it. */}
+                        {cs ? <Sec title="PROBLEM"><p style={body}>{cs.problem}</p></Sec> : <Sec title="OVERVIEW"><p style={body}>{p.details}</p></Sec>}
                         {shots.length > 0 && (
-                            <Sec title="SCREENSHOTS">
+                            <Sec title="UI">
                                 {[true, false].map(wide => {
                                     const list = shots.map(i => shotFor(t, i)).filter(i => !!i.wide === wide);
                                     const img = i => <img key={i.src} {...zoom(i.src)} src={projectImage(i.src)} alt={i.alt} loading="lazy" style={{ display: "block", cursor: "zoom-in", borderRadius: 14, border: `1px solid ${t.border}`, boxShadow: "0 10px 24px rgba(0,0,0,.35)", ...(wide ? { width: "100%", marginBottom: 16, breakInside: "avoid" } : { width: isMobile ? "46%" : 210 }) }} />;
                                     // Wide screenshots flow into two columns (no cropping, no ragged rows); phone screenshots sit in their own row.
                                     return list.length > 0 && <div key={String(wide)} style={wide ? { columnCount: isMobile ? 1 : 2, columnGap: 16 } : { display: "flex", gap: 16, flexWrap: "wrap" }}>{list.map(img)}</div>;
                                 })}
-                                <p style={{ ...FONTS.mono, fontSize: "0.87rem", color: t.textMute, marginTop: 10 }}>Screenshots from the project repository. Click one to expand.</p>
+                                <p style={{ ...FONTS.mono, fontSize: "0.87rem", color: t.textMute, marginTop: 10 }}>Images are loaded straight from the project repository on GitHub. Click one to expand.</p>
                             </Sec>
                         )}
                         {diagram && (
@@ -88,7 +90,6 @@ export default function ProjectPage() {
                         )}
 
                         {cs ? <>
-                            <Sec title="PROBLEM"><p style={body}>{cs.problem}</p></Sec>
                             <Sec title="KEY DECISIONS AND TRADE-OFFS">
                                 <div style={{ display: "grid", gap: 14 }}>
                                     {cs.decisions.map((x, i) => (
@@ -118,7 +119,7 @@ export default function ProjectPage() {
                                 )}
                                 <p style={body}>{cs.result || (status ? "Not built yet. No results are reported until they are measured." : "No measured results are published for this project yet.")}</p>
                             </Sec>
-                        </> : <Sec title="OVERVIEW"><p style={body}>{p.details}</p></Sec>}
+                        </> : null}
                     </div>
 
                     <aside style={{ ...card, position: isMobile ? "static" : "sticky", top: 84, marginTop: isMobile ? 0 : 44, display: "grid", gap: 22 }} aria-label="Project facts">

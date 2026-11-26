@@ -437,12 +437,12 @@
           "kind": "diagram"
         },
         {
-          "src": "personalization-teach.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/personalization/main/docs/screenshots/teach.png",
           "alt": "Teach screen of the Personalization iOS app (simulator)",
           "kind": "screenshot"
         },
         {
-          "src": "personalization-library.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/personalization/main/docs/screenshots/library.png",
           "alt": "Library screen of the Personalization iOS app with sample classes (simulator)",
           "kind": "screenshot"
         }
@@ -700,49 +700,49 @@
           "kind": "diagram"
         },
         {
-          "src": "brain-tumor-thumb-light.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/brain-tumor-cnn/main/docs/thumbnail/neuroscan_thumbnail_light.png",
           "alt": "NeuroScan overview: Grad-CAM on a held-out scan, U-Net segmentation, ROC curve and held-out metrics",
           "kind": "screenshot",
           "wide": true,
           "fit": "contain",
           "bg": "#ffffff",
           "dark": {
-            "src": "brain-tumor-thumb-dark.png",
+            "src": "https://raw.githubusercontent.com/synamalhan/brain-tumor-cnn/main/docs/thumbnail/neuroscan_thumbnail_dark.png",
             "bg": "#0d1117"
           }
         },
         {
-          "src": "brain-tumor-detection-tumor.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/brain-tumor-cnn/main/docs/ui/detection_tumor.png",
           "alt": "NeuroScan detection tab flagging a tumor scan",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "brain-tumor-segmentation.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/brain-tumor-cnn/main/docs/ui/segmentation.png",
           "alt": "NeuroScan segmentation tab with the predicted tumor mask",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "brain-tumor-detection-healthy.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/brain-tumor-cnn/main/docs/ui/detection_healthy.png",
           "alt": "NeuroScan detection tab on a healthy scan",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "brain-tumor-performance.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/brain-tumor-cnn/main/docs/ui/performance.png",
           "alt": "NeuroScan performance tab with held-out metrics",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "brain-tumor-gradcam.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/brain-tumor-cnn/main/docs/results/gradcam_examples.png",
           "alt": "Grad-CAM examples: evidence for tumor falls on the lesion",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "brain-tumor-seg-examples.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/brain-tumor-cnn/main/docs/results/segmentation_examples.png",
           "alt": "U-Net segmentation examples on held-out patients",
           "kind": "screenshot",
           "wide": true
@@ -919,14 +919,14 @@
       },
       "images": [
         {
-          "src": "option-pricing-overview-light.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/option-pricing/main/docs/overview-light.png",
           "alt": "Options Pricing and Risk Lab: dashboard interface and validation results",
           "kind": "screenshot",
           "wide": true,
           "fit": "contain",
           "bg": "#fbfaf7",
           "dark": {
-            "src": "option-pricing-overview-dark.png",
+            "src": "https://raw.githubusercontent.com/synamalhan/option-pricing/main/docs/overview-dark.png",
             "bg": "#161618"
           }
         },
@@ -936,31 +936,31 @@
           "kind": "diagram"
         },
         {
-          "src": "option-pricing-pricing.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/option-pricing/main/docs/screenshots/pricing.png",
           "alt": "Pricing and Greeks tab of the options dashboard",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "option-pricing-montecarlo.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/option-pricing/main/docs/screenshots/montecarlo.png",
           "alt": "Monte Carlo simulation tab",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "option-pricing-sensitivity.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/option-pricing/main/docs/screenshots/sensitivity.png",
           "alt": "Sensitivity tab",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "option-pricing-risk.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/option-pricing/main/docs/screenshots/risk.png",
           "alt": "VaR and Expected Shortfall tab",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "option-pricing-theory.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/option-pricing/main/docs/screenshots/theory.png",
           "alt": "Theory tab",
           "kind": "screenshot",
           "wide": true
@@ -1202,7 +1202,7 @@
       },
       "images": [
         {
-          "src": "curamind-showcase.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/curamind/main/docs/screenshots/showcase.png",
           "alt": "CuraMind: chat, mood dashboard, wellness toolbox and mobile view",
           "kind": "screenshot",
           "wide": true
@@ -1213,25 +1213,25 @@
           "kind": "diagram"
         },
         {
-          "src": "curamind-chat.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/curamind/main/docs/screenshots/chat.png",
           "alt": "CuraMind chat screen with an emotion-aware reply",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "curamind-dashboard.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/curamind/main/docs/screenshots/dashboard.png",
           "alt": "CuraMind emotion dashboard tracking mood over time",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "curamind-toolbox.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/curamind/main/docs/screenshots/toolbox.png",
           "alt": "CuraMind wellness toolbox with breathing, journaling and calming sounds",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "curamind-mobile.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/curamind/main/docs/screenshots/mobile.png",
           "alt": "CuraMind on a phone",
           "kind": "screenshot"
         }
@@ -1686,14 +1686,14 @@
       },
       "images": [
         {
-          "src": "nutri-snap-overview-light.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/nutri-snap/main/docs/overview-light.png",
           "alt": "NutriSnap overview: YOLOv8 detections, validation metrics per epoch, and the web and mobile app",
           "kind": "screenshot",
           "wide": true,
           "fit": "contain",
           "bg": "#f8fafc",
           "dark": {
-            "src": "nutri-snap-overview-dark.png",
+            "src": "https://raw.githubusercontent.com/synamalhan/nutri-snap/main/docs/overview-dark.png",
             "bg": "#0b1120"
           }
         },
@@ -1703,17 +1703,17 @@
           "kind": "diagram"
         },
         {
-          "src": "nutri-snap-results.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/nutri-snap/main/docs/screenshots/results.png",
           "alt": "NutriSnap results: detection boxes on a pizza photo, portion sliders, macro donut, daily goals and meal log",
           "kind": "screenshot"
         },
         {
-          "src": "nutri-snap-home.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/nutri-snap/main/docs/screenshots/home.png",
           "alt": "NutriSnap home screen with upload dropzone and meal log",
           "kind": "screenshot"
         },
         {
-          "src": "nutri-snap-loading.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/nutri-snap/main/docs/screenshots/loading.png",
           "alt": "NutriSnap analyzing screen",
           "kind": "screenshot",
           "wide": true
@@ -1999,7 +1999,7 @@
       },
       "images": [
         {
-          "src": "model-guard-drift.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/model-guard/main/docs/images/dashboard-drift.png",
           "alt": "KS and PSI on the drifted feature with alerts",
           "kind": "screenshot",
           "wide": true
@@ -2010,19 +2010,19 @@
           "kind": "diagram"
         },
         {
-          "src": "model-guard-overview.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/model-guard/main/docs/images/dashboard-overview.png",
           "alt": "ModelGuard dashboard: scenario summary, detection delay and alert feed",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "model-guard-missing.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/model-guard/main/docs/images/dashboard-missing.png",
           "alt": "Missing-value heatmap per feature",
           "kind": "screenshot",
           "wide": true
         },
         {
-          "src": "model-guard-performance.png",
+          "src": "https://raw.githubusercontent.com/synamalhan/model-guard/main/docs/images/dashboard-performance.png",
           "alt": "Rolling accuracy and F1 against alert floors",
           "kind": "screenshot",
           "wide": true
