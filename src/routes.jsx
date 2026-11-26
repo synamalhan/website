@@ -10,6 +10,7 @@ import Cursor from "./components/Cursor";
 import Home from "./App";
 import ArchivePage from "./pages/ArchivePage";
 import ProjectPage from "./pages/ProjectPage";
+import { ExperiencePage, AboutPage, ContactPage } from "./pages/SitePages";
 import { projects } from "./data/portfolio";
 
 // A deploy replaces hashed chunk files, so a tab opened before it can request a chunk that no longer exists. Reload once to pick up the new build.
@@ -56,6 +57,9 @@ export default [{
     ErrorBoundary: ErrorPage,
     children: [
         { index: true, Component: Home },
+        { path: "experience", Component: ExperiencePage },
+        { path: "about", Component: AboutPage },
+        { path: "contact", Component: ContactPage },
         { path: "projects", Component: ArchivePage },
         { path: "projects/:id", Component: ProjectPage, getStaticPaths: () => projects.map(p => `projects/${p.id}`) },
     ],

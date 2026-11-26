@@ -3,8 +3,8 @@ import { profile } from "../data/portfolio";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
-import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
+import Guestbook from "./Guestbook";
 
 export default function Contact() {
     const { theme: t } = useTheme();
@@ -16,7 +16,6 @@ export default function Contact() {
     ];
     return (
         <section id="contact" style={{ padding: isMobile ? "60px 24px 80px" : "80px 24px 120px", position: "relative", zIndex: 1, maxWidth: 900, margin: "0 auto", textAlign: "center", color: t.text }}>
-            <Label center>// Contact</Label>
             <H2 style={{ textAlign: "center", fontSize: isMobile ? "2.5rem" : "3.5rem" }}>LET'S CONNECT</H2>
             <p style={{ fontSize: "1.1rem", lineHeight: 1.7, color: t.textMute, margin: "8px auto 32px", maxWidth: "50ch" }}>
                 I'm looking for ML, AI and software engineering new-grad roles. The fastest way to reach me is email.
@@ -33,6 +32,7 @@ export default function Contact() {
                     }}>{l.icon} {l.text}</a>
                 ))}
             </div>
+            <Guestbook />
         </section>
     );
 }

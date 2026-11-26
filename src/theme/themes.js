@@ -1,11 +1,11 @@
 export const THEMES = {
     dark: {
-        bg: "#1c1c1f",
-        surface: "#2b2b30",
-        border: "rgba(255,255,255,0.18)",
-        borderHi: "rgba(255,255,255,0.42)",
-        text: "#f0f0f0",
-        textMute: "#d0d0d0", // brighter and opaque
+        bg: "#0e0e1a",
+        surface: "#1a1a2c",
+        border: "rgba(160,160,255,0.16)",
+        borderHi: "rgba(180,180,255,0.38)",
+        text: "#ececf6",
+        textMute: "#b0b0c8",
         textHi: "#ffffff",
         accent: "#e062f3", // pink/purple
         accentGlow: "rgba(217,70,239,0.25)",
@@ -17,12 +17,12 @@ export const THEMES = {
         particle1: "139,92,246", // purple
         particle2: "59,130,246", // blue
         particle3: "234,179,8",  // yellow
-        navBg: "rgba(28,28,31,0.92)",
-        cardBg: "rgba(43,43,48,0.85)",
+        navBg: "rgba(14,14,26,0.88)",
+        cardBg: "rgba(26,26,44,0.8)",
         metalHi: "#e3e3e0",
-        metalMid: "#828285",
-        metalLo: "#3a3a40",
-        onAccent: "#1c1c1f",
+        metalMid: "#7a7a92",
+        metalLo: "#2a2a40",
+        onAccent: "#0e0e1a",
         name: "dark",
     },
     light: {

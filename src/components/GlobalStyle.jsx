@@ -4,8 +4,12 @@ export default function GlobalStyle() {
       *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
       html { scroll-behavior:smooth; }
       body { overflow-x:hidden; cursor:none; }
-      ::-webkit-scrollbar { width:6px; }
-      ::-webkit-scrollbar-thumb { border-radius:4px; background:var(--accent,#f5a623); }
+      /* --accent was never defined, so the thumb was always the orange fallback. A neutral translucent thumb suits both themes. */
+      * { scrollbar-width:thin; scrollbar-color:rgba(128,128,150,.45) transparent; }
+      ::-webkit-scrollbar { width:8px; height:8px; }
+      ::-webkit-scrollbar-track { background:transparent; }
+      ::-webkit-scrollbar-thumb { border-radius:8px; background:rgba(128,128,150,.45); }
+      ::-webkit-scrollbar-thumb:hover { background:rgba(128,128,150,.7); }
 
       @keyframes fadeUp   { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
       @keyframes pulse    { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.6);opacity:.5} }

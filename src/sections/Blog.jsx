@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
-import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 import { BLOG } from "../data/blog";
 
@@ -54,7 +53,6 @@ export default function Blog() {
             margin: "0 auto" 
         }}>
             <div style={{ marginBottom: isMobile ? 32 : 52, textAlign: "center" }}>
-                <Label center>// Blogs</Label>
                 <H2 style={{ textAlign: "center" }}>NOTES</H2>
             </div>
 

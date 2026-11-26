@@ -4,18 +4,41 @@ import { useTheme } from "../theme/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle";
 import { FONTS } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
+import { projects, profile } from "../data/portfolio";
+import { EXPERIENCES } from "../data/experience";
+import { catColor } from "../components/ProjectCover";
 
-// Projects is its own page; everything else is an anchor on the home page.
-const NavLink = ({ l, ...p }) => l === "Projects" ? <Link to="/projects" {...p} /> : <a href={`#${l.toLowerCase()}`} {...p} />;
+const PAGES = { Work: "/projects", Experience: "/experience", About: "/about", Contact: "/contact" };
+const NavLink = ({ l, ...p }) => <Link to={PAGES[l]} {...p} />;
+
+// Hover preview: a small card of what is on the page, built from the same data the page uses.
+function Preview({ l, t }) {
+    const feat = projects.filter(p => p.featured).sort((a, b) => a.featuredRank - b.featuredRank).slice(0, 4);
+    const eyebrow = { ...FONTS.mono, fontSize: ".68rem", letterSpacing: ".14em", color: t.textMute, marginBottom: 8 };
+    const row = { ...FONTS.inter, fontSize: ".85rem", color: t.textHi, display: "flex", alignItems: "center", gap: 8, marginBottom: 6 };
+    const dot = c => <span style={{ width: 8, height: 8, borderRadius: 4, background: c, flexShrink: 0 }} />;
+    const body = {
+        Work: <><div style={eyebrow}>{projects.length} PROJECTS · FEATURED</div>{feat.map(p => <div key={p.id} style={row}>{dot(catColor(t, p.category))}{p.title}</div>)}</>,
+        Experience: <><div style={eyebrow}>{EXPERIENCES.length} ROLES · INTERNSHIPS, RESEARCH, TUTORING</div>{EXPERIENCES.slice(0, 4).map(e => <div key={e.id} style={row}>{dot(e.internship ? t.gold : t.cyan)}<span>{e.company}<span style={{ color: t.textMute }}> · {e.role}</span></span></div>)}</>,
+        About: <><div style={eyebrow}>OUTSIDE WORK</div><div style={{ ...row, display: "block", lineHeight: 1.5 }}>{profile.degree}, {profile.minor} minor, {profile.school}.</div><div style={{ ...row, display: "block", color: t.textMute, lineHeight: 1.5 }}>Music, books, a metal orca built in three.js.</div></>,
+        Contact: <><div style={eyebrow}>LOOKING FOR</div><div style={{ ...row, display: "block", lineHeight: 1.5 }}>{profile.target}</div><div style={{ ...row, color: t.textMute }}>Email · LinkedIn · GitHub · guestbook</div></>,
+    }[l];
+    return (
+        <div role="tooltip" style={{ position: "absolute", top: "100%", [l === "Work" || l === "Experience" ? "left" : "right"]: -16, paddingTop: 18, width: 300, zIndex: 1001 }}>
+            <div style={{ padding: "16px 18px", borderRadius: 14, background: t.surface, border: `1px solid ${t.borderHi}`, borderTop: `3px solid ${t.accent}`, boxShadow: "0 18px 40px rgba(0,0,0,.4)", textTransform: "none", letterSpacing: 0 }}>{body}</div>
+        </div>
+    );
+}
 
 export default function Navbar({ navUp }) {
     const { theme: t, isDark, toggleTheme } = useTheme();
     const isMobile = useIsMobile();
     const [isOpen, setIsOpen] = useState(false);
+    const [hover, setHover] = useState(null);
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
-    const navLinks = ["About", "Featured", "Experience", "Internships", "Skills", "Education", "Projects", "Contact"];
+    const navLinks = Object.keys(PAGES);
 
     return (
         <nav style={{
@@ -27,27 +50,28 @@ export default function Navbar({ navUp }) {
             borderBottom: (navUp || (isMobile && isOpen)) ? `1px solid ${t.border}` : "1px solid transparent",
             transition: "all .35s",
         }}>
-            <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: isMobile ? "1rem" : "1.2rem", letterSpacing: ".3em", color: t.textHi, position: "relative" }}>
+            <Link to="/" aria-label="Home" style={{ ...FONTS.orb, fontWeight: 900, fontSize: isMobile ? "1rem" : "1.2rem", letterSpacing: ".3em", color: t.textHi, position: "relative", textDecoration: "none" }}>
                 SY<span style={{ color: t.cyan }}>N</span>A
                 <div className="scanbar" style={{
                     position: "absolute", bottom: -3, left: 0, right: 0, height: 1,
                     background: `linear-gradient(90deg,transparent,${t.cyan},transparent)`
                 }} />
-            </div>
+            </Link>
 
             {/* Desktop Navigation */}
             {!isMobile && (
-                <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 36 }}>
                     {navLinks.map(l => (
-                        <NavLink key={l} l={l} style={{
-                            ...FONTS.mono, fontSize: ".65rem", letterSpacing: ".16em",
-                            color: t.textMute, textDecoration: "none", textTransform: "uppercase",
-                            transition: "color .2s"
-                        }}
-                            onMouseEnter={e => e.target.style.color = t.cyan}
-                            onMouseLeave={e => e.target.style.color = t.textMute}>
-                            {l}
-                        </NavLink>
+                        <div key={l} style={{ position: "relative" }} onMouseEnter={() => setHover(l)} onMouseLeave={() => setHover(null)} onFocus={() => setHover(l)} onBlur={() => setHover(null)}>
+                            <NavLink l={l} style={{
+                                ...FONTS.mono, fontSize: ".85rem", letterSpacing: ".12em",
+                                color: hover === l ? t.cyan : t.textMute, textDecoration: "none", textTransform: "uppercase",
+                                transition: "color .2s"
+                            }}>
+                                {l}
+                            </NavLink>
+                            {hover === l && <Preview l={l} t={t} />}
+                        </div>
                     ))}
                     <ThemeToggle isDark={isDark} toggle={toggleTheme} t={t} />
                 </div>

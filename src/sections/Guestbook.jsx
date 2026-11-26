@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
-import Label from "../components/ui/Label";
-import H2 from "../components/ui/H2";
 
 const API = () => window.location.hostname === "localhost" ? "http://localhost:3001" : (import.meta.env.VITE_API_URL || "http://localhost:3001");
 
@@ -30,12 +28,9 @@ export default function Guestbook() {
 
     const field = { ...FONTS.inter, width: "100%", boxSizing: "border-box", padding: "12px 14px", borderRadius: 10, border: `1px solid ${t.border}`, background: t.surface, color: t.textHi, fontSize: ".95rem" };
     return (
-        <section id="guestbook" style={{ padding: isMobile ? "60px 24px" : "80px 24px", position: "relative", zIndex: 1, maxWidth: 900, margin: "0 auto", color: t.text }}>
-            <div style={{ textAlign: "center" }}>
-                <Label center>// Guestbook</Label>
-                <H2 style={{ textAlign: "center" }}>LEAVE A NOTE</H2>
-                <p style={{ color: t.textMute, margin: "8px auto 28px", maxWidth: "50ch" }}>Feedback, a favorite project, a book I should read.</p>
-            </div>
+        <div style={{ textAlign: "left", marginTop: 56, paddingTop: 40, borderTop: `1px solid ${t.border}` }}>
+            <h3 style={{ ...FONTS.orb, fontSize: "1.4rem", color: t.textHi, marginBottom: 6 }}>Or leave a note</h3>
+            <p style={{ color: t.textMute, margin: "0 0 20px" }}>Feedback, a favorite project, a book I should read.</p>
             <form onSubmit={submit} className="hover-card" style={{ display: "grid", gap: 12, padding: 22, borderRadius: 16, background: t.surface, border: `1px solid ${t.border}` }}>
                 <input aria-label="Your name" placeholder="Name (optional)" maxLength={40} value={f.name} onChange={e => setF({ ...f, name: e.target.value })} style={field} />
                 <textarea aria-label="Your note" required minLength={2} maxLength={400} rows={3} placeholder="Your note" value={f.message} onChange={e => setF({ ...f, message: e.target.value })} style={{ ...field, resize: "vertical" }} />
@@ -55,6 +50,6 @@ export default function Guestbook() {
                     ))}
                 </div>
             )}
-        </section>
+        </div>
     );
 }

@@ -1,15 +1,13 @@
 import { forwardRef, useEffect, useRef } from "react";
 import { useReading } from "../hooks/useReading";
 import uboat from "../assets/metalearth.png";
-import { yearsSinceFirstRole, profile } from "../data/portfolio";
+import { profile } from "../data/portfolio";
 import { motion } from "framer-motion";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
-import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 import SimpleCarousel from "../components/SimpleCarousel";
-import resume from "../assets/SYNA_MALHAN.pdf";
 import { useState } from "react";
 import Suggest from "./Suggest";
 
@@ -51,7 +49,7 @@ const idleMessages = [
     "My ears are in deep-focus mode."
 ];
 
-const MusicTile = ({ t, counts, isMobile, sync }) => {
+const MusicTile = ({ t, isMobile, sync }) => {
     const { isPlaying, title, artist, parsedLyrics, currentProgress, currentUri } = sync;
 
     const currentIndex = parsedLyrics.findIndex((l, i) =>
@@ -323,7 +321,7 @@ const BentoBox = ({ children, style = {}, colSpan = 1, rowSpan = 1, hover = true
     );
 };
 
-const About = forwardRef(function About({ counts = {} }, ref) {
+const About = forwardRef(function About({ }, ref) {
     const { theme: t } = useTheme();
     const isMobile = useIsMobile();
     const sync = useSpotifySync();
@@ -361,44 +359,25 @@ const About = forwardRef(function About({ counts = {} }, ref) {
             <div style={bentoStyles.grid}>
                 {/* 1. BIO BOX (2x2) */}
                 <BentoBox colSpan={2} rowSpan={2} style={{ justifyContent: 'center' }}>
-                    <Label>// About Me</Label>
-                    <H2 style={{ fontSize: isMobile ? '2.5rem' : '3.5rem', marginBottom: '20px' }}>ABOUT<br />ME</H2>
+                    <H2 style={{ fontSize: isMobile ? '2.5rem' : '3.5rem', marginBottom: '20px' }}>OUTSIDE WORK</H2>
                     <p style={{ fontSize: "1rem", lineHeight: 1.7, color: t.textHi, fontWeight: 400, marginBottom: 16 }}>
-                        Hi, I'm <span style={{ color: t.accent, fontWeight: 700 }}>Syna</span>. I teach computers to find patterns, then spend an unreasonable amount of time making the result look good.
+                        Hi, I'm <span style={{ color: t.accent, fontWeight: 700 }}>Syna</span>. I'm a CS student who likes turning messy data into something people can use, and I care about how it looks and feels.
                     </p>
 
                     <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: t.textMute, fontWeight: 400, marginBottom: 16 }}>
-                        <span style={{ color: t.cyan }}>Machine learning</span> hooked me because every model is a small mystery. At Micron my clustering pipeline sorts chip failures by root cause, and it runs in production, so the mystery is solved daily.
+                        <span style={{ color: t.cyan }}>Machine learning</span> got me because every model starts as an open question. At Micron I built a clustering pipeline that groups chip failures by root cause. It runs in production.
                     </p>
 
                     <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: t.textMute, fontWeight: 400, marginBottom: 18 }}>
-                        The guy on my playlist cover is the reason I code at all. Thank you, Codemy.com. Offline I bend tiny metal sheets into <span style={{ color: t.gold }}>Metal Earth</span> models and read a lot. My best thinking happens near the ocean, which is how an orca ended up on this page.
+                        I learned to code from Codemy.com tutorials. Away from the screen I build <span style={{ color: t.gold }}>Metal Earth</span> models, read a lot, and think best near the ocean.
                     </p>
 
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24 }}>
-                        {[["Metal Earth builder", t.gold, -2], ["Bookworm", t.cyan, 1.5], ["Ocean thinker", t.accent, -1], ["Tutor, CS + math", t.magenta, 2]].map(([label, c, r]) => (
-                            <span key={label} className="wobble" style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".08em", padding: "6px 12px", borderRadius: 8, color: c, border: `1.5px dashed ${c}`, rotate: `${r}deg`, textTransform: "uppercase" }}>{label}</span>
+                        {[["Metal Earth builder", t.gold, -2], ["Bookworm", t.cyan, 1.5], ["Ocean lover", t.accent, -1], ["Tutor, CS + math", t.magenta, 2]].map(([label, c, r]) => (
+                            <span key={label} style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".08em", padding: "6px 12px", borderRadius: 999, color: t.textMute, border: `1px solid ${t.border}`, textTransform: "uppercase" }}>{label}</span>
                         ))}
                     </div>
-                    <a
-                        href={resume}
-                        download="Syna_Malhan_Resume.pdf"
-                        style={{
-                            alignSelf: 'flex-start',
-                            padding: "12px 24px",
-                            background: t.accent,
-                            color: t.onAccent,
-                            borderRadius: "12px",
-                            textDecoration: "none",
-                            ...FONTS.mono,
-                            fontSize: "0.75rem",
-                            letterSpacing: "2px",
-                            boxShadow: `0 8px 16px ${t.accent}33`,
-                            transition: "transform 0.2s"
-                        }}
-                    >
-                        RESUME
-                    </a>
+
                 </BentoBox>
 
                 {/* 2. GALLERY BOX (2x2) */}
@@ -407,29 +386,10 @@ const About = forwardRef(function About({ counts = {} }, ref) {
                 </BentoBox>
 
                 {/* 3. DYNAMIC MUSIC & LYRICS BOX (2x2) */}
-                <MusicTile t={t} counts={counts} isMobile={isMobile} sync={sync} />
+                <MusicTile t={t} isMobile={isMobile} sync={sync} />
 
-                {/* STATS BOXES */}
-                <BentoBox colSpan={1} rowSpan={1} style={{ justifyContent: 'center', borderLeft: `4px solid ${t.cyan}` }}>
-                    <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>{counts.p || 0}</div>
-                    <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>Projects</div>
-                </BentoBox>
-                <BentoBox colSpan={1} rowSpan={1} style={{ justifyContent: 'center', borderLeft: `4px solid ${t.accent}` }}>
-                    <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>{counts.a || 0}</div>
-                    <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>iOS Projects</div>
-                </BentoBox>
-                <BentoBox colSpan={1} rowSpan={1} style={{ justifyContent: 'center', borderLeft: `4px solid ${t.magenta}` }}>
-                    <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>{counts.m || 0}</div>
-                    <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>ML & Vision Projects</div>
-                </BentoBox>
-
-                {/* 5. YEARS EXPERIENCE BOX (1x1) */}
-                <BentoBox colSpan={1} rowSpan={1} style={{ justifyContent: 'center', borderLeft: `4px solid ${t.gold}` }}>
-                    <div style={{ ...FONTS.orb, fontWeight: 900, fontSize: "2.5rem", color: t.textHi }}>{yearsSinceFirstRole()}</div>
-                    <div style={{ ...FONTS.mono, fontSize: "0.65rem", letterSpacing: "2px", color: t.textMute, marginTop: 4, textTransform: "uppercase" }}>Years Exp</div>
-                </BentoBox>
                 {cards.length > 0 && (
-                    <div style={{ gridColumn: "1 / -1", display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${cards.length}, minmax(0, 1fr))`, gap: 16 }}>
+                    <div style={{ gridColumn: isMobile ? "1 / -1" : "span 2", gridRow: isMobile ? "auto" : "span 2", display: "grid", gridTemplateColumns: "1fr", gridAutoRows: "1fr", gap: 16 }}>
                         {cards.map(c => {
                             const Tag = c.link ? "a" : "div";
                             return (

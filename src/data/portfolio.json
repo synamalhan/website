@@ -700,8 +700,24 @@
           "kind": "diagram"
         }
       ],
-      "metrics": [],
-      "details": "Situation: Early detection of tumors in radiology scans was inconsistent. Problem: High false negatives in automated diagnosis. Action: Trained U-Net for segmentation and ResNet for classification. Result: Reduced false negative rate by 35% while maintaining high precision.",
+      "metrics": [
+        {
+          "label": "Test accuracy on 747 held-out MRI scans (was 74.0% before the fixes)",
+          "value": "97.1%",
+          "source": "brain-tumor-cnn README, docs/results/metrics.json (747 held-out scans)"
+        },
+        {
+          "label": "ROC AUC (was 0.799)",
+          "value": "0.989",
+          "source": "brain-tumor-cnn README, docs/results/metrics.json (747 held-out scans)"
+        },
+        {
+          "label": "Tumor recall / healthy recall (was 86% / 60%)",
+          "value": "98.6% / 95.5%",
+          "source": "brain-tumor-cnn README, docs/results/metrics.json (747 held-out scans)"
+        }
+      ],
+      "details": "Situation: Early detection of tumors in radiology scans was inconsistent. Problem: High false negatives in automated diagnosis. Action: Trained U-Net for segmentation and ResNet for classification. Result: 97.1% accuracy and 0.989 ROC AUC on 747 held-out scans, with a leak-free split.",
       "caseStudy": {
         "role": "Author of the repository: designed and built it.",
         "problem": "Flag whether an MRI scan shows a tumor and, if so, localize it at pixel level.",
@@ -719,7 +735,7 @@
             "tradeoff": "Easy to inspect outputs, though it is a demo, not a clinical tool."
           }
         ],
-        "result": null
+        "result": "On 747 held-out scans the classifier reaches 97.1% accuracy and 0.989 ROC AUC, up from 74.0% and 0.799. It catches 360 of 365 tumors and falsely flags 17 of 382 healthy scans. The biggest gain came from fixing input preprocessing (the ImageNet ResNet50 was fed [0,1] images instead of the 0-255 caffe-style input it expects). The split is now grouped by perceptual hash because about 2,100 of the 4,600 images are copies of the same scan, so the old 74% was probably flattering. Grad-CAM shows the evidence for 'tumor' falling on the lesion. Web-sourced slices from mixed scanners: this is a research project, not a clinical tool."
       },
       "status": "built",
       "featuredRank": 4,
@@ -854,12 +870,70 @@
       },
       "images": [
         {
+          "src": "option-pricing-overview-light.png",
+          "alt": "Options Pricing and Risk Lab: dashboard interface and validation results",
+          "kind": "screenshot",
+          "wide": true,
+          "fit": "contain",
+          "bg": "#fbfaf7",
+          "dark": {
+            "src": "option-pricing-overview-dark.png",
+            "bg": "#161618"
+          }
+        },
+        {
           "src": "option-pricing.svg",
           "alt": "Options Pricing and Risk Assessment Tool architecture diagram",
           "kind": "diagram"
+        },
+        {
+          "src": "option-pricing-pricing.png",
+          "alt": "Pricing and Greeks tab of the options dashboard",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "option-pricing-montecarlo.png",
+          "alt": "Monte Carlo simulation tab",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "option-pricing-sensitivity.png",
+          "alt": "Sensitivity tab",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "option-pricing-risk.png",
+          "alt": "VaR and Expected Shortfall tab",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "option-pricing-theory.png",
+          "alt": "Theory tab",
+          "kind": "screenshot",
+          "wide": true
         }
       ],
-      "metrics": [],
+      "metrics": [
+        {
+          "label": "Monte Carlo 95% CI coverage over 1,000 runs (N = 10k)",
+          "value": "93.8%",
+          "source": "option-pricing README, Results (S0=K=100, T=1y, r=5%, sigma=20%)"
+        },
+        {
+          "label": "Analytic Greeks vs finite differences, max absolute error",
+          "value": "< 1e-8",
+          "source": "option-pricing README, Results (S0=K=100, T=1y, r=5%, sigma=20%)"
+        },
+        {
+          "label": "Monte Carlo with 10^6 paths",
+          "value": "about 25-55 ms",
+          "source": "option-pricing README, Results (S0=K=100, T=1y, r=5%, sigma=20%)"
+        }
+      ],
       "details": "Situation: Finance students needed a simulation-based learning tool. Problem: Existing tools were non-interactive. Action: Built a Streamlit dashboard with VaR/ES risk metrics. Result: Helped users visualize pricing dynamics and scenario-based risk.",
       "caseStudy": {
         "role": "Author of the repository: designed and built it.",
@@ -1079,9 +1153,38 @@
       },
       "images": [
         {
+          "src": "curamind-showcase.png",
+          "alt": "CuraMind: chat, mood dashboard, wellness toolbox and mobile view",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
           "src": "curamind.svg",
           "alt": "CuraMind - AI-Powered Mental Health Support architecture diagram",
           "kind": "diagram"
+        },
+        {
+          "src": "curamind-chat.png",
+          "alt": "CuraMind chat screen with an emotion-aware reply",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "curamind-dashboard.png",
+          "alt": "CuraMind emotion dashboard tracking mood over time",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "curamind-toolbox.png",
+          "alt": "CuraMind wellness toolbox with breathing, journaling and calming sounds",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "curamind-mobile.png",
+          "alt": "CuraMind on a phone",
+          "kind": "screenshot"
         }
       ],
       "metrics": [],
@@ -1531,12 +1634,51 @@
       },
       "images": [
         {
+          "src": "nutri-snap-overview-light.png",
+          "alt": "NutriSnap overview: YOLOv8 detections, validation metrics per epoch, and the web and mobile app",
+          "kind": "screenshot",
+          "wide": true,
+          "fit": "contain",
+          "bg": "#f8fafc",
+          "dark": {
+            "src": "nutri-snap-overview-dark.png",
+            "bg": "#0b1120"
+          }
+        },
+        {
           "src": "nutri-snap.svg",
           "alt": "NutriSnap Food Nutrition Database architecture diagram",
           "kind": "diagram"
+        },
+        {
+          "src": "nutri-snap-results.png",
+          "alt": "NutriSnap results: detection boxes on a pizza photo, portion sliders, macro donut, daily goals and meal log",
+          "kind": "screenshot"
+        },
+        {
+          "src": "nutri-snap-home.png",
+          "alt": "NutriSnap home screen with upload dropzone and meal log",
+          "kind": "screenshot"
+        },
+        {
+          "src": "nutri-snap-loading.png",
+          "alt": "NutriSnap analyzing screen",
+          "kind": "screenshot",
+          "wide": true
         }
       ],
-      "metrics": [],
+      "metrics": [
+        {
+          "label": "Validation mAP@50 of the custom YOLOv8s food detector (mAP@50-95 0.32)",
+          "value": "0.40",
+          "source": "nutri-snap README overview figure (YOLOv8s, 50 epochs, validation metrics)"
+        },
+        {
+          "label": "Validation precision / recall",
+          "value": "0.75 / 0.36",
+          "source": "nutri-snap README overview figure (YOLOv8s, 50 epochs, validation metrics)"
+        }
+      ],
       "details": "food_db.csv maps common foods to calories, protein, carbs and fat per 100 g. A custom YOLOv8 model detects 43 food classes, and its detections are matched against the CSV to show macros. The training pipeline is in a Colab notebook linked from the repo.",
       "caseStudy": null,
       "status": "built",
@@ -1804,9 +1946,33 @@
       },
       "images": [
         {
+          "src": "model-guard-drift.png",
+          "alt": "KS and PSI on the drifted feature with alerts",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
           "src": "model-guard.svg",
           "alt": "ModelGuard: ML Reliability Platform architecture diagram",
           "kind": "diagram"
+        },
+        {
+          "src": "model-guard-overview.png",
+          "alt": "ModelGuard dashboard: scenario summary, detection delay and alert feed",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "model-guard-missing.png",
+          "alt": "Missing-value heatmap per feature",
+          "kind": "screenshot",
+          "wide": true
+        },
+        {
+          "src": "model-guard-performance.png",
+          "alt": "Rolling accuracy and F1 against alert floors",
+          "kind": "screenshot",
+          "wide": true
         }
       ],
       "metrics": [

@@ -1,10 +1,12 @@
+import { shotFor } from "../components/ProjectCover";
 import { Link, useParams } from "react-router-dom";
 import Seo from "../components/Seo";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
 import Tag from "../components/ui/Tag";
-import PageNav from "../components/PageNav";
+import Navbar from "../sections/Navbar";
+import Footer from "../sections/Footer";
 import { projects, categories } from "../data/portfolio";
 import { projectImage } from "../data/assets";
 import { statusLabel } from "../data/format";
@@ -37,8 +39,8 @@ export default function ProjectPage() {
 
     return (
         <>
-            <PageNav current="featured" />
-            <main style={{ position: "relative", zIndex: 10, maxWidth: 1100, margin: "0 auto", padding: "40px 20px 96px" }}>
+            <Navbar navUp />
+            <main style={{ position: "relative", zIndex: 10, maxWidth: 1100, margin: "0 auto", padding: "120px 20px 96px" }}>
                 <Seo title={`${p.title} | Syna Malhan`} description={p.summary} path={`/projects/${p.id}`} />
 
                 <header>
@@ -60,10 +62,13 @@ export default function ProjectPage() {
                     <div>
                         {shots.length > 0 && (
                             <Sec title="SCREENSHOTS">
-                                <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-                                    {shots.map(i => <img key={i.src} src={projectImage(i.src)} alt={i.alt} loading="lazy" style={{ width: isMobile ? "46%" : 210, borderRadius: 16, border: `1px solid ${t.border}`, boxShadow: "0 10px 24px rgba(0,0,0,.35)" }} />)}
-                                </div>
-                                <p style={{ ...FONTS.mono, fontSize: ".75rem", color: t.textMute, marginTop: 10 }}>iOS Simulator screenshots from the repository.</p>
+                                {[true, false].map(wide => {
+                                    const list = shots.map(i => shotFor(t, i)).filter(i => !!i.wide === wide);
+                                    const img = i => <img key={i.src} src={projectImage(i.src)} alt={i.alt} loading="lazy" style={{ display: "block", borderRadius: 14, border: `1px solid ${t.border}`, boxShadow: "0 10px 24px rgba(0,0,0,.35)", ...(wide ? { width: "100%", marginBottom: 16, breakInside: "avoid" } : { width: isMobile ? "46%" : 210 }) }} />;
+                                    // Wide screenshots flow into two columns (no cropping, no ragged rows); phone screenshots sit in their own row.
+                                    return list.length > 0 && <div key={String(wide)} style={wide ? { columnCount: isMobile ? 1 : 2, columnGap: 16 } : { display: "flex", gap: 16, flexWrap: "wrap" }}>{list.map(img)}</div>;
+                                })}
+                                <p style={{ ...FONTS.mono, fontSize: ".75rem", color: t.textMute, marginTop: 10 }}>Screenshots from the project repository.</p>
                             </Sec>
                         )}
                         {diagram && (
@@ -125,6 +130,7 @@ export default function ProjectPage() {
                     {next ? <Link to={`/projects/${next.id}`} style={{ textDecoration: "none", color: t.textHi, textAlign: "right" }}><div style={{ ...eyebrow, color: t.textMute }}>NEXT FEATURED →</div><div style={{ marginTop: 4, fontWeight: 600 }}>{next.title}</div></Link> : <span />}
                 </nav>
             </main>
+            <Footer />
         </>
     );
 }

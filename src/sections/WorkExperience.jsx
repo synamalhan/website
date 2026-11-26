@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useTheme } from "../theme/ThemeContext";
 import { FONTS } from "../components/styles";
 import { useIsMobile } from "../hooks/useMediaQuery";
-import Label from "../components/ui/Label";
 import H2 from "../components/ui/H2";
 import { EXPERIENCES } from "../data/experience";
 import ExperienceModal from "./ExperienceModal";
@@ -22,9 +21,8 @@ export default function WorkExperience() {
     return (
         <section id="experience" style={{ padding: isMobile ? "80px 24px" : "120px 24px", position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: isMobile ? 48 : 72 }}>
-                <Label center>// Experience</Label>
-                <H2 style={{ textAlign: "center" }}>WORK<br />EXPERIENCE</H2>
-                <p style={{ ...FONTS.mono, fontSize: isMobile ? "0.6rem" : "0.7rem", color: t.textMute, marginTop: 12 }}>FLIP A CARD FOR DETAILS · FLOATING GOLD CARDS ARE INTERNSHIPS</p>
+                <H2 style={{ textAlign: "center" }}>EXPERIENCE</H2>
+                <p style={{ ...FONTS.mono, fontSize: isMobile ? ".75rem" : ".85rem", letterSpacing: ".1em", color: t.textMute, marginTop: 12 }}>TAP A CARD TO FLIP IT · FLOATING GOLD CARDS ARE INTERNSHIPS</p>
             </div>
 
             <div style={{
@@ -104,7 +102,7 @@ export default function WorkExperience() {
                                     marginBottom: 10,
                                     letterSpacing: 2,
                                     transform: isMobile ? "translateZ(30px)" : "translateZ(40px)"
-                                }}>{exp.years}</div>
+                                }}>{exp.years}{exp.internship ? " · INTERNSHIP" : ""}</div>
                                 <div style={{
                                     ...FONTS.orb,
                                     fontSize: isMobile ? "1.4rem" : (exp.company.length > 20 ? "1.6rem" : "1.8rem"),
@@ -131,19 +129,13 @@ export default function WorkExperience() {
                                     color: t.textMute,
                                     lineHeight: 1.5,
                                     maxWidth: "100%",
+                                    padding: "12px 14px", borderRadius: 12, background: `${t.cyan}12`, border: `1px solid ${t.cyan}33`,
                                     transform: "translateZ(30px)"
                                 }}>
                                     {exp.desc}
                                 </div>
 
-                                <div style={{
-                                    width: 40,
-                                    height: 2,
-                                    background: t.accent,
-                                    marginTop: 24,
-                                    boxShadow: `0 0 10px ${t.accent}`,
-                                    transform: "translateZ(40px)"
-                                }} />
+                                <div style={{ ...FONTS.mono, fontSize: ".72rem", letterSpacing: ".14em", color: t.textMute, marginTop: 22, transform: "translateZ(40px)" }}>TAP TO FLIP ↻</div>
                             </div>
 
                             {/* BACK */}
@@ -206,7 +198,7 @@ export default function WorkExperience() {
                                 <div style={{
                                     flex: 1,
                                     overflowY: "auto",
-                                    paddingRight: 8,
+                                    padding: "12px 12px 2px", borderRadius: 12, background: `${t.cyan}10`, border: `1px solid ${t.cyan}33`,
                                     transform: "translateZ(40px)",
                                     scrollbarWidth: "none"
                                 }}>
@@ -224,7 +216,7 @@ export default function WorkExperience() {
                                                 display: "flex",
                                                 gap: 8
                                             }}>
-                                                <span style={{ color: t.accent }}>•</span>
+                                                <span style={{ color: t.cyan }}>•</span>
                                                 {detail}
                                             </div>
                                         )) : (
@@ -239,7 +231,7 @@ export default function WorkExperience() {
                                     flexWrap: "wrap",
                                     gap: 6,
                                     marginBottom: isMobile ? 12 : 20,
-                                    marginTop: 10,
+                                    marginTop: 10, padding: 10, borderRadius: 12, background: `${t.accent}10`, border: `1px solid ${t.accent}33`,
                                     transform: isMobile ? "translateZ(40px)" : "translateZ(60px)"
                                 }}>
                                     {exp.techStack.map((tech, idx) => (

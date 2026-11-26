@@ -41,6 +41,7 @@ const TechText = ({
   letterSpacing = -0.05,
   color = 'currentColor',
   accentColor = 'currentColor',
+  accentColors = null, // optional per-letter colours for the highlight box, by glyph index
   align = 'center',
   reach = 200,
   softness = 0.7,
@@ -77,6 +78,7 @@ const TechText = ({
       letterSpacing,
       color,
       accentColor,
+      accentColors,
       align,
       reach,
       softness,
@@ -350,6 +352,24 @@ const TechText = ({
         Math.round((art.left + dx) * dpr - originX),
         Math.round((art.top + dy) * dpr - originY)
       );
+    };
+
+    // The glyph's own shape filled with one colour, cached per glyph (glyph objects are rebuilt whenever layout changes).
+    const tinted = (glyph, color) => {
+      glyph.tints ||= {};
+      if (!glyph.tints[color]) {
+        const { image, left, top } = glyph.fill;
+        const c = document.createElement('canvas');
+        c.width = image.width;
+        c.height = image.height;
+        const g = c.getContext('2d');
+        g.drawImage(image, 0, 0);
+        g.globalCompositeOperation = 'source-in';
+        g.fillStyle = color;
+        g.fillRect(0, 0, c.width, c.height);
+        glyph.tints[color] = { image: c, left, top };
+      }
+      return glyph.tints[color];
     };
 
     const drawReveal = s => {
@@ -864,13 +884,16 @@ const TechText = ({
           blit(ctx, glyph.fill, glyph.offset.x, glyph.offset.y, 0, 0);
         }
         if (glyph.outline > 0.001) {
+          // A soft wash of the letter's own highlight colour inside the outline.
+          ctx.globalAlpha = glyph.outline * glyph.shown * 0.35;
+          blit(ctx, tinted(glyph, s.accentColors?.length ? s.accentColors[i % s.accentColors.length] : accent), glyph.offset.x, glyph.offset.y, 0, 0);
           ctx.globalAlpha = glyph.outline * glyph.shown;
           blit(ctx, glyph.dashes, glyph.offset.x, glyph.offset.y, 0, 0);
         }
         ctx.globalAlpha = 1;
       });
       if (presence > 0.001) drawReveal(s);
-      drawFrame(s, accent);
+      drawFrame(s, s.accentColors?.length ? s.accentColors[frame.index % s.accentColors.length] : accent);
 
       const settling =
         moving ||
