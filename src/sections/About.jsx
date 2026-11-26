@@ -130,7 +130,7 @@ const About = forwardRef(function About({ }, ref) {
                         Hi, I'm <span style={{ color: t.accent, fontWeight: 700 }}>Syna</span>. I'm a computer science student at Arizona State with a data science minor, and I build machine learning systems and iOS apps. At Micron that meant a clustering pipeline that groups chip failures by root cause. On my own it is things like an iPhone app that learns a new object from a single photo.
                     </p>
                     <p style={{ fontSize: "1.05rem", lineHeight: 1.75, color: t.textMute, maxWidth: "75ch" }}>
-                        I have been doing this for a long time. As a kid I spent my summers at robotics and coding camps, and not because anyone made me. I did it because it was fun. I learned to code from Codemy.com tutorials, and I never really stopped. The camps turned into projects, then internships and research, and I still get the same feeling when something I built finally works.
+                        As a kid I spent my summers at robotics and coding camps, because it was fun. I learned to code from Codemy.com tutorials, and hence the bald man (John Elder) on the cover of the spotify cover, one of the most influential figures in my life. The camps turned into projects, then internships and research, and I still get the same feeling when something I built finally works.
                     </p>
                 </BentoBox>
 

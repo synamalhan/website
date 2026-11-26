@@ -92,7 +92,6 @@ export default function ArchivePage() {
             <main style={{ position: "relative", zIndex: 10, maxWidth: 1100, margin: "0 auto", padding: "120px 20px 96px" }}>
                 <Seo title="Work | Syna Malhan" description={`${projects.length} projects across ML, computer vision, full-stack and iOS, grouped by topic.`} path="/projects" />
                 <h1 style={{ ...FONTS.orb, fontWeight: 800, fontSize: "clamp(2.4rem,5.4vw,4rem)", color: t.textHi, lineHeight: 1.1 }}>WORK</h1>
-                <p style={{ color: t.textMute, fontSize: "1.1rem", lineHeight: 1.6, margin: "14px 0 56px", maxWidth: "60ch" }}>Selected projects first, then everything by topic. Flip a topic card for its two strongest projects, or open its tab for all of them.</p>
 
                 <h2 style={h2}>SELECTED WORK</h2>
                 <ul style={{ listStyle: "none", display: "grid", gridTemplateColumns: isMobile ? "minmax(0,1fr)" : "repeat(3, minmax(0, 1fr))", gap: 24 }}>

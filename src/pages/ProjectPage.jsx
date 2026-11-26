@@ -77,14 +77,12 @@ export default function ProjectPage() {
                                     // Wide screenshots flow into two columns (no cropping, no ragged rows); phone screenshots sit in their own row.
                                     return list.length > 0 && <div key={String(wide)} style={wide ? { columnCount: isMobile ? 1 : 2, columnGap: 16 } : { display: "flex", gap: 16, flexWrap: "wrap" }}>{list.map(img)}</div>;
                                 })}
-                                <p style={{ ...FONTS.mono, fontSize: "0.87rem", color: t.textMute, marginTop: 10 }}>Images are loaded straight from the project repository on GitHub. Click one to expand.</p>
                             </Sec>
                         )}
                         {diagram && (
                             <Sec title="ARCHITECTURE">
                                 <figure style={{ margin: 0 }}>
                                     <img {...zoom(diagram.src)} src={projectImage(diagram.src)} alt={diagram.alt} style={{ width: "100%", display: "block", cursor: "zoom-in", borderRadius: 14, border: `1px solid ${t.border}`, background: "#fff" }} />
-                                    <figcaption style={{ ...FONTS.mono, fontSize: "0.87rem", color: t.textMute, marginTop: 10 }}>Diagram from the project repository.</figcaption>
                                 </figure>
                             </Sec>
                         )}

@@ -22,7 +22,6 @@ export default function WorkExperience() {
         <section id="experience" style={{ padding: isMobile ? "80px 24px" : "120px 24px", position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: isMobile ? 48 : 72 }}>
                 <H2 style={{ textAlign: "center" }}>EXPERIENCE</H2>
-                <p style={{ ...FONTS.mono, fontSize: isMobile ? ".75rem" : ".85rem", letterSpacing: ".1em", color: t.textMute, marginTop: 12 }}>TAP A CARD TO FLIP IT · FLOATING GOLD CARDS ARE INTERNSHIPS</p>
             </div>
 
             <div style={{
