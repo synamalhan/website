@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { useReading } from "../hooks/useReading";
-import uboat from "../assets/metalearth.png";
+import meta from "../data/metalearth.json"; // product photo, refreshed from the link at build time (scripts/metalearth.mjs)
 import { profile } from "../data/portfolio";
 import { motion } from "framer-motion";
 import { useTheme } from "../theme/ThemeContext";
@@ -98,7 +98,7 @@ const About = forwardRef(function About({ }, ref) {
     const model = profile.currently?.metalEarth;
     const cards = [
         book && { label: "NOW READING", title: book.title, sub: book.author, img: book.cover, link: book.link, color: t.cyan, tall: true },
-        model && { label: "ON THE DESK", title: model.name, sub: "Metal Earth", img: uboat, link: model.link, color: t.gold, wide: true },
+        model && { label: "ON THE DESK", title: model.name, sub: "Metal Earth", img: meta.link === model.link ? meta.image : "", link: model.link, color: t.gold, wide: true },
     ].filter(Boolean);
     const bentoStyles = {
         grid: {

@@ -6,7 +6,7 @@
   "homepage": "https://synamalhan.github.io/website",
   "scripts": {
     "dev": "vite",
-    "build": "node --env-file-if-exists=.env scripts/reading.mjs && node scripts/sitemap.mjs && vite-react-ssg build",
+    "build": "node --env-file-if-exists=.env scripts/reading.mjs && node scripts/metalearth.mjs && node scripts/sitemap.mjs && vite-react-ssg build",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
